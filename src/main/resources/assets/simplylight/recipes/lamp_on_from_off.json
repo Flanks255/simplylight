@@ -1,0 +1,12 @@
+{
+  "type":"forge:ore_shapeless",
+  "ingredients":[
+    {
+      "item":"simplylight:illuminant_block"
+    }
+  ],
+  "result":{
+  "item":"simplylight:illuminant_block_on",
+  "count":1
+  }
+}

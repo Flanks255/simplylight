@@ -1,0 +1,21 @@
+{
+    "parent": "block/block",
+    "ambientocclusion":false,
+    "textures":{
+        "particle": "simplylight:blocks/illuminant_block"
+    },
+    "elements":[
+        {
+            "shade": false,
+            "from": [ 0,0,0], "to": [16,8,16],
+            "faces":{
+                "down": { "texture": "#down", "cullface": "down" },
+                "up": { "texture": "#up" },
+                "north": { "uv": [0,0,16,8] , "texture": "#sides", "cullface": "north" },
+                "south": { "uv": [0,0,16,8] , "texture": "#sides", "cullface": "south" },
+                "west": { "uv": [0,0,16,8] , "texture": "#sides", "cullface": "west" },
+                "east": { "uv": [0,0,16,8] , "texture": "#sides", "cullface": "east" }
+            }
+        }
+    ]
+}

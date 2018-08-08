@@ -1,0 +1,26 @@
+{
+  "result":{
+    "item":"simplylight:illuminant_block",
+    "count":4
+  },
+  "pattern":[
+    "aba",
+    "bcb",
+    "aba"
+  ],
+  "type":"forge:ore_shaped",
+  "key":{
+    "a":{
+      "type":"forge:ore_dict",
+      "ore":"stone"
+    },
+    "b":{
+      "type":"forge:ore_dict",
+      "ore":"glowstone"
+    },
+    "c":{
+      "type":"forge:ore_dict",
+      "ore":"dustRedstone"
+    }
+  }
+}

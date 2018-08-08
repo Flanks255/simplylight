@@ -1,0 +1,16 @@
+[
+{
+  "modid": "simplylight",
+  "name": "Simply Light",
+  "description": "Simple light for a complicated world.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Flanks255"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

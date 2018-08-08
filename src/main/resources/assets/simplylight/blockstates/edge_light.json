@@ -1,0 +1,22 @@
+{
+    "multipart": [
+        {   "when": {"OR":[{ "north": true }, {"north":false,"south":false,"west":false,"east":false}]},
+            "apply": { "model": "simplylight:edge_light" }
+        },
+        {   "when": {"OR":[{ "east": true }, {"north":false,"south":false,"west":false,"east":false}]},
+            "apply": { "model": "simplylight:edge_light", "y": 90  }
+        },
+        {   "when": {"OR":[{ "south": true }, {"north":false,"south":false,"west":false,"east":false}]},
+            "apply": { "model": "simplylight:edge_light", "y": 180 }
+        },
+        {   "when": {"OR":[{ "west": true }, {"north":false,"south":false,"west":false,"east":false}]},
+            "apply": { "model": "simplylight:edge_light", "y": 270 }
+        }
+    ],
+    "variants":
+    {
+        "inventory": {
+			"model": "simplylight:edge_light", "y":270
+		}
+    }
+}

@@ -1,0 +1,15 @@
+{
+  "result":{
+    "item":"simplylight:illuminant_panel",
+    "count":6
+  },
+  "pattern":[
+    "aaa"
+  ],
+  "type":"forge:ore_shaped",
+  "key":{
+    "a":{
+      "item":"simplylight:illuminant_slab"
+    }
+  }
+}

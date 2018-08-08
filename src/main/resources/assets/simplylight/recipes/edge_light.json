@@ -1,0 +1,22 @@
+{
+  "result":{
+    "item":"simplylight:edge_light",
+    "count":6
+  },
+  "pattern":[
+    "b b",
+    "aaa",
+    "b b"
+  ],
+  "type":"forge:ore_shaped",
+  "key":{
+    "a":{
+      "type":"forge:ore_dict",
+      "ore":"glowstone"
+    },
+    "b":{
+      "type":"forge:ore_dict",
+      "ore":"stone"
+    }
+  }
+}

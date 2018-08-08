@@ -1,0 +1,22 @@
+{
+	"forge_marker": 1,
+	"defaults":{
+		"model":"simplylight:wall_lamp"
+    },
+	"variants": {
+		"normal": {
+			"model": "simplylight:wall_lamp"
+		},
+		"inventory": {
+			"model": "simplylight:wall_lamp", "y": 270
+		},
+		"facing":{
+			"up":    { "model":"simplylight:floorlamp"},
+			"down":  { "model":"simplylight:floorlamp", "x": 180 },
+			"east":  { "model":"simplylight:wall_lamp", "y": 270 },
+			"west":  { "model":"simplylight:wall_lamp", "y": 90 },
+			"south": { "model":"simplylight:wall_lamp"},
+			"north": { "model":"simplylight:wall_lamp", "y": 180 }
+		}
+    }
+}

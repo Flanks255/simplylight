@@ -1,0 +1,21 @@
+{
+  "result":{
+    "item":"simplylight:lightbulb",
+    "count":8
+  },
+  "pattern":[
+    " b ",
+    "aaa"
+  ],
+  "type":"forge:ore_shaped",
+  "key":{
+    "a":{
+      "type":"forge:ore_dict",
+      "ore":"stone"
+    },
+    "b":{
+      "type":"forge:ore_dict",
+      "ore":"glowstone"
+    }
+  }
+}
