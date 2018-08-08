@@ -9,7 +9,7 @@
   "updateUrl": "",
   "authorList": ["Flanks255"],
   "credits": "",
-  "logoFile": "",
+  "logoFile": "assets/simplylight/textures/logo.png",
   "screenshots": [],
   "dependencies": []
 }
