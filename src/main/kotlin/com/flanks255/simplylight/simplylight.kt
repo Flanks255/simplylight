@@ -52,7 +52,7 @@ object simplylight{
 
     const val MODID = "simplylight"
     const val NAME= "Simply Light"
-    const val VERSION = "0.1.0"
+    const val VERSION = "@VERSION@"
 
     @SidedProxy(serverSide = "com.flanks255.simplylight.proxy.ServerProxy", clientSide = "com.flanks255.simplylight.proxy.ClientProxy")
     var proxy: IProxy? = null
