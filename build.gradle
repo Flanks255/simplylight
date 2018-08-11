@@ -29,7 +29,6 @@ minecraft {
     mappings = "snapshot_20171003"
     makeObfSourceJar = false
 
-    //Rage this doesnt work with kotlin...
     replace '@VERSION@', project.version
     replaceIn 'simplylight.kt'
 
