@@ -1,6 +1,7 @@
 package com.flanks255.simplylight
 
 import com.flanks255.simplylight.blocks.*
+import com.flanks255.simplylight.items.ItemBase
 import com.flanks255.simplylight.proxy.IProxy
 import net.minecraft.block.Block
 import net.minecraft.block.state.IBlockState
@@ -88,13 +89,13 @@ object simplylight{
         @JvmStatic
         @SubscribeEvent
         fun registerItems(event: ModelRegistryEvent){
-            lampBlock.registerItemModel()
-            lampBlock2.registerItemModel()
-            illuminantSlab.registerItemModel()
-            illuminantPanel.registerItemModel()
-            WallLamp.registerItemModel()
-            edgelight.registerItemModel()
-            Lightbulb.registerItemModel()
+            registerItemModel(lampBlock)
+            registerItemModel(lampBlock2)
+            registerItemModel(illuminantSlab)
+            registerItemModel(illuminantPanel)
+            registerItemModel(WallLamp)
+            registerItemModel(edgelight)
+            registerItemModel(Lightbulb)
         }
         @JvmStatic
         @SubscribeEvent
@@ -108,6 +109,13 @@ object simplylight{
                     edgelight,
                     Lightbulb
             )
+        }
+
+        fun registerItemModel(block: LampBase){
+            proxy?.registerItemRenderer(Item.getItemFromBlock(block), 0, block.name)
+        }
+        fun registerItemModel(item: ItemBase){
+            simplylight.proxy?.registerItemRenderer(item, 0, item.name)
         }
     }
 }

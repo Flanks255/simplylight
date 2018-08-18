@@ -23,10 +23,6 @@ open class LampBase(val name :String): Block(Material.REDSTONE_LIGHT){
         setRegistryName(name)
     }
 
-    fun registerItemModel(){
-        simplylight.proxy?.registerItemRenderer(Item.getItemFromBlock(this), 0, name)
-    }
-
     fun createItemBlock(): Item {
         return ItemBlock(this).setRegistryName(registryName)
     }
