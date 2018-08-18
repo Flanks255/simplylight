@@ -115,7 +115,7 @@ object simplylight{
             proxy?.registerItemRenderer(Item.getItemFromBlock(block), 0, block.name)
         }
         fun registerItemModel(item: ItemBase){
-            simplylight.proxy?.registerItemRenderer(item, 0, item.name)
+            proxy?.registerItemRenderer(item, 0, item.name)
         }
     }
 }
