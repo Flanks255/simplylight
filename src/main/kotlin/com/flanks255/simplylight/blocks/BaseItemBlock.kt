@@ -10,16 +10,16 @@ import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 import org.lwjgl.input.Keyboard
 
-class BaseItemBlock(id: Block) :ItemBlock(id) {
+class BaseItemBlock(id: Block): ItemBlock(id) {
     init {
         setRegistryName(id.registryName)
     }
 
-    private fun hasTranslation(key :String) :Boolean{
+    private fun hasTranslation(key :String): Boolean{
         return I18n.format(key) != key
     }
 
-    private fun fallbackString(key :String, fallback :String) :String{
+    private fun fallbackString(key: String, fallback: String): String{
         return if(hasTranslation(key)) I18n.format(key) else fallback
     }
 

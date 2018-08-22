@@ -22,15 +22,15 @@ import net.minecraftforge.fml.relauncher.SideOnly
 abstract class RotatableLamp(name: String): LampBase(name) {
 
 
-    abstract val AABB_UP : AxisAlignedBB
-    abstract val AABB_DOWN : AxisAlignedBB
-    abstract val AABB_EAST : AxisAlignedBB
-    abstract val AABB_WEST : AxisAlignedBB
-    abstract val AABB_NORTH : AxisAlignedBB
-    abstract val AABB_SOUTH : AxisAlignedBB
+    abstract val AABB_UP: AxisAlignedBB
+    abstract val AABB_DOWN: AxisAlignedBB
+    abstract val AABB_EAST: AxisAlignedBB
+    abstract val AABB_WEST: AxisAlignedBB
+    abstract val AABB_NORTH: AxisAlignedBB
+    abstract val AABB_SOUTH: AxisAlignedBB
 
     companion object {
-        val FACING : PropertyDirection = PropertyDirection.create("facing")
+        val FACING: PropertyDirection = PropertyDirection.create("facing")
     }
 
     override fun getBlockFaceShape(worldIn: IBlockAccess?, state: IBlockState?, pos: BlockPos?, face: EnumFacing?): BlockFaceShape {

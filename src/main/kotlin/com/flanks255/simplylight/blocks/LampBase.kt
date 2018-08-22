@@ -12,7 +12,7 @@ import net.minecraft.world.IBlockAccess
 
 @Suppress("OverridingDeprecatedMember")
 
-open class LampBase(val name :String): Block(Material.REDSTONE_LIGHT){
+open class LampBase(val name: String): Block(Material.REDSTONE_LIGHT){
     init {
         super.setLightLevel(1.0f)
         super.setLightOpacity(0)

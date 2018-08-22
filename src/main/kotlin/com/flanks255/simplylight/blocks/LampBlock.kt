@@ -11,7 +11,7 @@ import net.minecraft.world.World
 
 @Suppress("OverridingDeprecatedMember")
 
-class LampBlock(name :String,private val default :Boolean) :LampBase(name) {
+class LampBlock(name: String,private val default: Boolean): LampBase(name) {
     init {
         setLightLevel(if(default) 1.0f else 0.0f)
 
