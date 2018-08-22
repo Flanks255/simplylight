@@ -70,7 +70,7 @@ abstract class RotatableLamp(name: String): LampBase(name) {
 
     override fun canPlaceBlockOnSide(worldIn: World, pos: BlockPos, side: EnumFacing): Boolean {
         val shape = worldIn.getBlockState(pos.offset(side.opposite)).getBlockFaceShape(worldIn,pos,side)
-        return shape == BlockFaceShape.SOLID || shape == BlockFaceShape.CENTER
+        return shape == BlockFaceShape.SOLID || shape == BlockFaceShape.CENTER || shape == BlockFaceShape.CENTER_BIG
     }
 
     override fun createBlockState(): BlockStateContainer {
