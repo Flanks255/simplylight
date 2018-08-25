@@ -17,13 +17,13 @@ import net.minecraftforge.fml.relauncher.SideOnly
 
 @Suppress("OverridingDeprecatedMember")
 
-class EdgeLight(name: String): LampBase(name) {
-    val AABB_ALL = AxisAlignedBB(0.0,0.0,0.0,1.0,0.0625,1.0)
+open class EdgeLight(name: String): LampBase(name) {
+    open val AABB_ALL = AxisAlignedBB(0.0,0.0,0.0,1.0,0.0625,1.0)
 
-    val AABB_WEST = AxisAlignedBB(0.0, 0.0, 0.0, 0.0625, 0.0625, 1.0)
-    val AABB_EAST = AxisAlignedBB(1.0, 0.0, 0.0, 1.0-0.0625, 0.0625, 1.0)
-    val AABB_SOUTH = AxisAlignedBB(0.0, 0.0, 1.0 - 0.0625, 1.0, 0.0625, 1.0)
-    val AABB_NORTH = AxisAlignedBB(0.0, 0.0, 0.0, 1.0, 0.0625, 0.0625)
+    open val AABB_WEST = AxisAlignedBB(0.0, 0.0, 0.0, 0.0625, 0.0625, 1.0)
+    open val AABB_EAST = AxisAlignedBB(1.0, 0.0, 0.0, 1.0-0.0625, 0.0625, 1.0)
+    open val AABB_SOUTH = AxisAlignedBB(0.0, 0.0, 1.0 - 0.0625, 1.0, 0.0625, 1.0)
+    open val AABB_NORTH = AxisAlignedBB(0.0, 0.0, 0.0, 1.0, 0.0625, 0.0625)
 
     companion object {
         val NORTH: PropertyBool = PropertyBool.create("north")

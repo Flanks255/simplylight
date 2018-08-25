@@ -27,6 +27,15 @@ val illuminantSlab: ThinLamp = ThinLamp("illuminant_slab", 0.5).setCreativeTab(C
 val illuminantPanel: ThinLamp = ThinLamp("illuminant_panel", 0.25).setCreativeTab(CreativeTabs.DECORATIONS)
 val edgelight: EdgeLight = EdgeLight("edge_light").setCreativeTab(CreativeTabs.DECORATIONS)
 
+object edgelight_top: EdgeLight("edge_light_top") {
+    override val AABB_ALL = AxisAlignedBB(0.0,1.0,0.0,1.0,0.9375,1.0)
+
+    override val AABB_WEST = AxisAlignedBB(0.0, 1.0, 0.0, 0.0625, 0.9375, 1.0)
+    override val AABB_EAST = AxisAlignedBB(1.0, 1.0, 0.0, 1.0-0.0625, 0.9375, 1.0)
+    override val AABB_SOUTH = AxisAlignedBB(0.0, 1.0, 1.0 - 0.0625, 1.0, 0.9375, 1.0)
+    override val AABB_NORTH = AxisAlignedBB(0.0, 1.0, 0.0, 1.0, 0.9375, 0.0625)
+}
+
 object Lightbulb: RotatableLamp("lightbulb"){
     override val AABB_UP = AxisAlignedBB(0.375,0.0, 0.375,0.625, 0.3125,0.625)
     override val AABB_DOWN = AxisAlignedBB(0.375, 1.0, 0.375, 0.625, 0.6875, 0.625)
@@ -66,6 +75,7 @@ object simplylight{
     fun preInit(event: FMLPreInitializationEvent){
         WallLamp.setCreativeTab(CreativeTabs.DECORATIONS)
         Lightbulb.setCreativeTab(CreativeTabs.DECORATIONS)
+        edgelight_top.setCreativeTab(CreativeTabs.DECORATIONS)
     }
 
     //init
@@ -86,6 +96,7 @@ object simplylight{
                     BaseItemBlock(illuminantPanel),
                     BaseItemBlock(WallLamp),
                     BaseItemBlock(edgelight),
+                    BaseItemBlock(edgelight_top),
                     BaseItemBlock(Lightbulb)
             )
         }
@@ -98,6 +109,7 @@ object simplylight{
             registerItemModel(illuminantPanel)
             registerItemModel(WallLamp)
             registerItemModel(edgelight)
+            registerItemModel(edgelight_top)
             registerItemModel(Lightbulb)
         }
         @JvmStatic
@@ -110,6 +122,7 @@ object simplylight{
                     illuminantSlab,
                     WallLamp,
                     edgelight,
+                    edgelight_top,
                     Lightbulb
             )
         }

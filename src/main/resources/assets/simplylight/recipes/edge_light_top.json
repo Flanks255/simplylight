@@ -1,0 +1,12 @@
+{
+  "type":"forge:ore_shapeless",
+  "ingredients":[
+    {
+      "item":"simplylight:edge_light"
+    }
+  ],
+  "result":{
+  "item":"simplylight:edge_light_top",
+  "count":1
+  }
+}
