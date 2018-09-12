@@ -15,7 +15,6 @@ import net.minecraft.world.IBlockAccess
 open class LampBase(val name: String): Block(Material.REDSTONE_LIGHT){
     init {
         super.setLightLevel(1.0f)
-        super.setLightOpacity(0)
         super.setHardness(1.0f)
         super.setUnlocalizedName(simplylight.MODID+"."+name)
         super.setHarvestLevel("pickaxe", 0)

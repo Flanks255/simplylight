@@ -18,6 +18,10 @@ import net.minecraftforge.fml.relauncher.SideOnly
 @Suppress("OverridingDeprecatedMember")
 
 open class EdgeLight(name: String): LampBase(name) {
+    init {
+        super.setLightOpacity(0)
+    }
+
     open val AABB_ALL = AxisAlignedBB(0.0,0.0,0.0,1.0,0.0625,1.0)
 
     open val AABB_WEST = AxisAlignedBB(0.0, 0.0, 0.0, 0.0625, 0.0625, 1.0)

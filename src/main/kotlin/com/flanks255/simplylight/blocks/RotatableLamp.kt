@@ -20,7 +20,9 @@ import net.minecraftforge.fml.relauncher.SideOnly
 @Suppress("OverridingDeprecatedMember")
 
 abstract class RotatableLamp(name: String): LampBase(name) {
-
+    init {
+        super.setLightOpacity(0)
+    }
 
     abstract val AABB_UP: AxisAlignedBB
     abstract val AABB_DOWN: AxisAlignedBB
