@@ -1,25 +1,34 @@
 {
 	"forge_marker": 1,
 	"defaults":{
-		"model":"simplylight:lightbulb",
+		"model":"forge:multi-layer",
 		"textures":{
 			"main":"simplylight:blocks/omni"
+		},
+		"custom": {
+			"base": "simplylight:lightbulb#base",
+			"Solid": "simplylight:lightbulb#base",
+			"Translucent": "simplylight:lightbulb#glow"
 		}
     },
 	"variants": {
-		"normal": {
-			"model": "simplylight:lightbulb"
-		},
 		"inventory": {
 			"model": "simplylight:lightbulb"
 		},
 		"facing":{
-			"up":    { "model":"simplylight:lightbulb"},
-			"down":  { "model":"simplylight:lightbulb", "x": 180 },
-			"east":  { "model":"simplylight:lightbulb", "x": 90, "y": 90 },
-			"west":  { "model":"simplylight:lightbulb", "x": 90, "y": 270 },
-			"south": { "model":"simplylight:lightbulb", "x": 90, "y": 180 },
-			"north": { "model":"simplylight:lightbulb", "x": 90 }
-		}
+			"up":    { },
+			"down":  { "x": 180 },
+			"east":  { "x": 90, "y": 90 },
+			"west":  { "x": 90, "y": 270 },
+			"south": { "x": 90, "y": 180 },
+			"north": { "x": 90 }
+		},
+		"base": [{
+			"model": "simplylight:lightbulb"
+		}],
+		"glow": [{
+			"model": "simplylight:lightbulb_glow"
+		}]
+
     }
 }

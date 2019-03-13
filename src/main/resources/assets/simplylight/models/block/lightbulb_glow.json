@@ -1,0 +1,29 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "block/block",
+	"ambientocclusion": false,
+	"textures": {
+		"main": "simplylight:blocks/omni",
+		"particle": "simplylight:blocks/omni"
+	},
+	"elements": [
+		{
+			"from": [6.75, 2, 6.75],
+			"to": [9.25, 5.25, 9.25],
+			"shade": false,
+			"faces": {
+				"north": {"uv": [0, 11, 2, 13], "texture": "#main"},
+				"east": {"uv": [0, 11, 2, 13], "texture": "#main"},
+				"south": {"uv": [0, 11, 2, 13], "texture": "#main"},
+				"west": {"uv": [0, 11, 2, 13], "texture": "#main"},
+				"up": {"uv": [0, 11, 2, 13], "texture": "#main"},
+				"down": {"uv": [0, 11, 2, 13], "texture": "#main"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"translation": [0, 6, 0]
+		}
+	}
+}

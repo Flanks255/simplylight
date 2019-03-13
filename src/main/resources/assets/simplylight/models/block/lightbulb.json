@@ -1,7 +1,6 @@
-﻿{
+{
 	"credit": "Made with Blockbench",
 	"parent": "block/block",
-	"ambientocclusion": false,
 	"textures": {
 		"main": "simplylight:blocks/omni",
 		"particle": "simplylight:blocks/omni"
@@ -32,5 +31,19 @@
 				"down": {"uv": [14, 13, 16, 15], "texture": "#main"}
 			}
 		}
-	]
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"translation": [0, 8, 0]
+		},
+		"firstperson_righthand": {
+			"translation": [0, 8, 0]
+		},
+		"thirdperson_lefthand": {
+			"translation": [0, 8, 0]
+		},
+		"firstperson_lefthand": {
+			"translation": [0, 8, 0]
+		}
+	}
 }

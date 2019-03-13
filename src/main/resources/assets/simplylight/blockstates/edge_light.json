@@ -16,7 +16,7 @@
     "variants":
     {
         "inventory": {
-			"model": "simplylight:edge_light", "y":270
-		}
+            "model": "simplylight:edge_light", "y":270
+        }
     }
 }

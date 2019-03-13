@@ -7,6 +7,7 @@ import net.minecraft.block.Block
 import net.minecraft.block.state.IBlockState
 import net.minecraft.creativetab.CreativeTabs
 import net.minecraft.item.Item
+import net.minecraft.util.BlockRenderLayer
 import net.minecraft.util.math.AxisAlignedBB
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.IBlockAccess
@@ -44,8 +45,9 @@ object Lightbulb: RotatableLamp("lightbulb"){
     override val AABB_NORTH = AxisAlignedBB(0.375, 0.375, 0.6875, 0.625, 0.625, 1.0)
     override val AABB_SOUTH = AxisAlignedBB(0.375, 0.375, 0.325, 0.625, 0.625, 0.0)
     override fun getCollisionBoundingBox(blockState: IBlockState?, worldIn: IBlockAccess?, pos: BlockPos?): AxisAlignedBB? = null
-    override fun getLightValue(state: IBlockState?, world: IBlockAccess?, pos: BlockPos?): Int {
-        return 14
+    override fun getLightValue(state: IBlockState?, world: IBlockAccess?, pos: BlockPos?): Int = 14
+    override fun canRenderInLayer(state: IBlockState, layer: BlockRenderLayer): Boolean {
+        return (layer == BlockRenderLayer.TRANSLUCENT || layer == BlockRenderLayer.SOLID)
     }
 }
 
