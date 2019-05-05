@@ -1,0 +1,33 @@
+simplylight.shift=Trykk på <§6§oShift§r> for info.
+
+tile.simplylight.illuminant_slab.name=Lysende Helle
+tile.simplylight.illuminant_slab.info=Enkel Helle med lys,
+tile.simplylight.illuminant_slab.info2=Plasser i en vilkårlig retning.
+
+tile.simplylight.illuminant_panel.name=Lysende Panel
+tile.simplylight.illuminant_panel.info=Enkel Panel med lys,
+tile.simplylight.illuminant_panel.info2=Plasser i en vilkårlig retning.
+
+
+tile.simplylight.illuminant_block.name=Lysende Blokk
+tile.simplylight.illuminant_block.info=Enkel Blokk med lys,
+tile.simplylight.illuminant_block.info2=Aktiveres med §4Redstone§r.
+
+tile.simplylight.illuminant_block_on.name=Lysende Blokk (Invertert)
+tile.simplylight.illuminant_block_on.info=Enkel Blokk med lys,
+tile.simplylight.illuminant_block_on.info2=Deaktiveres med §4Redstone§r.
+
+tile.simplylight.wall_lamp.name=Lysende Innretning
+tile.simplylight.wall_lamp.info=Sitter på vegger, tak og gulv.
+
+tile.simplylight.edge_light.name=Dynamisk Kantlys (Bunn)
+tile.simplylight.edge_light.info=Følger vegger rundt seg selv,
+tile.simplylight.edge_light.info2=perfekt for korridorer.
+
+tile.simplylight.edge_light_top.name=Dynamisk Kantlys (Topp)
+tile.simplylight.edge_light_top.info=Følger vegger rundt seg selv,
+tile.simplylight.edge_light_top.info2=perfekt for korridorer.
+
+tile.simplylight.lightbulb.name=Enkel lyspære
+tile.simplylight.lightbulb.info=Bare en enkel lyspære,
+tile.simplylight.lightbulb.info2=Plasser i en vilkårlig retning.
