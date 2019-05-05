@@ -1,11 +1,14 @@
 package com.flanks255.simplylight.blocks
 
+import net.minecraft.block.Block
 import net.minecraft.block.properties.PropertyBool
 import net.minecraft.block.state.BlockFaceShape
 import net.minecraft.block.state.BlockStateContainer
 import net.minecraft.block.state.IBlockState
 import net.minecraft.creativetab.CreativeTabs
+import net.minecraft.entity.EntityLivingBase
 import net.minecraft.util.EnumFacing
+import net.minecraft.util.EnumHand
 import net.minecraft.util.math.AxisAlignedBB
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.RayTraceResult
@@ -46,6 +49,20 @@ open class EdgeLight(name: String): LampBase(name) {
         val other = pos.offset(facing)
         return (world.getBlockState(other).getBlockFaceShape(world,pos,facing.opposite) == BlockFaceShape.SOLID)
     }
+    private fun checkSides(world: IBlockAccess, pos: BlockPos): IBlockState {
+        return defaultState.withProperty(NORTH, touches(world ,pos, EnumFacing.NORTH))
+                .withProperty(SOUTH, touches(world, pos, EnumFacing.SOUTH))
+                .withProperty(WEST, touches(world, pos, EnumFacing.WEST))
+                .withProperty(EAST, touches(world, pos, EnumFacing.EAST))
+    }
+
+    override fun getStateForPlacement(world: World, pos: BlockPos, facing: EnumFacing, hitX: Float, hitY: Float, hitZ: Float, meta: Int, placer: EntityLivingBase, hand: EnumHand): IBlockState {
+        return checkSides(world, pos)
+    }
+
+    override fun neighborChanged(state: IBlockState, worldIn: World, pos: BlockPos, blockIn: Block, fromPos: BlockPos) {
+        worldIn.setBlockState(pos, checkSides(worldIn, pos))
+    }
 
     override fun getActualState(state: IBlockState, worldIn: IBlockAccess, pos: BlockPos): IBlockState {
         return state.withProperty(NORTH, touches(worldIn ,pos, EnumFacing.NORTH))
@@ -53,20 +70,6 @@ open class EdgeLight(name: String): LampBase(name) {
                 .withProperty(WEST, touches(worldIn, pos, EnumFacing.WEST))
                 .withProperty(EAST, touches(worldIn, pos, EnumFacing.EAST))
     }
-/* 1.13 probably
-    override fun neighborChanged(state: IBlockState, worldIn: World, pos: BlockPos, blockIn: Block?, fromPos: BlockPos?) {
-        worldIn.setBlockState(pos, state.withProperty(NORTH, touches(worldIn ,pos, EnumFacing.NORTH))
-                .withProperty(SOUTH, touches(worldIn, pos, EnumFacing.SOUTH))
-                .withProperty(WEST, touches(worldIn, pos, EnumFacing.WEST))
-                .withProperty(EAST, touches(worldIn, pos, EnumFacing.EAST)))
-    }
-    override fun onBlockAdded(worldIn: World, pos: BlockPos, state: IBlockState) {
-        worldIn.setBlockState(pos, state.withProperty(NORTH, touches(worldIn ,pos, EnumFacing.NORTH))
-                .withProperty(SOUTH, touches(worldIn, pos, EnumFacing.SOUTH))
-                .withProperty(WEST, touches(worldIn, pos, EnumFacing.WEST))
-                .withProperty(EAST, touches(worldIn, pos, EnumFacing.EAST)))
-    }
-*/
 
     override fun getBoundingBox(state: IBlockState?, source: IBlockAccess?, pos: BlockPos?): AxisAlignedBB {
         return AABB_ALL
@@ -96,7 +99,24 @@ open class EdgeLight(name: String): LampBase(name) {
     override fun isOpaqueCube(state: IBlockState?): Boolean = false
     override fun isFullCube(state: IBlockState?): Boolean = false
     override fun isFullBlock(state: IBlockState?): Boolean = false
-    override fun getMetaFromState(state: IBlockState?): Int = 0
+    override fun getMetaFromState(state: IBlockState?): Int {
+        if (state == null) return 0
+        var meta = 0
+        meta += if (state.getValue(NORTH)) 1 else 0
+        meta += if (state.getValue(SOUTH)) 2 else 0
+        meta += if (state.getValue(EAST)) 4 else 0
+        meta += if (state.getValue(WEST)) 8 else 0
+
+        return meta
+    }
+
+    override fun getStateFromMeta(meta: Int): IBlockState {
+        return defaultState.withProperty(NORTH, (meta and 1 > 0))
+                .withProperty(SOUTH, (meta and 2 > 0))
+                .withProperty(EAST, (meta and 4 > 0))
+                .withProperty(WEST, (meta and 8 > 0))
+    }
+
     override fun getBlockFaceShape(worldIn: IBlockAccess?, state: IBlockState?, pos: BlockPos?, face: EnumFacing?): BlockFaceShape = BlockFaceShape.UNDEFINED
     override fun createBlockState(): BlockStateContainer {
         return BlockStateContainer(this, NORTH, SOUTH, WEST, EAST )
