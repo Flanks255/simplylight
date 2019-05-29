@@ -1,0 +1,33 @@
+simplylight.shift=Удерживайте <§6§oShift§r> чтобы увидеть подробности.
+
+tile.simplylight.illuminant_slab.name=Освещающая плита
+tile.simplylight.illuminant_slab.info=Простая полуплита света,
+tile.simplylight.illuminant_slab.info2=можно разместить в любом направлении.
+
+tile.simplylight.illuminant_panel.name=Освещающая панель
+tile.simplylight.illuminant_panel.info=Простая светодиодная панель,
+tile.simplylight.illuminant_panel.info2=можно разместить в любом направлении.
+
+
+tile.simplylight.illuminant_block.name=Освещающий блок
+tile.simplylight.illuminant_block.info=Простой блок света,
+tile.simplylight.illuminant_block.info2=Активируется §4Redstone§r.
+
+tile.simplylight.illuminant_block_on.name=Освещающий блок (Перевёрнутый)
+tile.simplylight.illuminant_block_on.info=Простой блок света,
+tile.simplylight.illuminant_block_on.info2=Деактивируется §4Redstone§r.
+
+tile.simplylight.wall_lamp.name=Освещающее приспособление
+tile.simplylight.wall_lamp.info=Подвешивается на потолок или крепится к стене и полу.
+
+tile.simplylight.edge_light.name=Динамическое освещение кромок (низ)
+tile.simplylight.edge_light.info=Следит за стенами вокруг себя,
+tile.simplylight.edge_light.info2=идеально подходит для коридоров.
+
+tile.simplylight.edge_light_top.name=Динамическое освещение кромок (верх)
+tile.simplylight.edge_light_top.info=Следит за стенами вокруг себя,
+tile.simplylight.edge_light_top.info2=идеально подходит для коридоров.
+
+tile.simplylight.lightbulb.name=Простая лампочка
+tile.simplylight.lightbulb.info=Просто простая лампочка,
+tile.simplylight.lightbulb.info2=можно разместить в любом направлении.
