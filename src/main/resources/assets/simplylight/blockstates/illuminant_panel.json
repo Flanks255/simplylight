@@ -1,24 +1,10 @@
 {
-    "forge_marker": 1,
-    "defaults":{
-        "model":"simplylight:panel",
-        "textures":{
-            "up":"simplylight:blocks/illuminant_panel",
-            "sides":"simplylight:blocks/illuminant_slab_sides",
-            "down":"simplylight:blocks/illuminant_slab_down"
-        }
-    },
 	"variants": {
-		"inventory": {
-			"model":"simplylight:panel"
-		},
-        "facing":{
-            "up":    { "model":"simplylight:panel"},
-            "down":  { "model":"simplylight:panel", "x": 180 },
-            "east":  { "model":"simplylight:panel", "x": 90, "y": 90 },
-            "west":  { "model":"simplylight:panel", "x": 90, "y": 270 },
-            "south": { "model":"simplylight:panel", "x": 90, "y": 180 },
-            "north": { "model":"simplylight:panel", "x": 90 }
-        }
+        "facing=up":    { "model":"simplylight:block/panel"},
+        "facing=down":  { "model":"simplylight:block/panel", "x": 180 },
+        "facing=east":  { "model":"simplylight:block/panel", "x": 90, "y": 90 },
+        "facing=west":  { "model":"simplylight:block/panel", "x": 90, "y": 270 },
+        "facing=south": { "model":"simplylight:block/panel", "x": 90, "y": 180 },
+        "facing=north": { "model":"simplylight:block/panel", "x": 90 }
     }
 }

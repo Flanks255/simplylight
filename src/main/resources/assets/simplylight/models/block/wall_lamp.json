@@ -1,10 +1,10 @@
-﻿{
+{
 	"credit": "Made with Blockbench",
 	"parent": "block/block",
 	"ambientocclusion": false,
 	"textures": {
-		"0": "simplylight:blocks/omni",
-		"particle": "simplylight:blocks/omni"
+		"0": "simplylight:block/omni",
+		"particle": "simplylight:block/omni"
 	},
 	"elements": [
 		{
@@ -20,5 +20,11 @@
 				"down": {"uv": [8, 4, 16, 7], "texture": "#0"}
 			}
 		}
-	]
+	],
+	"display": {
+		"gui": {
+			"rotation": [45, 45, 0],
+			"translation": [4, -3, 0]
+		}
+	}
 }

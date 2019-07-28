@@ -1,37 +1,10 @@
 {
-	"forge_marker": 1,
-	"defaults": {
-		"model":"simplylight:lampblock",
-		"textures": {
-			"all": "simplylight:blocks/illuminant_block_on"
-		}
-	},
 	"variants": {
-		"normal": {
-			"model":"simplylight:lampblock",
-			"textures": {
-				"all": "simplylight:blocks/illuminant_block_on"
-			}
+		"on=false": {
+			"model":"simplylight:block/lampblock"
 		},
-		"inventory": {
-			"model":"simplylight:lampblock",
-			"textures": {
-				"all": "simplylight:blocks/illuminant_block_on"
-			}
-		},
-        "on": {
-            "false": {
-				"model":"simplylight:lampblock",
-                "textures":{
-					"all":"simplylight:blocks/illuminant_block"
-				}
-            },
-            "true": {
-                "model": "simplylight:lampblock",
-                "textures":{
-					"all":"simplylight:blocks/illuminant_block_on"
-				}
-            }
-        }
-    }
+		"on=true": {
+			"model":"simplylight:block/lampblock_on"
+		}
+	}
 }

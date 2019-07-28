@@ -1,0 +1,7 @@
+{
+    "parent": "simplylight:block/lampblock",
+    "textures":{
+        "particle": "simplylight:block/illuminant_block_on",
+        "all": "simplylight:block/illuminant_block_on"
+    }
+}

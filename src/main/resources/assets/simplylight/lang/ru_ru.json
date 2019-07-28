@@ -1,0 +1,36 @@
+{
+  "itemGroup.simplylight": "Simply Light",
+  "simplylight.shift": "Удерживайте <§6§oShift§r> чтобы увидеть подробности.",
+
+  "block.simplylight.illuminant_slab": "Освещающая плита",
+  "block.simplylight.illuminant_slab.info": "Простая полуплита света,",
+  "block.simplylight.illuminant_slab.info2": "можно разместить в любом направлении.",
+
+  "block.simplylight.illuminant_panel": "Освещающая панель",
+  "block.simplylight.illuminant_panel.info": "Простая светодиодная панель,",
+  "block.simplylight.illuminant_panel.info2": "можно разместить в любом направлении.",
+
+
+  "block.simplylight.illuminant_block": "Освещающий блок",
+  "block.simplylight.illuminant_block.info": "Простой блок света,",
+  "block.simplylight.illuminant_block.info2": "Активируется §4Redstone§r.",
+
+  "block.simplylight.illuminant_block_on": "Освещающий блок (Перевёрнутый)",
+  "block.simplylight.illuminant_block_on.info": "Простой блок света,",
+  "block.simplylight.illuminant_block_on.info2": "Деактивируется §4Redstone§r.",
+
+  "block.simplylight.wall_lamp": "Освещающее приспособление",
+  "block.simplylight.wall_lamp.info": "Подвешивается на потолок или крепится к стене и полу.",
+
+  "block.simplylight.edge_light": "Динамическое освещение кромок (низ)",
+  "block.simplylight.edge_light.info": "Следит за стенами вокруг себя,",
+  "block.simplylight.edge_light.info2": "идеально подходит для коридоров.",
+
+  "block.simplylight.edge_light_top": "Динамическое освещение кромок (верх)",
+  "block.simplylight.edge_light_top.info": "Следит за стенами вокруг себя,",
+  "block.simplylight.edge_light_top.info2": "идеально подходит для коридоров.",
+
+  "block.simplylight.lightbulb": "Простая лампочка",
+  "block.simplylight.lightbulb.info": "Просто простая лампочка,",
+  "block.simplylight.lightbulb.info2": "можно разместить в любом направлении."
+}

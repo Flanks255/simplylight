@@ -2,8 +2,8 @@
 	"credit": "Made with Blockbench",
 	"parent": "block/block",
 	"textures": {
-		"main": "simplylight:blocks/omni",
-		"particle": "simplylight:blocks/omni"
+		"main": "simplylight:block/omni",
+		"particle": "simplylight:block/omni"
 	},
 	"elements": [
 		{

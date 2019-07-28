@@ -2,7 +2,8 @@
     "parent": "block/block",
     "ambientocclusion":false,
     "textures":{
-        "particle": "simplylight:blocks/illuminant_block"
+        "particle": "simplylight:block/illuminant_block",
+        "all": "simplylight:block/illuminant_block"
     },
     "elements":[
         {

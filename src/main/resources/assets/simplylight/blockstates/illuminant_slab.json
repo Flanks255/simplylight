@@ -1,24 +1,10 @@
 {
-    "forge_marker": 1,
-    "defaults":{
-        "model":"simplylight:half_lamp",
-        "textures":{
-            "up":"simplylight:blocks/illuminant_block_on",
-            "sides":"simplylight:blocks/illuminant_slab_sides",
-            "down":"simplylight:blocks/illuminant_slab_down"
-        }
-    },
 	"variants": {
-		"inventory": {
-			"model":"simplylight:half_lamp"
-		},
-        "facing":{
-            "up":    { "model":"simplylight:half_lamp"},
-            "down":  { "model":"simplylight:half_lamp", "x": 180 },
-            "east":  { "model":"simplylight:half_lamp", "x": 90, "y": 90 },
-            "west":  { "model":"simplylight:half_lamp", "x": 90, "y": 270 },
-            "south": { "model":"simplylight:half_lamp", "x": 90, "y": 180 },
-            "north": { "model":"simplylight:half_lamp", "x": 90 }
-        }
+            "facing=up":    { "model":"simplylight:block/half_lamp"},
+            "facing=down":  { "model":"simplylight:block/half_lamp", "x": 180 },
+            "facing=east":  { "model":"simplylight:block/half_lamp", "x": 90, "y": 90 },
+            "facing=west":  { "model":"simplylight:block/half_lamp", "x": 90, "y": 270 },
+            "facing=south": { "model":"simplylight:block/half_lamp", "x": 90, "y": 180 },
+            "facing=north": { "model":"simplylight:block/half_lamp", "x": 90 }
     }
 }

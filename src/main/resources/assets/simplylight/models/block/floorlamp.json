@@ -3,8 +3,8 @@
 	"parent": "block/block",
 	"ambientocclusion": false,
 	"textures": {
-		"0": "simplylight:blocks/omni",
-		"particle": "simplylight:blocks/omni"
+		"0": "simplylight:block/omni",
+		"particle": "simplylight:block/omni"
 	},
 	"elements": [
 		{
