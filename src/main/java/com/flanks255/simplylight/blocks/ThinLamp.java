@@ -38,7 +38,7 @@ public class ThinLamp extends RotatableLamp {
     @Override
     public BlockState getStateForPlacement(BlockItemUseContext useContext) {
         BlockPos pos = useContext.getPos().offset(useContext.getFace().getOpposite());
-        if (useContext.getPlayer() != null && useContext.getWorld().getBlockState(pos).getBlock() instanceof ThinLamp && useContext.getPlayer().isSneaking())
+        if (useContext.getPlayer() != null && useContext.getWorld().getBlockState(pos).getBlock() instanceof ThinLamp && !useContext.getPlayer().isSneaking())
             return getDefaultState().with(BlockStateProperties.WATERLOGGED, false).with(BlockStateProperties.FACING, useContext.getWorld().getBlockState(pos).get(BlockStateProperties.FACING));
         else
             return getDefaultState().with(BlockStateProperties.FACING, useContext.getFace()).with(BlockStateProperties.WATERLOGGED, false);
