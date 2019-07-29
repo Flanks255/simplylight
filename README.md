@@ -1,5 +1,7 @@
 # simplylight
-![](http://cf.way2muchnoise.eu/simply-light.svg "")![](http://cf.way2muchnoise.eu/versions/simply-light.svg "")
+[![Curse Forge](http://cf.way2muchnoise.eu/simply-light.svg)](https://minecraft.curseforge.com/projects/simply-light)
+[![Curse Forge](http://cf.way2muchnoise.eu/versions/simply-light.svg)](https://minecraft.curseforge.com/projects/simply-light)
+[![Curse Forge](http://cf.way2muchnoise.eu/packs/short_simply-light.svg)](https://minecraft.curseforge.com/projects/simply-light)
 
 Simply Light is a small mod,  
 Adding a handful of simple lamp blocks,  
