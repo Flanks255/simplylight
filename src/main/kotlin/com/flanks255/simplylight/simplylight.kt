@@ -27,6 +27,7 @@ val lampBlock2 :LampBlock = LampBlock("illuminant_block_on", true).setCreativeTa
 val illuminantSlab: ThinLamp = ThinLamp("illuminant_slab", 0.5).setCreativeTab(CreativeTabs.DECORATIONS)
 val illuminantPanel: ThinLamp = ThinLamp("illuminant_panel", 0.25).setCreativeTab(CreativeTabs.DECORATIONS)
 val edgelight: EdgeLight = EdgeLight("edge_light").setCreativeTab(CreativeTabs.DECORATIONS)
+val rodLamp: RodLamp = RodLamp("rodlamp").setCreativeTab(CreativeTabs.DECORATIONS)
 
 object edgelight_top: EdgeLight("edge_light_top") {
     override val AABB_ALL = AxisAlignedBB(0.0,1.0,0.0,1.0,0.9375,1.0)
@@ -99,7 +100,8 @@ object simplylight{
                     BaseItemBlock(WallLamp),
                     BaseItemBlock(edgelight),
                     BaseItemBlock(edgelight_top),
-                    BaseItemBlock(Lightbulb)
+                    BaseItemBlock(Lightbulb),
+                    BaseItemBlock(rodLamp)
             )
         }
         @JvmStatic
@@ -113,6 +115,7 @@ object simplylight{
             registerItemModel(edgelight)
             registerItemModel(edgelight_top)
             registerItemModel(Lightbulb)
+            registerItemModel(rodLamp)
         }
         @JvmStatic
         @SubscribeEvent
@@ -125,7 +128,8 @@ object simplylight{
                     WallLamp,
                     edgelight,
                     edgelight_top,
-                    Lightbulb
+                    Lightbulb,
+                    rodLamp
             )
         }
 

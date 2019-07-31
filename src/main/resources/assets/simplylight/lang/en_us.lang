@@ -31,3 +31,7 @@ tile.simplylight.edge_light_top.info2=perfect for hallways.
 tile.simplylight.lightbulb.name=Simple Light Bulb
 tile.simplylight.lightbulb.info=Just a simple light bulb,
 tile.simplylight.lightbulb.info2=place in any direction.
+
+tile.simplylight.rodlamp.name=Illuminant Rod
+tile.simplylight.rodlamp.info=A simple rod of light,
+tile.simplylight.rodlamp.info2=Can be placed in any direction.
