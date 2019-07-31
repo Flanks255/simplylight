@@ -1,0 +1,19 @@
+{
+  "forge_marker": 1,
+  "defaults":{
+    "model":"simplylight:rodlamp"
+  },
+  "variants": {
+    "normal": {
+      "model": "simplylight:rodlamp"
+    },
+    "inventory": {
+      "model": "simplylight:rodlamp", "y": 270
+    },
+    "axis":{
+      "y":    { "model":"simplylight:rodlamp" },
+      "x":  { "model":"simplylight:rodlamp", "x": 90, "y": 90 },
+      "z":  { "model":"simplylight:rodlamp", "x": 90 }
+    }
+  }
+}
