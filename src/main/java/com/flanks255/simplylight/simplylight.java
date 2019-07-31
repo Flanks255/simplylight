@@ -32,6 +32,7 @@ public class simplylight
     public static final ThinLamp illuminantPanel = new ThinLamp("illuminant_panel",4);
     public static final WallLamp wallLamp = new WallLamp("wall_lamp");
     public static final LightBulb lightBulb = new LightBulb("lightbulb");
+    public static final RodLamp rodLamp = new RodLamp("rodlamp");
 
 
     private static ItemGroup itemGroup = new ItemGroup(MODID) {
@@ -84,6 +85,7 @@ public class simplylight
             blockRegistry.register(simplylight.illuminantPanel);
             blockRegistry.register(simplylight.wallLamp);
             blockRegistry.register(simplylight.lightBulb);
+            blockRegistry.register(simplylight.rodLamp);
         }
 
         @SubscribeEvent
@@ -98,6 +100,7 @@ public class simplylight
             itemRegistry.register(new BaseBlockItem(simplylight.illuminantPanel, properties).setRegistryName("illuminant_panel"));
             itemRegistry.register(new BaseBlockItem(simplylight.wallLamp, properties).setRegistryName("wall_lamp"));
             itemRegistry.register(new BaseBlockItem(simplylight.lightBulb, properties).setRegistryName("lightbulb"));
+            itemRegistry.register(new BaseBlockItem(simplylight.rodLamp, properties).setRegistryName("rodlamp"));
         }
     }
 }
