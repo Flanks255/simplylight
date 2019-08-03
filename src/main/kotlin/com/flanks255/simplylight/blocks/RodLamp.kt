@@ -69,7 +69,8 @@ companion object {
 
     override fun getMetaFromState(state: IBlockState?): Int {
         return when(state?.getValue(AXIS)){
-
+            EnumFacing.Axis.X->0
+            EnumFacing.Axis.Y->1
             else->2
         }
     }
