@@ -29,7 +29,7 @@ companion object {
 }
 
     override fun getBlockFaceShape(worldIn: IBlockAccess?, state: IBlockState?, pos: BlockPos?, face: EnumFacing?): BlockFaceShape {
-        return BlockFaceShape.UNDEFINED
+        return if (face?.axis == state?.getValue(AXIS)) BlockFaceShape.CENTER else BlockFaceShape.UNDEFINED
     }
 
 
