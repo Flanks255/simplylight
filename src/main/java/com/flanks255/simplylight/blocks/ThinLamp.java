@@ -17,7 +17,7 @@ public class ThinLamp extends RotatableLamp {
         super(name, Block.Properties.create(new Material(
                 MaterialColor.WHITE_TERRACOTTA,
                 false, //isLiquid
-                false,  //isSolid
+                true,  //isSolid
                 true, //Blocks Movement
                 false, //isOpaque
                 true, //requires no tool

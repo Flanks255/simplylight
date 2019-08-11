@@ -17,11 +17,9 @@ import net.minecraftforge.registries.IForgeRegistry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-// The value here should match an entry in the META-INF/mods.toml file
 @Mod("simplylight")
 public class simplylight
 {
-    // Directly reference a log4j logger.
     private static final Logger LOGGER = LogManager.getLogger();
 
     public static final String MODID = "simplylight";
@@ -43,40 +41,25 @@ public class simplylight
     };
 
     public simplylight() {
-        // Register the setup method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-        // Register the doClientStuff method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
-
-        // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
     }
 
     private void setup(final FMLCommonSetupEvent event)
     {
-        // some preinit code
-        //LOGGER.info("HELLO FROM PREINIT");
-        //LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
-        // do something that can only be done on the client
-        //LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().gameSettings);
     }
-    // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
     public void onServerStarting(FMLServerStartingEvent event) {
-        // do something when the server starts
-        //LOGGER.info("HELLO from server starting");
     }
 
     @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
     public static class RegistryEvents {
         @SubscribeEvent
         public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
-            // register a new block here
-            //LOGGER.info("HELLO from Register Block");
-
             IForgeRegistry<Block> blockRegistry = blockRegistryEvent.getRegistry();
 
             blockRegistry.register(simplylight.illuminantBlock);
