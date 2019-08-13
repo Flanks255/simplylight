@@ -5,24 +5,16 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.IForgeRegistry;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
-@Mod("SimplyLight")
+@Mod(SimplyLight.MODID)
+@Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
 public class SimplyLight
 {
-    private static final Logger LOGGER = LogManager.getLogger();
-
-    public static final String MODID = "SimplyLight";
+    public static final String MODID = "simplylight";
 
     public static final LampBlock illuminantBlock = new LampBlock("illuminant_block", false);
     public static final LampBlock illuminantBlock2 = new LampBlock("illuminant_block_on", true);
@@ -41,49 +33,34 @@ public class SimplyLight
     };
 
     public SimplyLight() {
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
-        MinecraftForge.EVENT_BUS.register(this);
+
     }
 
-    private void setup(final FMLCommonSetupEvent event)
-    {
-    }
-
-    private void doClientStuff(final FMLClientSetupEvent event) {
-    }
     @SubscribeEvent
-    public void onServerStarting(FMLServerStartingEvent event) {
+    public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
+        IForgeRegistry<Block> blockRegistry = blockRegistryEvent.getRegistry();
+
+        blockRegistry.register(SimplyLight.illuminantBlock);
+        blockRegistry.register(SimplyLight.illuminantBlock2);
+        blockRegistry.register(SimplyLight.illuminantSlab);
+        blockRegistry.register(SimplyLight.illuminantPanel);
+        blockRegistry.register(SimplyLight.wallLamp);
+        blockRegistry.register(SimplyLight.lightBulb);
+        blockRegistry.register(SimplyLight.rodLamp);
     }
 
-    @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
-    public static class RegistryEvents {
-        @SubscribeEvent
-        public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
-            IForgeRegistry<Block> blockRegistry = blockRegistryEvent.getRegistry();
+    @SubscribeEvent
+    public static void onItemsRegistry(final RegistryEvent.Register<Item> itemRegistryEvent) {
+        Item.Properties properties = new Item.Properties().group(itemGroup);
 
-            blockRegistry.register(SimplyLight.illuminantBlock);
-            blockRegistry.register(SimplyLight.illuminantBlock2);
-            blockRegistry.register(SimplyLight.illuminantSlab);
-            blockRegistry.register(SimplyLight.illuminantPanel);
-            blockRegistry.register(SimplyLight.wallLamp);
-            blockRegistry.register(SimplyLight.lightBulb);
-            blockRegistry.register(SimplyLight.rodLamp);
-        }
+        IForgeRegistry<Item> itemRegistry = itemRegistryEvent.getRegistry();
 
-        @SubscribeEvent
-        public static void onItemsRegistry(final RegistryEvent.Register<Item> itemRegistryEvent) {
-            Item.Properties properties = new Item.Properties().group(itemGroup);
-
-            IForgeRegistry<Item> itemRegistry = itemRegistryEvent.getRegistry();
-
-            itemRegistry.register(new BaseBlockItem(SimplyLight.illuminantBlock, properties).setRegistryName("illuminant_block"));
-            itemRegistry.register(new BaseBlockItem(SimplyLight.illuminantBlock2, properties).setRegistryName("illuminant_block_on"));
-            itemRegistry.register(new BaseBlockItem(SimplyLight.illuminantSlab, properties).setRegistryName("illuminant_slab"));
-            itemRegistry.register(new BaseBlockItem(SimplyLight.illuminantPanel, properties).setRegistryName("illuminant_panel"));
-            itemRegistry.register(new BaseBlockItem(SimplyLight.wallLamp, properties).setRegistryName("wall_lamp"));
-            itemRegistry.register(new BaseBlockItem(SimplyLight.lightBulb, properties).setRegistryName("lightbulb"));
-            itemRegistry.register(new BaseBlockItem(SimplyLight.rodLamp, properties).setRegistryName("rodlamp"));
-        }
+        itemRegistry.register(new BaseBlockItem(SimplyLight.illuminantBlock, properties).setRegistryName("illuminant_block"));
+        itemRegistry.register(new BaseBlockItem(SimplyLight.illuminantBlock2, properties).setRegistryName("illuminant_block_on"));
+        itemRegistry.register(new BaseBlockItem(SimplyLight.illuminantSlab, properties).setRegistryName("illuminant_slab"));
+        itemRegistry.register(new BaseBlockItem(SimplyLight.illuminantPanel, properties).setRegistryName("illuminant_panel"));
+        itemRegistry.register(new BaseBlockItem(SimplyLight.wallLamp, properties).setRegistryName("wall_lamp"));
+        itemRegistry.register(new BaseBlockItem(SimplyLight.lightBulb, properties).setRegistryName("lightbulb"));
+        itemRegistry.register(new BaseBlockItem(SimplyLight.rodLamp, properties).setRegistryName("rodlamp"));
     }
 }
