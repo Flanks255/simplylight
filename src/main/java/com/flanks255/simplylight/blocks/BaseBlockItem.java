@@ -49,7 +49,7 @@ public class BaseBlockItem extends BlockItem {
                 tooltip.add(new StringTextComponent( I18n.format(block.getTranslationKey() + ".info3")));
         }
         else {
-            tooltip.add(new StringTextComponent( fallbackString("simplylight.shift", "Press <§6§oShift§r> for info.") ));
+            tooltip.add(new StringTextComponent( fallbackString("SimplyLight.shift", "Press <§6§oShift§r> for info.") ));
         }
     }
 }
