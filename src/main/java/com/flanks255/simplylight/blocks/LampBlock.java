@@ -24,7 +24,7 @@ public class LampBlock extends LampBase {
                 true,  //isSolid
                 true, //Blocks Movement
                 true, //isOpaque
-                true, //requires no tool
+                false, //requires no tool
                 false, //isFlammable
                 false, //isReplaceable
                 PushReaction.NORMAL

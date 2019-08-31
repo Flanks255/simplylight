@@ -9,12 +9,15 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.IForgeRegistry;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 @Mod(SimplyLight.MODID)
-@Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD, modid = SimplyLight.MODID)
 public class SimplyLight
 {
     public static final String MODID = "simplylight";
+    public static final Logger LOGGER = LogManager.getLogger("Simply Light");
 
     public static final LampBlock illuminantBlock = new LampBlock("illuminant_block", false);
     public static final LampBlock illuminantBlock2 = new LampBlock("illuminant_block_on", true);
