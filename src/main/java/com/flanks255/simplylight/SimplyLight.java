@@ -26,6 +26,7 @@ public class SimplyLight
     public static final WallLamp wallLamp = new WallLamp("wall_lamp");
     public static final LightBulb lightBulb = new LightBulb("lightbulb");
     public static final RodLamp rodLamp = new RodLamp("rodlamp");
+    public static final EdgeLight edgeLamp = new EdgeLight("edge_light");
 
 
     private static ItemGroup itemGroup = new ItemGroup(MODID) {
@@ -43,13 +44,14 @@ public class SimplyLight
     public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
         IForgeRegistry<Block> blockRegistry = blockRegistryEvent.getRegistry();
 
-        blockRegistry.register(SimplyLight.illuminantBlock);
-        blockRegistry.register(SimplyLight.illuminantBlock2);
-        blockRegistry.register(SimplyLight.illuminantSlab);
-        blockRegistry.register(SimplyLight.illuminantPanel);
-        blockRegistry.register(SimplyLight.wallLamp);
-        blockRegistry.register(SimplyLight.lightBulb);
-        blockRegistry.register(SimplyLight.rodLamp);
+        blockRegistry.register(SimplyLight.illuminantBlock.setName());
+        blockRegistry.register(SimplyLight.illuminantBlock2.setName());
+        blockRegistry.register(SimplyLight.illuminantSlab.setName());
+        blockRegistry.register(SimplyLight.illuminantPanel.setName());
+        blockRegistry.register(SimplyLight.wallLamp.setName());
+        blockRegistry.register(SimplyLight.lightBulb.setName());
+        blockRegistry.register(SimplyLight.rodLamp.setName());
+        blockRegistry.register(SimplyLight.edgeLamp.setName());
     }
 
     @SubscribeEvent
@@ -65,5 +67,6 @@ public class SimplyLight
         itemRegistry.register(new BaseBlockItem(SimplyLight.wallLamp, properties).setRegistryName("wall_lamp"));
         itemRegistry.register(new BaseBlockItem(SimplyLight.lightBulb, properties).setRegistryName("lightbulb"));
         itemRegistry.register(new BaseBlockItem(SimplyLight.rodLamp, properties).setRegistryName("rodlamp"));
+        itemRegistry.register(new BaseBlockItem(SimplyLight.edgeLamp, properties).setRegistryName("edge_light"));
     }
 }

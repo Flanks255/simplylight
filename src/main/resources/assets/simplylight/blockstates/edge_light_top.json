@@ -12,11 +12,5 @@
         {   "when": {"OR":[{ "west": true }, {"north":false,"south":false,"west":false,"east":false}]},
             "apply": { "model": "simplylight:edge_light", "y": 90, "x":180 }
         }
-    ],
-    "variants":
-    {
-        "inventory": {
-			"model": "simplylight:edge_light", "y":90, "x":180
-		}
-    }
+    ]
 }

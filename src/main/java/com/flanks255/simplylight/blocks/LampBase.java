@@ -14,17 +14,24 @@ import java.util.List;
 public class LampBase extends Block {
     public LampBase(String name, Properties props) {
         super(props);
+        this.name = name;
+    }
+    String name;
 
-        setRegistryName(new ResourceLocation(SimplyLight.MODID, name));
+    public LampBase setName(){
+        setRegistryName(SimplyLight.MODID, name);
+
+        return this;
     }
 
     @Override
     public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
-        if (!ForgeRegistries.ITEMS.containsKey(getRegistryName()))
+        ResourceLocation res = getRegistryName();
+        if (!ForgeRegistries.ITEMS.containsKey(res))
             return super.getDrops(state, builder);
 
         List<ItemStack> list = new ArrayList<>();
-        list.add( new ItemStack(ForgeRegistries.ITEMS.getValue(getRegistryName())));
+        list.add( new ItemStack(ForgeRegistries.ITEMS.getValue(res)));
 
         return list;
     }

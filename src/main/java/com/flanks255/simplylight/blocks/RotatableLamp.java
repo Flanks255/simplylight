@@ -75,7 +75,8 @@ public abstract class RotatableLamp extends LampBase implements IWaterLoggable {
     @Nullable
     @Override
     public BlockState getStateForPlacement(BlockItemUseContext p_196258_1_) {
-        return getDefaultState().with(BlockStateProperties.FACING, p_196258_1_.getFace()).with(BlockStateProperties.WATERLOGGED, false);
+        boolean waterlogged = p_196258_1_.getWorld().getFluidState(p_196258_1_.getPos()).getFluid() == Fluids.WATER;
+        return getDefaultState().with(BlockStateProperties.FACING, p_196258_1_.getFace()).with(BlockStateProperties.WATERLOGGED, waterlogged);
     }
 
     @Override
