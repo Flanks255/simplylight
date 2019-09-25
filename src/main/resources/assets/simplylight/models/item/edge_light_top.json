@@ -1,0 +1,9 @@
+{
+  "parent": "simplylight:block/edge_light",
+  "display": {
+    "gui": {
+      "rotation": [30 , -135, 180],
+      "scale": [0.625, 0.625, 0.625]
+    }
+  }
+}

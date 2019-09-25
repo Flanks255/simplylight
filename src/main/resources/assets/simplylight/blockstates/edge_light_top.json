@@ -1,16 +1,16 @@
 {
     "multipart": [
         {   "when": {"OR":[{ "north": true }, {"north":false,"south":false,"west":false,"east":false}]},
-            "apply": { "model": "simplylight:edge_light", "y": 180, "x":180 }
+            "apply": { "model": "simplylight:block/edge_light", "y": 180, "x":180 }
         },
         {   "when": {"OR":[{ "east": true }, {"north":false,"south":false,"west":false,"east":false}]},
-            "apply": { "model": "simplylight:edge_light", "y": 270, "x":180  }
+            "apply": { "model": "simplylight:block/edge_light", "y": 270, "x":180  }
         },
         {   "when": {"OR":[{ "south": true }, {"north":false,"south":false,"west":false,"east":false}]},
-            "apply": { "model": "simplylight:edge_light", "x":180 }
+            "apply": { "model": "simplylight:block/edge_light", "x":180 }
         },
         {   "when": {"OR":[{ "west": true }, {"north":false,"south":false,"west":false,"east":false}]},
-            "apply": { "model": "simplylight:edge_light", "y": 90, "x":180 }
+            "apply": { "model": "simplylight:block/edge_light", "y": 90, "x":180 }
         }
     ]
 }

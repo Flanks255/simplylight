@@ -26,7 +26,8 @@ public class SimplyLight
     public static final WallLamp wallLamp = new WallLamp("wall_lamp");
     public static final LightBulb lightBulb = new LightBulb("lightbulb");
     public static final RodLamp rodLamp = new RodLamp("rodlamp");
-    public static final EdgeLight edgeLamp = new EdgeLight("edge_light");
+    public static final EdgeLight edgeLamp = new EdgeLight("edge_light", false);
+    public static final EdgeLight edgeLamp_top = new EdgeLight("edge_light_top", true);
 
 
     private static ItemGroup itemGroup = new ItemGroup(MODID) {
@@ -52,6 +53,7 @@ public class SimplyLight
         blockRegistry.register(SimplyLight.lightBulb.setName());
         blockRegistry.register(SimplyLight.rodLamp.setName());
         blockRegistry.register(SimplyLight.edgeLamp.setName());
+        blockRegistry.register(SimplyLight.edgeLamp_top.setName());
     }
 
     @SubscribeEvent
@@ -68,5 +70,6 @@ public class SimplyLight
         itemRegistry.register(new BaseBlockItem(SimplyLight.lightBulb, properties).setRegistryName("lightbulb"));
         itemRegistry.register(new BaseBlockItem(SimplyLight.rodLamp, properties).setRegistryName("rodlamp"));
         itemRegistry.register(new BaseBlockItem(SimplyLight.edgeLamp, properties).setRegistryName("edge_light"));
+        itemRegistry.register(new BaseBlockItem(SimplyLight.edgeLamp_top, properties).setRegistryName("edge_light_top"));
     }
 }
