@@ -5,6 +5,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.block.material.PushReaction;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.math.BlockPos;
@@ -38,10 +39,11 @@ public class ThinLamp extends RotatableLamp {
     @Override
     public BlockState getStateForPlacement(BlockItemUseContext useContext) {
         BlockPos pos = useContext.getPos().offset(useContext.getFace().getOpposite());
+        boolean waterlogged = useContext.getWorld().getFluidState(useContext.getPos()).getFluid() == Fluids.WATER;
         if (useContext.getPlayer() != null && useContext.getWorld().getBlockState(pos).getBlock() instanceof ThinLamp && !useContext.getPlayer().isSneaking())
-            return getDefaultState().with(BlockStateProperties.WATERLOGGED, false).with(BlockStateProperties.FACING, useContext.getWorld().getBlockState(pos).get(BlockStateProperties.FACING));
+            return getDefaultState().with(BlockStateProperties.WATERLOGGED, waterlogged).with(BlockStateProperties.FACING, useContext.getWorld().getBlockState(pos).get(BlockStateProperties.FACING));
         else
-            return getDefaultState().with(BlockStateProperties.FACING, useContext.getFace()).with(BlockStateProperties.WATERLOGGED, false);
+            return getDefaultState().with(BlockStateProperties.FACING, useContext.getFace()).with(BlockStateProperties.WATERLOGGED, waterlogged);
     }
 
 }
