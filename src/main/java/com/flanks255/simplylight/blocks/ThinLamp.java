@@ -40,7 +40,7 @@ public class ThinLamp extends RotatableLamp {
     public BlockState getStateForPlacement(BlockItemUseContext useContext) {
         BlockPos pos = useContext.getPos().offset(useContext.getFace().getOpposite());
         boolean waterlogged = useContext.getWorld().getFluidState(useContext.getPos()).getFluid() == Fluids.WATER;
-        if (useContext.getPlayer() != null && useContext.getWorld().getBlockState(pos).getBlock() instanceof ThinLamp && !useContext.getPlayer().isSneaking())
+        if (useContext.getPlayer() != null && useContext.getWorld().getBlockState(pos).getBlock() instanceof ThinLamp && !useContext.getPlayer().isCrouching())
             return getDefaultState().with(BlockStateProperties.WATERLOGGED, waterlogged).with(BlockStateProperties.FACING, useContext.getWorld().getBlockState(pos).get(BlockStateProperties.FACING));
         else
             return getDefaultState().with(BlockStateProperties.FACING, useContext.getFace()).with(BlockStateProperties.WATERLOGGED, waterlogged);
