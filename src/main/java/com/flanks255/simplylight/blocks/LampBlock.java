@@ -11,6 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ToolType;
 
@@ -24,7 +25,6 @@ public class LampBlock extends LampBase {
                 true,  //isSolid
                 true, //Blocks Movement
                 true, //isOpaque
-                false, //requires no tool
                 false, //isFlammable
                 false, //isReplaceable
                 PushReaction.NORMAL
@@ -63,7 +63,7 @@ public class LampBlock extends LampBase {
     }
 
     @Override
-    public int getLightValue(BlockState state) {
+    public int getLightValue(BlockState state, IBlockReader world, BlockPos pos) {
         return state.get(ON)?15:0;
     }
 }

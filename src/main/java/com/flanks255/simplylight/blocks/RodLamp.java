@@ -8,8 +8,8 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.block.material.PushReaction;
 import net.minecraft.fluid.Fluid;
+import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
-import net.minecraft.fluid.IFluidState;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
@@ -30,7 +30,6 @@ public class RodLamp extends LampBase implements IWaterLoggable {
                 false,  //isSolid
                 true, //Blocks Movement
                 false, //isOpaque
-                true, //requires no tool
                 false, //isFlammable
                 false, //isReplaceable
                 PushReaction.NORMAL
@@ -72,7 +71,7 @@ public class RodLamp extends LampBase implements IWaterLoggable {
     }
 
     @Override
-    public IFluidState getFluidState(BlockState p_204507_1_) {
+    public FluidState getFluidState(BlockState p_204507_1_) {
         return p_204507_1_.get(BlockStateProperties.WATERLOGGED)? Fluids.WATER.getStillFluidState(false) : super.getFluidState(p_204507_1_);
     }
 
@@ -82,7 +81,7 @@ public class RodLamp extends LampBase implements IWaterLoggable {
     }
 
     @Override
-    public int getLightValue(BlockState p_149750_1_) {
+    public int getLightValue(BlockState state, IBlockReader world, BlockPos pos) {
         return 15;
     }
 

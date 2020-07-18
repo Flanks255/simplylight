@@ -21,7 +21,6 @@ public class ThinLamp extends RotatableLamp {
                 true,  //isSolid
                 true, //Blocks Movement
                 false, //isOpaque
-                true, //requires no tool
                 false, //isFlammable
                 false, //isReplaceable
                 PushReaction.NORMAL

@@ -5,8 +5,8 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.IWaterLoggable;
 import net.minecraft.block.material.Material;
 import net.minecraft.fluid.Fluid;
+import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
-import net.minecraft.fluid.IFluidState;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.StateContainer;
@@ -24,7 +24,6 @@ import javax.annotation.Nullable;
 public class EdgeLight extends LampBase implements IWaterLoggable {
     public EdgeLight(String name, Boolean top) {
         super(name, Block.Properties.create(Material.MISCELLANEOUS)
-                .lightValue(15)
                 .harvestLevel(0)
                 .harvestTool(ToolType.PICKAXE)
                 .hardnessAndResistance(1.0f)
@@ -92,12 +91,17 @@ public class EdgeLight extends LampBase implements IWaterLoggable {
     }
 
     @Override
-    public IFluidState getFluidState(BlockState p_204507_1_) {
+    public FluidState getFluidState(BlockState p_204507_1_) {
         return p_204507_1_.get(BlockStateProperties.WATERLOGGED)? Fluids.WATER.getStillFluidState(false) : super.getFluidState(p_204507_1_);
     }
 
     @Override
     protected void fillStateContainer(StateContainer.Builder<Block, BlockState> p_206840_1_) {
         p_206840_1_.add(NORTH, SOUTH, EAST, WEST, BlockStateProperties.WATERLOGGED);
+    }
+
+    @Override
+    public int getLightValue(BlockState state, IBlockReader world, BlockPos pos) {
+        return 14;
     }
 }

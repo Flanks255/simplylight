@@ -4,8 +4,8 @@ import com.flanks255.simplylight.SimplyLight;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.ItemStack;
+import net.minecraft.loot.LootContext;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.storage.loot.LootContext;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.ArrayList;
@@ -35,5 +35,4 @@ public class LampBase extends Block {
 
         return list;
     }
-
 }
