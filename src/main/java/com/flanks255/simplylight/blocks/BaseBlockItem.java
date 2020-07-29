@@ -40,8 +40,7 @@ public class BaseBlockItem extends BlockItem {
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         super.addInformation(stack, worldIn, tooltip, flagIn);
-
-        if (Screen.func_231173_s_()) {
+        if (Screen.hasShiftDown()) {
             tooltip.add(new StringTextComponent( I18n.format(block.getTranslationKey() + ".info") ));
             if (hasTranslation(block.getTranslationKey()+".info2"))
                 tooltip.add(new StringTextComponent( I18n.format(block.getTranslationKey() + ".info2")));
