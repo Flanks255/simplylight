@@ -10,7 +10,7 @@ import net.minecraftforge.common.ToolType;
 
 public class WallLamp extends RotatableLamp{
     public WallLamp(String name) {
-        super(name, Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().harvestLevel(0).harvestTool(ToolType.PICKAXE).hardnessAndResistance(1.0f));
+        super(name, Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().harvestLevel(0).harvestTool(ToolType.PICKAXE).hardnessAndResistance(1.0f).lightLevel((bState) -> 15));
 
         UP = VoxelShapes.create(0.375,0.0, 0.375,0.625, 0.125,0.625);
         DOWN = VoxelShapes.create(0.375, 1.0, 0.375, 0.625, 1.0 - 0.125, 0.625);

@@ -28,6 +28,7 @@ public class EdgeLight extends LampBase implements IWaterLoggable {
                 .harvestTool(ToolType.PICKAXE)
                 .hardnessAndResistance(1.0f)
                 .doesNotBlockMovement()
+                .lightLevel((bState) -> 14)
         );
 
         if (top) {

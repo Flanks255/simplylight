@@ -28,7 +28,12 @@ public class LampBlock extends LampBase {
                 false, //isFlammable
                 false, //isReplaceable
                 PushReaction.NORMAL
-        )).hardnessAndResistance(1.0f).harvestLevel(0).harvestTool(ToolType.PICKAXE));
+        )).hardnessAndResistance(1.0f)
+                .harvestLevel(0)
+                .harvestTool(ToolType.PICKAXE)
+                .lightLevel((bState)-> {
+                    return bState.get(ON)?15:0;
+                }));
         this.Default = Default;
     }
 
