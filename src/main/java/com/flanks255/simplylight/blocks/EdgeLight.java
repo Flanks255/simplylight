@@ -72,7 +72,8 @@ public class EdgeLight extends LampBase implements IWaterLoggable {
     public boolean checkSide(BlockItemUseContext context, Direction direction) {
         BlockPos pos = context.getPos().offset(direction);
 
-        return hasSolidSide(context.getWorld().getBlockState(pos), context.getWorld(), pos, direction.getOpposite());
+        //return hasSolidSide(context.getWorld().getBlockState(pos), context.getWorld(), pos, direction.getOpposite());
+        return hasEnoughSolidSide(context.getWorld(),pos,direction.getOpposite());
     }
 
     @Nullable
