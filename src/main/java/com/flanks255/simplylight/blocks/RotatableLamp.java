@@ -18,8 +18,8 @@ import net.minecraft.world.IBlockReader;
 import javax.annotation.Nullable;
 
 public abstract class RotatableLamp extends LampBase implements IWaterLoggable {
-    public RotatableLamp(String name, Properties props) {
-        super(name, props.lightLevel((bState) -> 15));
+    public RotatableLamp(Properties props) {
+        super(props.lightLevel((bState) -> 15));
     }
     public VoxelShape DOWN;
     public VoxelShape UP;
@@ -29,9 +29,9 @@ public abstract class RotatableLamp extends LampBase implements IWaterLoggable {
     public VoxelShape EAST;
 
     @Override
-    public VoxelShape getShape(BlockState p_220053_1_, IBlockReader p_220053_2_, BlockPos p_220053_3_, ISelectionContext p_220053_4_) {
+    public VoxelShape getShape(BlockState blockState, IBlockReader p_220053_2_, BlockPos p_220053_3_, ISelectionContext p_220053_4_) {
         VoxelShape ret;
-        Direction facing = p_220053_1_.get(BlockStateProperties.FACING);
+        Direction facing = blockState.get(BlockStateProperties.FACING);
         //D-U-N-S-W-E
         switch (facing.getIndex()) {
             case 0:

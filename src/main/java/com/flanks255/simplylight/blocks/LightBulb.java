@@ -9,8 +9,8 @@ import net.minecraft.world.IBlockReader;
 import net.minecraftforge.common.ToolType;
 
 public class LightBulb extends RotatableLamp {
-    public LightBulb(String name) {
-        super(name, Block.Properties.create(Material.MISCELLANEOUS)
+    public LightBulb() {
+        super(Block.Properties.create(Material.MISCELLANEOUS)
                 .doesNotBlockMovement()
                 .harvestLevel(0)
                 .harvestTool(ToolType.PICKAXE)

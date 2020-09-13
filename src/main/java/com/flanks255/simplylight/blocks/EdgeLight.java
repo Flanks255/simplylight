@@ -22,8 +22,8 @@ import net.minecraftforge.common.ToolType;
 import javax.annotation.Nullable;
 
 public class EdgeLight extends LampBase implements IWaterLoggable {
-    public EdgeLight(String name, Boolean top) {
-        super(name, Block.Properties.create(Material.MISCELLANEOUS)
+    public EdgeLight(Boolean top) {
+        super(Block.Properties.create(Material.MISCELLANEOUS)
                 .harvestLevel(0)
                 .harvestTool(ToolType.PICKAXE)
                 .hardnessAndResistance(1.0f)

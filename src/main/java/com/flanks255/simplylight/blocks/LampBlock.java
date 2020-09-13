@@ -18,8 +18,8 @@ import net.minecraftforge.common.ToolType;
 import javax.annotation.Nullable;
 
 public class LampBlock extends LampBase {
-    public LampBlock(String name, boolean Default) {
-        super(name, Block.Properties.create(new Material(
+    public LampBlock(boolean Default) {
+        super(Block.Properties.create(new Material(
                 MaterialColor.WHITE_TERRACOTTA,
                 false, //isLiquid
                 true,  //isSolid
@@ -31,9 +31,7 @@ public class LampBlock extends LampBase {
         )).hardnessAndResistance(1.0f)
                 .harvestLevel(0)
                 .harvestTool(ToolType.PICKAXE)
-                .lightLevel((bState)-> {
-                    return bState.get(ON)?15:0;
-                }));
+                .lightLevel((bState)-> bState.get(ON) ? 15 : 0));
         this.Default = Default;
     }
 

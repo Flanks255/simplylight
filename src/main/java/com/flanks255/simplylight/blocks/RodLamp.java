@@ -22,8 +22,8 @@ import net.minecraftforge.common.ToolType;
 import javax.annotation.Nullable;
 
 public class RodLamp extends LampBase implements IWaterLoggable {
-    public RodLamp (String name) {
-        super(name, Block.Properties.create(new Material(
+    public RodLamp () {
+        super(Block.Properties.create(new Material(
                 MaterialColor.WHITE_TERRACOTTA,
                 false, //isLiquid
                 false,  //isSolid

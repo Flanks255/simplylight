@@ -14,8 +14,8 @@ import net.minecraftforge.common.ToolType;
 import javax.annotation.Nullable;
 
 public class ThinLamp extends RotatableLamp {
-    public ThinLamp(String name, double thickness) {
-        super(name, Block.Properties.create(new Material(
+    public ThinLamp(double thickness) {
+        super(Block.Properties.create(new Material(
                 MaterialColor.WHITE_TERRACOTTA,
                 false, //isLiquid
                 true,  //isSolid
