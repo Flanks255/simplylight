@@ -8,5 +8,6 @@ public class Generator {
         DataGenerator generator = event.getGenerator();
 
         generator.addProvider(new LootTables(generator));
+        generator.addProvider(new Recipes(generator));
     }
 }
