@@ -31,7 +31,7 @@ public class LampBlock extends LampBase {
         )).hardnessAndResistance(1.0f)
                 .harvestLevel(0)
                 .harvestTool(ToolType.PICKAXE)
-                .lightLevel((bState)-> bState.get(ON) ? 15 : 0));
+                .setLightLevel((bState)-> bState.get(ON) ? 15 : 0));
         this.Default = Default;
     }
 

@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 
 public abstract class RotatableLamp extends LampBase implements IWaterLoggable {
     public RotatableLamp(Properties props) {
-        super(props.lightLevel((bState) -> 15));
+        super(props.setLightLevel((bState) -> 15));
     }
     public VoxelShape DOWN;
     public VoxelShape UP;

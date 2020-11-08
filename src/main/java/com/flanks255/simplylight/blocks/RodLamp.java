@@ -32,7 +32,7 @@ public class RodLamp extends LampBase implements IWaterLoggable {
                 false, //isFlammable
                 false, //isReplaceable
                 PushReaction.NORMAL
-        )).hardnessAndResistance(1.0f).harvestLevel(0).harvestTool(ToolType.PICKAXE).lightLevel((bState) -> 15));
+        )).hardnessAndResistance(1.0f).harvestLevel(0).harvestTool(ToolType.PICKAXE).setLightLevel((bState) -> 15));
 
 
     }

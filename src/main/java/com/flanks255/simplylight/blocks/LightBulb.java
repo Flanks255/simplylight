@@ -15,7 +15,7 @@ public class LightBulb extends RotatableLamp {
                 .harvestLevel(0)
                 .harvestTool(ToolType.PICKAXE)
                 .hardnessAndResistance(1.0f)
-                .lightLevel((bState) -> 14));
+                .setLightLevel((bState) -> 14));
         UP = VoxelShapes.create(0.375,0.0, 0.375,0.625, 0.3125,0.625);
         DOWN = VoxelShapes.create(0.375, 1.0, 0.375, 0.625, 0.6875, 0.625);
         EAST = VoxelShapes.create(0.0, 0.375, 0.375, 0.3125, 0.625, 0.625);
