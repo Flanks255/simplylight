@@ -1,5 +1,5 @@
 modLoader="javafml" #mandatory
-loaderVersion="[33,)" #mandatory
+loaderVersion="[32,)" #mandatory
 license="MIT"
 issueTrackerURL="http://my.issue.tracker/" #optional
 [[mods]] #mandatory

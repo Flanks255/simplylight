@@ -1,6 +1,7 @@
 package com.flanks255.simplylight;
 
 import com.flanks255.simplylight.blocks.*;
+import com.flanks255.simplylight.data.Generator;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -21,7 +22,7 @@ public class SimplyLight
     public static final Logger LOGGER = LogManager.getLogger("Simply Light");
 
     private static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
-    private static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
 
     public static final RegistryObject<Block> ILLUMINANTBLOCK = BLOCKS.register("illuminant_block", () -> new LampBlock( false));
     public static final RegistryObject<Block> ILLUMINANTBLOCK_ON = BLOCKS.register("illuminant_block_on", () -> new LampBlock(true));
@@ -55,5 +56,7 @@ public class SimplyLight
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         ITEMS.register(bus);
         BLOCKS.register(bus);
+
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(Generator::gatherData);
     }
 }
