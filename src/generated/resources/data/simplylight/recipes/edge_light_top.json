@@ -5,8 +5,7 @@
       "item": "simplylight:edge_light"
     }
   ],
-  "result":{
-    "item":"simplylight:edge_light_top",
-    "count":1
+  "result": {
+    "item": "simplylight:edge_light_top"
   }
 }
