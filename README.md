@@ -13,8 +13,9 @@ Featuring:
   Quarter-block panel style, rotatable lamps.  
   Fixtures for walls/ceilings/floors.  
   Simple Light bulb style fixtures.  
-  Edge lighting strips that morph to fit against walls.  
-  Waterlogged lamps.(1.14.4)  
+  Edge lighting strips that morph to fit against walls.     
+  Rod lamps, similar to end rods        
+  All non-fullblock lamps are waterloggable. (1.14.4+)  
 
-Requires:
-[Shadowfacts' Forgelin - Kotlin language adapter(1.12.2 Version only)](https://www.curseforge.com/minecraft/mc-mods/shadowfacts-forgelin)
+Requires:       
+(1.12.2 ONLY) [Shadowfacts' Forgelin - Kotlin language adapter(1.12.2 Version only)](https://www.curseforge.com/minecraft/mc-mods/shadowfacts-forgelin)
