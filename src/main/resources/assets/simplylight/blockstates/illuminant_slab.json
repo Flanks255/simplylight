@@ -1,10 +1,10 @@
 {
 	"variants": {
-            "facing=up":    { "model":"simplylight:block/half_lamp"},
-            "facing=down":  { "model":"simplylight:block/half_lamp", "x": 180 },
-            "facing=east":  { "model":"simplylight:block/half_lamp", "x": 90, "y": 90 },
-            "facing=west":  { "model":"simplylight:block/half_lamp", "x": 90, "y": 270 },
-            "facing=south": { "model":"simplylight:block/half_lamp", "x": 90, "y": 180 },
-            "facing=north": { "model":"simplylight:block/half_lamp", "x": 90 }
+            "facing=up":    { "model":"simplylight:block/illuminant_slab"},
+            "facing=down":  { "model":"simplylight:block/illuminant_slab", "x": 180 },
+            "facing=east":  { "model":"simplylight:block/illuminant_slab", "x": 90, "y": 90 },
+            "facing=west":  { "model":"simplylight:block/illuminant_slab", "x": 90, "y": 270 },
+            "facing=south": { "model":"simplylight:block/illuminant_slab", "x": 90, "y": 180 },
+            "facing=north": { "model":"simplylight:block/illuminant_slab", "x": 90 }
     }
 }
