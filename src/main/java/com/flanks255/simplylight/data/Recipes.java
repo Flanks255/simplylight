@@ -98,6 +98,13 @@ public class Recipes extends RecipeProvider {
                 .addIngredient(SimplyLight.ITEM_ILLUMINANTPANEL.get())
                 .addCriterion("", hasItem(Items.AIR))
                 .build(consumer, new ResourceLocation(SimplyLight.MODID, "illuminant_slab_from_panel"));
+
+        // Panels
+        ShapedRecipeBuilder.shapedRecipe(SimplyLight.ITEM_ILLUMINANTPANEL.get(), 6)
+                .patternLine("aaa")
+                .key('a', SimplyLight.ITEM_ILLUMINANTSLAB.get())
+                .addCriterion("", hasItem(Items.AIR))
+                .build(consumer, new ResourceLocation(SimplyLight.MODID, "illuminant_panel"));
     }
 
     @Override
