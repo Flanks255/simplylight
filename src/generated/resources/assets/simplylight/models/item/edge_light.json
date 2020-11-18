@@ -1,3 +1,41 @@
 {
-  "parent": "simplylight:block/edge_light"
+  "parent": "simplylight:block/edge_light",
+  "display": {
+    "gui": {
+      "rotation": [
+        30,
+        -135,
+        180
+      ],
+      "scale": [
+        0.625,
+        0.625,
+        0.625
+      ]
+    },
+    "firstperson_righthand": {
+      "rotation": [
+        -45,
+        0,
+        90
+      ],
+      "translation": [
+        -7.5,
+        6.5,
+        4.5
+      ]
+    },
+    "thirdperson_righthand": {
+      "rotation": [
+        -45,
+        0,
+        90
+      ],
+      "translation": [
+        -7.5,
+        6.5,
+        4.5
+      ]
+    }
+  }
 }

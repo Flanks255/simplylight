@@ -12,6 +12,30 @@
         0.625,
         0.625
       ]
+    },
+    "firstperson_righthand": {
+      "rotation": [
+        -45,
+        0,
+        90
+      ],
+      "translation": [
+        -7.5,
+        6.5,
+        4.5
+      ]
+    },
+    "thirdperson_righthand": {
+      "rotation": [
+        -45,
+        0,
+        90
+      ],
+      "translation": [
+        -7.5,
+        6.5,
+        4.5
+      ]
     }
   }
 }
