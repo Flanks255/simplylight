@@ -1,6 +1,7 @@
 {
   "itemGroup.simplylight": "Simply Light",
-  "simplylight.shift": "Удерживайте <§6§oShift§r> чтобы увидеть подробности.",
+  "simplylight.shift": "Удерживайте <%s> чтобы увидеть подробности.",
+  "simplylight.key.shift": "Shift",
 
   "block.simplylight.illuminant_slab": "Освещающая плита",
   "block.simplylight.illuminant_slab.info": "Простая полуплита света,",

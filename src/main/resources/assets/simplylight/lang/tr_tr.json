@@ -1,6 +1,7 @@
 {
     "itemGroup.simplylight": "Simply Light",
-    "simplylight.shift": "Bilgi için <§6§oShift§r> basın.",
+    "simplylight.shift": "Bilgi için <%s> basın.",
+    "simplylight.key.shift": "Shift",
 
     "block.simplylight.illuminant_slab": "Parlak Basamak",
     "block.simplylight.illuminant_slab.info": "Basit yarı-basamak ışık,",

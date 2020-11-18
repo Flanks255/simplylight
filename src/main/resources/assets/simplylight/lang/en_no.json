@@ -1,6 +1,7 @@
 {
     "itemGroup.simplylight": "Simply Light",
-    "simplylight.shift": "Trykk på <§6§oShift§r> for info.",
+    "simplylight.shift": "Trykk på <%s> for info.",
+    "simplylight.key.shift": "Shift",
 
     "block.simplylight.illuminant_slab": "Lysende Helle",
     "block.simplylight.illuminant_slab.info": "Enkel Helle med lys,",
