@@ -105,6 +105,26 @@ public class Recipes extends RecipeProvider {
                 .key('a', SimplyLight.ITEM_ILLUMINANTSLAB.get())
                 .addCriterion("", hasItem(Items.AIR))
                 .build(consumer, new ResourceLocation(SimplyLight.MODID, "illuminant_panel"));
+
+        // Rod Lamp
+        ShapedRecipeBuilder.shapedRecipe(SimplyLight.ITEM_RODLAMP.get(), 8)
+                .patternLine("bab")
+                .patternLine("bab")
+                .patternLine("bab")
+                .key('a', Tags.Items.STONE)
+                .key('b', Tags.Items.DUSTS_GLOWSTONE)
+                .addCriterion("", hasItem(Items.AIR))
+                .build(consumer, new ResourceLocation(SimplyLight.MODID, "rodlamp"));
+
+        // Wall Lamp
+        ShapedRecipeBuilder.shapedRecipe(SimplyLight.ITEM_WALL_LAMP.get(), 6)
+                .patternLine("aa")
+                .patternLine("ab")
+                .patternLine("ab")
+                .key('a', Tags.Items.STONE)
+                .key('b', Items.GLOWSTONE)
+                .addCriterion("", hasItem(Items.AIR))
+                .build(consumer, new ResourceLocation(SimplyLight.MODID, "walllamp"));
     }
 
     @Override
