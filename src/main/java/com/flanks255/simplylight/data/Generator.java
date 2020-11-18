@@ -10,5 +10,6 @@ public class Generator {
         generator.addProvider(new LootTables(generator));
         generator.addProvider(new Recipes(generator));
         generator.addProvider(new BlockStates(generator, event.getExistingFileHelper()));
+        generator.addProvider(new ItemModels(generator, event.getExistingFileHelper()));
     }
 }
