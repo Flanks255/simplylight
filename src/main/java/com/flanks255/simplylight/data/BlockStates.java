@@ -15,6 +15,11 @@ public class BlockStates  extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
         generateLampBlock();
+        generateThinLamp();
+    }
+
+    private void generateThinLamp() {
+
     }
 
     private void generateLampBlock() {

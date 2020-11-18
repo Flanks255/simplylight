@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "simplylight:illuminant_panel"
+    },
+    {
+      "item": "simplylight:illuminant_panel"
+    }
+  ],
+  "result": {
+    "item": "simplylight:illuminant_slab"
+  }
+}

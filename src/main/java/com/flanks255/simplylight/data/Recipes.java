@@ -83,7 +83,21 @@ public class Recipes extends RecipeProvider {
                 .addCriterion("", hasItem(Items.AIR))
                 .build(consumer, new ResourceLocation(SimplyLight.MODID, "edge_light_bottom_from_top"));
 
+        // Slabs
+        ShapedRecipeBuilder.shapedRecipe(SimplyLight.ITEM_ILLUMINANTSLAB.get(), 6)
+                .patternLine("bbb")
+                .patternLine("aaa")
+                .key('a', Tags.Items.STONE)
+                .key('b', Items.GLOWSTONE)
+                .addCriterion("", hasItem(Items.AIR))
+                .build(consumer, new ResourceLocation(SimplyLight.MODID, "illuminant_slab"));
 
+        // Slab from panel
+        ShapelessRecipeBuilder.shapelessRecipe(SimplyLight.ITEM_ILLUMINANTSLAB.get())
+                .addIngredient(SimplyLight.ITEM_ILLUMINANTPANEL.get())
+                .addIngredient(SimplyLight.ITEM_ILLUMINANTPANEL.get())
+                .addCriterion("", hasItem(Items.AIR))
+                .build(consumer, new ResourceLocation(SimplyLight.MODID, "illuminant_slab_from_panel"));
     }
 
     @Override
