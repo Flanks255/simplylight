@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "simplylight:block/lightbulb",
+      "x": 180
+    },
+    "facing=up": {
+      "model": "simplylight:block/lightbulb"
+    },
+    "facing=north": {
+      "model": "simplylight:block/lightbulb",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "simplylight:block/lightbulb",
+      "x": 90,
+      "y": 180
+    },
+    "facing=west": {
+      "model": "simplylight:block/lightbulb",
+      "x": 90,
+      "y": 270
+    },
+    "facing=east": {
+      "model": "simplylight:block/lightbulb",
+      "x": 90,
+      "y": 90
+    }
+  }
+}

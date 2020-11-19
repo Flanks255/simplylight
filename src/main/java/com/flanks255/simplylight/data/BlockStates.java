@@ -4,6 +4,7 @@ import com.flanks255.simplylight.SimplyLight;
 import com.flanks255.simplylight.blocks.LampBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.RotatedPillarBlock;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.Direction;
@@ -21,13 +22,29 @@ public class BlockStates  extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
         generateLampBlock();
-        generateThinLamp();
+        generateThinLamps();
+
+        //Light bulbs
+        myDirectionalBlock(SimplyLight.LIGHTBULB.get(), $ -> models().getExistingFile(modLoc("block/lightbulb")), 180);
+
+        generateRodLamp();
     }
 
-    private void generateThinLamp() {
+    private void generateThinLamps() {
         myDirectionalBlock(SimplyLight.ILLUMINANTSLAB.get(), $ -> models().getExistingFile(modLoc("block/illuminant_slab")), 180);
         myDirectionalBlock(SimplyLight.ILLUMINANTPANEL.get(), $ -> models().getExistingFile(modLoc("block/illuminant_panel")), 180);
-        myDirectionalBlock(SimplyLight.LIGHTBULB.get(), $ -> models().getExistingFile(modLoc("block/lightbulb")), 180);
+    }
+
+    void generateRodLamp() {
+        Block block = SimplyLight.RODLAMP.get();
+        ModelFile model = models().getExistingFile(modLoc("block/rodlamp"));
+        getVariantBuilder(block)
+                .partialState().with(RotatedPillarBlock.AXIS, Direction.Axis.Y)
+                .modelForState().modelFile(model).addModel()
+                .partialState().with(RotatedPillarBlock.AXIS, Direction.Axis.Z)
+                .modelForState().modelFile(model).rotationX(90).addModel()
+                .partialState().with(RotatedPillarBlock.AXIS, Direction.Axis.X)
+                .modelForState().modelFile(model).rotationX(90).rotationY(90).addModel();
     }
 
     private void generateLampBlock() {
