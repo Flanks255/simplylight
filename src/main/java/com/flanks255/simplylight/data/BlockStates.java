@@ -28,6 +28,26 @@ public class BlockStates  extends BlockStateProvider {
         myDirectionalBlock(SimplyLight.LIGHTBULB.get(), $ -> models().getExistingFile(modLoc("block/lightbulb")), 180);
 
         generateRodLamp();
+
+        generateWallLamp();
+    }
+
+    private void generateWallLamp() {
+        ModelFile wallModel = models().getExistingFile(modLoc("block/wall_lamp"));
+        ModelFile floorModel = models().getExistingFile(modLoc("block/floorlamp"));
+        getVariantBuilder(SimplyLight.WALL_LAMP.get())
+                .partialState().with(BlockStateProperties.FACING, Direction.UP)
+                .modelForState().modelFile(floorModel).addModel()
+                .partialState().with(BlockStateProperties.FACING, Direction.DOWN)
+                .modelForState().modelFile(floorModel).rotationX(180).addModel()
+                .partialState().with(BlockStateProperties.FACING, Direction.EAST)
+                .modelForState().modelFile(wallModel).rotationY(270).addModel()
+                .partialState().with(BlockStateProperties.FACING, Direction.WEST)
+                .modelForState().modelFile(wallModel).rotationY(90).addModel()
+                .partialState().with(BlockStateProperties.FACING, Direction.SOUTH)
+                .modelForState().modelFile(wallModel).addModel()
+                .partialState().with(BlockStateProperties.FACING, Direction.NORTH)
+                .modelForState().modelFile(wallModel).rotationY(180).addModel();
     }
 
     private void generateThinLamps() {
