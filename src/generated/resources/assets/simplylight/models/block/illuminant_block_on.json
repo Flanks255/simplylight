@@ -2,7 +2,8 @@
   "parent": "minecraft:block/cube",
   "ambientocclusion": false,
   "textures": {
-    "all": "simplylight:block/illuminant_block_on"
+    "all": "simplylight:block/illuminant_block_on",
+    "particle": "simplylight:block/illuminant_block_on"
   },
   "elements": [
     {

@@ -31,10 +31,8 @@ public class BlockStates  extends BlockStateProvider {
         generateRodLamp();
 
         generateWallLamp();
-
-        //generateEdgeBlocks();
     }
-
+/*
     private void generateEdgeBlocks() {
         ModelFile model = models().getExistingFile(modLoc("block/edge_light"));
         MultiPartBlockStateBuilder builder = getMultipartBuilder(SimplyLight.EDGELAMP.get());
@@ -44,7 +42,7 @@ public class BlockStates  extends BlockStateProvider {
 
 
     }
-
+*/
     private void generateWallLamp() {
         ModelFile wallModel = models().getExistingFile(modLoc("block/wall_lamp"));
         ModelFile floorModel = models().getExistingFile(modLoc("block/floorlamp"));
@@ -85,11 +83,11 @@ public class BlockStates  extends BlockStateProvider {
         ResourceLocation onTex = modLoc("block/illuminant_block_on");
 
         ModelBuilder.ElementBuilder illuminantBlockBuilder = models().withExistingParent(SimplyLight.ILLUMINANTBLOCK.get().getRegistryName().getPath(), "cube")
-                .texture("all", offTex).ao(false).element();
+                .texture("all", offTex).texture("particle", offTex).ao(false).element();
         ModelFile modelIlluminantBlock = illuminantBlockBuilder.cube("#all").shade(false).end();
 
         ModelBuilder.ElementBuilder illuminantBlockBuilder_On = models().withExistingParent(SimplyLight.ILLUMINANTBLOCK_ON.get().getRegistryName().getPath(), "cube")
-                .texture("all", onTex).ao(false).element();
+                .texture("all", onTex).texture("particle", onTex).ao(false).element();
         ModelFile modelIlluminantBlock_on = illuminantBlockBuilder_On.cube("#all").shade(false).end();
 
         //Build non-inverted
