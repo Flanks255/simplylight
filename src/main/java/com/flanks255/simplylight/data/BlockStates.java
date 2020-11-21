@@ -1,6 +1,7 @@
 package com.flanks255.simplylight.data;
 
 import com.flanks255.simplylight.SimplyLight;
+import com.flanks255.simplylight.blocks.EdgeLight;
 import com.flanks255.simplylight.blocks.LampBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -30,6 +31,18 @@ public class BlockStates  extends BlockStateProvider {
         generateRodLamp();
 
         generateWallLamp();
+
+        //generateEdgeBlocks();
+    }
+
+    private void generateEdgeBlocks() {
+        ModelFile model = models().getExistingFile(modLoc("block/edge_light"));
+        MultiPartBlockStateBuilder builder = getMultipartBuilder(SimplyLight.EDGELAMP.get());
+
+        builder.part().modelFile(model).addModel().useOr()
+                .condition(EdgeLight.NORTH, true);
+
+
     }
 
     private void generateWallLamp() {

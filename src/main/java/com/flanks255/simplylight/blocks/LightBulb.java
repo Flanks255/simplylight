@@ -28,9 +28,4 @@ public class LightBulb extends RotatableLamp {
     public int getLightValue(BlockState state, IBlockReader world, BlockPos pos) {
         return 14;
     }
-/*
-    @Override
-    public boolean canRenderInLayer(BlockState state, BlockRenderLayer layer) {
-        return (layer == BlockRenderLayer.SOLID || layer == BlockRenderLayer.TRANSLUCENT);
-    }*/
 }

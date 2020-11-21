@@ -3,12 +3,15 @@ package com.flanks255.simplylight;
 import com.flanks255.simplylight.blocks.*;
 import com.flanks255.simplylight.data.Generator;
 import net.minecraft.block.Block;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -58,5 +61,10 @@ public class SimplyLight
         BLOCKS.register(bus);
 
         FMLJavaModLoadingContext.get().getModEventBus().addListener(Generator::gatherData);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::ClientSetup);
+    }
+
+    private void ClientSetup(final FMLClientSetupEvent clientSetupEvent) {
+        RenderTypeLookup.setRenderLayer(LIGHTBULB.get(), renderType -> renderType == RenderType.getSolid() || renderType == RenderType.getTranslucent());
     }
 }
