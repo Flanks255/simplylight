@@ -2,10 +2,13 @@ package com.flanks255.simplylight.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.material.Material;
+import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
+import net.minecraft.world.IWorld;
 import net.minecraftforge.common.ToolType;
 
 public class LightBulb extends RotatableLamp {
@@ -16,12 +19,12 @@ public class LightBulb extends RotatableLamp {
                 .harvestTool(ToolType.PICKAXE)
                 .hardnessAndResistance(1.0f)
                 .setLightLevel((bState) -> 14));
-        UP = VoxelShapes.create(0.375,0.0, 0.375,0.625, 0.3125,0.625);
-        DOWN = VoxelShapes.create(0.375, 1.0, 0.375, 0.625, 0.6875, 0.625);
-        EAST = VoxelShapes.create(0.0, 0.375, 0.375, 0.3125, 0.625, 0.625);
-        WEST = VoxelShapes.create(0.6875, 0.375, 0.375, 1.0, 0.625, 0.625);
-        NORTH = VoxelShapes.create(0.375, 0.375, 0.6875, 0.625, 0.625, 1.0);
-        SOUTH = VoxelShapes.create(0.375, 0.375, 0.325, 0.625, 0.625, 0.0);
+        UP = Block.makeCuboidShape(6, 0, 6, 10, 5, 10);
+        DOWN = Block.makeCuboidShape(6, 16, 6, 10, 11, 10);
+        EAST = Block.makeCuboidShape(0, 6, 6, 5, 10, 10);
+        WEST = Block.makeCuboidShape(11, 6, 6, 16, 11, 11);
+        NORTH = Block.makeCuboidShape(6, 6, 11, 10, 10, 16);
+        SOUTH = Block.makeCuboidShape(6, 6, 5, 10, 10, 0);
     }
 
     @Override

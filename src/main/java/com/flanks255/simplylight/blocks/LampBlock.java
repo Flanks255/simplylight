@@ -22,12 +22,12 @@ public class LampBlock extends LampBase {
     public LampBlock(boolean Default) {
         super(Block.Properties.create(new Material(
                 MaterialColor.WHITE_TERRACOTTA,
-                false, //isLiquid
-                true,  //isSolid
-                true, //Blocks Movement
-                true, //isOpaque
-                false, //isFlammable
-                false, //isReplaceable
+                false,
+                true,
+                true,
+                true,
+                false,
+                false,
                 PushReaction.NORMAL
         )).hardnessAndResistance(1.0f)
                 .harvestLevel(0)
