@@ -13,15 +13,17 @@ import java.util.List;
 
 public class RecipeUnlocker {
     private static String modtag;
+    private static int version;
 
-    public static void register(String modid, IEventBus bus) {
+    public static void register(String modid, IEventBus bus, int recipeversion) {
         modtag = modid + "_unlocked";
+        version = recipeversion;
         bus.addListener(RecipeUnlocker::onPlayerLoggedIn);
     }
 
     private static void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
         CompoundNBT tag = event.getPlayer().getPersistentData();
-        if (tag.contains(modtag))
+        if (tag.contains(modtag) && tag.getInt(modtag) >= version)
             return;
 
         PlayerEntity player = event.getPlayer();
@@ -31,7 +33,7 @@ public class RecipeUnlocker {
                 List<IRecipe<?>> recipes = new ArrayList<>(server.getRecipeManager().getRecipes());
                 recipes.removeIf((recipe -> !recipe.getId().getNamespace().contains(SimplyLight.MODID)));
                 player.unlockRecipes(recipes);
-                tag.putBoolean(modtag, true);
+                tag.putInt(modtag, version);
             }
         }
     }

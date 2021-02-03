@@ -73,7 +73,7 @@ public class SimplyLight
         bus.addListener(Generator::gatherData);
         bus.addListener(this::ClientSetup);
 
-        RecipeUnlocker.register(SimplyLight.MODID, MinecraftForge.EVENT_BUS);
+        RecipeUnlocker.register(SimplyLight.MODID, MinecraftForge.EVENT_BUS, 1);
     }
 
     private void ClientSetup(final FMLClientSetupEvent clientSetupEvent) {
