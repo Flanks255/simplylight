@@ -5,9 +5,16 @@ import com.flanks255.simplylight.data.Generator;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.server.MinecraftServer;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod;
@@ -17,6 +24,9 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Mod(SimplyLight.MODID)
 public class SimplyLight
@@ -60,8 +70,10 @@ public class SimplyLight
         ITEMS.register(bus);
         BLOCKS.register(bus);
 
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(Generator::gatherData);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::ClientSetup);
+        bus.addListener(Generator::gatherData);
+        bus.addListener(this::ClientSetup);
+
+        RecipeUnlocker.register(SimplyLight.MODID, MinecraftForge.EVENT_BUS);
     }
 
     private void ClientSetup(final FMLClientSetupEvent clientSetupEvent) {
