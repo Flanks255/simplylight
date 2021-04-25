@@ -1,7 +1,6 @@
 package com.flanks255.simplylight.data;
 
 import com.flanks255.simplylight.SimplyLight;
-import com.flanks255.simplylight.blocks.EdgeLight;
 import com.flanks255.simplylight.blocks.LampBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

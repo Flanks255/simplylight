@@ -2,7 +2,6 @@ package com.flanks255.simplylight.data;
 
 import com.flanks255.simplylight.SimplyLight;
 import com.google.gson.JsonObject;
-import net.minecraft.advancements.criterion.ImpossibleTrigger;
 import net.minecraft.data.*;
 import net.minecraft.item.Items;
 import net.minecraft.util.ResourceLocation;
@@ -19,7 +18,7 @@ public class Recipes extends RecipeProvider {
     @Override
     protected void registerRecipes(Consumer<IFinishedRecipe> consumer) {
         // Illuminant Block (Off)
-        ShapedRecipeBuilder.shapedRecipe(SimplyLight.ITEM_ILLUMINANTBLOCK.get(), 4)
+        ShapedRecipeBuilder.shapedRecipe(SimplyLight.ILLUMINANTBLOCK.getItem(), 4)
                 .patternLine("aba")
                 .patternLine("bcb")
                 .patternLine("aba")
@@ -30,7 +29,7 @@ public class Recipes extends RecipeProvider {
                 .build(consumer, new ResourceLocation(SimplyLight.MODID, "illuminant_block"));
 
         // Illuminant Block (On)
-        ShapedRecipeBuilder.shapedRecipe(SimplyLight.ITEM_ILLUMINANTBLOCK_ON.get(), 4)
+        ShapedRecipeBuilder.shapedRecipe(SimplyLight.ILLUMINANTBLOCK_ON.getItem(), 4)
                 .patternLine("aba")
                 .patternLine("bcb")
                 .patternLine("aba")
@@ -41,19 +40,19 @@ public class Recipes extends RecipeProvider {
                 .build(consumer, new ResourceLocation(SimplyLight.MODID, "illuminant_block_on"));
 
         // Illuminant Block (On) from (Off)
-        ShapelessRecipeBuilder.shapelessRecipe(SimplyLight.ITEM_ILLUMINANTBLOCK_ON.get(), 1)
-                .addIngredient(SimplyLight.ITEM_ILLUMINANTBLOCK.get())
+        ShapelessRecipeBuilder.shapelessRecipe(SimplyLight.ILLUMINANTBLOCK_ON.getItem(), 1)
+                .addIngredient(SimplyLight.ILLUMINANTBLOCK.getItem())
                 .addCriterion("", hasItem(Items.AIR))
                 .build(consumer, new ResourceLocation(SimplyLight.MODID, "illuminant_block_on_from_off"));
 
         // Illuminant Block (Off) from (On)
-        ShapelessRecipeBuilder.shapelessRecipe(SimplyLight.ITEM_ILLUMINANTBLOCK.get(), 1)
-                .addIngredient(SimplyLight.ITEM_ILLUMINANTBLOCK_ON.get())
+        ShapelessRecipeBuilder.shapelessRecipe(SimplyLight.ILLUMINANTBLOCK.getItem(), 1)
+                .addIngredient(SimplyLight.ILLUMINANTBLOCK_ON.getItem())
                 .addCriterion("", hasItem(Items.AIR))
                 .build(consumer, new ResourceLocation(SimplyLight.MODID, "illuminant_block_off_from_on"));
 
         // Bulbs
-        ShapedRecipeBuilder.shapedRecipe(SimplyLight.ITEM_LIGHTBULB.get(), 8)
+        ShapedRecipeBuilder.shapedRecipe(SimplyLight.LIGHTBULB.getItem(), 8)
                 .patternLine(" b ")
                 .patternLine("aaa")
                 .key('a', Tags.Items.STONE)
@@ -62,7 +61,7 @@ public class Recipes extends RecipeProvider {
                 .build(consumer, new ResourceLocation(SimplyLight.MODID, "bulb"));
 
         // Edge light
-        ShapedRecipeBuilder.shapedRecipe(SimplyLight.ITEM_EDGELAMP.get(), 6)
+        ShapedRecipeBuilder.shapedRecipe(SimplyLight.EDGELAMP.getItem(), 6)
                 .patternLine("b b")
                 .patternLine("aaa")
                 .patternLine("b b")
@@ -72,19 +71,19 @@ public class Recipes extends RecipeProvider {
                 .build(consumer, new ResourceLocation( SimplyLight.MODID, "edge_light"));
 
         // Top Edge light from bottom
-        ShapelessRecipeBuilder.shapelessRecipe(SimplyLight.ITEM_EDGELAMP_TOP.get(), 1)
-                .addIngredient(SimplyLight.ITEM_EDGELAMP.get())
+        ShapelessRecipeBuilder.shapelessRecipe(SimplyLight.EDGELAMP_TOP.getItem(), 1)
+                .addIngredient(SimplyLight.EDGELAMP.getItem())
                 .addCriterion("", hasItem(Items.AIR))
                 .build(consumer, new ResourceLocation(SimplyLight.MODID, "edge_light_top"));
 
         // Bottom Edge light from top
-        ShapelessRecipeBuilder.shapelessRecipe(SimplyLight.ITEM_EDGELAMP.get(), 1)
-                .addIngredient(SimplyLight.ITEM_EDGELAMP_TOP.get())
+        ShapelessRecipeBuilder.shapelessRecipe(SimplyLight.EDGELAMP.getItem(), 1)
+                .addIngredient(SimplyLight.EDGELAMP_TOP.getItem())
                 .addCriterion("", hasItem(Items.AIR))
                 .build(consumer, new ResourceLocation(SimplyLight.MODID, "edge_light_bottom_from_top"));
 
         // Slabs
-        ShapedRecipeBuilder.shapedRecipe(SimplyLight.ITEM_ILLUMINANTSLAB.get(), 6)
+        ShapedRecipeBuilder.shapedRecipe(SimplyLight.ILLUMINANTSLAB.getItem(), 6)
                 .patternLine("bbb")
                 .patternLine("aaa")
                 .key('a', Tags.Items.STONE)
@@ -93,21 +92,21 @@ public class Recipes extends RecipeProvider {
                 .build(consumer, new ResourceLocation(SimplyLight.MODID, "illuminant_slab"));
 
         // Slab from panel
-        ShapelessRecipeBuilder.shapelessRecipe(SimplyLight.ITEM_ILLUMINANTSLAB.get())
-                .addIngredient(SimplyLight.ITEM_ILLUMINANTPANEL.get())
-                .addIngredient(SimplyLight.ITEM_ILLUMINANTPANEL.get())
+        ShapelessRecipeBuilder.shapelessRecipe(SimplyLight.ILLUMINANTSLAB.getItem())
+                .addIngredient(SimplyLight.ILLUMINANTPANEL.getItem())
+                .addIngredient(SimplyLight.ILLUMINANTPANEL.getItem())
                 .addCriterion("", hasItem(Items.AIR))
                 .build(consumer, new ResourceLocation(SimplyLight.MODID, "illuminant_slab_from_panel"));
 
         // Panels
-        ShapedRecipeBuilder.shapedRecipe(SimplyLight.ITEM_ILLUMINANTPANEL.get(), 6)
+        ShapedRecipeBuilder.shapedRecipe(SimplyLight.ILLUMINANTPANEL.getItem(), 6)
                 .patternLine("aaa")
-                .key('a', SimplyLight.ITEM_ILLUMINANTSLAB.get())
+                .key('a', SimplyLight.ILLUMINANTSLAB.getItem())
                 .addCriterion("", hasItem(Items.AIR))
                 .build(consumer, new ResourceLocation(SimplyLight.MODID, "illuminant_panel"));
 
         // Rod Lamp
-        ShapedRecipeBuilder.shapedRecipe(SimplyLight.ITEM_RODLAMP.get(), 8)
+        ShapedRecipeBuilder.shapedRecipe(SimplyLight.RODLAMP.getItem(), 8)
                 .patternLine("bab")
                 .patternLine("bab")
                 .patternLine("bab")
@@ -117,7 +116,7 @@ public class Recipes extends RecipeProvider {
                 .build(consumer, new ResourceLocation(SimplyLight.MODID, "rodlamp"));
 
         // Wall Lamp
-        ShapedRecipeBuilder.shapedRecipe(SimplyLight.ITEM_WALL_LAMP.get(), 6)
+        ShapedRecipeBuilder.shapedRecipe(SimplyLight.WALL_LAMP.getItem(), 6)
                 .patternLine("aa")
                 .patternLine("ab")
                 .patternLine("ab")
