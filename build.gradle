@@ -19,17 +19,14 @@ buildscript {
             url "https://plugins.gradle.org/m2/"
         }
     }
-    dependencies {
-        classpath "com.wynprice.cursemaven:CurseMaven:1.2.+"
+}
+repositories {
+    maven {
+        url "https://www.cursemaven.com"
     }
 }
-apply plugin: "com.wynprice.cursemaven"
 
 repositories {
-    maven { // TOP
-        name 'tterrag maven'
-        url "https://maven.tterrag.com/"
-    }
     maven { // JEI
         url "http://dvs1.progwml6.com/files/maven"
     }
@@ -107,8 +104,9 @@ dependencies {
 
     compileOnly fg.deobf("mezz.jei:jei-${jei_version}:api")
     runtimeOnly fg.deobf("mezz.jei:jei-${jei_version}")
-    compile fg.deobf(curse.resolve("the-one-probe",3040735))
 
+    compile fg.deobf("curse.maven:TOP-245211:3157997")
+    compile fg.deobf("curse.maven:BUILDINGGADGETS-298187:3205295")
 }
 
 // Example for how to get properties into the manifest for reading by the runtime..
