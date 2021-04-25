@@ -16,6 +16,7 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ToolType;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 public class LampBlock extends LampBase {
@@ -34,9 +35,11 @@ public class LampBlock extends LampBase {
                 .harvestTool(ToolType.PICKAXE)
                 .setLightLevel((bState)-> bState.get(ON) ? 15 : 0));
         this.Default = Default;
+
+        setDefaultState(getStateContainer().getBaseState().with(ON, Default));
     }
 
-    private boolean Default;
+    private final boolean Default;
     public static final BooleanProperty ON = BooleanProperty.create("on");
 
     @Override
@@ -46,12 +49,12 @@ public class LampBlock extends LampBase {
 
     @Nullable
     @Override
-    public BlockState getStateForPlacement(BlockItemUseContext context) {
+    public BlockState getStateForPlacement(@Nonnull BlockItemUseContext context) {
         return this.getDefaultState().with(ON, Default);
     }
 
     @Override
-    public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
+    public void onBlockPlacedBy(@Nonnull World worldIn, @Nonnull BlockPos pos, @Nonnull BlockState state, @Nullable LivingEntity placer, @Nonnull ItemStack stack) {
         super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
         boolean powered = worldIn.isBlockPowered(pos);
         if (powered) {
@@ -60,7 +63,7 @@ public class LampBlock extends LampBase {
     }
 
     @Override
-    public void neighborChanged(BlockState p_220069_1_, World worldIn, BlockPos p_220069_3_, Block p_220069_4_, BlockPos p_220069_5_, boolean p_220069_6_) {
+    public void neighborChanged(@Nonnull BlockState p_220069_1_, @Nonnull World worldIn, @Nonnull BlockPos p_220069_3_, @Nonnull Block p_220069_4_, @Nonnull BlockPos p_220069_5_, boolean p_220069_6_) {
         super.neighborChanged(p_220069_1_, worldIn, p_220069_3_, p_220069_4_, p_220069_5_, p_220069_6_);
         boolean on = Default != worldIn.isBlockPowered(p_220069_3_);
         worldIn.setBlockState(p_220069_3_, getDefaultState().with(ON, on));

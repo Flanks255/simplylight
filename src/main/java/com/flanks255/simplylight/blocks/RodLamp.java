@@ -34,7 +34,7 @@ public class RodLamp extends LampBase implements IWaterLoggable {
                 PushReaction.NORMAL
         )).hardnessAndResistance(1.0f).harvestLevel(0).harvestTool(ToolType.PICKAXE).setLightLevel((bState) -> 15));
 
-
+        setDefaultState(getStateContainer().getBaseState().with(BlockStateProperties.WATERLOGGED, false));
     }
 
     private VoxelShape UpDown = Block.makeCuboidShape(7,0,7, 9,16,9);

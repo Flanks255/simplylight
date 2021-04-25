@@ -31,6 +31,8 @@ public class EdgeLight extends LampBase implements IWaterLoggable {
                 .setLightLevel((bState) -> 14)
         );
 
+        setDefaultState(getStateContainer().getBaseState().with(BlockStateProperties.WATERLOGGED, false));
+
         if (top) {
             VS_WEST = VoxelShapes.create(0.0, 0.9375, 0.0, 0.0625, 1.0, 1.0);
             VS_EAST = VoxelShapes.create(1.0, 0.9375, 0.0, 0.9375, 1.0, 1.0);
