@@ -19,6 +19,7 @@ import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraftforge.common.ToolType;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 public class EdgeLight extends LampBase implements IWaterLoggable {
@@ -53,8 +54,9 @@ public class EdgeLight extends LampBase implements IWaterLoggable {
     public static final BooleanProperty EAST = BooleanProperty.create("east");
     public static final BooleanProperty WEST = BooleanProperty.create("west");
 
+    @Nonnull
     @Override
-    public VoxelShape getShape(BlockState state, IBlockReader p_220053_2_, BlockPos p_220053_3_, ISelectionContext p_220053_4_) {
+    public VoxelShape getShape(BlockState state, @Nonnull IBlockReader p_220053_2_, @Nonnull BlockPos p_220053_3_, @Nonnull ISelectionContext p_220053_4_) {
         VoxelShape shape = VoxelShapes.empty();
         if (state.get(NORTH))
             shape = VoxelShapes.or(shape, VS_NORTH);
@@ -90,10 +92,11 @@ public class EdgeLight extends LampBase implements IWaterLoggable {
     }
 
     @Override
-    public boolean canContainFluid(IBlockReader p_204510_1_, BlockPos p_204510_2_, BlockState p_204510_3_, Fluid p_204510_4_) {
+    public boolean canContainFluid(@Nonnull IBlockReader p_204510_1_, @Nonnull BlockPos p_204510_2_, @Nonnull BlockState p_204510_3_, @Nonnull Fluid p_204510_4_) {
         return true;
     }
 
+    @Nonnull
     @Override
     public FluidState getFluidState(BlockState p_204507_1_) {
         return p_204507_1_.get(BlockStateProperties.WATERLOGGED)? Fluids.WATER.getStillFluidState(false) : super.getFluidState(p_204507_1_);

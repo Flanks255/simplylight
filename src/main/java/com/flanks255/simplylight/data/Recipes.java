@@ -7,6 +7,7 @@ import net.minecraft.item.Items;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.Tags;
 
+import javax.annotation.Nonnull;
 import java.nio.file.Path;
 import java.util.function.Consumer;
 
@@ -16,7 +17,7 @@ public class Recipes extends RecipeProvider {
     }
 
     @Override
-    protected void registerRecipes(Consumer<IFinishedRecipe> consumer) {
+    protected void registerRecipes(@Nonnull Consumer<IFinishedRecipe> consumer) {
         // Illuminant Block (Off)
         ShapedRecipeBuilder.shapedRecipe(SimplyLight.ILLUMINANTBLOCK.getItem(), 4)
                 .patternLine("aba")
@@ -127,7 +128,7 @@ public class Recipes extends RecipeProvider {
     }
 
     @Override
-    protected void saveRecipeAdvancement(DirectoryCache cache, JsonObject cache2, Path advancementJson) {
+    protected void saveRecipeAdvancement(@Nonnull DirectoryCache cache, @Nonnull JsonObject cache2, @Nonnull Path advancementJson) {
         // Nope, dont want none of this...
     }
 }

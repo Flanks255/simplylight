@@ -8,13 +8,8 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class SLBlockReg<B extends Block, I extends Item> implements Supplier<B> {
-    private String name;
-
-    private RegistryObject<B> block;
-    private RegistryObject<I> item;
-
-    private Supplier<B> blockSupplier;
-    private Function<B, I> itemSupplier;
+    private final RegistryObject<B> block;
+    private final RegistryObject<I> item;
 
     @Override
     public B get() {
@@ -22,9 +17,6 @@ public class SLBlockReg<B extends Block, I extends Item> implements Supplier<B> 
     }
 
     public SLBlockReg(String name, Supplier<B> blockSupplier, Function<B, I> itemSupplier) {
-        this.name = name;
-        this.blockSupplier = blockSupplier;
-        this.itemSupplier = itemSupplier;
 
         block = SimplyLight.BLOCKS.register(name, blockSupplier);
         item = SimplyLight.ITEMS.register(name, () -> itemSupplier.apply(block.get()));

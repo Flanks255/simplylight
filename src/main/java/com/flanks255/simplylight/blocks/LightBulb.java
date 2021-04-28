@@ -2,13 +2,9 @@ package com.flanks255.simplylight.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.material.Material;
-import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
-import net.minecraft.world.IWorld;
 import net.minecraftforge.common.ToolType;
 
 public class LightBulb extends RotatableLamp {

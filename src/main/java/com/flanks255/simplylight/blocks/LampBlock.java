@@ -58,7 +58,7 @@ public class LampBlock extends LampBase {
         super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
         boolean powered = worldIn.isBlockPowered(pos);
         if (powered) {
-            worldIn.setBlockState(pos,this.getDefaultState().with(ON, powered != Default));
+            worldIn.setBlockState(pos,this.getDefaultState().with(ON, !Default));
         }
     }
 

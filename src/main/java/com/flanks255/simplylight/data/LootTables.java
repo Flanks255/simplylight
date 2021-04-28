@@ -25,6 +25,7 @@ public class LootTables extends LootTableProvider {
         super(gen);
     }
 
+    @Nonnull
     @Override
     protected List<Pair<Supplier<Consumer<BiConsumer<ResourceLocation, LootTable.Builder>>>, LootParameterSet>> getTables() {
         return ImmutableList.of(Pair.of(Blocks::new, LootParameterSets.BLOCK));

@@ -10,7 +10,6 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -18,6 +17,8 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import javax.annotation.Nonnull;
 
 @Mod(SimplyLight.MODID)
 public class SimplyLight
@@ -29,6 +30,7 @@ public class SimplyLight
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
 
     private static final Item.Properties ITEMPROPERTIES = new Item.Properties().group(new ItemGroup(MODID) {
+        @Nonnull
         @Override
         public ItemStack createIcon() {
             return new ItemStack(ILLUMINANTBLOCK_ON.get());

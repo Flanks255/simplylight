@@ -19,6 +19,7 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraftforge.common.ToolType;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 public class RodLamp extends LampBase implements IWaterLoggable {
@@ -37,12 +38,13 @@ public class RodLamp extends LampBase implements IWaterLoggable {
         setDefaultState(getStateContainer().getBaseState().with(BlockStateProperties.WATERLOGGED, false));
     }
 
-    private VoxelShape UpDown = Block.makeCuboidShape(7,0,7, 9,16,9);
-    private VoxelShape EastWest = Block.makeCuboidShape(0,7,7, 16,9,9);
-    private VoxelShape NorthSouth = Block.makeCuboidShape(7,7,0, 9,9,16);
+    private final VoxelShape UpDown = Block.makeCuboidShape(7,0,7, 9,16,9);
+    private final VoxelShape EastWest = Block.makeCuboidShape(0,7,7, 16,9,9);
+    private final VoxelShape NorthSouth = Block.makeCuboidShape(7,7,0, 9,9,16);
 
+    @Nonnull
     @Override
-    public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
+    public VoxelShape getShape(BlockState state, @Nonnull IBlockReader worldIn, @Nonnull BlockPos pos, @Nonnull ISelectionContext context) {
         VoxelShape ret;
         switch (state.get(BlockStateProperties.AXIS)) {
             case X:
@@ -65,10 +67,11 @@ public class RodLamp extends LampBase implements IWaterLoggable {
     }
 
     @Override
-    public boolean canContainFluid(IBlockReader p_204510_1_, BlockPos p_204510_2_, BlockState p_204510_3_, Fluid p_204510_4_) {
+    public boolean canContainFluid(@Nonnull IBlockReader p_204510_1_, @Nonnull BlockPos p_204510_2_, @Nonnull BlockState p_204510_3_, @Nonnull Fluid p_204510_4_) {
         return true;
     }
 
+    @Nonnull
     @Override
     public FluidState getFluidState(BlockState p_204507_1_) {
         return p_204507_1_.get(BlockStateProperties.WATERLOGGED)? Fluids.WATER.getStillFluidState(false) : super.getFluidState(p_204507_1_);

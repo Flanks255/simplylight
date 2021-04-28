@@ -15,6 +15,7 @@ import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 public abstract class RotatableLamp extends LampBase implements IWaterLoggable {
@@ -29,8 +30,9 @@ public abstract class RotatableLamp extends LampBase implements IWaterLoggable {
     public VoxelShape WEST;
     public VoxelShape EAST;
 
+    @Nonnull
     @Override
-    public VoxelShape getShape(BlockState blockState, IBlockReader p_220053_2_, BlockPos p_220053_3_, ISelectionContext p_220053_4_) {
+    public VoxelShape getShape(BlockState blockState, @Nonnull IBlockReader p_220053_2_, @Nonnull BlockPos p_220053_3_, @Nonnull ISelectionContext p_220053_4_) {
         VoxelShape ret;
         Direction facing = blockState.get(BlockStateProperties.FACING);
         //D-U-N-S-W-E
@@ -59,10 +61,11 @@ public abstract class RotatableLamp extends LampBase implements IWaterLoggable {
     }
 
     @Override
-    public boolean canContainFluid(IBlockReader p_204510_1_, BlockPos p_204510_2_, BlockState p_204510_3_, Fluid p_204510_4_) {
+    public boolean canContainFluid(@Nonnull IBlockReader p_204510_1_, @Nonnull BlockPos p_204510_2_, @Nonnull BlockState p_204510_3_, @Nonnull Fluid p_204510_4_) {
         return true;
     }
 
+    @Nonnull
     @Override
     public FluidState getFluidState(BlockState p_204507_1_) {
         return p_204507_1_.get(BlockStateProperties.WATERLOGGED)? Fluids.WATER.getStillFluidState(false) : super.getFluidState(p_204507_1_);
