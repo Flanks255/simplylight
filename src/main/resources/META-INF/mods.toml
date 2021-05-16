@@ -1,4 +1,4 @@
-modLoader="javafml" #mandatory
+modLoader="javafml"
 loaderVersion="[32,)" #mandatory
 license="MIT"
 issueTrackerURL="https://github.com/Flanks255/simplylight/issues" #optional
