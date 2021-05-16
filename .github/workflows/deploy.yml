@@ -3,7 +3,7 @@ name: Build and deploy
 on:
   push:
     tags:
-      - '!v*'
+      - 'v*'
 
 jobs:
   build:
@@ -32,3 +32,13 @@ jobs:
         run: |
           chmod +x ./gradlew
           ./gradlew build publish --stacktrace --no-daemon
+      - name: Release to CurseForge
+        if: |
+          !contains(github.event.head_commit.message, '[norelease]') && github.event.inputs.norelease != 'true'
+        env:
+          GIT_COMMIT: ${{ github.event.after }}
+          GIT_PREVIOUS_COMMIT: ${{ github.event.before }}
+          CURSEFORGE_KEY: ${{ secrets.CURSEFORGE_KEY }}
+        run: |
+          chmod +x ./gradlew
+          ./gradlew build curseforge --stacktrace --no-daemon
