@@ -2,31 +2,27 @@ buildscript {
     repositories {
         maven { url = 'https://forge.modpacks.ch/maven' }
         maven { url = 'https://maven.minecraftforge.net' }
-        jcenter()
+        maven { url = "https://plugins.gradle.org/m2/" }
         mavenCentral()
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '4.1.+', changing: true
+        classpath "gradle.plugin.com.matthewprenger:CurseGradle:1.4.0"
     }
 }
 apply plugin: 'net.minecraftforge.gradle'
-// Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
+apply plugin: "com.matthewprenger.cursegradle"
+apply from: 'https://files.saps.dev/ci/git-md-changelog.gradle'
 
 repositories {
-    maven {
-        url "https://www.cursemaven.com"
-    }
+    maven { url "https://www.cursemaven.com" }
+    maven { url "https://dvs1.progwml6.com/files/maven" }
 }
 
-repositories {
-    maven { // JEI
-        url "https://dvs1.progwml6.com/files/maven"
-    }
-}
-
-version = "${mod_version}"
+def ENV = System.getenv()
+version = "${mod_version}-build.${ENV.GITHUB_RUN_NUMBER ?: 9999}"
 group = "simplylight" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "simplylight"
 
@@ -43,10 +39,7 @@ minecraft {
         client {
             workingDirectory project.file('run')
 
-            // Recommended logging data for a userdev environment
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
-
-            // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
 
             mods {
@@ -59,10 +52,7 @@ minecraft {
         server {
             workingDirectory project.file('run')
 
-            // Recommended logging data for a userdev environment
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
-
-            // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
 
             mods {
@@ -75,13 +65,9 @@ minecraft {
         data {
             workingDirectory project.file('run')
 
-            // Recommended logging data for a userdev environment
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
-
-            // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
 
-            // Specify modid for data generation, where to output the resulting resource, and where to look for existing resources.
             args '--mod', 'simplylight', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
@@ -122,15 +108,42 @@ def reobfArtifact = artifacts.add('default', reobfFile) {
     type 'jar'
     builtBy 'reobfJar'
 }
+
 publishing {
     publications {
         mavenJava(MavenPublication) {
-            artifact reobfArtifact
+            artifact(reobfArtifact) {
+                builtBy reobfArtifact
+                artifactId = archivesBaseName
+                classifier null
+            }
         }
     }
+
     repositories {
-        maven {
-            url "file:///${project.projectDir}/mcmodsrepo"
+        if (ENV.SAPS_TOKEN) {
+            maven {
+                url "https://maven.saps.dev/minecraft"
+                credentials {
+                    username = "flanks"
+                    password = "${ENV.SAPS_TOKEN}"
+                }
+            }
+        }
+    }
+}
+
+if (ENV.CURSEFORGE_KEY) {
+    curseforge {
+        apiKey = ENV.CURSEFORGE_KEY
+        project {
+            id = project.curseforge_id
+            releaseType = "release"
+            addGameVersion "Forge"
+            addGameVersion "1.16.5"
+            mainArtifact(jar)
+            changelog = getGitChangelog
+            changelogType = 'markdown'
         }
     }
 }
