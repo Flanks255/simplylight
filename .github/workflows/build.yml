@@ -1,6 +1,12 @@
 name: Build and deploy
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - v*
+      - m*
 
 jobs:
   build:
