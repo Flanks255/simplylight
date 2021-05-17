@@ -6,5 +6,4 @@ out/
 run/
 .gradle/
 .idea/
-gradle/
 /logs/
