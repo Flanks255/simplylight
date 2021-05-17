@@ -23,7 +23,7 @@ repositories {
 
 def ENV = System.getenv()
 version = "${mod_version}-build.${ENV.GITHUB_RUN_NUMBER ?: 9999}"
-group = "simplylight" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+group = "com.flanks255"
 archivesBaseName = "simplylight"
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
