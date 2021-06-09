@@ -2,11 +2,13 @@ name: Build and deploy
 
 on:
   push:
-    branches:
-      - master
-    tags:
-      - v*
-      - m*
+    branches: [ master, dev ]
+  workflow_dispatch:
+    inputs:
+      norelease:
+        description: 'No CF Release'
+        required: true
+        default: 'false'
 
 jobs:
   build:
@@ -37,7 +39,7 @@ jobs:
           ./gradlew build publish --stacktrace --no-daemon
       - name: Release to CurseForge
         if: |
-          startsWith(github.ref, 'refs/tags/v') && !contains(github.event.head_commit.message, '[norelease]') && github.event.inputs.norelease != 'true'
+          !contains(github.event.head_commit.message, '[norelease]') && github.event.inputs.norelease != 'true' && github.ref == 'refs/heads/master'
         env:
           GIT_COMMIT: ${{ github.event.after }}
           GIT_PREVIOUS_COMMIT: ${{ github.event.before }}

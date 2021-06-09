@@ -1,6 +1,6 @@
 buildscript {
     repositories {
-        maven { url = 'https://forge.modpacks.ch/maven' }
+        maven { url = 'https://maven.creeperhost.net/' }
         maven { url = 'https://maven.minecraftforge.net' }
         maven { url = "https://plugins.gradle.org/m2/" }
         mavenCentral()
@@ -85,7 +85,7 @@ dependencies {
     compileOnly fg.deobf("mezz.jei:jei-${jei_version}:api")
     runtimeOnly fg.deobf("mezz.jei:jei-${jei_version}")
 
-    compile fg.deobf("curse.maven:TOP-245211:3157997")
+    compile fg.deobf("curse.maven:TOP-245211:3319255")
     compile fg.deobf("curse.maven:BUILDINGGADGETS-298187:3205295")
 }
 
