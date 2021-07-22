@@ -6,7 +6,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '4.1.+', changing: true
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
         classpath "gradle.plugin.com.matthewprenger:CurseGradle:1.4.0"
     }
 }
@@ -26,12 +26,14 @@ version = "${mod_version}-build.${ENV.GITHUB_RUN_NUMBER ?: 9999}"
 group = "com.flanks255"
 archivesBaseName = "simplylight"
 
-sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
+java.toolchain.languageVersion = JavaLanguageVersion.of(16)
+
+//sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
 
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 minecraft {
-    mappings channel: 'snapshot', version: "$mappings_version"
+    mappings channel: 'official', version: "$mappings_version"
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
     // accessTransformer = file('build/resources/main/META-INF/accesstransformer.cfg')
 
@@ -82,11 +84,11 @@ minecraft {
 dependencies {
     minecraft "net.minecraftforge:forge:$forge_version"
 
-    compileOnly fg.deobf("mezz.jei:jei-${jei_version}:api")
-    runtimeOnly fg.deobf("mezz.jei:jei-${jei_version}")
+    //compileOnly fg.deobf("mezz.jei:jei-${jei_version}:api")
+    //runtimeOnly fg.deobf("mezz.jei:jei-${jei_version}")
 
-    compile fg.deobf("curse.maven:TOP-245211:3319255")
-    compile fg.deobf("curse.maven:BUILDINGGADGETS-298187:3205295")
+    //compileOnly fg.deobf("curse.maven:TOP-245211:3319255")
+    //compileOnly fg.deobf("curse.maven:BUILDINGGADGETS-298187:3205295")
 }
 
 jar {
@@ -138,9 +140,9 @@ if (ENV.CURSEFORGE_KEY) {
         apiKey = ENV.CURSEFORGE_KEY
         project {
             id = project.curseforge_id
-            releaseType = "release"
+            releaseType = "beta"
             addGameVersion "Forge"
-            addGameVersion "1.16.5"
+            addGameVersion "1.17.1"
             mainArtifact(jar)
             changelog = getGitChangelog
             changelogType = 'markdown'

@@ -1,16 +1,17 @@
 package com.flanks255.simplylight.blocks;
 
-import net.minecraft.block.Block;
-import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.World;
+import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.resources.language.I18n;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -29,18 +30,18 @@ public class BaseBlockItem extends BlockItem {
 
     @OnlyIn(Dist.CLIENT)
     @Override
-    public void addInformation(@Nonnull ItemStack stack, @Nullable World worldIn, @Nonnull List<ITextComponent> tooltip, @Nonnull ITooltipFlag flagIn) {
-        super.addInformation(stack, worldIn, tooltip, flagIn);
-        if (Screen.hasShiftDown() && I18n.hasKey(block.getTranslationKey() + ".info")) {
-            tooltip.add(new TranslationTextComponent(block.getTranslationKey() + ".info"));
-            if (I18n.hasKey(block.getTranslationKey()+".info2")) {
-                tooltip.add(new TranslationTextComponent(block.getTranslationKey() + ".info2"));
-                if (I18n.hasKey(block.getTranslationKey() + ".info3"))
-                    tooltip.add(new TranslationTextComponent(block.getTranslationKey() + ".info3"));
+    public void appendHoverText(@Nonnull ItemStack stack, @Nullable Level worldIn, @Nonnull List<Component> tooltip, @Nonnull TooltipFlag flagIn) {
+        super.appendHoverText(stack, worldIn, tooltip, flagIn);
+        if (Screen.hasShiftDown() && I18n.exists(block.getDescriptionId() + ".info")) {
+            tooltip.add(new TranslatableComponent(block.getDescriptionId() + ".info"));
+            if (I18n.exists(block.getDescriptionId()+".info2")) {
+                tooltip.add(new TranslatableComponent(block.getDescriptionId() + ".info2"));
+                if (I18n.exists(block.getDescriptionId() + ".info3"))
+                    tooltip.add(new TranslatableComponent(block.getDescriptionId() + ".info3"));
             }
         }
         else {
-            tooltip.add(new TranslationTextComponent("simplylight.shift", new TranslationTextComponent("simplylight.key.shift").mergeStyle(TextFormatting.GOLD, TextFormatting.ITALIC)));
+            tooltip.add(new TranslatableComponent("simplylight.shift", new TranslatableComponent("simplylight.key.shift").withStyle(ChatFormatting.GOLD, ChatFormatting.ITALIC)));
         }
     }
 }

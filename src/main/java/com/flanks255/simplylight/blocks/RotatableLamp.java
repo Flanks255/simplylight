@@ -1,27 +1,28 @@
 package com.flanks255.simplylight.blocks;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.IWaterLoggable;
-import net.minecraft.fluid.Fluid;
-import net.minecraft.fluid.FluidState;
-import net.minecraft.fluid.Fluids;
-import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.state.StateContainer;
-import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.util.Direction;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.shapes.ISelectionContext;
-import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.world.IBlockReader;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public abstract class RotatableLamp extends LampBase implements IWaterLoggable {
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SimpleWaterloggedBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
+
+public abstract class RotatableLamp extends LampBase implements SimpleWaterloggedBlock {
     public RotatableLamp(Properties props) {
-        super(props.setLightLevel((bState) -> 15));
-        setDefaultState(getStateContainer().getBaseState().with(BlockStateProperties.WATERLOGGED, false));
+        super(props.lightLevel((bState) -> 15));
+        registerDefaultState(getStateDefinition().any().setValue(BlockStateProperties.WATERLOGGED, false));
     }
     public VoxelShape DOWN;
     public VoxelShape UP;
@@ -32,11 +33,11 @@ public abstract class RotatableLamp extends LampBase implements IWaterLoggable {
 
     @Nonnull
     @Override
-    public VoxelShape getShape(BlockState blockState, @Nonnull IBlockReader p_220053_2_, @Nonnull BlockPos p_220053_3_, @Nonnull ISelectionContext p_220053_4_) {
+    public VoxelShape getShape(BlockState blockState, @Nonnull BlockGetter world, @Nonnull BlockPos blockPos, @Nonnull CollisionContext context) {
         VoxelShape ret;
-        Direction facing = blockState.get(BlockStateProperties.FACING);
+        Direction facing = blockState.getValue(BlockStateProperties.FACING);
         //D-U-N-S-W-E
-        switch (facing.getIndex()) {
+        switch (facing.get3DDataValue()) {
             case 0:
                 ret = DOWN;
                 break;
@@ -61,30 +62,30 @@ public abstract class RotatableLamp extends LampBase implements IWaterLoggable {
     }
 
     @Override
-    public boolean canContainFluid(@Nonnull IBlockReader p_204510_1_, @Nonnull BlockPos p_204510_2_, @Nonnull BlockState p_204510_3_, @Nonnull Fluid p_204510_4_) {
+    public boolean canPlaceLiquid(@Nonnull BlockGetter world, @Nonnull BlockPos blockpos, @Nonnull BlockState blockState, @Nonnull Fluid fluid) {
         return true;
     }
 
     @Nonnull
     @Override
-    public FluidState getFluidState(BlockState p_204507_1_) {
-        return p_204507_1_.get(BlockStateProperties.WATERLOGGED)? Fluids.WATER.getStillFluidState(false) : super.getFluidState(p_204507_1_);
+    public FluidState getFluidState(BlockState blockState) {
+        return blockState.getValue(BlockStateProperties.WATERLOGGED)? Fluids.WATER.getSource(false) : super.getFluidState(blockState);
     }
 
     @Override
-    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> p_206840_1_) {
-        p_206840_1_.add(BlockStateProperties.FACING, BlockStateProperties.WATERLOGGED);
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(BlockStateProperties.FACING, BlockStateProperties.WATERLOGGED);
     }
 
     @Nullable
     @Override
-    public BlockState getStateForPlacement(BlockItemUseContext p_196258_1_) {
-        boolean waterlogged = p_196258_1_.getWorld().getFluidState(p_196258_1_.getPos()).getFluid() == Fluids.WATER;
-        return getDefaultState().with(BlockStateProperties.FACING, p_196258_1_.getFace()).with(BlockStateProperties.WATERLOGGED, waterlogged);
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        boolean waterlogged = context.getLevel().getFluidState(context.getClickedPos()).getType() == Fluids.WATER;
+        return defaultBlockState().setValue(BlockStateProperties.FACING, context.getClickedFace()).setValue(BlockStateProperties.WATERLOGGED, waterlogged);
     }
 
     @Override
-    public int getLightValue(BlockState state, IBlockReader world, BlockPos pos) {
+    public int getLightBlock(BlockState state, BlockGetter world, BlockPos pos) {
         return 15;
     }
 

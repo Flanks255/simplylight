@@ -3,13 +3,16 @@ package com.flanks255.simplylight.data;
 import com.flanks255.simplylight.SimplyLight;
 import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
-import net.minecraft.block.Block;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.LootTableProvider;
-import net.minecraft.data.loot.BlockLootTables;
-import net.minecraft.loot.*;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.RegistryObject;
+import net.minecraft.data.loot.BlockLoot;
+import net.minecraft.data.loot.LootTableProvider;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.ValidationContext;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSet;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
+import net.minecraftforge.fmllegacy.RegistryObject;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nonnull;
@@ -27,15 +30,15 @@ public class LootTables extends LootTableProvider {
 
     @Nonnull
     @Override
-    protected List<Pair<Supplier<Consumer<BiConsumer<ResourceLocation, LootTable.Builder>>>, LootParameterSet>> getTables() {
-        return ImmutableList.of(Pair.of(Blocks::new, LootParameterSets.BLOCK));
+    protected List<Pair<Supplier<Consumer<BiConsumer<ResourceLocation, LootTable.Builder>>>, LootContextParamSet>> getTables() {
+        return ImmutableList.of(Pair.of(Blocks::new, LootContextParamSets.BLOCK));
     }
 
-    private static class Blocks extends BlockLootTables {
+    private static class Blocks extends BlockLoot {
         @Override
         protected void addTables() {
             for(RegistryObject<Block> block : SimplyLight.BLOCKS.getEntries()) {
-                this.registerDropSelfLootTable(block.get());
+                this.dropSelf(block.get());
             }
         }
 
@@ -49,7 +52,7 @@ public class LootTables extends LootTableProvider {
     }
 
     @Override
-    protected void validate(Map<ResourceLocation, LootTable> map, @Nonnull ValidationTracker validationtracker) {
-        map.forEach((name, table) -> LootTableManager.validateLootTable(validationtracker, name, table));
+    protected void validate(Map<ResourceLocation, LootTable> map, @Nonnull ValidationContext validationTracker) {
+        map.forEach((name, table) -> net.minecraft.world.level.storage.loot.LootTables.validate(validationTracker, name, table));
     }
 }
