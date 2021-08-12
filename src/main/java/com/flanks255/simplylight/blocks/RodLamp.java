@@ -12,7 +12,6 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.*;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.common.ToolType;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -28,7 +27,7 @@ public class RodLamp extends LampBase implements SimpleWaterloggedBlock {
                 false, //isFlammable
                 false, //isReplaceable
                 PushReaction.NORMAL
-        )).strength(1.0f).harvestLevel(0).harvestTool(ToolType.PICKAXE).lightLevel((bState) -> 15));
+        )).strength(1.0f).lightLevel((bState) -> 15));
 
         registerDefaultState(getStateDefinition().any().setValue(BlockStateProperties.WATERLOGGED, false));
     }

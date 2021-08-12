@@ -5,14 +5,11 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
-import net.minecraftforge.common.ToolType;
 
 public class LightBulb extends RotatableLamp {
     public LightBulb() {
         super(Block.Properties.of(Material.DECORATION)
                 .noCollission()
-                .harvestLevel(0)
-                .harvestTool(ToolType.PICKAXE)
                 .strength(1.0f)
                 .lightLevel((bState) -> 14));
         UP = Block.box(6, 0, 6, 10, 5, 10);

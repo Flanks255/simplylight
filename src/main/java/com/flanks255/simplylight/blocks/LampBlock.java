@@ -14,7 +14,6 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraft.world.level.material.PushReaction;
-import net.minecraftforge.common.ToolType;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -30,9 +29,8 @@ public class LampBlock extends LampBase {
                 false,
                 false,
                 PushReaction.NORMAL
-        )).strength(1.0f)
-                .harvestLevel(0)
-                .harvestTool(ToolType.PICKAXE)
+        ))
+                .strength(1.0f)
                 .lightLevel((bState)-> bState.getValue(ON) ? 15 : 0));
         this.Default = Default;
 

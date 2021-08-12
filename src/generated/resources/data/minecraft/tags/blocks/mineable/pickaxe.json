@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "simplylight:illuminant_block",
+    "simplylight:illuminant_block_on",
+    "simplylight:illuminant_slab",
+    "simplylight:illuminant_panel",
+    "simplylight:wall_lamp",
+    "simplylight:lightbulb",
+    "simplylight:rodlamp",
+    "simplylight:edge_light",
+    "simplylight:edge_light_top"
+  ]
+}

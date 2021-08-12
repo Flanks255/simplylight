@@ -17,7 +17,6 @@ import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.common.ToolType;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -25,8 +24,6 @@ import javax.annotation.Nullable;
 public class EdgeLight extends LampBase implements SimpleWaterloggedBlock {
     public EdgeLight(Boolean top) {
         super(Block.Properties.of(Material.DECORATION)
-                .harvestLevel(0)
-                .harvestTool(ToolType.PICKAXE)
                 .strength(1.0f)
                 .noCollission()
                 .lightLevel((bState) -> 14)

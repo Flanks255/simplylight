@@ -9,7 +9,6 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraft.world.level.material.PushReaction;
-import net.minecraftforge.common.ToolType;
 
 import javax.annotation.Nullable;
 
@@ -24,7 +23,7 @@ public class ThinLamp extends RotatableLamp {
                 false, //isFlammable
                 false, //isReplaceable
                 PushReaction.NORMAL
-        )).strength(1.0f).harvestLevel(0).harvestTool(ToolType.PICKAXE));
+        )).strength(1.0f));
 
         UP = Block.box(0,0,0, 16,thickness,16);
         DOWN = Block.box(0,16 - thickness,0, 16,16,16);
