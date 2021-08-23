@@ -87,6 +87,7 @@ dependencies {
 
     compile fg.deobf("curse.maven:TOP-245211:3319255")
     compile fg.deobf("curse.maven:BUILDINGGADGETS-298187:3205295")
+    compile fg.deobf("curse.maven:CTM-267602:3137659")
 }
 
 jar {

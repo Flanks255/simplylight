@@ -3,7 +3,7 @@
     "ambientocclusion":false,
     "textures":{
         "particle": "simplylight:block/illuminant_block",
-        "up":"simplylight:block/illuminant_block_on",
+        "up":"simplylight:block/illuminant_slab",
         "sides":"simplylight:block/illuminant_slab_sides",
         "down":"simplylight:block/illuminant_slab_down"
     },
