@@ -6,7 +6,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '4.1.+', changing: true
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
         classpath "gradle.plugin.com.matthewprenger:CurseGradle:1.4.0"
     }
 }
@@ -26,7 +26,7 @@ version = "${mod_version}-build.${ENV.GITHUB_RUN_NUMBER ?: 9999}"
 group = "com.flanks255"
 archivesBaseName = "simplylight"
 
-sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
+java.toolchain.languageVersion = JavaLanguageVersion.of(8)
 
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
@@ -85,9 +85,9 @@ dependencies {
     compileOnly fg.deobf("mezz.jei:jei-${jei_version}:api")
     runtimeOnly fg.deobf("mezz.jei:jei-${jei_version}")
 
-    compile fg.deobf("curse.maven:TOP-245211:3319255")
-    compile fg.deobf("curse.maven:BUILDINGGADGETS-298187:3205295")
-    compile fg.deobf("curse.maven:CTM-267602:3137659")
+    runtimeOnly fg.deobf("curse.maven:TOP-245211:3319255")
+    runtimeOnly fg.deobf("curse.maven:BUILDINGGADGETS-298187:3205295")
+    runtimeOnly fg.deobf("curse.maven:CTM-267602:3137659")
 }
 
 jar {
