@@ -21,6 +21,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+@SuppressWarnings("deprecation")
 public class EdgeLight extends LampBase implements SimpleWaterloggedBlock {
     public EdgeLight(Boolean top) {
         super(Block.Properties.of(Material.DECORATION)
@@ -53,15 +54,15 @@ public class EdgeLight extends LampBase implements SimpleWaterloggedBlock {
 
     @Nonnull
     @Override
-    public VoxelShape getShape(BlockState state, @Nonnull BlockGetter p_220053_2_, @Nonnull BlockPos p_220053_3_, @Nonnull CollisionContext p_220053_4_) {
+    public VoxelShape getShape(BlockState pState, @Nonnull BlockGetter pLevel, @Nonnull BlockPos pPos, @Nonnull CollisionContext pContext) {
         VoxelShape shape = Shapes.empty();
-        if (state.getValue(NORTH))
+        if (pState.getValue(NORTH))
             shape = Shapes.or(shape, VS_NORTH);
-        if (state.getValue(SOUTH))
+        if (pState.getValue(SOUTH))
             shape = Shapes.or(shape, VS_SOUTH);
-        if (state.getValue(EAST))
+        if (pState.getValue(EAST))
             shape = Shapes.or(shape, VS_EAST);
-        if (state.getValue(WEST))
+        if (pState.getValue(WEST))
             shape = Shapes.or(shape, VS_WEST);
 
         if (shape.isEmpty())
@@ -89,23 +90,23 @@ public class EdgeLight extends LampBase implements SimpleWaterloggedBlock {
     }
 
     @Override
-    public boolean canPlaceLiquid(@Nonnull BlockGetter p_204510_1_, @Nonnull BlockPos p_204510_2_, @Nonnull BlockState p_204510_3_, @Nonnull Fluid p_204510_4_) {
+    public boolean canPlaceLiquid(@Nonnull BlockGetter pLevel, @Nonnull BlockPos pPos, @Nonnull BlockState pState, @Nonnull Fluid pFluid) {
         return true;
     }
 
     @Nonnull
     @Override
-    public FluidState getFluidState(BlockState p_204507_1_) {
-        return p_204507_1_.getValue(BlockStateProperties.WATERLOGGED)? Fluids.WATER.getSource(false) : super.getFluidState(p_204507_1_);
+    public FluidState getFluidState(BlockState pState) {
+        return pState.getValue(BlockStateProperties.WATERLOGGED)? Fluids.WATER.getSource(false) : super.getFluidState(pState);
     }
 
     @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_206840_1_) {
-        p_206840_1_.add(NORTH, SOUTH, EAST, WEST, BlockStateProperties.WATERLOGGED);
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
+        pBuilder.add(NORTH, SOUTH, EAST, WEST, BlockStateProperties.WATERLOGGED);
     }
 
     @Override
-    public int getLightBlock(BlockState state, BlockGetter world, BlockPos pos) {
+    public int getLightBlock(@Nonnull BlockState pState, @Nonnull BlockGetter pLevel, @Nonnull BlockPos pPos) {
         return 14;
     }
 }

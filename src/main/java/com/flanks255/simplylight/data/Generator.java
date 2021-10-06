@@ -7,7 +7,7 @@ public class Generator {
     public static void gatherData(GatherDataEvent event) {
         DataGenerator generator = event.getGenerator();
 
-        generator.addProvider(new LootTables(generator));
+        generator.addProvider(new SLLootTables(generator));
         generator.addProvider(new Recipes(generator));
         generator.addProvider(new BlockStates(generator, event.getExistingFileHelper()));
         generator.addProvider(new ItemModels(generator, event.getExistingFileHelper()));

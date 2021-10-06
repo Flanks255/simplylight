@@ -2,10 +2,6 @@ package com.flanks255.simplylight.blocks;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
@@ -19,6 +15,10 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
+@SuppressWarnings("deprecation")
 public abstract class RotatableLamp extends LampBase implements SimpleWaterloggedBlock {
     public RotatableLamp(Properties props) {
         super(props.lightLevel((bState) -> 15));
@@ -34,31 +34,16 @@ public abstract class RotatableLamp extends LampBase implements SimpleWaterlogge
     @Nonnull
     @Override
     public VoxelShape getShape(BlockState blockState, @Nonnull BlockGetter world, @Nonnull BlockPos blockPos, @Nonnull CollisionContext context) {
-        VoxelShape ret;
         Direction facing = blockState.getValue(BlockStateProperties.FACING);
         //D-U-N-S-W-E
-        switch (facing.get3DDataValue()) {
-            case 0:
-                ret = DOWN;
-                break;
-            default:
-            case 1:
-                ret = UP;
-                break;
-            case 2:
-                ret = NORTH;
-                break;
-            case 3:
-                ret = SOUTH;
-                break;
-            case 4:
-                ret = WEST;
-                break;
-            case 5:
-                ret = EAST;
-                break;
-        }
-        return ret;
+        return switch (facing.get3DDataValue()) {
+            case 0 -> DOWN;
+            default -> UP;
+            case 2 -> NORTH;
+            case 3 -> SOUTH;
+            case 4 -> WEST;
+            case 5 -> EAST;
+        };
     }
 
     @Override
@@ -85,7 +70,7 @@ public abstract class RotatableLamp extends LampBase implements SimpleWaterlogge
     }
 
     @Override
-    public int getLightBlock(BlockState state, BlockGetter world, BlockPos pos) {
+    public int getLightBlock(@Nonnull BlockState state, @Nonnull BlockGetter world, @Nonnull BlockPos pos) {
         return 15;
     }
 

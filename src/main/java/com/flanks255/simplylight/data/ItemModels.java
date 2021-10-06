@@ -16,9 +16,7 @@ public class ItemModels extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        SimplyLight.BLOCKS.getEntries().forEach((block) -> {
-            registerBlockItem(block.get());
-        });
+        SimplyLight.BLOCKS.getEntries().forEach((block) -> registerBlockItem(block.get()));
     }
 
     private void registerBlockItem(Block block) {

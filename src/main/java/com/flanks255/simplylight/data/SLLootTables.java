@@ -9,6 +9,7 @@ import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.LootTables;
 import net.minecraft.world.level.storage.loot.ValidationContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSet;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
@@ -23,8 +24,8 @@ import java.util.function.Consumer;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
-public class LootTables extends LootTableProvider {
-    public LootTables(DataGenerator gen) {
+public class SLLootTables extends LootTableProvider {
+    public SLLootTables(DataGenerator gen) {
         super(gen);
     }
 
@@ -53,6 +54,6 @@ public class LootTables extends LootTableProvider {
 
     @Override
     protected void validate(Map<ResourceLocation, LootTable> map, @Nonnull ValidationContext validationTracker) {
-        map.forEach((name, table) -> net.minecraft.world.level.storage.loot.LootTables.validate(validationTracker, name, table));
+        map.forEach((name, table) -> LootTables.validate(validationTracker, name, table));
     }
 }

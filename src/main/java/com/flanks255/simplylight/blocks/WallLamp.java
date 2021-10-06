@@ -7,6 +7,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.shapes.Shapes;
 
+import javax.annotation.Nonnull;
+
 public class WallLamp extends RotatableLamp{
     public WallLamp() {
         super(Block.Properties.of(Material.DECORATION).noCollission().strength(1.0f).lightLevel((bState) -> 15));
@@ -20,7 +22,7 @@ public class WallLamp extends RotatableLamp{
     }
 
     @Override
-    public int getLightBlock(BlockState state, BlockGetter world, BlockPos pos) {
+    public int getLightBlock(@Nonnull BlockState state, @Nonnull BlockGetter world, @Nonnull BlockPos pos) {
         return 15;
     }
 }

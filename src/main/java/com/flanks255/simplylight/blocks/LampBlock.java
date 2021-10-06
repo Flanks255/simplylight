@@ -1,7 +1,6 @@
 package com.flanks255.simplylight.blocks;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -18,6 +17,7 @@ import net.minecraft.world.level.material.PushReaction;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+@SuppressWarnings("deprecation")
 public class LampBlock extends LampBase {
     public LampBlock(boolean Default) {
         super(Block.Properties.of(new Material(
@@ -41,8 +41,8 @@ public class LampBlock extends LampBase {
     public static final BooleanProperty ON = BooleanProperty.create("on");
 
     @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_206840_1_) {
-        p_206840_1_.add(ON);
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> blockStateBuilder) {
+        blockStateBuilder.add(ON);
     }
 
 
@@ -53,28 +53,28 @@ public class LampBlock extends LampBase {
     }
 
     @Override
-    public void setPlacedBy(@Nonnull Level worldIn, @Nonnull BlockPos pos, @Nonnull BlockState state, @Nullable LivingEntity placer, @Nonnull ItemStack stack) {
-        super.setPlacedBy(worldIn, pos, state, placer, stack);
-        boolean powered = worldIn.hasNeighborSignal(pos);
+    public void setPlacedBy(@Nonnull Level pLevel, @Nonnull BlockPos pPos, @Nonnull BlockState pState, @Nullable LivingEntity pPlacer, @Nonnull ItemStack pStack) {
+        super.setPlacedBy(pLevel, pPos, pState, pPlacer, pStack);
+        boolean powered = pLevel.hasNeighborSignal(pPos);
         if (powered) {
-            worldIn.setBlockAndUpdate(pos,this.defaultBlockState().setValue(ON, !Default));
+            pLevel.setBlockAndUpdate(pPos,this.defaultBlockState().setValue(ON, !Default));
         }
     }
 
     @Override
-    public void neighborChanged(@Nonnull BlockState p_220069_1_, @Nonnull Level worldIn, @Nonnull BlockPos p_220069_3_, @Nonnull Block p_220069_4_, @Nonnull BlockPos p_220069_5_, boolean p_220069_6_) {
-        super.neighborChanged(p_220069_1_, worldIn, p_220069_3_, p_220069_4_, p_220069_5_, p_220069_6_);
-        boolean on = Default != worldIn.hasNeighborSignal(p_220069_3_);
-        worldIn.setBlockAndUpdate(p_220069_3_, defaultBlockState().setValue(ON, on));
+    public void neighborChanged(@Nonnull BlockState pState, @Nonnull Level pLevel, @Nonnull BlockPos pPos, @Nonnull Block pBlock, @Nonnull BlockPos pFromPos, boolean pIsMoving) {
+        super.neighborChanged(pState, pLevel, pPos, pBlock, pFromPos, pIsMoving);
+        boolean on = Default != pLevel.hasNeighborSignal(pPos);
+        pLevel.setBlockAndUpdate(pPos, defaultBlockState().setValue(ON, on));
     }
 
     @Override
-    public int getLightBlock(BlockState state, BlockGetter world, BlockPos pos) {
-        return state.getValue(ON)?15:0;
+    public int getLightBlock(BlockState pState, @Nonnull BlockGetter pLevel, @Nonnull BlockPos pPos) {
+        return pState.getValue(ON)?15:0;
     }
 
     @Override
-    public boolean isSignalSource(BlockState p_60571_) {
+    public boolean isSignalSource(@Nonnull BlockState pState) {
         return true;
     }
 }
