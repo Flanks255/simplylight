@@ -35,7 +35,7 @@ public class LootTables extends LootTableProvider {
         @Override
         protected void addTables() {
             for(RegistryObject<Block> block : SimplyLight.BLOCKS.getEntries()) {
-                this.registerDropSelfLootTable(block.get());
+                this.dropSelf(block.get());
             }
         }
 
@@ -50,6 +50,6 @@ public class LootTables extends LootTableProvider {
 
     @Override
     protected void validate(Map<ResourceLocation, LootTable> map, @Nonnull ValidationTracker validationtracker) {
-        map.forEach((name, table) -> LootTableManager.validateLootTable(validationtracker, name, table));
+        map.forEach((name, table) -> LootTableManager.validate(validationtracker, name, table));
     }
 }

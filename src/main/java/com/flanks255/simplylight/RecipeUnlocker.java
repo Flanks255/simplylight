@@ -32,7 +32,7 @@ public class RecipeUnlocker {
             if (server != null) {
                 List<IRecipe<?>> recipes = new ArrayList<>(server.getRecipeManager().getRecipes());
                 recipes.removeIf((recipe -> !recipe.getId().getNamespace().contains(SimplyLight.MODID)));
-                player.unlockRecipes(recipes);
+                player.awardRecipes(recipes);
                 tag.putInt(modtag, version);
             }
         }

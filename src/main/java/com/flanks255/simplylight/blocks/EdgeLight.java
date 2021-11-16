@@ -24,29 +24,29 @@ import javax.annotation.Nullable;
 
 public class EdgeLight extends LampBase implements IWaterLoggable {
     public EdgeLight(Boolean top) {
-        super(Block.Properties.create(Material.MISCELLANEOUS)
+        super(Block.Properties.of(Material.DECORATION)
                 .harvestLevel(0)
                 .harvestTool(ToolType.PICKAXE)
-                .hardnessAndResistance(1.0f)
-                .doesNotBlockMovement()
-                .setLightLevel((bState) -> 14)
+                .strength(1.0f)
+                .noCollission()
+                .lightLevel((bState) -> 14)
         );
 
-        setDefaultState(getStateContainer().getBaseState().with(BlockStateProperties.WATERLOGGED, false));
+        registerDefaultState(getStateDefinition().any().setValue(BlockStateProperties.WATERLOGGED, false));
 
         if (top) {
-            VS_WEST = VoxelShapes.create(0.0, 0.9375, 0.0, 0.0625, 1.0, 1.0);
-            VS_EAST = VoxelShapes.create(1.0, 0.9375, 0.0, 0.9375, 1.0, 1.0);
-            VS_SOUTH = VoxelShapes.create(0.0, 0.9375, 0.9375, 1.0, 1.0, 1.0);
-            VS_NORTH = VoxelShapes.create(0.0, 0.9375, 0.0, 1.0, 1.0, 0.0625);
+            VS_WEST = VoxelShapes.box(0.0, 0.9375, 0.0, 0.0625, 1.0, 1.0);
+            VS_EAST = VoxelShapes.box(1.0, 0.9375, 0.0, 0.9375, 1.0, 1.0);
+            VS_SOUTH = VoxelShapes.box(0.0, 0.9375, 0.9375, 1.0, 1.0, 1.0);
+            VS_NORTH = VoxelShapes.box(0.0, 0.9375, 0.0, 1.0, 1.0, 0.0625);
             VS_ALL = VoxelShapes.or(VS_WEST, VS_EAST, VS_NORTH, VS_SOUTH);
         }
     }
 
-    public VoxelShape VS_WEST = VoxelShapes.create(0.0, 0.0, 0.0, 0.0625, 0.0625, 1.0);
-    public VoxelShape VS_EAST = VoxelShapes.create(1.0, 0.0, 0.0, 1.0-0.0625, 0.0625, 1.0);
-    public VoxelShape VS_SOUTH = VoxelShapes.create(0.0, 0.0, 1.0 - 0.0625, 1.0, 0.0625, 1.0);
-    public VoxelShape VS_NORTH = VoxelShapes.create(0.0, 0.0, 0.0, 1.0, 0.0625, 0.0625);
+    public VoxelShape VS_WEST = VoxelShapes.box(0.0, 0.0, 0.0, 0.0625, 0.0625, 1.0);
+    public VoxelShape VS_EAST = VoxelShapes.box(1.0, 0.0, 0.0, 1.0-0.0625, 0.0625, 1.0);
+    public VoxelShape VS_SOUTH = VoxelShapes.box(0.0, 0.0, 1.0 - 0.0625, 1.0, 0.0625, 1.0);
+    public VoxelShape VS_NORTH = VoxelShapes.box(0.0, 0.0, 0.0, 1.0, 0.0625, 0.0625);
     public VoxelShape VS_ALL = VoxelShapes.or(VS_WEST, VS_EAST, VS_NORTH, VS_SOUTH);
 
     public static final BooleanProperty NORTH = BooleanProperty.create("north");
@@ -58,13 +58,13 @@ public class EdgeLight extends LampBase implements IWaterLoggable {
     @Override
     public VoxelShape getShape(BlockState state, @Nonnull IBlockReader p_220053_2_, @Nonnull BlockPos p_220053_3_, @Nonnull ISelectionContext p_220053_4_) {
         VoxelShape shape = VoxelShapes.empty();
-        if (state.get(NORTH))
+        if (state.getValue(NORTH))
             shape = VoxelShapes.or(shape, VS_NORTH);
-        if (state.get(SOUTH))
+        if (state.getValue(SOUTH))
             shape = VoxelShapes.or(shape, VS_SOUTH);
-        if (state.get(EAST))
+        if (state.getValue(EAST))
             shape = VoxelShapes.or(shape, VS_EAST);
-        if (state.get(WEST))
+        if (state.getValue(WEST))
             shape = VoxelShapes.or(shape, VS_WEST);
 
         if (shape.isEmpty())
@@ -74,36 +74,36 @@ public class EdgeLight extends LampBase implements IWaterLoggable {
     }
 
     public boolean checkSide(BlockItemUseContext context, Direction direction) {
-        BlockPos pos = context.getPos().offset(direction);
+        BlockPos pos = context.getClickedPos().relative(direction);
 
         //return hasSolidSide(context.getWorld().getBlockState(pos), context.getWorld(), pos, direction.getOpposite());
-        return hasEnoughSolidSide(context.getWorld(),pos,direction.getOpposite());
+        return canSupportCenter(context.getLevel(),pos,direction.getOpposite());
     }
 
     @Nullable
     @Override
     public BlockState getStateForPlacement(BlockItemUseContext context) {
-        boolean waterlogged = context.getWorld().getFluidState(context.getPos()).getFluid() == Fluids.WATER;
-        return getDefaultState().with(BlockStateProperties.WATERLOGGED, waterlogged)
-                .with(NORTH, checkSide(context, Direction.NORTH))
-                .with(SOUTH, checkSide(context, Direction.SOUTH))
-                .with(EAST, checkSide(context, Direction.EAST))
-                .with(WEST, checkSide(context, Direction.WEST));
+        boolean waterlogged = context.getLevel().getFluidState(context.getClickedPos()).getType() == Fluids.WATER;
+        return defaultBlockState().setValue(BlockStateProperties.WATERLOGGED, waterlogged)
+                .setValue(NORTH, checkSide(context, Direction.NORTH))
+                .setValue(SOUTH, checkSide(context, Direction.SOUTH))
+                .setValue(EAST, checkSide(context, Direction.EAST))
+                .setValue(WEST, checkSide(context, Direction.WEST));
     }
 
     @Override
-    public boolean canContainFluid(@Nonnull IBlockReader p_204510_1_, @Nonnull BlockPos p_204510_2_, @Nonnull BlockState p_204510_3_, @Nonnull Fluid p_204510_4_) {
+    public boolean canPlaceLiquid(@Nonnull IBlockReader p_204510_1_, @Nonnull BlockPos p_204510_2_, @Nonnull BlockState p_204510_3_, @Nonnull Fluid p_204510_4_) {
         return true;
     }
 
     @Nonnull
     @Override
     public FluidState getFluidState(BlockState p_204507_1_) {
-        return p_204507_1_.get(BlockStateProperties.WATERLOGGED)? Fluids.WATER.getStillFluidState(false) : super.getFluidState(p_204507_1_);
+        return p_204507_1_.getValue(BlockStateProperties.WATERLOGGED)? Fluids.WATER.getSource(false) : super.getFluidState(p_204507_1_);
     }
 
     @Override
-    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> p_206840_1_) {
+    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> p_206840_1_) {
         p_206840_1_.add(NORTH, SOUTH, EAST, WEST, BlockStateProperties.WATERLOGGED);
     }
 

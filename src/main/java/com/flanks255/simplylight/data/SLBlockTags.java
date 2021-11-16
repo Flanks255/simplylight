@@ -15,7 +15,7 @@ public class SLBlockTags extends BlockTagsProvider {
 
 
     @Override
-    protected void registerTags() {
-        this.getOrCreateBuilder(BlockTags.WALL_POST_OVERRIDE).add(SimplyLight.LIGHTBULB.get());
+    protected void addTags() {
+        this.tag(BlockTags.WALL_POST_OVERRIDE).add(SimplyLight.LIGHTBULB.get());
     }
 }

@@ -24,9 +24,9 @@ public class JEIPlugin implements IModPlugin {
     @Override
     public void registerRecipes(@Nonnull IRecipeRegistration registration) {
         SimplyLight.ITEMS.getEntries().forEach((item) -> {
-            String key = item.get().getTranslationKey()+".jei.info";
-            if (I18n.hasKey(key)) {
-                String langEntry = TextFormatting.getTextWithoutFormattingCodes(I18n.format(key));
+            String key = item.get().getDescriptionId()+".jei.info";
+            if (I18n.exists(key)) {
+                String langEntry = TextFormatting.stripFormatting(I18n.get(key));
                 if (langEntry != null)
                     registration.addIngredientInfo(new ItemStack(item.get()), VanillaTypes.ITEM, StringUtils.splitByWholeSeparator(langEntry, "//n"));
             }

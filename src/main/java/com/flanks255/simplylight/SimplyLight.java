@@ -29,10 +29,10 @@ public class SimplyLight
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
 
-    private static final Item.Properties ITEMPROPERTIES = new Item.Properties().group(new ItemGroup(MODID) {
+    private static final Item.Properties ITEMPROPERTIES = new Item.Properties().tab(new ItemGroup(MODID) {
         @Nonnull
         @Override
-        public ItemStack createIcon() {
+        public ItemStack makeIcon() {
             return new ItemStack(ILLUMINANTBLOCK_ON.get());
         }
     });
@@ -59,6 +59,6 @@ public class SimplyLight
     }
 
     private void ClientSetup(final FMLClientSetupEvent clientSetupEvent) {
-        RenderTypeLookup.setRenderLayer(LIGHTBULB.get(), renderType -> renderType == RenderType.getSolid() || renderType == RenderType.getTranslucent());
+        RenderTypeLookup.setRenderLayer(LIGHTBULB.get(), renderType -> renderType == RenderType.solid() || renderType == RenderType.translucent());
     }
 }

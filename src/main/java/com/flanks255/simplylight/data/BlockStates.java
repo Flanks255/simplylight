@@ -103,11 +103,11 @@ public class BlockStates  extends BlockStateProvider {
     public void myDirectionalBlock(Block block, Function<BlockState, ModelFile> modelFunc, int angleOffset) {
         getVariantBuilder(block)
                 .forAllStatesExcept(state -> {
-                    Direction dir = state.get(BlockStateProperties.FACING);
+                    Direction dir = state.getValue(BlockStateProperties.FACING);
                     return ConfiguredModel.builder()
                             .modelFile(modelFunc.apply(state))
                             .rotationX(dir == Direction.DOWN ? 180 : dir.getAxis().isHorizontal() ? 90 : 0)
-                            .rotationY(dir.getAxis().isVertical() ? 0 : (((int) dir.getHorizontalAngle()) + angleOffset) % 360)
+                            .rotationY(dir.getAxis().isVertical() ? 0 : (((int) dir.toYRot()) + angleOffset) % 360)
                             .build();
                 }, BlockStateProperties.WATERLOGGED);
     }

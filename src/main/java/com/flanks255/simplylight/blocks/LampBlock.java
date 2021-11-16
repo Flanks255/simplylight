@@ -21,8 +21,8 @@ import javax.annotation.Nullable;
 
 public class LampBlock extends LampBase {
     public LampBlock(boolean Default) {
-        super(Block.Properties.create(new Material(
-                MaterialColor.WHITE_TERRACOTTA,
+        super(Block.Properties.of(new Material(
+                MaterialColor.TERRACOTTA_WHITE,
                 false,
                 true,
                 true,
@@ -30,48 +30,48 @@ public class LampBlock extends LampBase {
                 false,
                 false,
                 PushReaction.NORMAL
-        )).hardnessAndResistance(1.0f)
+        )).strength(1.0f)
                 .harvestLevel(0)
                 .harvestTool(ToolType.PICKAXE)
-                .setLightLevel((bState)-> bState.get(ON) ? 15 : 0));
+                .lightLevel((bState)-> bState.getValue(ON) ? 15 : 0));
         this.Default = Default;
 
-        setDefaultState(getStateContainer().getBaseState().with(ON, Default));
+        registerDefaultState(getStateDefinition().any().setValue(ON, Default));
     }
 
     private final boolean Default;
     public static final BooleanProperty ON = BooleanProperty.create("on");
 
     @Override
-    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> p_206840_1_) {
+    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> p_206840_1_) {
         p_206840_1_.add(ON);
     }
 
     @Nullable
     @Override
     public BlockState getStateForPlacement(@Nonnull BlockItemUseContext context) {
-        return this.getDefaultState().with(ON, Default);
+        return this.defaultBlockState().setValue(ON, Default);
     }
 
     @Override
-    public void onBlockPlacedBy(@Nonnull World worldIn, @Nonnull BlockPos pos, @Nonnull BlockState state, @Nullable LivingEntity placer, @Nonnull ItemStack stack) {
-        super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
-        boolean powered = worldIn.isBlockPowered(pos);
+    public void setPlacedBy(@Nonnull World worldIn, @Nonnull BlockPos pos, @Nonnull BlockState state, @Nullable LivingEntity placer, @Nonnull ItemStack stack) {
+        super.setPlacedBy(worldIn, pos, state, placer, stack);
+        boolean powered = worldIn.hasNeighborSignal(pos);
         if (powered) {
-            worldIn.setBlockState(pos,this.getDefaultState().with(ON, !Default));
+            worldIn.setBlockAndUpdate(pos,this.defaultBlockState().setValue(ON, !Default));
         }
     }
 
     @Override
     public void neighborChanged(@Nonnull BlockState p_220069_1_, @Nonnull World worldIn, @Nonnull BlockPos p_220069_3_, @Nonnull Block p_220069_4_, @Nonnull BlockPos p_220069_5_, boolean p_220069_6_) {
         super.neighborChanged(p_220069_1_, worldIn, p_220069_3_, p_220069_4_, p_220069_5_, p_220069_6_);
-        boolean on = Default != worldIn.isBlockPowered(p_220069_3_);
-        worldIn.setBlockState(p_220069_3_, getDefaultState().with(ON, on));
+        boolean on = Default != worldIn.hasNeighborSignal(p_220069_3_);
+        worldIn.setBlockAndUpdate(p_220069_3_, defaultBlockState().setValue(ON, on));
     }
 
     @Override
     public int getLightValue(BlockState state, IBlockReader world, BlockPos pos) {
-        return state.get(ON)?15:0;
+        return state.getValue(ON)?15:0;
     }
 
     @Override

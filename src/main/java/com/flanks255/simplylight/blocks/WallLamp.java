@@ -10,14 +10,14 @@ import net.minecraftforge.common.ToolType;
 
 public class WallLamp extends RotatableLamp{
     public WallLamp() {
-        super(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().harvestLevel(0).harvestTool(ToolType.PICKAXE).hardnessAndResistance(1.0f).setLightLevel((bState) -> 15));
+        super(Block.Properties.of(Material.DECORATION).noCollission().harvestLevel(0).harvestTool(ToolType.PICKAXE).strength(1.0f).lightLevel((bState) -> 15));
 
-        UP = VoxelShapes.create(0.375,0.0, 0.375,0.625, 0.125,0.625);
-        DOWN = VoxelShapes.create(0.375, 1.0, 0.375, 0.625, 1.0 - 0.125, 0.625);
-        EAST = VoxelShapes.create(0.0, 0.375, 0.25, 0.1875, 0.625, 0.75);
-        WEST = VoxelShapes.create(1.0, 0.375, 0.25, 1.0 - 0.1875, 0.625, 0.75);
-        NORTH = VoxelShapes.create(0.25, 0.375, 1.0, 0.75, 0.625, 1.0 - 0.1875);
-        SOUTH = VoxelShapes.create(0.25, 0.375, 0.0, 0.75, 0.625, 0.1875);
+        UP = VoxelShapes.box(0.375,0.0, 0.375,0.625, 0.125,0.625);
+        DOWN = VoxelShapes.box(0.375, 1.0, 0.375, 0.625, 1.0 - 0.125, 0.625);
+        EAST = VoxelShapes.box(0.0, 0.375, 0.25, 0.1875, 0.625, 0.75);
+        WEST = VoxelShapes.box(1.0, 0.375, 0.25, 1.0 - 0.1875, 0.625, 0.75);
+        NORTH = VoxelShapes.box(0.25, 0.375, 1.0, 0.75, 0.625, 1.0 - 0.1875);
+        SOUTH = VoxelShapes.box(0.25, 0.375, 0.0, 0.75, 0.625, 0.1875);
     }
 
     @Override

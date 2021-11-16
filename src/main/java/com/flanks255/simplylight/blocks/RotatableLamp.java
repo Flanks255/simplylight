@@ -18,10 +18,12 @@ import net.minecraft.world.IBlockReader;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import net.minecraft.block.AbstractBlock.Properties;
+
 public abstract class RotatableLamp extends LampBase implements IWaterLoggable {
     public RotatableLamp(Properties props) {
-        super(props.setLightLevel((bState) -> 15));
-        setDefaultState(getStateContainer().getBaseState().with(BlockStateProperties.WATERLOGGED, false));
+        super(props.lightLevel((bState) -> 15));
+        registerDefaultState(getStateDefinition().any().setValue(BlockStateProperties.WATERLOGGED, false));
     }
     public VoxelShape DOWN;
     public VoxelShape UP;
@@ -34,9 +36,9 @@ public abstract class RotatableLamp extends LampBase implements IWaterLoggable {
     @Override
     public VoxelShape getShape(BlockState blockState, @Nonnull IBlockReader p_220053_2_, @Nonnull BlockPos p_220053_3_, @Nonnull ISelectionContext p_220053_4_) {
         VoxelShape ret;
-        Direction facing = blockState.get(BlockStateProperties.FACING);
+        Direction facing = blockState.getValue(BlockStateProperties.FACING);
         //D-U-N-S-W-E
-        switch (facing.getIndex()) {
+        switch (facing.get3DDataValue()) {
             case 0:
                 ret = DOWN;
                 break;
@@ -61,26 +63,26 @@ public abstract class RotatableLamp extends LampBase implements IWaterLoggable {
     }
 
     @Override
-    public boolean canContainFluid(@Nonnull IBlockReader p_204510_1_, @Nonnull BlockPos p_204510_2_, @Nonnull BlockState p_204510_3_, @Nonnull Fluid p_204510_4_) {
+    public boolean canPlaceLiquid(@Nonnull IBlockReader p_204510_1_, @Nonnull BlockPos p_204510_2_, @Nonnull BlockState p_204510_3_, @Nonnull Fluid p_204510_4_) {
         return true;
     }
 
     @Nonnull
     @Override
     public FluidState getFluidState(BlockState p_204507_1_) {
-        return p_204507_1_.get(BlockStateProperties.WATERLOGGED)? Fluids.WATER.getStillFluidState(false) : super.getFluidState(p_204507_1_);
+        return p_204507_1_.getValue(BlockStateProperties.WATERLOGGED)? Fluids.WATER.getSource(false) : super.getFluidState(p_204507_1_);
     }
 
     @Override
-    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> p_206840_1_) {
+    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> p_206840_1_) {
         p_206840_1_.add(BlockStateProperties.FACING, BlockStateProperties.WATERLOGGED);
     }
 
     @Nullable
     @Override
     public BlockState getStateForPlacement(BlockItemUseContext p_196258_1_) {
-        boolean waterlogged = p_196258_1_.getWorld().getFluidState(p_196258_1_.getPos()).getFluid() == Fluids.WATER;
-        return getDefaultState().with(BlockStateProperties.FACING, p_196258_1_.getFace()).with(BlockStateProperties.WATERLOGGED, waterlogged);
+        boolean waterlogged = p_196258_1_.getLevel().getFluidState(p_196258_1_.getClickedPos()).getType() == Fluids.WATER;
+        return defaultBlockState().setValue(BlockStateProperties.FACING, p_196258_1_.getClickedFace()).setValue(BlockStateProperties.WATERLOGGED, waterlogged);
     }
 
     @Override

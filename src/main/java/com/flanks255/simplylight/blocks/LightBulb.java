@@ -9,18 +9,18 @@ import net.minecraftforge.common.ToolType;
 
 public class LightBulb extends RotatableLamp {
     public LightBulb() {
-        super(Block.Properties.create(Material.MISCELLANEOUS)
-                .doesNotBlockMovement()
+        super(Block.Properties.of(Material.DECORATION)
+                .noCollission()
                 .harvestLevel(0)
                 .harvestTool(ToolType.PICKAXE)
-                .hardnessAndResistance(1.0f)
-                .setLightLevel((bState) -> 14));
-        UP = Block.makeCuboidShape(6, 0, 6, 10, 5, 10);
-        DOWN = Block.makeCuboidShape(6, 16, 6, 10, 11, 10);
-        EAST = Block.makeCuboidShape(0, 6, 6, 5, 10, 10);
-        WEST = Block.makeCuboidShape(11, 6, 6, 16, 11, 11);
-        NORTH = Block.makeCuboidShape(6, 6, 11, 10, 10, 16);
-        SOUTH = Block.makeCuboidShape(6, 6, 5, 10, 10, 0);
+                .strength(1.0f)
+                .lightLevel((bState) -> 14));
+        UP = Block.box(6, 0, 6, 10, 5, 10);
+        DOWN = Block.box(6, 16, 6, 10, 11, 10);
+        EAST = Block.box(0, 6, 6, 5, 10, 10);
+        WEST = Block.box(11, 6, 6, 16, 11, 11);
+        NORTH = Block.box(6, 6, 11, 10, 10, 16);
+        SOUTH = Block.box(6, 6, 5, 10, 10, 0);
     }
 
     @Override

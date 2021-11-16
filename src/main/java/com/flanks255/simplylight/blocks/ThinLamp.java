@@ -15,8 +15,8 @@ import javax.annotation.Nullable;
 
 public class ThinLamp extends RotatableLamp {
     public ThinLamp(double thickness) {
-        super(Block.Properties.create(new Material(
-                MaterialColor.WHITE_TERRACOTTA,
+        super(Block.Properties.of(new Material(
+                MaterialColor.TERRACOTTA_WHITE,
                 false, //isLiquid
                 true,  //isSolid
                 true, //Blocks Movement
@@ -24,25 +24,25 @@ public class ThinLamp extends RotatableLamp {
                 false, //isFlammable
                 false, //isReplaceable
                 PushReaction.NORMAL
-        )).hardnessAndResistance(1.0f).harvestLevel(0).harvestTool(ToolType.PICKAXE));
+        )).strength(1.0f).harvestLevel(0).harvestTool(ToolType.PICKAXE));
 
-        UP = Block.makeCuboidShape(0,0,0, 16,thickness,16);
-        DOWN = Block.makeCuboidShape(0,16 - thickness,0, 16,16,16);
-        EAST = Block.makeCuboidShape(0,0,0, thickness,16,16);
-        WEST = Block.makeCuboidShape(16 - thickness,0,0, 16,16,16);
-        NORTH = Block.makeCuboidShape(0,0,16 - thickness, 16,16,16);
-        SOUTH = Block.makeCuboidShape(0,0,0, 16,16,thickness);
+        UP = Block.box(0,0,0, 16,thickness,16);
+        DOWN = Block.box(0,16 - thickness,0, 16,16,16);
+        EAST = Block.box(0,0,0, thickness,16,16);
+        WEST = Block.box(16 - thickness,0,0, 16,16,16);
+        NORTH = Block.box(0,0,16 - thickness, 16,16,16);
+        SOUTH = Block.box(0,0,0, 16,16,thickness);
     }
 
     @Nullable
     @Override
     public BlockState getStateForPlacement(BlockItemUseContext useContext) {
-        BlockPos pos = useContext.getPos().offset(useContext.getFace().getOpposite());
-        boolean waterlogged = useContext.getWorld().getFluidState(useContext.getPos()).getFluid() == Fluids.WATER;
-        if (useContext.getPlayer() != null && useContext.getWorld().getBlockState(pos).getBlock() instanceof ThinLamp && !useContext.getPlayer().isCrouching())
-            return getDefaultState().with(BlockStateProperties.WATERLOGGED, waterlogged).with(BlockStateProperties.FACING, useContext.getWorld().getBlockState(pos).get(BlockStateProperties.FACING));
+        BlockPos pos = useContext.getClickedPos().relative(useContext.getClickedFace().getOpposite());
+        boolean waterlogged = useContext.getLevel().getFluidState(useContext.getClickedPos()).getType() == Fluids.WATER;
+        if (useContext.getPlayer() != null && useContext.getLevel().getBlockState(pos).getBlock() instanceof ThinLamp && !useContext.getPlayer().isCrouching())
+            return defaultBlockState().setValue(BlockStateProperties.WATERLOGGED, waterlogged).setValue(BlockStateProperties.FACING, useContext.getLevel().getBlockState(pos).getValue(BlockStateProperties.FACING));
         else
-            return getDefaultState().with(BlockStateProperties.FACING, useContext.getFace()).with(BlockStateProperties.WATERLOGGED, waterlogged);
+            return defaultBlockState().setValue(BlockStateProperties.FACING, useContext.getClickedFace()).setValue(BlockStateProperties.WATERLOGGED, waterlogged);
     }
 
 }
