@@ -1,5 +1,6 @@
 package com.flanks255.simplylight.data;
 
+import com.flanks255.simplylight.SLBlocks;
 import com.flanks255.simplylight.SimplyLight;
 import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
@@ -38,7 +39,7 @@ public class SLLootTables extends LootTableProvider {
     private static class Blocks extends BlockLoot {
         @Override
         protected void addTables() {
-            for(RegistryObject<Block> block : SimplyLight.BLOCKS.getEntries()) {
+            for(RegistryObject<Block> block : SLBlocks.BLOCKS.getEntries()) {
                 this.dropSelf(block.get());
             }
         }
@@ -47,8 +48,8 @@ public class SLLootTables extends LootTableProvider {
         @Override
         protected Iterable<Block> getKnownBlocks() {
             return ForgeRegistries.BLOCKS.getValues().stream()
-                    .filter(b -> b.getRegistryName().getNamespace().equals(SimplyLight.MODID))
-                    .collect(Collectors.toList());
+                .filter(b -> b.getRegistryName().getNamespace().equals(SimplyLight.MODID))
+                .collect(Collectors.toList());
         }
     }
 

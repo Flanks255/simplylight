@@ -2,6 +2,7 @@ package com.flanks255.simplylight.blocks;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -16,10 +17,14 @@ import net.minecraft.world.level.material.PushReaction;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.function.BiConsumer;
 
-@SuppressWarnings("deprecation")
 public class LampBlock extends LampBase {
-    public LampBlock(boolean Default) {
+    public final boolean Default;
+    public static final BooleanProperty ON = BooleanProperty.create("on");
+    public final DyeColor color;
+
+    public LampBlock(boolean Default, DyeColor colorIn) {
         super(Block.Properties.of(new Material(
                 MaterialColor.TERRACOTTA_WHITE,
                 false,
@@ -29,22 +34,19 @@ public class LampBlock extends LampBase {
                 false,
                 false,
                 PushReaction.NORMAL
-        ))
-                .strength(1.0f)
-                .lightLevel((bState)-> bState.getValue(ON) ? 15 : 0));
+            )).strength(1.0f)
+            .lightLevel((bState)-> bState.getValue(ON) ? 15 : 0));
         this.Default = Default;
+        this.color = colorIn;
 
         registerDefaultState(getStateDefinition().any().setValue(ON, Default));
     }
 
-    private final boolean Default;
-    public static final BooleanProperty ON = BooleanProperty.create("on");
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> blockStateBuilder) {
         blockStateBuilder.add(ON);
     }
-
 
     @Nullable
     @Override
@@ -76,5 +78,70 @@ public class LampBlock extends LampBase {
     @Override
     public boolean isSignalSource(@Nonnull BlockState pState) {
         return true;
+    }
+
+    @Override
+    public void addLang(BiConsumer<String, String> consumer) {
+        String base = getLangBase();
+
+        if (color == DyeColor.WHITE)
+            consumer.accept(base, "Illuminant Block" + (Default?"(Inverted)":""));
+        else {
+            String colorname = "";
+            switch (color) {
+                case RED:
+                    colorname = "Red";
+                    break;
+                case BLUE:
+                    colorname = "Blue";
+                    break;
+                case CYAN:
+                    colorname = "Cyan";
+                    break;
+                case GRAY:
+                    colorname = "Gray";
+                    break;
+                case LIME:
+                    colorname = "Lime";
+                    break;
+                case MAGENTA:
+                    colorname = "Magenta";
+                    break;
+                case PINK:
+                    colorname = "Pink";
+                    break;
+                case BLACK:
+                    colorname = "Black";
+                    break;
+                case BROWN:
+                    colorname = "Brown";
+                    break;
+                case GREEN:
+                    colorname = "Green";
+                    break;
+                case ORANGE:
+                    colorname = "Orange";
+                    break;
+                case PURPLE:
+                    colorname = "Purple";
+                    break;
+                case YELLOW:
+                    colorname = "Yellow";
+                    break;
+                case LIGHT_BLUE:
+                    colorname = "Light Blue";
+                    break;
+                case LIGHT_GRAY:
+                    colorname = "Light Gray";
+                    break;
+            }
+
+            consumer.accept(base, "Illuminant " + colorname + " Block" + (Default ? " (Inverted)" : ""));
+        }
+        consumer.accept(base + ".info", "Simple light block,");
+        if (Default)
+            consumer.accept(base + ".info2", "Deactivates by %s.");
+        else
+            consumer.accept(base + ".info2", "Activates by %s.");
     }
 }

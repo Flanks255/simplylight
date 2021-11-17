@@ -20,18 +20,22 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.function.BiConsumer;
 
-@SuppressWarnings("deprecation")
 public class EdgeLight extends LampBase implements SimpleWaterloggedBlock {
+
+    private final Boolean top;
+
     public EdgeLight(Boolean top) {
         super(Block.Properties.of(Material.DECORATION)
-                .strength(1.0f)
-                .noCollission()
-                .lightLevel((bState) -> 14)
+            .strength(1.0f)
+            .noCollission()
+            .lightLevel((bState) -> 14)
         );
 
         registerDefaultState(getStateDefinition().any().setValue(BlockStateProperties.WATERLOGGED, false));
 
+        this.top = top;
         if (top) {
             VS_WEST = Shapes.box(0.0, 0.9375, 0.0, 0.0625, 1.0, 1.0);
             VS_EAST = Shapes.box(0.9375, 0.9375, 0.0, 1.0, 1.0, 1.0);
@@ -83,10 +87,10 @@ public class EdgeLight extends LampBase implements SimpleWaterloggedBlock {
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         boolean waterlogged = context.getLevel().getFluidState(context.getClickedPos()).getType() == Fluids.WATER;
         return defaultBlockState().setValue(BlockStateProperties.WATERLOGGED, waterlogged)
-                .setValue(NORTH, checkSide(context, Direction.NORTH))
-                .setValue(SOUTH, checkSide(context, Direction.SOUTH))
-                .setValue(EAST, checkSide(context, Direction.EAST))
-                .setValue(WEST, checkSide(context, Direction.WEST));
+            .setValue(NORTH, checkSide(context, Direction.NORTH))
+            .setValue(SOUTH, checkSide(context, Direction.SOUTH))
+            .setValue(EAST, checkSide(context, Direction.EAST))
+            .setValue(WEST, checkSide(context, Direction.WEST));
     }
 
     @Override
@@ -108,5 +112,18 @@ public class EdgeLight extends LampBase implements SimpleWaterloggedBlock {
     @Override
     public int getLightBlock(@Nonnull BlockState pState, @Nonnull BlockGetter pLevel, @Nonnull BlockPos pPos) {
         return 14;
+    }
+
+    @Override
+    public void addLang(BiConsumer<String, String> consumer) {
+        String base = getLangBase();
+
+        if (top)
+            consumer.accept(base, "Dynamic Edge Light (top)");
+        else
+            consumer.accept(base, "Dynamic Edge Light (bottom)");
+
+        consumer.accept(base + ".info", "Follows walls around itself,");
+        consumer.accept(base + ".info2", "perfect for hallways.");
     }
 }

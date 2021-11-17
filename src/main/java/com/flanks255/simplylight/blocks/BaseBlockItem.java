@@ -31,16 +31,18 @@ public class BaseBlockItem extends BlockItem {
     @Override
     public void appendHoverText(@Nonnull ItemStack stack, @Nullable Level worldIn, @Nonnull List<Component> tooltip, @Nonnull TooltipFlag flagIn) {
         super.appendHoverText(stack, worldIn, tooltip, flagIn);
+        boolean redstoneFlag = block instanceof LampBlock;
         if (Screen.hasShiftDown() && I18n.exists(block.getDescriptionId() + ".info")) {
-            tooltip.add(new TranslatableComponent(block.getDescriptionId() + ".info"));
+            tooltip.add(new TranslatableComponent(block.getDescriptionId() + ".info").withStyle(ChatFormatting.GRAY));
             if (I18n.exists(block.getDescriptionId()+".info2")) {
-                tooltip.add(new TranslatableComponent(block.getDescriptionId() + ".info2"));
-                if (I18n.exists(block.getDescriptionId() + ".info3"))
-                    tooltip.add(new TranslatableComponent(block.getDescriptionId() + ".info3"));
+                if (redstoneFlag)
+                    tooltip.add(new TranslatableComponent(block.getDescriptionId() + ".info2", new TranslatableComponent("simplylight.redstone").withStyle(ChatFormatting.DARK_RED)).withStyle(ChatFormatting.GRAY));
+                else
+                    tooltip.add(new TranslatableComponent(block.getDescriptionId() + ".info2").withStyle(ChatFormatting.GRAY));
             }
         }
         else {
-            tooltip.add(new TranslatableComponent("simplylight.shift", new TranslatableComponent("simplylight.key.shift").withStyle(ChatFormatting.GOLD, ChatFormatting.ITALIC)));
+            tooltip.add(new TranslatableComponent("simplylight.shift", new TranslatableComponent("simplylight.key.shift").withStyle(ChatFormatting.GOLD, ChatFormatting.ITALIC)).withStyle(ChatFormatting.GRAY));
         }
     }
 }

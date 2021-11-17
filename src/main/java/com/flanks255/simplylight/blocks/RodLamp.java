@@ -1,6 +1,5 @@
 package com.flanks255.simplylight.blocks;
 
-
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -15,19 +14,20 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.function.BiConsumer;
 
 @SuppressWarnings("deprecation")
 public class RodLamp extends LampBase implements SimpleWaterloggedBlock {
     public RodLamp () {
         super(Block.Properties.of(new Material(
-                MaterialColor.TERRACOTTA_WHITE,
-                false, //isLiquid
-                false,  //isSolid
-                true, //Blocks Movement
-                false, //isOpaque
-                false, //isFlammable
-                false, //isReplaceable
-                PushReaction.NORMAL
+            MaterialColor.TERRACOTTA_WHITE,
+            false, //isLiquid
+            false,  //isSolid
+            true, //Blocks Movement
+            false, //isOpaque
+            false, //isFlammable
+            false, //isReplaceable
+            PushReaction.NORMAL
         )).strength(1.0f).lightLevel((bState) -> 15));
 
         registerDefaultState(getStateDefinition().any().setValue(BlockStateProperties.WATERLOGGED, false));
@@ -60,8 +60,8 @@ public class RodLamp extends LampBase implements SimpleWaterloggedBlock {
 
     @Nonnull
     @Override
-    public FluidState getFluidState(BlockState pState) {
-        return pState.getValue(BlockStateProperties.WATERLOGGED)? Fluids.WATER.getSource(false) : super.getFluidState(pState);
+    public FluidState getFluidState(BlockState p_204507_1_) {
+        return p_204507_1_.getValue(BlockStateProperties.WATERLOGGED)? Fluids.WATER.getSource(false) : super.getFluidState(p_204507_1_);
     }
 
     @Override
@@ -74,4 +74,11 @@ public class RodLamp extends LampBase implements SimpleWaterloggedBlock {
         return 15;
     }
 
+    @Override
+    public void addLang(BiConsumer<String, String> consumer) {
+        String base = getLangBase();
+        consumer.accept(base, "Rod Lamp");
+        consumer.accept(base + ".info", "A simple rod of light.");
+        consumer.accept(base + ".info2", "Can be placed in any direction.");
+    }
 }

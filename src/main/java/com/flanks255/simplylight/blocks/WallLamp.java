@@ -9,6 +9,8 @@ import net.minecraft.world.phys.shapes.Shapes;
 
 import javax.annotation.Nonnull;
 
+import java.util.function.BiConsumer;
+
 public class WallLamp extends RotatableLamp{
     public WallLamp() {
         super(Block.Properties.of(Material.DECORATION).noCollission().strength(1.0f).lightLevel((bState) -> 15));
@@ -24,5 +26,13 @@ public class WallLamp extends RotatableLamp{
     @Override
     public int getLightBlock(@Nonnull BlockState state, @Nonnull BlockGetter world, @Nonnull BlockPos pos) {
         return 15;
+    }
+
+    @Override
+    public void addLang(BiConsumer<String, String> consumer) {
+        String base = getLangBase();
+
+        consumer.accept(base, "Illuminant Fixture");
+        consumer.accept(base + ".info", "Hangs from walls, or sticks to ceilings and floors.");
     }
 }

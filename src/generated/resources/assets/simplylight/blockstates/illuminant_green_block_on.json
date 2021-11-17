@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "on=false": {
+      "model": "simplylight:block/illuminant_green_block"
+    },
+    "on=true": {
+      "model": "simplylight:block/illuminant_green_block_on"
+    }
+  }
+}

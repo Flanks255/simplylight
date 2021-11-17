@@ -14,11 +14,11 @@
 
     "block.simplylight.illuminant_block": "Bloque luminoso",
     "block.simplylight.illuminant_block.info": "Bloque de luz simple,",
-    "block.simplylight.illuminant_block.info2": "Se activa por §4Redstone§r.",
+    "block.simplylight.illuminant_block.info2": "Se activa por %s.",
 
     "block.simplylight.illuminant_block_on": "Bloque luminoso (invertido)",
     "block.simplylight.illuminant_block_on.info": "Bloque de luz simple,",
-    "block.simplylight.illuminant_block_on.info2": "Se desactiva por §4Redstone§r.",
+    "block.simplylight.illuminant_block_on.info2": "Se desactiva por %s.",
 
     "block.simplylight.wall_lamp": "Lámpara de pared",
     "block.simplylight.wall_lamp.info": "Se cuelga de las paredes o se pega a los techos y suelos.",
