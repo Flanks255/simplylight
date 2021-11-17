@@ -2,7 +2,7 @@ name: Build and deploy
 
 on:
   push:
-    branches: [ 1_16 ]
+    branches: [ "1.16" ]
   workflow_dispatch:
     inputs:
       norelease:
@@ -39,7 +39,7 @@ jobs:
           ./gradlew build publish --stacktrace --no-daemon
       - name: Release to CurseForge
         if: |
-          !contains(github.event.head_commit.message, '[norelease]') && github.event.inputs.norelease != 'true' && github.ref == 'refs/heads/1_16'
+          !contains(github.event.head_commit.message, '[norelease]') && github.event.inputs.norelease != 'true' && github.ref == 'refs/heads/1.16'
         env:
           GIT_COMMIT: ${{ github.event.after }}
           GIT_PREVIOUS_COMMIT: ${{ github.event.before }}
