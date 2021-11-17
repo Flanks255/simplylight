@@ -23,7 +23,7 @@ public class JEIPlugin implements IModPlugin {
 
     @Override
     public void registerRecipes(@Nonnull IRecipeRegistration registration) {
-        SimplyLight.ITEMS.getEntries().forEach((item) -> {
+        SLBlocks.ITEMS.getEntries().forEach((item) -> {
             String key = item.get().getDescriptionId()+".jei.info";
             if (I18n.exists(key)) {
                 String langEntry = TextFormatting.stripFormatting(I18n.get(key));

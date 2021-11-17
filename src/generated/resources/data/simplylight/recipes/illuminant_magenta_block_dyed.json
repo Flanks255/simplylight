@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AAA",
+    "ABA",
+    "AAA"
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:magenta_dye"
+    },
+    "A": {
+      "tag": "simplylight:any_lamp_off"
+    }
+  },
+  "result": {
+    "item": "simplylight:illuminant_magenta_block",
+    "count": 8
+  }
+}

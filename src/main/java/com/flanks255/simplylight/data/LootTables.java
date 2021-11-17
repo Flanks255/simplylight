@@ -1,5 +1,6 @@
 package com.flanks255.simplylight.data;
 
+import com.flanks255.simplylight.SLBlocks;
 import com.flanks255.simplylight.SimplyLight;
 import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
@@ -34,7 +35,7 @@ public class LootTables extends LootTableProvider {
     private static class Blocks extends BlockLootTables {
         @Override
         protected void addTables() {
-            for(RegistryObject<Block> block : SimplyLight.BLOCKS.getEntries()) {
+            for(RegistryObject<Block> block : SLBlocks.BLOCKS.getEntries()) {
                 this.dropSelf(block.get());
             }
         }

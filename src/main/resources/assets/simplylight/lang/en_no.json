@@ -14,11 +14,11 @@
 
     "block.simplylight.illuminant_block": "Lysende Blokk",
     "block.simplylight.illuminant_block.info": "Enkel Blokk med lys,",
-    "block.simplylight.illuminant_block.info2": "Aktiveres med §4Redstone§r.",
+    "block.simplylight.illuminant_block.info2": "Aktiveres med %s.",
 
     "block.simplylight.illuminant_block_on": "Lysende Blokk (Invertert)",
     "block.simplylight.illuminant_block_on.info": "Enkel Blokk med lys,",
-    "block.simplylight.illuminant_block_on.info2": "Deaktiveres med §4Redstone§r.",
+    "block.simplylight.illuminant_block_on.info2": "Deaktiveres med %s.",
 
     "block.simplylight.wall_lamp": "Lysende Innretning",
     "block.simplylight.wall_lamp.info": "Sitter på vegger, tak og gulv.",

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "simplylight:illuminant_magenta_block"
+    }
+  ],
+  "result": {
+    "item": "simplylight:illuminant_magenta_block_on"
+  }
+}

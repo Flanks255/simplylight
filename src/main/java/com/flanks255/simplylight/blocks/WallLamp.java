@@ -8,6 +8,8 @@ import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraftforge.common.ToolType;
 
+import java.util.function.BiConsumer;
+
 public class WallLamp extends RotatableLamp{
     public WallLamp() {
         super(Block.Properties.of(Material.DECORATION).noCollission().harvestLevel(0).harvestTool(ToolType.PICKAXE).strength(1.0f).lightLevel((bState) -> 15));
@@ -23,5 +25,13 @@ public class WallLamp extends RotatableLamp{
     @Override
     public int getLightValue(BlockState state, IBlockReader world, BlockPos pos) {
         return 15;
+    }
+
+    @Override
+    public void addLang(BiConsumer<String, String> consumer) {
+        String base = getLangBase();
+
+        consumer.accept(base, "Illuminant Fixture");
+        consumer.accept(base + ".info", "Hangs from walls, or sticks to ceilings and floors.");
     }
 }

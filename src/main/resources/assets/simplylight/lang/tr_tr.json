@@ -14,11 +14,11 @@
 
     "block.simplylight.illuminant_block": "Parlak Blok",
     "block.simplylight.illuminant_block.info": "Basit ışık bloğu,",
-    "block.simplylight.illuminant_block.info2": "§4Kızıltaş§r ile aktifleşir.",
+    "block.simplylight.illuminant_block.info2": "%s ile aktifleşir.",
 
     "block.simplylight.illuminant_block_on": "Parlak Blok (Evirtik)",
     "block.simplylight.illuminant_block_on.info": "Basit ışık bloğu,",
-    "block.simplylight.illuminant_block_on.info2": "§4Kızıltaş§r ile devredışı kalır.",
+    "block.simplylight.illuminant_block_on.info2": "%s ile devredışı kalır.",
 
     "block.simplylight.wall_lamp": "Parlak Armatür",
     "block.simplylight.wall_lamp.info": "Duvarlardan sarkar veya tavana ve zemine yapışır.",

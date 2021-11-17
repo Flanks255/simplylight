@@ -21,18 +21,19 @@ import net.minecraftforge.common.ToolType;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.function.BiConsumer;
 
 public class RodLamp extends LampBase implements IWaterLoggable {
     public RodLamp () {
         super(Block.Properties.of(new Material(
-                MaterialColor.TERRACOTTA_WHITE,
-                false, //isLiquid
-                false,  //isSolid
-                true, //Blocks Movement
-                false, //isOpaque
-                false, //isFlammable
-                false, //isReplaceable
-                PushReaction.NORMAL
+            MaterialColor.TERRACOTTA_WHITE,
+            false, //isLiquid
+            false,  //isSolid
+            true, //Blocks Movement
+            false, //isOpaque
+            false, //isFlammable
+            false, //isReplaceable
+            PushReaction.NORMAL
         )).strength(1.0f).harvestLevel(0).harvestTool(ToolType.PICKAXE).lightLevel((bState) -> 15));
 
         registerDefaultState(getStateDefinition().any().setValue(BlockStateProperties.WATERLOGGED, false));
@@ -87,4 +88,11 @@ public class RodLamp extends LampBase implements IWaterLoggable {
         return 15;
     }
 
+    @Override
+    public void addLang(BiConsumer<String, String> consumer) {
+        String base = getLangBase();
+        consumer.accept(base, "Rod Lamp");
+        consumer.accept(base + ".info", "A simple rod of light.");
+        consumer.accept(base + ".info2", "Can be placed in any direction.");
+    }
 }

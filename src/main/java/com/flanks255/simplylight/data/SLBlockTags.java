@@ -1,5 +1,6 @@
 package com.flanks255.simplylight.data;
 
+import com.flanks255.simplylight.SLBlocks;
 import com.flanks255.simplylight.SimplyLight;
 import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
@@ -16,6 +17,6 @@ public class SLBlockTags extends BlockTagsProvider {
 
     @Override
     protected void addTags() {
-        this.tag(BlockTags.WALL_POST_OVERRIDE).add(SimplyLight.LIGHTBULB.get());
+        this.tag(BlockTags.WALL_POST_OVERRIDE).add(SLBlocks.LIGHTBULB.get());
     }
 }

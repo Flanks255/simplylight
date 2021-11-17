@@ -21,19 +21,24 @@ import net.minecraftforge.common.ToolType;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.function.BiConsumer;
 
 public class EdgeLight extends LampBase implements IWaterLoggable {
+
+    private final Boolean top;
+
     public EdgeLight(Boolean top) {
         super(Block.Properties.of(Material.DECORATION)
-                .harvestLevel(0)
-                .harvestTool(ToolType.PICKAXE)
-                .strength(1.0f)
-                .noCollission()
-                .lightLevel((bState) -> 14)
+            .harvestLevel(0)
+            .harvestTool(ToolType.PICKAXE)
+            .strength(1.0f)
+            .noCollission()
+            .lightLevel((bState) -> 14)
         );
 
         registerDefaultState(getStateDefinition().any().setValue(BlockStateProperties.WATERLOGGED, false));
 
+        this.top = top;
         if (top) {
             VS_WEST = VoxelShapes.box(0.0, 0.9375, 0.0, 0.0625, 1.0, 1.0);
             VS_EAST = VoxelShapes.box(1.0, 0.9375, 0.0, 0.9375, 1.0, 1.0);
@@ -85,10 +90,10 @@ public class EdgeLight extends LampBase implements IWaterLoggable {
     public BlockState getStateForPlacement(BlockItemUseContext context) {
         boolean waterlogged = context.getLevel().getFluidState(context.getClickedPos()).getType() == Fluids.WATER;
         return defaultBlockState().setValue(BlockStateProperties.WATERLOGGED, waterlogged)
-                .setValue(NORTH, checkSide(context, Direction.NORTH))
-                .setValue(SOUTH, checkSide(context, Direction.SOUTH))
-                .setValue(EAST, checkSide(context, Direction.EAST))
-                .setValue(WEST, checkSide(context, Direction.WEST));
+            .setValue(NORTH, checkSide(context, Direction.NORTH))
+            .setValue(SOUTH, checkSide(context, Direction.SOUTH))
+            .setValue(EAST, checkSide(context, Direction.EAST))
+            .setValue(WEST, checkSide(context, Direction.WEST));
     }
 
     @Override
@@ -110,5 +115,18 @@ public class EdgeLight extends LampBase implements IWaterLoggable {
     @Override
     public int getLightValue(BlockState state, IBlockReader world, BlockPos pos) {
         return 14;
+    }
+
+    @Override
+    public void addLang(BiConsumer<String, String> consumer) {
+        String base = getLangBase();
+
+        if (top)
+            consumer.accept(base, "Dynamic Edge Light (top)");
+        else
+            consumer.accept(base, "Dynamic Edge Light (bottom)");
+
+        consumer.accept(base + ".info", "Follows walls around itself,");
+        consumer.accept(base + ".info2", "perfect for hallways.");
     }
 }

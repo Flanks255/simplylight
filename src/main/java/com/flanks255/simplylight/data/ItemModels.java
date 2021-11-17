@@ -1,5 +1,6 @@
 package com.flanks255.simplylight.data;
 
+import com.flanks255.simplylight.SLBlocks;
 import com.flanks255.simplylight.SimplyLight;
 import net.minecraft.block.Block;
 import net.minecraft.data.DataGenerator;
@@ -16,17 +17,15 @@ public class ItemModels extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        SimplyLight.BLOCKS.getEntries().forEach((block) -> {
-            registerBlockItem(block.get());
-        });
+        SLBlocks.BLOCKS.getEntries().forEach((block) -> registerBlockItem(block.get()));
     }
 
     private void registerBlockItem(Block block) {
         String path = block.getRegistryName().getPath();
         // Edge lights, rotate them so you can see them.
-        if (block == SimplyLight.EDGELAMP.get()){
+        if (block == SLBlocks.EDGELAMP.get()){
             registerEdgeBlockBottom(path);
-        } else if (block == SimplyLight.EDGELAMP_TOP.get()) {
+        } else if (block == SLBlocks.EDGELAMP_TOP.get()) {
             registerEdgeBlockTop(path);
         }
         // All the rest are fine

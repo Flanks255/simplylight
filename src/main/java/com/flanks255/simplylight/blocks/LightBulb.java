@@ -7,6 +7,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraftforge.common.ToolType;
 
+import java.util.function.BiConsumer;
+
 public class LightBulb extends RotatableLamp {
     public LightBulb() {
         super(Block.Properties.of(Material.DECORATION)
@@ -26,5 +28,14 @@ public class LightBulb extends RotatableLamp {
     @Override
     public int getLightValue(BlockState state, IBlockReader world, BlockPos pos) {
         return 14;
+    }
+
+    @Override
+    public void addLang(BiConsumer<String, String> consumer) {
+        String base = getLangBase();
+
+        consumer.accept(base, "Simple Light Bulb");
+        consumer.accept(base + ".info", "Just a simple light bulb,");
+        consumer.accept(base + ".info2", "place in any direction.");
     }
 }
