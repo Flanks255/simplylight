@@ -5,6 +5,7 @@ import com.flanks255.simplylight.SLBlocks;
 import com.flanks255.simplylight.SimplyLight;
 import com.flanks255.simplylight.blocks.BaseBlockItem;
 import com.flanks255.simplylight.blocks.LampBlock;
+import com.flanks255.simplylight.blocks.LampPost;
 import net.minecraft.core.Direction;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
@@ -69,6 +70,8 @@ public class BlockStates  extends BlockStateProvider {
         generateRodLamp();
 
         generateWallLamp();
+
+        generateLampPost();
     }
 /*
     private void generateEdgeBlocks() {
@@ -81,6 +84,20 @@ public class BlockStates  extends BlockStateProvider {
 
     }
 */
+
+    private void generateLampPost() {
+        ModelFile base = models().getExistingFile(modLoc("block/post_base"));
+        ModelFile mid = models().getExistingFile(modLoc("block/post_mid"));
+        ModelFile top = models().getExistingFile(modLoc("block/post_top"));
+
+        getVariantBuilder(SLBlocks.LAMP_POST.get())
+            .partialState().with(LampPost.POSITION, LampPost.Position.BOTTOM).modelForState()
+            .modelFile(base).addModel()
+            .partialState().with(LampPost.POSITION, LampPost.Position.MIDDLE).modelForState()
+            .modelFile(mid).addModel()
+            .partialState().with(LampPost.POSITION, LampPost.Position.TOP).modelForState()
+            .modelFile(top).addModel();
+    }
     private void generateWallLamp() {
         ModelFile wallModel = models().getExistingFile(modLoc("block/wall_lamp"));
         ModelFile floorModel = models().getExistingFile(modLoc("block/floorlamp"));
