@@ -1,3 +1,12 @@
 {
-  "parent": "simplylight:block/illuminant_panel"
+  "parent": "simplylight:block/illuminant_panel",
+  "display": {
+    "head": {
+      "translation": [
+        0,
+        14,
+        0
+      ]
+    }
+  }
 }

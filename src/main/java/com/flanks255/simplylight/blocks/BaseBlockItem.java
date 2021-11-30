@@ -4,6 +4,8 @@ import net.minecraft.block.Block;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.Entity;
+import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -26,6 +28,11 @@ public class BaseBlockItem extends BlockItem {
     }
 
     private final Block block;
+
+    @Override
+    public boolean canEquip(ItemStack stack, EquipmentSlotType armorType, Entity entity) {
+        return armorType == EquipmentSlotType.HEAD || super.canEquip(stack, armorType, entity);
+    }
 
     @OnlyIn(Dist.CLIENT)
     @Override
