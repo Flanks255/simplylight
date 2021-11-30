@@ -2,19 +2,30 @@
 [![Curse Forge](http://cf.way2muchnoise.eu/simply-light.svg)](https://minecraft.curseforge.com/projects/simply-light)
 [![Curse Forge](http://cf.way2muchnoise.eu/versions/simply-light.svg)](https://minecraft.curseforge.com/projects/simply-light)
 
-Simply Light is a small mod,  
-Adding a handful of simple lamp blocks,  
-All lamps are simple blocks, no tile entities involved.
+# What is Simply Light? 
 
-Featuring:  
-  Full block, redstone reactive lamps. (16 Colors in 1.16+)  
-  Half-slab style rotatable lamps. (CTM Support 1.16+)  
-  Quarter-block panel style, rotatable lamps. (CTM Support 1.16+)   
-  Fixtures for walls/ceilings/floors.  
-  Simple Light bulb style fixtures.  
-  Edge lighting strips that morph to fit against walls.     
-  Rod lamps, similar to end rods        
-  All non-fullblock lamps are waterloggable. (1.14+)
+Simply Light is a Lighting mod with a simplistic design.
 
-Requires:       
+Modern look and feel with an architecture view in mind.
+
+## Why Simply Light?
+
+All lamps are simple blocks with no tile entities or particles involved.
+
+The benefits include causing little strain on performance compared to using a large number of torches.
+
+## Features
+- Full block, redstone reactive lamps. (16 Colors in 1.16+, Thanks Rid)
+- Half-slab style rotatable lamps.
+- Quarter-block panel style, rotatable lamps.
+- Fixtures for walls/ceilings/floors.
+- Simple Light bulb style fixtures.
+- Edge lighting strips that morph to fit against walls.
+- Waterlogged lamps.(1.14.4+)
+- A 3 block tall Lamp Post.
+- Connected textures on the Panels and Slabs (1.16+)(Requires 
+Connected Textures Mod)
+
+### Requires
+- Shadowfacts' Forgelin - Kotlin language adapter. (1.12.2 Version only)
 (1.12.2 ONLY) [Shadowfacts' Forgelin - Kotlin language adapter(1.12.2 Version only)](https://www.curseforge.com/minecraft/mc-mods/shadowfacts-forgelin)

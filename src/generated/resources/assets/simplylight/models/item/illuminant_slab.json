@@ -1,3 +1,12 @@
 {
-  "parent": "simplylight:block/illuminant_slab"
+  "parent": "simplylight:block/illuminant_slab",
+  "display": {
+    "head": {
+      "translation": [
+        0,
+        14,
+        0
+      ]
+    }
+  }
 }
