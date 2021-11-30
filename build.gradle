@@ -25,20 +25,16 @@ repositories {
 }
 
 def ENV = System.getenv()
-version = "${mod_version}-build.${ENV.GITHUB_RUN_NUMBER ?: 9999}"
+version = "${minecraft_version}-${mod_version}-build.${ENV.GITHUB_RUN_NUMBER ?: 9999}"
 group = "com.flanks255"
 archivesBaseName = "simplylight"
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(16)
-
-//sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 minecraft {
     mappings channel: 'parchment', version: "$mappings_version"
-    // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
-    // accessTransformer = file('build/resources/main/META-INF/accesstransformer.cfg')
 
     runs {
         client {
@@ -75,8 +71,8 @@ minecraft {
 dependencies {
     minecraft "net.minecraftforge:forge:$forge_version"
 
-    compileOnly fg.deobf("mezz.jei:jei-${jei_version}:api")
-    runtimeOnly fg.deobf("mezz.jei:jei-${jei_version}")
+    //compileOnly fg.deobf("mezz.jei:jei-${jei_version}:api")
+    //runtimeOnly fg.deobf("mezz.jei:jei-${jei_version}")
 
     //compileOnly fg.deobf("curse.maven:TOP-245211:3319255")
     //compileOnly fg.deobf("curse.maven:BUILDINGGADGETS-298187:3205295")
@@ -133,7 +129,7 @@ if (ENV.CURSEFORGE_KEY) {
             id = project.curseforge_id
             releaseType = "release"
             addGameVersion "Forge"
-            addGameVersion "1.17.1"
+            addGameVersion "1.18"
             mainArtifact(jar)
             changelog = getGitChangelog
             changelogType = 'markdown'

@@ -1,7 +1,7 @@
 modLoader="javafml"
 loaderVersion="[37,)" #mandatory
 license="MIT"
-issueTrackerURL="https://github.com/Flanks255/simplylight/issues" #optional
+issueTrackerURL="https://github.com/Flanks255/simplybackpacks/issues"
 [[mods]] #mandatory
 modId="simplylight" #mandatory
 version="${file.jarVersion}" #mandatory
