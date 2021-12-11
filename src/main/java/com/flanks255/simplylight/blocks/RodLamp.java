@@ -77,7 +77,7 @@ public class RodLamp extends LampBase implements SimpleWaterloggedBlock {
     @Override
     public void addLang(BiConsumer<String, String> consumer) {
         String base = getLangBase();
-        consumer.accept(base, "Rod Lamp");
+        consumer.accept(base, "Illuminant Rod");
         consumer.accept(base + ".info", "A simple rod of light.");
         consumer.accept(base + ".info2", "Can be placed in any direction.");
     }
