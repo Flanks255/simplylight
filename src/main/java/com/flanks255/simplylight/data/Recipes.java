@@ -10,6 +10,7 @@ import net.minecraft.data.*;
 import net.minecraft.item.DyeItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.Tags;
 
@@ -119,6 +120,17 @@ public class Recipes extends RecipeProvider {
             .define('b', Items.GLOWSTONE)
             .unlockedBy("", has(Items.AIR))
             .save(consumer, new ResourceLocation(SimplyLight.MODID, "walllamp"));
+
+        //Lamp Post
+        ShapedRecipeBuilder.shaped(SLBlocks.LAMP_POST.getItem(), 2)
+            .pattern(" L ")
+            .pattern(" W ")
+            .pattern("SSS")
+            .define('L', SimplyLight.ANY_ON_LAMP)
+            .define('W', ItemTags.WALLS)
+            .define('S', Tags.Items.STONE)
+            .unlockedBy("", has(Items.AIR))
+            .save(consumer, new ResourceLocation(SimplyLight.MODID, "lamp_post"));
 
 
         SLBlocks.LAMPBLOCKS_ON.forEach( lamp -> {

@@ -5,7 +5,6 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.block.material.PushReaction;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.BlockItemUseContext;
@@ -43,14 +42,9 @@ public class LampPost extends LampBase implements IWaterLoggable {
             false, //isFlammable
             false, //isReplaceable
             PushReaction.DESTROY
-        )).harvestTool(ToolType.PICKAXE).lightLevel( (bState) -> bState.getValue(POSITION) == Position.TOP?15:0).strength(1.0f).harvestLevel(0));
+        )).harvestTool(ToolType.PICKAXE).lightLevel( (bState) -> bState.getValue(POSITION) == Position.TOP?15:0).strength(2.0f).harvestLevel(0));
 
         registerDefaultState(getStateDefinition().any().setValue(BlockStateProperties.WATERLOGGED, false));
-    }
-
-    @Override
-    public boolean canPlaceLiquid(IBlockReader pLevel, BlockPos pPos, BlockState pState, Fluid pFluid) {
-        return IWaterLoggable.super.canPlaceLiquid(pLevel, pPos, pState, pFluid);
     }
 
     @Override
@@ -77,8 +71,8 @@ public class LampPost extends LampBase implements IWaterLoggable {
 
     @Override
     public void setPlacedBy(World pLevel, BlockPos pPos, BlockState pState, @Nullable LivingEntity pPlacer, ItemStack pStack) {
-        pLevel.setBlock(pPos.above(), pState.setValue(POSITION, Position.MIDDLE), 3);
-        pLevel.setBlock(pPos.above(2), pState.setValue(POSITION, Position.TOP), 3);
+        pLevel.setBlockAndUpdate(pPos.above(), pState.setValue(POSITION, Position.MIDDLE));
+        pLevel.setBlockAndUpdate(pPos.above(2), pState.setValue(POSITION, Position.TOP));
     }
 
     @Nullable
@@ -100,21 +94,21 @@ public class LampPost extends LampBase implements IWaterLoggable {
         switch (pState.getValue(POSITION)) {
             case TOP:
                 if (pLevel.getBlockState(pPos.below()).getBlock() instanceof LampPost)
-                    pLevel.setBlock(pPos.below(), Blocks.AIR.defaultBlockState(), 27);
+                    pLevel.setBlockAndUpdate(pPos.below(), Blocks.AIR.defaultBlockState());
                 if (pLevel.getBlockState(pPos.below(2)).getBlock() instanceof LampPost)
-                    pLevel.setBlock(pPos.below(2), Blocks.AIR.defaultBlockState(), 27);
+                    pLevel.setBlockAndUpdate(pPos.below(2), Blocks.AIR.defaultBlockState());
                 break;
             case MIDDLE:
                 if (pLevel.getBlockState(pPos.below()).getBlock() instanceof LampPost)
-                    pLevel.setBlock(pPos.below(), Blocks.AIR.defaultBlockState(), 27);
+                    pLevel.setBlockAndUpdate(pPos.below(), Blocks.AIR.defaultBlockState());
                 if (pLevel.getBlockState(pPos.above()).getBlock() instanceof LampPost)
-                    pLevel.setBlock(pPos.above(), Blocks.AIR.defaultBlockState(), 27);
+                    pLevel.setBlockAndUpdate(pPos.above(), Blocks.AIR.defaultBlockState());
                 break;
             case BOTTOM:
                 if (pLevel.getBlockState(pPos.above()).getBlock() instanceof LampPost)
-                    pLevel.setBlock(pPos.above(), Blocks.AIR.defaultBlockState(), 27);
+                    pLevel.setBlockAndUpdate(pPos.above(), Blocks.AIR.defaultBlockState());
                 if (pLevel.getBlockState(pPos.above(2)).getBlock() instanceof LampPost)
-                    pLevel.setBlock(pPos.above(2), Blocks.AIR.defaultBlockState(), 27);
+                    pLevel.setBlockAndUpdate(pPos.above(2), Blocks.AIR.defaultBlockState());
                 break;
         }
     }
