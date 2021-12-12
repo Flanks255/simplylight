@@ -97,21 +97,21 @@ public class LampPost extends LampBase implements SimpleWaterloggedBlock {
         switch (pState.getValue(POSITION)) {
             case TOP:
                 if (pLevel.getBlockState(pPos.below()).getBlock() instanceof LampPost)
-                    pLevel.setBlock(pPos.below(), Blocks.AIR.defaultBlockState(), 27);
+                    pLevel.setBlockAndUpdate(pPos.below(), Blocks.AIR.defaultBlockState());
                 if (pLevel.getBlockState(pPos.below(2)).getBlock() instanceof LampPost)
-                    pLevel.setBlock(pPos.below(2), Blocks.AIR.defaultBlockState(), 27);
+                    pLevel.setBlockAndUpdate(pPos.below(2), Blocks.AIR.defaultBlockState());
                 break;
             case MIDDLE:
                 if (pLevel.getBlockState(pPos.below()).getBlock() instanceof LampPost)
-                    pLevel.setBlock(pPos.below(), Blocks.AIR.defaultBlockState(), 27);
+                    pLevel.setBlockAndUpdate(pPos.below(), Blocks.AIR.defaultBlockState());
                 if (pLevel.getBlockState(pPos.above()).getBlock() instanceof LampPost)
-                    pLevel.setBlock(pPos.above(), Blocks.AIR.defaultBlockState(), 27);
+                    pLevel.setBlockAndUpdate(pPos.above(), Blocks.AIR.defaultBlockState());
                 break;
             case BOTTOM:
                 if (pLevel.getBlockState(pPos.above()).getBlock() instanceof LampPost)
-                    pLevel.setBlock(pPos.above(), Blocks.AIR.defaultBlockState(), 27);
+                    pLevel.setBlockAndUpdate(pPos.above(), Blocks.AIR.defaultBlockState());
                 if (pLevel.getBlockState(pPos.above(2)).getBlock() instanceof LampPost)
-                    pLevel.setBlock(pPos.above(2), Blocks.AIR.defaultBlockState(), 27);
+                    pLevel.setBlockAndUpdate(pPos.above(2), Blocks.AIR.defaultBlockState());
                 break;
         }
     }

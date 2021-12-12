@@ -2,6 +2,7 @@ package com.flanks255.simplylight.data;
 
 import com.flanks255.simplylight.SLBlocks;
 import com.flanks255.simplylight.SimplyLight;
+import com.flanks255.simplylight.blocks.LampBlock;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
