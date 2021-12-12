@@ -2,11 +2,12 @@ package com.flanks255.simplylight.blocks;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
-import net.minecraft.block.Block;
-import net.minecraft.entity.ai.attributes.Attribute;
-import net.minecraft.entity.ai.attributes.AttributeModifier;
-import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.level.block.Block;
+
 
 public class LampPostItem extends BaseBlockItem {
     public LampPostItem(Block pBlock, Properties pProperties) {
@@ -22,7 +23,7 @@ public class LampPostItem extends BaseBlockItem {
     private static Multimap<Attribute, AttributeModifier> attributes;
 
     @Override
-    public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(EquipmentSlotType pEquipmentSlot) {
-        return pEquipmentSlot == EquipmentSlotType.MAINHAND? attributes: super.getDefaultAttributeModifiers(pEquipmentSlot);
+    public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(EquipmentSlot pEquipmentSlot) {
+        return pEquipmentSlot == EquipmentSlot.MAINHAND? attributes: super.getDefaultAttributeModifiers(pEquipmentSlot);
     }
 }
