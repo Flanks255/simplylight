@@ -82,60 +82,29 @@ public class LampBlock extends LampBase {
 
     @Override
     public void addLang(BiConsumer<String, String> consumer) {
-        String base = getLangBase();
+        String base = getDescriptionId();
 
         if (color == DyeColor.WHITE)
             consumer.accept(base, "Illuminant Block" + (Default?"(Inverted)":""));
         else {
-            String colorname = "";
-            switch (color) {
-                case RED:
-                    colorname = "Red";
-                    break;
-                case BLUE:
-                    colorname = "Blue";
-                    break;
-                case CYAN:
-                    colorname = "Cyan";
-                    break;
-                case GRAY:
-                    colorname = "Gray";
-                    break;
-                case LIME:
-                    colorname = "Lime";
-                    break;
-                case MAGENTA:
-                    colorname = "Magenta";
-                    break;
-                case PINK:
-                    colorname = "Pink";
-                    break;
-                case BLACK:
-                    colorname = "Black";
-                    break;
-                case BROWN:
-                    colorname = "Brown";
-                    break;
-                case GREEN:
-                    colorname = "Green";
-                    break;
-                case ORANGE:
-                    colorname = "Orange";
-                    break;
-                case PURPLE:
-                    colorname = "Purple";
-                    break;
-                case YELLOW:
-                    colorname = "Yellow";
-                    break;
-                case LIGHT_BLUE:
-                    colorname = "Light Blue";
-                    break;
-                case LIGHT_GRAY:
-                    colorname = "Light Gray";
-                    break;
-            }
-
+            String colorname = switch (color) {
+                case RED -> "Red";
+                case BLUE -> "Blue";
+                case CYAN -> "Cyan";
+                case GRAY -> "Gray";
+                case LIME -> "Lime";
+                case MAGENTA -> "Magenta";
+                case PINK -> "Pink";
+                case BLACK -> "Black";
+                case BROWN -> "Brown";
+                case GREEN -> "Green";
+                case ORANGE -> "Orange";
+                case PURPLE -> "Purple";
+                case YELLOW -> "Yellow";
+                case LIGHT_BLUE -> "Light Blue";
+                case LIGHT_GRAY -> "Light Gray";
+                default -> "";
+            };
             consumer.accept(base, "Illuminant " + colorname + " Block" + (Default ? " (Inverted)" : ""));
         }
         consumer.accept(base + ".info", "Simple light block,");

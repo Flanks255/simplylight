@@ -30,7 +30,7 @@ public class WallLamp extends RotatableLamp{
 
     @Override
     public void addLang(BiConsumer<String, String> consumer) {
-        String base = getLangBase();
+        String base = getDescriptionId();
 
         consumer.accept(base, "Illuminant Fixture");
         consumer.accept(base + ".info", "Hangs from walls, or sticks to ceilings and floors.");

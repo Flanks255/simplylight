@@ -11,7 +11,7 @@ public class Generator {
         generator.addProvider(new Recipes(generator));
         generator.addProvider(new BlockStates(generator, event.getExistingFileHelper()));
         generator.addProvider(new ItemModels(generator, event.getExistingFileHelper()));
-        SLBlockTags slBlockTags = new SLBlockTags(generator, event.getExistingFileHelper());
+        var slBlockTags = new SLBlockTags(generator, event.getExistingFileHelper());
         generator.addProvider(slBlockTags);
         generator.addProvider(new SLItemTags(generator, slBlockTags, event.getExistingFileHelper()));
         generator.addProvider(new LangGen(generator));

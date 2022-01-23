@@ -116,7 +116,7 @@ public class EdgeLight extends LampBase implements SimpleWaterloggedBlock {
 
     @Override
     public void addLang(BiConsumer<String, String> consumer) {
-        String base = getLangBase();
+        String base = getDescriptionId();
 
         if (top)
             consumer.accept(base, "Dynamic Edge Light (top)");

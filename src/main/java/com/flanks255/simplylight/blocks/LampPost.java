@@ -83,7 +83,7 @@ public class LampPost extends LampBase implements SimpleWaterloggedBlock {
     public BlockState getStateForPlacement(BlockPlaceContext pContext) {
         BlockPos clickedPos = pContext.getClickedPos();
         Level level = pContext.getLevel();
-        if (clickedPos.getY() < 254 && level.getBlockState(clickedPos.above()).canBeReplaced(pContext) && level.getBlockState(clickedPos.above(2)).canBeReplaced(pContext))
+        if (clickedPos.getY() < level.getMaxBuildHeight() - 2  && level.getBlockState(clickedPos.above()).canBeReplaced(pContext) && level.getBlockState(clickedPos.above(2)).canBeReplaced(pContext))
             return defaultBlockState().setValue(POSITION, Position.BOTTOM).setValue(BlockStateProperties.WATERLOGGED, false);
         else
             return null;
@@ -118,7 +118,7 @@ public class LampPost extends LampBase implements SimpleWaterloggedBlock {
 
     @Override
     public void addLang(BiConsumer<String, String> consumer) {
-        String base = getLangBase();
+        String base = this.getDescriptionId();
         consumer.accept(base, "Illuminant Column");
         consumer.accept(base + ".info", "3 Block tall lamp post.");
         consumer.accept(base + ".info2", "Top block emits light.");

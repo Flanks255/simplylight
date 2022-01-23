@@ -137,21 +137,21 @@ public class BlockStates  extends BlockStateProvider {
         ResourceLocation offTex = modLoc("block/illuminant_block");
         ResourceLocation onTex = modLoc("block/illuminant_block_on");
 
-        ModelBuilder.ElementBuilder illuminantBlockBuilder = models().withExistingParent(SLBlocks.ILLUMINANTBLOCK.get().getRegistryName().getPath(), "cube")
+        var illuminantBlockBuilder = models().withExistingParent(SLBlocks.ILLUMINANTBLOCK.get().getRegistryName().getPath(), "cube")
             .texture("all", offTex).texture("particle", offTex).ao(false).element();
         ModelFile modelIlluminantBlock = illuminantBlockBuilder.cube("#all").shade(false).end();
 
-        ModelBuilder.ElementBuilder illuminantBlockBuilder_On = models().withExistingParent(SLBlocks.ILLUMINANTBLOCK_ON.get().getRegistryName().getPath(), "cube")
+        var illuminantBlockBuilder_On = models().withExistingParent(SLBlocks.ILLUMINANTBLOCK_ON.get().getRegistryName().getPath(), "cube")
             .texture("all", onTex).texture("particle", onTex).ao(false).element();
         ModelFile modelIlluminantBlock_on = illuminantBlockBuilder_On.cube("#all").shade(false).end();
 
         //Build non-inverted
-        VariantBlockStateBuilder LampBlockBuilder = getVariantBuilder(SLBlocks.ILLUMINANTBLOCK.get());
+        var LampBlockBuilder = getVariantBuilder(SLBlocks.ILLUMINANTBLOCK.get());
         LampBlockBuilder.partialState().with(LampBlock.ON, true).modelForState().modelFile(modelIlluminantBlock_on).addModel();
         LampBlockBuilder.partialState().with(LampBlock.ON, false).modelForState().modelFile(modelIlluminantBlock).addModel();
 
         //Build inverted
-        VariantBlockStateBuilder LampBlockOnBuilder = getVariantBuilder(SLBlocks.ILLUMINANTBLOCK_ON.get());
+        var LampBlockOnBuilder = getVariantBuilder(SLBlocks.ILLUMINANTBLOCK_ON.get());
         LampBlockOnBuilder.partialState().with(LampBlock.ON, true).modelForState().modelFile(modelIlluminantBlock_on).addModel();
         LampBlockOnBuilder.partialState().with(LampBlock.ON, false).modelForState().modelFile(modelIlluminantBlock).addModel();
     }
@@ -169,7 +169,7 @@ public class BlockStates  extends BlockStateProvider {
     }
 
     private void generateLampBlock(SLBlockReg<LampBlock, BaseBlockItem> block) {
-        VariantBlockStateBuilder LampBlockBuilder = getVariantBuilder(block.get());
+        var LampBlockBuilder = getVariantBuilder(block.get());
         LampBlockBuilder.partialState().with(LampBlock.ON, true).modelForState().modelFile(models().getExistingFile(modLoc("block/illuminant_"+ block.getBlock().color.getName() +"_block_on"))).addModel();
         LampBlockBuilder.partialState().with(LampBlock.ON, false).modelForState().modelFile(models().getExistingFile(modLoc("block/illuminant_"+ block.getBlock().color.getName() +"_block"))).addModel();
     }

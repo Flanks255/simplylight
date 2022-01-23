@@ -12,8 +12,4 @@ public class LampBase extends Block {
 
     public void addLang(BiConsumer<String, String> consumer) {
     }
-
-    protected String getLangBase() {
-        return "block." + this.getRegistryName().getNamespace() + "." + this.getRegistryName().getPath();
-    }
 }

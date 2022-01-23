@@ -51,7 +51,7 @@ public class ThinLamp extends RotatableLamp {
 
     @Override
     public void addLang(BiConsumer<String, String> consumer) {
-        String base = getLangBase();
+        String base = getDescriptionId();
 
         if (thickness == 8) {
             consumer.accept(base, "Illuminant Slab");

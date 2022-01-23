@@ -6,6 +6,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
 
+import javax.annotation.Nonnull;
 import java.util.function.BiConsumer;
 
 public class LightBulb extends RotatableLamp {
@@ -23,13 +24,13 @@ public class LightBulb extends RotatableLamp {
     }
 
     @Override
-    public int getLightBlock(BlockState state, BlockGetter world, BlockPos pos) {
+    public int getLightBlock(@Nonnull BlockState state, BlockGetter world, BlockPos pos) {
         return 14;
     }
 
     @Override
     public void addLang(BiConsumer<String, String> consumer) {
-        String base = getLangBase();
+        String base = getDescriptionId();
 
         consumer.accept(base, "Simple Light Bulb");
         consumer.accept(base + ".info", "Just a simple light bulb,");
