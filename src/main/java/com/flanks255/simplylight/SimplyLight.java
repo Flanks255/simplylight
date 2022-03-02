@@ -5,7 +5,7 @@ import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.Tag;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -21,8 +21,8 @@ public class SimplyLight
     public static final String MODID = "simplylight";
     public static final Logger LOGGER = LogManager.getLogger("Simply Light");
 
-    public static final Tag.Named<Item> ANY_ON_LAMP = ItemTags.bind(new ResourceLocation(MODID, "any_lamp_on").toString());
-    public static final Tag.Named<Item> ANY_OFF_LAMP = ItemTags.bind(new ResourceLocation(MODID, "any_lamp_off").toString());
+    public static final TagKey<Item> ANY_ON_LAMP = ItemTags.create(new ResourceLocation(MODID, "any_lamp_on"));
+    public static final TagKey<Item> ANY_OFF_LAMP = ItemTags.create(new ResourceLocation(MODID, "any_lamp_off"));
 
     public SimplyLight() {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();

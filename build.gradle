@@ -34,7 +34,7 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 minecraft {
-    mappings channel: 'parchment', version: "$mappings_version"
+    mappings channel: 'official', version: "$mappings_version"
 
     runs {
         client {
@@ -69,13 +69,13 @@ minecraft {
 }
 
 dependencies {
-    minecraft "net.minecraftforge:forge:$forge_version"
+    minecraft "net.minecraftforge:forge:$minecraft_version-$forge_version"
 
-    compileOnly fg.deobf("mezz.jei:jei-${jei_version}:api")
-    runtimeOnly fg.deobf("mezz.jei:jei-${jei_version}")
+    //compileOnly fg.deobf("mezz.jei:jei-${jei_version}:api")
+    //runtimeOnly fg.deobf("mezz.jei:jei-${jei_version}")
 
-    compileOnly fg.deobf("curse.maven:TOP-245211:3550084")
-    compileOnly fg.deobf("curse.maven:BUILDINGGADGETS-298187:3553977")
+    //compileOnly fg.deobf("curse.maven:TOP-245211:3550084")
+    //compileOnly fg.deobf("curse.maven:BUILDINGGADGETS-298187:3553977")
 }
 
 jar {
@@ -127,10 +127,9 @@ if (ENV.CURSEFORGE_KEY) {
         apiKey = ENV.CURSEFORGE_KEY
         project {
             id = project.curseforge_id
-            releaseType = "release"
+            releaseType = "beta"
             addGameVersion "Forge"
-            addGameVersion "1.18"
-            addGameVersion "1.18.1"
+            addGameVersion "1.18.2"
             mainArtifact(jar)
             changelog = getGitChangelog
             changelogType = 'markdown'
