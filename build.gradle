@@ -34,7 +34,7 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 minecraft {
-    mappings channel: 'official', version: "$mappings_version"
+    mappings channel: "$mappings_channel", version: "$mappings_version"
 
     runs {
         client {
@@ -48,6 +48,7 @@ minecraft {
 
         server {
             workingDirectory project.file('run')
+            args 'nogui'
             mods {
                 simplylight {
                     source sourceSets.main
