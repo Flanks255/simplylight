@@ -3,8 +3,8 @@ package com.flanks255.simplylight;
 import com.flanks255.simplylight.data.Generator;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.common.MinecraftForge;
@@ -21,8 +21,8 @@ public class SimplyLight
     public static final String MODID = "simplylight";
     public static final Logger LOGGER = LogManager.getLogger("Simply Light");
 
-    public static final TagKey<Item> ANY_ON_LAMP = ItemTags.create(new ResourceLocation(MODID, "any_lamp_on"));
-    public static final TagKey<Item> ANY_OFF_LAMP = ItemTags.create(new ResourceLocation(MODID, "any_lamp_off"));
+    public static final TagKey<Item> ANY_ON_LAMP = TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(MODID, "any_lamp_on"));
+    public static final TagKey<Item> ANY_OFF_LAMP = TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(MODID, "any_lamp_off"));
 
     public SimplyLight() {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();

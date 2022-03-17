@@ -1,7 +1,7 @@
 package com.flanks255.simplylight;
 
 
-/*import mezz.jei.api.IModPlugin;
+import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.registration.IRecipeRegistration;
@@ -30,4 +30,4 @@ public class JEIPlugin implements IModPlugin {
             }
         });
     }
-}*/
+}
