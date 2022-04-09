@@ -9,6 +9,7 @@ import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.ItemStack;
+import net.minecraft.pathfinding.PathType;
 import net.minecraft.state.EnumProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
@@ -22,10 +23,12 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ToolType;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.function.BiConsumer;
 import java.util.stream.Stream;
 
+@SuppressWarnings("deprecation")
 public class LampPost extends LampBase implements IWaterLoggable {
     public static final EnumProperty<Position> POSITION = EnumProperty.create("position", Position.class);
 
@@ -48,12 +51,19 @@ public class LampPost extends LampBase implements IWaterLoggable {
     }
 
     @Override
+    public boolean isPathfindable(@Nonnull BlockState p_196266_1_, @Nonnull IBlockReader p_196266_2_, @Nonnull BlockPos p_196266_3_, @Nonnull PathType p_196266_4_) {
+        return false;
+    }
+
+    @Nonnull
+    @Override
     public FluidState getFluidState(BlockState pState) {
         return pState.getValue(BlockStateProperties.WATERLOGGED)? Fluids.WATER.getSource(false) : super.getFluidState(pState);
     }
 
+    @Nonnull
     @Override
-    public VoxelShape getShape(BlockState pState, IBlockReader pLevel, BlockPos pPos, ISelectionContext pContext) {
+    public VoxelShape getShape(BlockState pState, @Nonnull IBlockReader pLevel, @Nonnull BlockPos pPos, @Nonnull ISelectionContext pContext) {
         switch (pState.getValue(POSITION)){
             case TOP:
                 return TOP_SHAPE;
@@ -70,7 +80,7 @@ public class LampPost extends LampBase implements IWaterLoggable {
     }
 
     @Override
-    public void setPlacedBy(World pLevel, BlockPos pPos, BlockState pState, @Nullable LivingEntity pPlacer, ItemStack pStack) {
+    public void setPlacedBy(World pLevel, BlockPos pPos, BlockState pState, @Nullable LivingEntity pPlacer, @Nonnull ItemStack pStack) {
         pLevel.setBlockAndUpdate(pPos.above(), pState.setValue(POSITION, Position.MIDDLE));
         pLevel.setBlockAndUpdate(pPos.above(2), pState.setValue(POSITION, Position.TOP));
     }
@@ -87,7 +97,7 @@ public class LampPost extends LampBase implements IWaterLoggable {
     }
 
     @Override
-    public void onRemove(BlockState pState, World pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
+    public void onRemove(@Nonnull BlockState pState, @Nonnull World pLevel, @Nonnull BlockPos pPos, @Nonnull BlockState pNewState, boolean pIsMoving) {
         super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
         if (pNewState.getBlock() == this)
             return;
@@ -131,6 +141,7 @@ public class LampPost extends LampBase implements IWaterLoggable {
         }
 
         private final String name;
+        @Nonnull
         @Override
         public String getSerializedName() {
             return name;

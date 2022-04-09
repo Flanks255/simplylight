@@ -11,6 +11,7 @@ import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.pathfinding.PathType;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.math.BlockPos;
@@ -23,6 +24,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.function.BiConsumer;
 
+@SuppressWarnings("deprecation")
 public class RodLamp extends LampBase implements IWaterLoggable {
     public RodLamp () {
         super(Block.Properties.of(new Material(
@@ -86,6 +88,11 @@ public class RodLamp extends LampBase implements IWaterLoggable {
     @Override
     public int getLightValue(BlockState state, IBlockReader world, BlockPos pos) {
         return 15;
+    }
+
+    @Override
+    public boolean isPathfindable(@Nonnull BlockState pState, @Nonnull IBlockReader pLevel, @Nonnull BlockPos pPos, @Nonnull PathType pType) {
+        return false;
     }
 
     @Override
