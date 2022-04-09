@@ -9,6 +9,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 import javax.annotation.Nullable;
+import java.util.function.Supplier;
 
 public class SLBlockTags extends BlockTagsProvider {
     public SLBlockTags(DataGenerator generatorIn, @Nullable ExistingFileHelper existingFileHelper) {
@@ -20,10 +21,10 @@ public class SLBlockTags extends BlockTagsProvider {
     protected void addTags() {
         this.tag(BlockTags.WALL_POST_OVERRIDE).add(SLBlocks.LIGHTBULB.get());
 
-        SLBlocks.BLOCKS.getEntries().forEach((blockRegistryObject -> addPickaxe(blockRegistryObject.get())));
+        SLBlocks.BLOCKS.getEntries().forEach(this::addPickaxe);
     }
 
-    private void addPickaxe(Block block) {
-        this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(block);
+    private void addPickaxe(Supplier<Block> block) {
+        this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(block.get());
     }
 }
