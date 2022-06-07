@@ -7,8 +7,8 @@ import com.flanks255.simplylight.blocks.BaseBlockItem;
 import com.flanks255.simplylight.blocks.LampBlock;
 import com.google.gson.JsonObject;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
+import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.HashCache;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
@@ -169,7 +169,7 @@ public class Recipes extends RecipeProvider {
             .save(consumer, SL_loc(block.getItem().getRegistryName().getPath()+"_toggle"));
     }
 
-    private void dyeRecipeOff(Item item, Item dyeItem, Consumer<FinishedRecipe> consumer) {
+    private void dyeRecipeOff(BaseBlockItem item, Item dyeItem, Consumer<FinishedRecipe> consumer) {
         ShapedBuilder.shaped(item, 8)
             .pattern("AAA")
             .pattern("ABA")
@@ -178,7 +178,7 @@ public class Recipes extends RecipeProvider {
             .define('A', SimplyLight.ANY_OFF_LAMP)
             .save(consumer, SL_loc(item.getRegistryName().getPath()+"_dyed"));
     }
-    private void dyeRecipeOn(Item item, Item dyeItem, Consumer<FinishedRecipe> consumer) {
+    private void dyeRecipeOn(BaseBlockItem item, Item dyeItem, Consumer<FinishedRecipe> consumer) {
         ShapedBuilder.shaped(item, 8)
             .pattern("AAA")
             .pattern("ABA")
@@ -189,7 +189,7 @@ public class Recipes extends RecipeProvider {
     }
 
     @Override
-    protected void saveAdvancement(@Nonnull HashCache cache, @Nonnull JsonObject cache2, @Nonnull Path advancementJson) {
+    protected void saveAdvancement(CachedOutput cachedOutput, JsonObject object, Path path) {
         // Nope, don't want none of this...
     }
 

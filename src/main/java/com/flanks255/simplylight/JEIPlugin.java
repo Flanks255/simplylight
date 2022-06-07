@@ -1,3 +1,4 @@
+/*
 package com.flanks255.simplylight;
 
 
@@ -31,3 +32,4 @@ public class JEIPlugin implements IModPlugin {
         });
     }
 }
+*/

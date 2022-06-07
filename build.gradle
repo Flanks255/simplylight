@@ -72,10 +72,10 @@ minecraft {
 dependencies {
     minecraft "net.minecraftforge:forge:$minecraft_version-$forge_version"
 
-    compileOnly fg.deobf("mezz.jei:jei-${jei_version}:api")
-    runtimeOnly fg.deobf("mezz.jei:jei-${jei_version}")
+//    compileOnly fg.deobf("mezz.jei:jei-${jei_version}:api")
+//    runtimeOnly fg.deobf("mezz.jei:jei-${jei_version}")
 
-    compileOnly fg.deobf("curse.maven:TOP-245211:3671753")
+    //compileOnly fg.deobf("curse.maven:TOP-245211:3671753")
     //compileOnly fg.deobf("curse.maven:BUILDINGGADGETS-298187:3553977")
 }
 
@@ -128,9 +128,9 @@ if (ENV.CURSEFORGE_KEY) {
         apiKey = ENV.CURSEFORGE_KEY
         project {
             id = project.curseforge_id
-            releaseType = "release"
+            releaseType = "beta"
             addGameVersion "Forge"
-            addGameVersion "1.18.2"
+            addGameVersion "1.19"
             mainArtifact(jar)
             changelog = getGitChangelog
             changelogType = 'markdown'

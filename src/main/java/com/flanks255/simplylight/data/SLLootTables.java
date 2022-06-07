@@ -1,7 +1,6 @@
 package com.flanks255.simplylight.data;
 
 import com.flanks255.simplylight.SLBlocks;
-import com.flanks255.simplylight.SimplyLight;
 import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.data.DataGenerator;
@@ -14,7 +13,6 @@ import net.minecraft.world.level.storage.loot.LootTables;
 import net.minecraft.world.level.storage.loot.ValidationContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSet;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import javax.annotation.Nonnull;
@@ -47,9 +45,7 @@ public class SLLootTables extends LootTableProvider {
         @Nonnull
         @Override
         protected Iterable<Block> getKnownBlocks() {
-            return ForgeRegistries.BLOCKS.getValues().stream()
-                .filter(b -> b.getRegistryName().getNamespace().equals(SimplyLight.MODID))
-                .collect(Collectors.toList());
+            return SLBlocks.BLOCKS.getEntries().stream().map(RegistryObject::get).collect(Collectors.toList());
         }
     }
 

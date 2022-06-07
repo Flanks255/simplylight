@@ -7,13 +7,13 @@ public class Generator {
     public static void gatherData(GatherDataEvent event) {
         DataGenerator generator = event.getGenerator();
 
-        generator.addProvider(new SLLootTables(generator));
-        generator.addProvider(new Recipes(generator));
-        generator.addProvider(new BlockStates(generator, event.getExistingFileHelper()));
-        generator.addProvider(new ItemModels(generator, event.getExistingFileHelper()));
+        generator.addProvider(true, new SLLootTables(generator));
+        generator.addProvider(true, new Recipes(generator));
+        generator.addProvider(true, new BlockStates(generator, event.getExistingFileHelper()));
+        generator.addProvider(true, new ItemModels(generator, event.getExistingFileHelper()));
         var slBlockTags = new SLBlockTags(generator, event.getExistingFileHelper());
-        generator.addProvider(slBlockTags);
-        generator.addProvider(new SLItemTags(generator, slBlockTags, event.getExistingFileHelper()));
-        generator.addProvider(new LangGen(generator));
+        generator.addProvider(true, slBlockTags);
+        generator.addProvider(true, new SLItemTags(generator, slBlockTags, event.getExistingFileHelper()));
+        generator.addProvider(true, new LangGen(generator));
     }
 }
