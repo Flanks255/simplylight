@@ -40,7 +40,7 @@ public class Recipes extends RecipeProvider {
             .define('a', Tags.Items.STONE)
             .define('b', Items.GLOWSTONE)
             .define('c', Tags.Items.DUSTS_REDSTONE)
-            .save(consumer, new ResourceLocation(SimplyLight.MODID, "illuminant_block"));
+            .save(consumer, SL_loc("illuminant_block"));
 
         // Illuminant Block (On)
         ShapedBuilder.shaped(SLBlocks.ILLUMINANTBLOCK_ON.getItem(), 4)
@@ -50,7 +50,7 @@ public class Recipes extends RecipeProvider {
             .define('a', Tags.Items.STONE)
             .define('b', Items.GLOWSTONE)
             .define('c', Items.REDSTONE_TORCH)
-            .save(consumer, new ResourceLocation(SimplyLight.MODID, "illuminant_block_on"));
+            .save(consumer, SL_loc("illuminant_block_on"));
 
         // Bulbs
         ShapedBuilder.shaped(SLBlocks.LIGHTBULB.getItem(), 8)
@@ -58,7 +58,7 @@ public class Recipes extends RecipeProvider {
             .pattern("aaa")
             .define('a', Tags.Items.STONE)
             .define('b', Items.GLOWSTONE)
-            .save(consumer, new ResourceLocation(SimplyLight.MODID, "bulb"));
+            .save(consumer, SL_loc("bulb"));
 
         // Edge light
         ShapedBuilder.shaped(SLBlocks.EDGELAMP.getItem(), 6)
@@ -67,17 +67,17 @@ public class Recipes extends RecipeProvider {
             .pattern("b b")
             .define('a', Items.GLOWSTONE)
             .define('b', Tags.Items.STONE)
-            .save(consumer, new ResourceLocation( SimplyLight.MODID, "edge_light"));
+            .save(consumer, SL_loc("edge_light"));
 
         // Top Edge light from bottom
         ShapelessBuilder.shapeless(SLBlocks.EDGELAMP_TOP.getItem())
             .requires(SLBlocks.EDGELAMP.getItem())
-            .save(consumer, new ResourceLocation(SimplyLight.MODID, "edge_light_top"));
+            .save(consumer, SL_loc("edge_light_top"));
 
         // Bottom Edge light from top
         ShapelessBuilder.shapeless(SLBlocks.EDGELAMP.getItem())
             .requires(SLBlocks.EDGELAMP_TOP.getItem())
-            .save(consumer, new ResourceLocation(SimplyLight.MODID, "edge_light_bottom_from_top"));
+            .save(consumer, SL_loc("edge_light_bottom_from_top"));
 
         // Slabs
         ShapedBuilder.shaped(SLBlocks.ILLUMINANTSLAB.getItem(), 6)
@@ -85,19 +85,19 @@ public class Recipes extends RecipeProvider {
             .pattern("aaa")
             .define('a', Tags.Items.STONE)
             .define('b', Items.GLOWSTONE)
-            .save(consumer, new ResourceLocation(SimplyLight.MODID, "illuminant_slab"));
+            .save(consumer, SL_loc("illuminant_slab"));
 
         // Slab from panel
         ShapelessBuilder.shapeless(SLBlocks.ILLUMINANTSLAB.getItem())
             .requires(SLBlocks.ILLUMINANTPANEL.getItem())
             .requires(SLBlocks.ILLUMINANTPANEL.getItem())
-            .save(consumer, new ResourceLocation(SimplyLight.MODID, "illuminant_slab_from_panel"));
+            .save(consumer, SL_loc("illuminant_slab_from_panel"));
 
         // Panels
         ShapedBuilder.shaped(SLBlocks.ILLUMINANTPANEL.getItem(), 6)
             .pattern("aaa")
             .define('a', SLBlocks.ILLUMINANTSLAB.getItem())
-            .save(consumer, new ResourceLocation(SimplyLight.MODID, "illuminant_panel"));
+            .save(consumer, SL_loc("illuminant_panel"));
 
         // Rod Lamp
         ShapedBuilder.shaped(SLBlocks.RODLAMP.getItem(), 8)
@@ -106,7 +106,7 @@ public class Recipes extends RecipeProvider {
             .pattern("bab")
             .define('a', Tags.Items.STONE)
             .define('b', Tags.Items.DUSTS_GLOWSTONE)
-            .save(consumer, new ResourceLocation(SimplyLight.MODID, "rodlamp"));
+            .save(consumer, SL_loc("rodlamp"));
 
         // Wall Lamp
         ShapedBuilder.shaped(SLBlocks.WALL_LAMP.getItem(), 6)
@@ -115,7 +115,7 @@ public class Recipes extends RecipeProvider {
             .pattern("ab")
             .define('a', Tags.Items.STONE)
             .define('b', Items.GLOWSTONE)
-            .save(consumer, new ResourceLocation(SimplyLight.MODID, "walllamp"));
+            .save(consumer, SL_loc("walllamp"));
 
         //Lamp Post
         ShapedBuilder.shaped(SLBlocks.LAMP_POST.getItem(), 2)
@@ -125,7 +125,7 @@ public class Recipes extends RecipeProvider {
             .define('L', SimplyLight.ANY_ON_LAMP)
             .define('W', ItemTags.WALLS)
             .define('S', Tags.Items.STONE)
-            .save(consumer, new ResourceLocation(SimplyLight.MODID, "lamp_post"));
+            .save(consumer, SL_loc("lamp_post"));
 
 
         SLBlocks.LAMPBLOCKS_ON.forEach( lamp -> {
@@ -151,7 +151,7 @@ public class Recipes extends RecipeProvider {
 
         ShapelessBuilder.shapeless(block.getItem())
             .requires(item)
-            .save(consumer, new ResourceLocation(SimplyLight.MODID, block.getItem().getRegistryName().getPath()+"_toggle"));
+            .save(consumer, SL_loc(block.getItem().getRegistryName().getPath()+"_toggle"));
     }
     private void toggleOff(SLBlockReg<LampBlock, BaseBlockItem> block, Consumer<FinishedRecipe> consumer) {
         Item item = null;
@@ -166,35 +166,36 @@ public class Recipes extends RecipeProvider {
 
         ShapelessBuilder.shapeless(block.getItem())
             .requires(item)
-            .save(consumer, new ResourceLocation(SimplyLight.MODID, block.getItem().getRegistryName().getPath()+"_toggle"));
+            .save(consumer, SL_loc(block.getItem().getRegistryName().getPath()+"_toggle"));
     }
 
     private void dyeRecipeOff(Item item, Item dyeItem, Consumer<FinishedRecipe> consumer) {
-        ShapedRecipeBuilder.shaped(item, 8)
+        ShapedBuilder.shaped(item, 8)
             .pattern("AAA")
             .pattern("ABA")
             .pattern("AAA")
             .define('B', dyeItem)
             .define('A', SimplyLight.ANY_OFF_LAMP)
-            .unlockedBy("", has(Items.AIR))
-            .save(consumer, new ResourceLocation(SimplyLight.MODID, item.getRegistryName().getPath()+"_dyed"));
+            .save(consumer, SL_loc(item.getRegistryName().getPath()+"_dyed"));
     }
     private void dyeRecipeOn(Item item, Item dyeItem, Consumer<FinishedRecipe> consumer) {
-        ShapedRecipeBuilder.shaped(item, 8)
+        ShapedBuilder.shaped(item, 8)
             .pattern("AAA")
             .pattern("ABA")
             .pattern("AAA")
             .define('B', dyeItem)
             .define('A', SimplyLight.ANY_ON_LAMP)
-            .unlockedBy("", has(Items.AIR))
-            .save(consumer, new ResourceLocation(SimplyLight.MODID, item.getRegistryName().getPath()+"_dyed"));
+            .save(consumer, SL_loc(item.getRegistryName().getPath()+"_dyed"));
     }
 
     @Override
     protected void saveAdvancement(@Nonnull HashCache cache, @Nonnull JsonObject cache2, @Nonnull Path advancementJson) {
-        // Nope, dont want none of this...
+        // Nope, don't want none of this...
     }
 
+    private ResourceLocation SL_loc(String name) {
+        return new ResourceLocation(SimplyLight.MODID, name);
+    }
 
     private static class ShapedBuilder extends ShapedRecipeBuilder {
         public static final InventoryChangeTrigger.TriggerInstance TRIGGER = has(Items.AIR);
