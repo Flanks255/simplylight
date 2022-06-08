@@ -1,4 +1,4 @@
-// 1.19	2022-06-07T17:38:18.6836926	Item Models: simplylight
+// 1.19	2022-06-08T10:06:47.2373402	Item Models: simplylight
 5491830b873630f7e62a44c71a3a87e988ab6a08 assets/simplylight/models/item/edge_light.json
 7d303b4bd1b9f2ad47872a4bc85411f4dbe8c6af assets/simplylight/models/item/edge_light_top.json
 fc84b8dfc45654a6a8157b30082a590832d20d1d assets/simplylight/models/item/illuminant_black_block.json
@@ -36,6 +36,6 @@ e2b1bbb623996a80fe32245b72669efc33f4e5ae assets/simplylight/models/item/illumina
 27817183085b80b318c6b7f57c45dabc8d6ca72f assets/simplylight/models/item/illuminant_yellow_block.json
 2960aa0554700fa1b616f08873eeaee116a28e09 assets/simplylight/models/item/illuminant_yellow_block_on.json
 1b1123128a6cfa2c070c5564f715aaa5de609c5c assets/simplylight/models/item/lamp_post.json
-3373112d30ea739f31a84e47288b19acd59218fe assets/simplylight/models/item/lightbulb.json
+4484f5fffa80ff44ea8c12ec44a656d2b33536a1 assets/simplylight/models/item/lightbulb.json
 f9852151f20c886dffcb3a996fa19a1cd634b8f7 assets/simplylight/models/item/rodlamp.json
 b7139a2648f0e0bb24ce3ab5f8da7fb5a9e7b872 assets/simplylight/models/item/wall_lamp.json

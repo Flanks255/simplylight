@@ -42,6 +42,20 @@ public class ItemModels extends ItemModelProvider {
                 .scale(1f,1f,1f)
                 .translation(0,0,-8).end();
         }
+        else if (block == SLBlocks.LIGHTBULB.get()) {
+            getBuilder(path).parent(new ModelFile.UncheckedModelFile(modLoc("block/" + path)))
+                .transforms().transform(ItemTransforms.TransformType.HEAD)
+                .scale(1f,1f,1f)
+                .translation(0,14,0).end()
+                .transform(ItemTransforms.TransformType.FIRST_PERSON_RIGHT_HAND)
+                .translation(0,8,0).end()
+                .transform(ItemTransforms.TransformType.FIRST_PERSON_LEFT_HAND)
+                .translation(0,8,0).end()
+                .transform(ItemTransforms.TransformType.THIRD_PERSON_RIGHT_HAND)
+                .translation(0,8,0).end()
+                .transform(ItemTransforms.TransformType.THIRD_PERSON_LEFT_HAND)
+                .translation(0,8,0).end();
+        }
         else {
             getBuilder(path).parent(new ModelFile.UncheckedModelFile(modLoc("block/" + path)))
                 .transforms().transform(ItemTransforms.TransformType.HEAD)
