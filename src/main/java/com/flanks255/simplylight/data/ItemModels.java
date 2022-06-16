@@ -6,6 +6,7 @@ import com.flanks255.simplylight.blocks.LampBase;
 import com.flanks255.simplylight.blocks.LampBlock;
 import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -18,49 +19,49 @@ public class ItemModels extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        SLBlocks.BLOCKS.getEntries().forEach((block) -> registerBlockItem((LampBase) block.get()));
+        SLBlocks.BLOCKS.getEntries().forEach((block) -> registerBlockItem(block.get()));
     }
 
-    private void registerBlockItem(LampBase block) {
-        String path = block.getRegistryName().getPath();
-        // Edge lights, rotate them so you can see them.
-        if (block == SLBlocks.EDGELAMP.get()){
-            registerEdgeBlockBottom(path);
-        } else if (block == SLBlocks.EDGELAMP_TOP.get()) {
-            registerEdgeBlockTop(path);
-        } else if (block == SLBlocks.LAMP_POST.get()) {
-            generateLampPost(path);
-        } else if (block instanceof LampBlock) {
-            getBuilder(path).parent(new ModelFile.UncheckedModelFile(modLoc("block/" + path)));
-        } else if (block == SLBlocks.WALL_LAMP.get()) {
-            getBuilder(path).parent(new ModelFile.UncheckedModelFile(modLoc("block/" + path)))
-                .transforms().transform(ItemTransforms.TransformType.HEAD)
-                .scale(1f,1f,1f)
-                .translation(0,4.5f, 14).end()
-                .transform(ItemTransforms.TransformType.FIXED)
-                .rotation(0,-180,0)
-                .scale(1f,1f,1f)
-                .translation(0,0,-8).end();
-        }
-        else if (block == SLBlocks.LIGHTBULB.get()) {
-            getBuilder(path).parent(new ModelFile.UncheckedModelFile(modLoc("block/" + path)))
-                .transforms().transform(ItemTransforms.TransformType.HEAD)
-                .scale(1f,1f,1f)
-                .translation(0,14,0).end()
-                .transform(ItemTransforms.TransformType.FIRST_PERSON_RIGHT_HAND)
-                .translation(0,8,0).end()
-                .transform(ItemTransforms.TransformType.FIRST_PERSON_LEFT_HAND)
-                .translation(0,8,0).end()
-                .transform(ItemTransforms.TransformType.THIRD_PERSON_RIGHT_HAND)
-                .translation(0,8,0).end()
-                .transform(ItemTransforms.TransformType.THIRD_PERSON_LEFT_HAND)
-                .translation(0,8,0).end();
-        }
-        else {
-            getBuilder(path).parent(new ModelFile.UncheckedModelFile(modLoc("block/" + path)))
-                .transforms().transform(ItemTransforms.TransformType.HEAD)
-                .scale(1f,1f,1f)
-                .translation(0,14,0).end();
+    private void registerBlockItem(Block blockIn) {
+        if (blockIn instanceof LampBase block) {
+            String path = block.getRegistryName().getPath();
+            // Edge lights, rotate them so you can see them.
+            if (block == SLBlocks.EDGELAMP.get()) {
+                registerEdgeBlockBottom(path);
+            } else if (block == SLBlocks.EDGELAMP_TOP.get()) {
+                registerEdgeBlockTop(path);
+            } else if (block == SLBlocks.LAMP_POST.get()) {
+                generateLampPost(path);
+            } else if (block instanceof LampBlock) {
+                getBuilder(path).parent(new ModelFile.UncheckedModelFile(modLoc("block/" + path)));
+            } else if (block == SLBlocks.WALL_LAMP.get()) {
+                getBuilder(path).parent(new ModelFile.UncheckedModelFile(modLoc("block/" + path)))
+                    .transforms().transform(ItemTransforms.TransformType.HEAD)
+                    .scale(1f, 1f, 1f)
+                    .translation(0, 4.5f, 14).end()
+                    .transform(ItemTransforms.TransformType.FIXED)
+                    .rotation(0, -180, 0)
+                    .scale(1f, 1f, 1f)
+                    .translation(0, 0, -8).end();
+            } else if (block == SLBlocks.LIGHTBULB.get()) {
+                getBuilder(path).parent(new ModelFile.UncheckedModelFile(modLoc("block/" + path)))
+                    .transforms().transform(ItemTransforms.TransformType.HEAD)
+                    .scale(1f, 1f, 1f)
+                    .translation(0, 14, 0).end()
+                    .transform(ItemTransforms.TransformType.FIRST_PERSON_RIGHT_HAND)
+                    .translation(0, 8, 0).end()
+                    .transform(ItemTransforms.TransformType.FIRST_PERSON_LEFT_HAND)
+                    .translation(0, 8, 0).end()
+                    .transform(ItemTransforms.TransformType.THIRD_PERSON_RIGHT_HAND)
+                    .translation(0, 8, 0).end()
+                    .transform(ItemTransforms.TransformType.THIRD_PERSON_LEFT_HAND)
+                    .translation(0, 8, 0).end();
+            } else {
+                getBuilder(path).parent(new ModelFile.UncheckedModelFile(modLoc("block/" + path)))
+                    .transforms().transform(ItemTransforms.TransformType.HEAD)
+                    .scale(1f, 1f, 1f)
+                    .translation(0, 14, 0).end();
+            }
         }
     }
 
