@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "a": {
+      "item": "minecraft:glowstone"
+    },
+    "b": {
+      "tag": "simplylight:any_stone"
+    }
+  },
+  "pattern": [
+    "b b",
+    "aaa",
+    "b b"
+  ],
+  "result": {
+    "count": 6,
+    "item": "simplylight:edge_light"
+  }
+}

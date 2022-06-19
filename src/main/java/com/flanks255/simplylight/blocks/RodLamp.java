@@ -20,7 +20,7 @@ import java.util.function.BiConsumer;
 @SuppressWarnings("deprecation")
 public class RodLamp extends LampBase implements SimpleWaterloggedBlock {
     public RodLamp () {
-        super(Block.Properties.of(new Material(
+        super(Properties.of(new Material(
             MaterialColor.TERRACOTTA_WHITE,
             false, //isLiquid
             false,  //isSolid

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "a": {
+      "item": "simplylight:illuminant_slab"
+    }
+  },
+  "pattern": [
+    "aaa"
+  ],
+  "result": {
+    "count": 6,
+    "item": "simplylight:illuminant_panel"
+  }
+}

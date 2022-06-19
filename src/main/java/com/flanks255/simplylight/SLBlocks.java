@@ -2,41 +2,21 @@ package com.flanks255.simplylight;
 
 import com.flanks255.simplylight.blocks.*;
 import com.google.common.collect.ImmutableSet;
+import net.minecraft.core.Registry;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.Block;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
 
-import javax.annotation.Nonnull;
+import java.util.List;
 import java.util.Set;
 
 public class SLBlocks {
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, SimplyLight.MODID);
-    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, SimplyLight.MODID);
-
-    private static final Item.Properties ITEMPROPERTIES = new Item.Properties().tab(new CreativeModeTab(SimplyLight.MODID) {
-        @Nonnull
-        @Override
-        public ItemStack makeIcon() {
-            return new ItemStack(ILLUMINANTBLOCK_ON.get());
-        }
-    });
-
-    public static SLBlockReg<LampBlock, BaseBlockItem> addLamp(DyeColor color, boolean state) {
-        return new SLBlockReg<>("illuminant_" + color.getName() + "_block" + (state?"_on":""), () -> new LampBlock(state, color), b -> new BaseBlockItem(b, ITEMPROPERTIES));
-    }
-
-    public static void init(IEventBus bus) {
-        BLOCKS.register(bus);
-        ITEMS.register(bus);
-    }
+    public static final List<SLBlockReg<?,?>> BLOCKS = new java.util.ArrayList<>();
+    private static final Item.Properties ITEMPROPERTIES = new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS);
 
     public static final SLBlockReg<EdgeLight, BaseBlockItem> EDGELAMP_TOP = new SLBlockReg<>("edge_light_top", () -> new EdgeLight(true), b -> new BaseBlockItem(b, ITEMPROPERTIES));
     public static final SLBlockReg<EdgeLight, BaseBlockItem> EDGELAMP = new SLBlockReg<>("edge_light", () -> new EdgeLight(false), b -> new BaseBlockItem(b, ITEMPROPERTIES));
+
     public static final SLBlockReg<RodLamp, BaseBlockItem> RODLAMP = new SLBlockReg<>("rodlamp", RodLamp::new, b -> new BaseBlockItem(b, ITEMPROPERTIES));
     public static final SLBlockReg<LightBulb, BaseBlockItem> LIGHTBULB = new SLBlockReg<>("lightbulb", LightBulb::new, b -> new BaseBlockItem(b, ITEMPROPERTIES));
     public static final SLBlockReg<WallLamp, BaseBlockItem> WALL_LAMP = new SLBlockReg<>("wall_lamp", WallLamp::new, b -> new BaseBlockItem(b, ITEMPROPERTIES));
@@ -80,7 +60,6 @@ public class SLBlocks {
     public static final SLBlockReg<LampBlock, BaseBlockItem> ILLUMINANT_BLOCK_BLACK = addLamp(DyeColor.BLACK, false);
     public static final SLBlockReg<LampBlock, BaseBlockItem> ILLUMINANT_BLOCK_BLACK_ON = addLamp(DyeColor.BLACK, true);
 
-
     public static final Set<SLBlockReg<LampBlock, BaseBlockItem>> LAMPBLOCKS_OFF = ImmutableSet.of(
         ILLUMINANTBLOCK, ILLUMINANT_BLOCK_ORANGE, ILLUMINANT_BLOCK_MAGENTA, ILLUMINANT_BLOCK_LIGHT_BLUE,
         ILLUMINANT_BLOCK_YELLOW, ILLUMINANT_BLOCK_LIME, ILLUMINANT_BLOCK_PINK, ILLUMINANT_BLOCK_GRAY,
@@ -93,4 +72,14 @@ public class SLBlocks {
         ILLUMINANT_BLOCK_LIGHT_GRAY_ON, ILLUMINANT_BLOCK_CYAN_ON, ILLUMINANT_BLOCK_PURPLE_ON, ILLUMINANT_BLOCK_BLUE_ON,
         ILLUMINANT_BLOCK_BROWN_ON, ILLUMINANT_BLOCK_GREEN_ON, ILLUMINANT_BLOCK_RED_ON, ILLUMINANT_BLOCK_BLACK_ON
     );
+
+    public static SLBlockReg<LampBlock, BaseBlockItem> addLamp(DyeColor color, boolean state) {
+        return new SLBlockReg<>("illuminant_" + color.getName() + "_block" + (state?"_on":""), () -> new LampBlock(state, color), b -> new BaseBlockItem(b, ITEMPROPERTIES));
+    }
+    public static void register() {
+        BLOCKS.forEach(block -> {
+            Registry.register(Registry.BLOCK, block.getRegistryName(), block.getBlock());
+            Registry.register(Registry.ITEM, block.getRegistryName(), block.getItem());
+        });
+    }
 }

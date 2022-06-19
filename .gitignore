@@ -1,9 +1,33 @@
-*.ipr
-*.iml
-*.iws
+# gradle
+
+.gradle/
 build/
 out/
-run/
-.gradle/
+classes/
+
+# eclipse
+
+*.launch
+
+# idea
+
 .idea/
-/logs/
+*.iml
+*.ipr
+*.iws
+
+# vscode
+
+.settings/
+.vscode/
+bin/
+.classpath
+.project
+
+# macos
+
+*.DS_Store
+
+# fabric
+
+run/

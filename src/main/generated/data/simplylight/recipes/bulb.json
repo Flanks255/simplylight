@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "a": {
+      "tag": "simplylight:any_stone"
+    },
+    "b": {
+      "item": "minecraft:glowstone"
+    }
+  },
+  "pattern": [
+    " b ",
+    "aaa"
+  ],
+  "result": {
+    "count": 8,
+    "item": "simplylight:lightbulb"
+  }
+}

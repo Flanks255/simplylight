@@ -1,3 +1,4 @@
+/*
 package com.flanks255.simplylight.data;
 
 import com.flanks255.simplylight.SLBlockReg;
@@ -14,12 +15,10 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraftforge.client.model.generators.*;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 
-import java.util.function.Function;
 
-public class BlockStates  extends BlockStateProvider {
+public class BlockStates extends Fabric {
     public BlockStates(DataGenerator gen, ExistingFileHelper exFileHelper) {
         super(gen, SimplyLight.MODID, exFileHelper);
     }
@@ -73,6 +72,7 @@ public class BlockStates  extends BlockStateProvider {
 
         generateLampPost();
     }
+*/
 /*
     private void generateEdgeBlocks() {
         ModelFile model = models().getExistingFile(modLoc("block/edge_light"));
@@ -83,7 +83,8 @@ public class BlockStates  extends BlockStateProvider {
 
 
     }
-*/
+*//*
+
 
     private void generateLampPost() {
         ModelFile base = models().getExistingFile(modLoc("block/post_base"));
@@ -186,3 +187,4 @@ public class BlockStates  extends BlockStateProvider {
             }, BlockStateProperties.WATERLOGGED);
     }
 }
+*/

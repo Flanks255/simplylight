@@ -27,7 +27,7 @@ public class EdgeLight extends LampBase implements SimpleWaterloggedBlock {
     private final Boolean top;
 
     public EdgeLight(Boolean top) {
-        super(Block.Properties.of(Material.DECORATION)
+        super(Properties.of(Material.DECORATION)
             .strength(1.0f)
             .noCollission()
             .lightLevel((bState) -> 14)

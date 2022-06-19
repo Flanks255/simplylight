@@ -4,19 +4,16 @@ import com.google.common.base.Suppliers;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.resources.language.I18n;
+import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -24,13 +21,13 @@ import java.util.List;
 import java.util.function.Supplier;
 
 public class BaseBlockItem extends BlockItem {
-    public BaseBlockItem(Block blockIn, Item.Properties builder)
+    public BaseBlockItem(Block blockIn, Properties builder)
     {
         super(blockIn, builder);
         this.block = blockIn;
     }
 
-    private final Supplier<ResourceLocation> lazyRes = Suppliers.memoize(() -> ForgeRegistries.ITEMS.getKey(this));
+    private final Supplier<ResourceLocation> lazyRes = Suppliers.memoize(() -> Registry.ITEM.getKey(this));
 
     public ResourceLocation getRegistryName() {
         return lazyRes.get();
@@ -38,12 +35,11 @@ public class BaseBlockItem extends BlockItem {
 
     private final Block block;
 
-    @Override
-    public boolean canEquip(ItemStack stack, EquipmentSlot armorType, Entity entity) {
-        return armorType == EquipmentSlot.HEAD || super.canEquip(stack, armorType, entity);
-    }
+//    @Override
+//    public boolean canEquip(ItemStack stack, EquipmentSlot armorType, Entity entity) {
+//        return armorType == EquipmentSlot.HEAD || super.canEquip(stack, armorType, entity);
+//    }
 
-    @OnlyIn(Dist.CLIENT)
     @Override
     public void appendHoverText(@Nonnull ItemStack stack, @Nullable Level worldIn, @Nonnull List<Component> tooltip, @Nonnull TooltipFlag flagIn) {
         super.appendHoverText(stack, worldIn, tooltip, flagIn);

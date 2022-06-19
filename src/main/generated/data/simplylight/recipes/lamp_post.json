@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "L": {
+      "tag": "simplylight:any_lamp_on"
+    },
+    "S": {
+      "tag": "simplylight:any_stone"
+    },
+    "W": {
+      "tag": "minecraft:walls"
+    }
+  },
+  "pattern": [
+    " L ",
+    " W ",
+    "SSS"
+  ],
+  "result": {
+    "count": 2,
+    "item": "simplylight:lamp_post"
+  }
+}

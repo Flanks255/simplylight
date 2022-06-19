@@ -5,12 +5,10 @@ import com.flanks255.simplylight.SLBlocks;
 import com.flanks255.simplylight.SimplyLight;
 import com.flanks255.simplylight.blocks.BaseBlockItem;
 import com.flanks255.simplylight.blocks.LampBlock;
-import com.google.gson.JsonObject;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
-import net.minecraft.data.CachedOutput;
-import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
@@ -19,27 +17,25 @@ import net.minecraft.world.item.DyeItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
-import net.minecraftforge.common.Tags;
 
 import javax.annotation.Nonnull;
-import java.nio.file.Path;
 import java.util.function.Consumer;
 
-public class Recipes extends RecipeProvider {
-    public Recipes(DataGenerator generatorIn) {
+public class Recipes extends FabricRecipeProvider {
+    public Recipes(FabricDataGenerator generatorIn) {
         super(generatorIn);
     }
 
     @Override
-    protected void buildCraftingRecipes(@Nonnull Consumer<FinishedRecipe> consumer) {
+    protected void generateRecipes(Consumer<FinishedRecipe> consumer) {
         // Illuminant Block (Off)
         ShapedBuilder.shaped(SLBlocks.ILLUMINANTBLOCK.getItem(), 4)
             .pattern("aba")
             .pattern("bcb")
             .pattern("aba")
-            .define('a', Tags.Items.STONE)
+            .define('a', SimplyLight.ANY_STONE)
             .define('b', Items.GLOWSTONE)
-            .define('c', Tags.Items.DUSTS_REDSTONE)
+            .define('c', Items.REDSTONE)
             .save(consumer, SL_loc("illuminant_block"));
 
         // Illuminant Block (On)
@@ -47,7 +43,7 @@ public class Recipes extends RecipeProvider {
             .pattern("aba")
             .pattern("bcb")
             .pattern("aba")
-            .define('a', Tags.Items.STONE)
+            .define('a', SimplyLight.ANY_STONE)
             .define('b', Items.GLOWSTONE)
             .define('c', Items.REDSTONE_TORCH)
             .save(consumer, SL_loc("illuminant_block_on"));
@@ -56,7 +52,7 @@ public class Recipes extends RecipeProvider {
         ShapedBuilder.shaped(SLBlocks.LIGHTBULB.getItem(), 8)
             .pattern(" b ")
             .pattern("aaa")
-            .define('a', Tags.Items.STONE)
+            .define('a', SimplyLight.ANY_STONE)
             .define('b', Items.GLOWSTONE)
             .save(consumer, SL_loc("bulb"));
 
@@ -66,7 +62,7 @@ public class Recipes extends RecipeProvider {
             .pattern("aaa")
             .pattern("b b")
             .define('a', Items.GLOWSTONE)
-            .define('b', Tags.Items.STONE)
+            .define('b', SimplyLight.ANY_STONE)
             .save(consumer, SL_loc("edge_light"));
 
         // Top Edge light from bottom
@@ -83,7 +79,7 @@ public class Recipes extends RecipeProvider {
         ShapedBuilder.shaped(SLBlocks.ILLUMINANTSLAB.getItem(), 6)
             .pattern("bbb")
             .pattern("aaa")
-            .define('a', Tags.Items.STONE)
+            .define('a', SimplyLight.ANY_STONE)
             .define('b', Items.GLOWSTONE)
             .save(consumer, SL_loc("illuminant_slab"));
 
@@ -104,8 +100,8 @@ public class Recipes extends RecipeProvider {
             .pattern("bab")
             .pattern("bab")
             .pattern("bab")
-            .define('a', Tags.Items.STONE)
-            .define('b', Tags.Items.DUSTS_GLOWSTONE)
+            .define('a', SimplyLight.ANY_STONE)
+            .define('b', Items.GLOWSTONE_DUST)
             .save(consumer, SL_loc("rodlamp"));
 
         // Wall Lamp
@@ -113,7 +109,7 @@ public class Recipes extends RecipeProvider {
             .pattern("aa")
             .pattern("ab")
             .pattern("ab")
-            .define('a', Tags.Items.STONE)
+            .define('a', SimplyLight.ANY_STONE)
             .define('b', Items.GLOWSTONE)
             .save(consumer, SL_loc("walllamp"));
 
@@ -124,7 +120,7 @@ public class Recipes extends RecipeProvider {
             .pattern("SSS")
             .define('L', SimplyLight.ANY_ON_LAMP)
             .define('W', ItemTags.WALLS)
-            .define('S', Tags.Items.STONE)
+            .define('S', SimplyLight.ANY_STONE)
             .save(consumer, SL_loc("lamp_post"));
 
 
@@ -188,10 +184,6 @@ public class Recipes extends RecipeProvider {
             .save(consumer, SL_loc(item.getRegistryName().getPath()+"_dyed"));
     }
 
-    @Override
-    protected void saveAdvancement(CachedOutput cachedOutput, JsonObject object, Path path) {
-        // Nope, don't want none of this...
-    }
 
     private ResourceLocation SL_loc(String name) {
         return new ResourceLocation(SimplyLight.MODID, name);
@@ -215,13 +207,13 @@ public class Recipes extends RecipeProvider {
         @Override
         public void save(@Nonnull Consumer<FinishedRecipe> pFinishedRecipeConsumer, @Nonnull ResourceLocation pRecipeId) {
             unlockedBy("", TRIGGER); //Nope
-            super.save(pFinishedRecipeConsumer, pRecipeId);
+            super.save(NoAdvFR.Inject(pFinishedRecipeConsumer), pRecipeId);
         }
 
         @Override
         public void save(@Nonnull Consumer<FinishedRecipe> pFinishedRecipeConsumer) {
             unlockedBy("", TRIGGER); //Nope
-            super.save(pFinishedRecipeConsumer);
+            super.save(NoAdvFR.Inject(pFinishedRecipeConsumer));
         }
     }
 
@@ -243,13 +235,13 @@ public class Recipes extends RecipeProvider {
         @Override
         public void save(@Nonnull Consumer<FinishedRecipe> pFinishedRecipeConsumer, @Nonnull ResourceLocation pRecipeId) {
             unlockedBy("", TRIGGER); //Nope
-            super.save(pFinishedRecipeConsumer, pRecipeId);
+            super.save(NoAdvFR.Inject(pFinishedRecipeConsumer), pRecipeId);
         }
 
         @Override
         public void save(@Nonnull Consumer<FinishedRecipe> pFinishedRecipeConsumer) {
             unlockedBy("", TRIGGER); //Nope
-            super.save(pFinishedRecipeConsumer);
+            super.save(NoAdvFR.Inject(pFinishedRecipeConsumer));
         }
     }
 }

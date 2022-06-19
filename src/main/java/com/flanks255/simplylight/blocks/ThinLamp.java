@@ -18,7 +18,7 @@ public class ThinLamp extends RotatableLamp {
     private final double thickness;
 
     public ThinLamp(double thickness) {
-        super(Block.Properties.of(new Material(
+        super(Properties.of(new Material(
             MaterialColor.TERRACOTTA_WHITE,
             false, //isLiquid
             true,  //isSolid

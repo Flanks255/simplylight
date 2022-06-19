@@ -11,7 +11,7 @@ import java.util.function.BiConsumer;
 
 public class LightBulb extends RotatableLamp {
     public LightBulb() {
-        super(Block.Properties.of(Material.DECORATION)
+        super(Properties.of(Material.DECORATION)
             .noCollission()
             .strength(1.0f)
             .lightLevel((bState) -> 14));

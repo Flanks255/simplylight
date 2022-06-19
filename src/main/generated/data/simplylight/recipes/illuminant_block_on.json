@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "a": {
+      "tag": "simplylight:any_stone"
+    },
+    "b": {
+      "item": "minecraft:glowstone"
+    },
+    "c": {
+      "item": "minecraft:redstone_torch"
+    }
+  },
+  "pattern": [
+    "aba",
+    "bcb",
+    "aba"
+  ],
+  "result": {
+    "count": 4,
+    "item": "simplylight:illuminant_block_on"
+  }
+}

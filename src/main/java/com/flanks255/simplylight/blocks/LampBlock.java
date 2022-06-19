@@ -25,7 +25,7 @@ public class LampBlock extends LampBase {
     public final DyeColor color;
 
     public LampBlock(boolean Default, DyeColor colorIn) {
-        super(Block.Properties.of(new Material(
+        super(Properties.of(new Material(
                 MaterialColor.TERRACOTTA_WHITE,
                 false,
                 true,
