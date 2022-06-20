@@ -120,7 +120,7 @@
   "block.simplylight.rodlamp.info2": "Can be placed in any direction.",
   "block.simplylight.wall_lamp": "Illuminant Fixture",
   "block.simplylight.wall_lamp.info": "Hangs from walls, or sticks to ceilings and floors.",
-  "itemGroup.simplylight": "Simply Light",
+  "itemGroup.simplylight.group": "Simply Light",
   "simplylight.key.shift": "Shift",
   "simplylight.redstone": "Redstone",
   "simplylight.shift": "Press <%s> for info."

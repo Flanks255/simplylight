@@ -1,10 +1,13 @@
 package com.flanks255.simplylight;
 
 import com.flanks255.simplylight.blocks.*;
+import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -17,7 +20,7 @@ public class SLBlocks {
     //public static final DeferredRegister<Item> ITEM_REGISTRY = DeferredRegister.create(SimplyLight.MODID, Registry.ITEM);
 
     public static final List<SLBlockReg<?,?>> BLOCKS = new ArrayList<>();
-    private static final Item.Properties ITEMPROPERTIES = new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS);
+    private static final Item.Properties ITEMPROPERTIES = new Item.Properties().tab(SimplyLight.TAB);
 
     public static final SLBlockReg<EdgeLight, BaseBlockItem> EDGELAMP_TOP = new SLBlockReg<>("edge_light_top", () -> new EdgeLight(true), b -> new BaseBlockItem(b, ITEMPROPERTIES));
     public static final SLBlockReg<EdgeLight, BaseBlockItem> EDGELAMP = new SLBlockReg<>("edge_light", () -> new EdgeLight(false), b -> new BaseBlockItem(b, ITEMPROPERTIES));
