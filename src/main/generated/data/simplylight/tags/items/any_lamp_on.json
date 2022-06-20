@@ -1,21 +1,20 @@
 {
   "replace": false,
   "values": [
-    "simplylight:illuminant_block_on",
-    "simplylight:illuminant_orange_block_on",
-    "simplylight:illuminant_magenta_block_on",
+    "simplylight:illuminant_black_block_on",
     "simplylight:illuminant_light_blue_block_on",
-    "simplylight:illuminant_yellow_block_on",
-    "simplylight:illuminant_lime_block_on",
-    "simplylight:illuminant_pink_block_on",
-    "simplylight:illuminant_gray_block_on",
-    "simplylight:illuminant_light_gray_block_on",
     "simplylight:illuminant_cyan_block_on",
-    "simplylight:illuminant_purple_block_on",
-    "simplylight:illuminant_blue_block_on",
-    "simplylight:illuminant_brown_block_on",
+    "simplylight:illuminant_magenta_block_on",
+    "simplylight:illuminant_lime_block_on",
     "simplylight:illuminant_green_block_on",
+    "simplylight:illuminant_blue_block_on",
+    "simplylight:illuminant_light_gray_block_on",
     "simplylight:illuminant_red_block_on",
-    "simplylight:illuminant_black_block_on"
+    "simplylight:illuminant_purple_block_on",
+    "simplylight:illuminant_pink_block_on",
+    "simplylight:illuminant_brown_block_on",
+    "simplylight:illuminant_orange_block_on",
+    "simplylight:illuminant_yellow_block_on",
+    "simplylight:illuminant_gray_block_on"
   ]
 }

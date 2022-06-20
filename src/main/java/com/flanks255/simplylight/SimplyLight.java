@@ -20,11 +20,16 @@ public class SimplyLight implements ModInitializer {
 
 	public static final TagKey<Item> ANY_STONE = TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(MODID, "any_stone"));
 
+	public SimplyLight() {
+		SLBlocks.init();
+		RecipeUnlocker.register();
+	}
+
 	@Override
 	public void onInitialize() {
+		//SLBlocks.BLOCK_REGISTRY.register();
+		//SLBlocks.ITEM_REGISTRY.register();
 		SLBlocks.register();
-
-
 
 	}
 }

@@ -11,6 +11,7 @@ import java.util.function.Supplier;
 public class SLBlockReg<B extends Block, I extends Item> implements Supplier<B> {
     private final B block;
     private final I item;
+
     private final ResourceLocation registryName;
 
     @Override
@@ -19,10 +20,16 @@ public class SLBlockReg<B extends Block, I extends Item> implements Supplier<B> 
     }
 
     public SLBlockReg(String name, Supplier<B> blockSupplier, Function<B, I> itemSupplier) {
-        block = blockSupplier.get();
-        item = itemSupplier.apply(block);
         registryName = new ResourceLocation(SimplyLight.MODID, name);
+        block = blockSupplier.get();
+
+        item = itemSupplier.apply(block);
+
         SLBlocks.BLOCKS.add(this);
+    }
+
+    public ResourceLocation getRegistryName() {
+        return registryName;
     }
 
     public B getBlock() {
@@ -31,9 +38,5 @@ public class SLBlockReg<B extends Block, I extends Item> implements Supplier<B> 
 
     public I getItem() {
         return item;
-    }
-
-    public ResourceLocation getRegistryName() {
-        return registryName;
     }
 }
