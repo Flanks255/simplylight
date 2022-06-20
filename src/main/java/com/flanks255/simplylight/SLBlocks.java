@@ -1,23 +1,31 @@
 package com.flanks255.simplylight;
 
 import com.flanks255.simplylight.blocks.*;
-import com.google.common.collect.ImmutableSet;
+import dev.architectury.registry.registries.DeferredRegister;
+import net.minecraft.core.DefaultedRegistry;
 import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Supplier;
 
 public class SLBlocks {
-    public static final List<SLBlockReg<?,?>> BLOCKS = new java.util.ArrayList<>();
+    public static void init() {}
+    //public static final DeferredRegister<Block> BLOCK_REGISTRY = DeferredRegister.create(SimplyLight.MODID, Registry.BLOCK);
+    //public static final DeferredRegister<Item> ITEM_REGISTRY = DeferredRegister.create(SimplyLight.MODID, Registry.ITEM);
+
+    public static final List<SLBlockReg<?,?>> BLOCKS = new ArrayList<>();
     private static final Item.Properties ITEMPROPERTIES = new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS);
 
     public static final SLBlockReg<EdgeLight, BaseBlockItem> EDGELAMP_TOP = new SLBlockReg<>("edge_light_top", () -> new EdgeLight(true), b -> new BaseBlockItem(b, ITEMPROPERTIES));
     public static final SLBlockReg<EdgeLight, BaseBlockItem> EDGELAMP = new SLBlockReg<>("edge_light", () -> new EdgeLight(false), b -> new BaseBlockItem(b, ITEMPROPERTIES));
-
     public static final SLBlockReg<RodLamp, BaseBlockItem> RODLAMP = new SLBlockReg<>("rodlamp", RodLamp::new, b -> new BaseBlockItem(b, ITEMPROPERTIES));
     public static final SLBlockReg<LightBulb, BaseBlockItem> LIGHTBULB = new SLBlockReg<>("lightbulb", LightBulb::new, b -> new BaseBlockItem(b, ITEMPROPERTIES));
     public static final SLBlockReg<WallLamp, BaseBlockItem> WALL_LAMP = new SLBlockReg<>("wall_lamp", WallLamp::new, b -> new BaseBlockItem(b, ITEMPROPERTIES));
@@ -64,27 +72,44 @@ public class SLBlocks {
     public static final SLBlockReg<LampBlock, BaseBlockItem> ILLUMINANT_BLOCK_BLACK = addLamp(DyeColor.BLACK, false);
     public static final SLBlockReg<LampBlock, BaseBlockItem> ILLUMINANT_BLOCK_BLACK_ON = addLamp(DyeColor.BLACK, true);
 
-    public static final Set<SLBlockReg<LampBlock, BaseBlockItem>> LAMPBLOCKS_OFF = ImmutableSet.of(
-        ILLUMINANTBLOCK, ILLUMINANT_BLOCK_ORANGE, ILLUMINANT_BLOCK_MAGENTA, ILLUMINANT_BLOCK_LIGHT_BLUE,
-        ILLUMINANT_BLOCK_YELLOW, ILLUMINANT_BLOCK_LIME, ILLUMINANT_BLOCK_PINK, ILLUMINANT_BLOCK_GRAY,
-        ILLUMINANT_BLOCK_LIGHT_GRAY, ILLUMINANT_BLOCK_CYAN, ILLUMINANT_BLOCK_PURPLE, ILLUMINANT_BLOCK_BLUE,
-        ILLUMINANT_BLOCK_BROWN, ILLUMINANT_BLOCK_GREEN, ILLUMINANT_BLOCK_RED, ILLUMINANT_BLOCK_BLACK
-    );
-    public static final Set<SLBlockReg<LampBlock, BaseBlockItem>> LAMPBLOCKS_ON = ImmutableSet.of(
-        ILLUMINANTBLOCK_ON, ILLUMINANT_BLOCK_ORANGE_ON, ILLUMINANT_BLOCK_MAGENTA_ON, ILLUMINANT_BLOCK_LIGHT_BLUE_ON,
-        ILLUMINANT_BLOCK_YELLOW_ON, ILLUMINANT_BLOCK_LIME_ON, ILLUMINANT_BLOCK_PINK_ON, ILLUMINANT_BLOCK_GRAY_ON,
-        ILLUMINANT_BLOCK_LIGHT_GRAY_ON, ILLUMINANT_BLOCK_CYAN_ON, ILLUMINANT_BLOCK_PURPLE_ON, ILLUMINANT_BLOCK_BLUE_ON,
-        ILLUMINANT_BLOCK_BROWN_ON, ILLUMINANT_BLOCK_GREEN_ON, ILLUMINANT_BLOCK_RED_ON, ILLUMINANT_BLOCK_BLACK_ON
-    );
-
     public static SLBlockReg<LampBlock, BaseBlockItem> addLamp(DyeColor color, boolean state) {
-        return new SLBlockReg<>("illuminant_" + color.getName() + "_block" + (state?"_on":""), () -> new LampBlock(state, color), b -> new BaseBlockItem(b, ITEMPROPERTIES));
+        SLBlockReg<LampBlock, BaseBlockItem> lampBlockBaseBlockItemSLBlockReg = new SLBlockReg<>("illuminant_" + color.getName() + "_block" + (state?"_on":""), () -> new LampBlock(state, color), b -> new BaseBlockItem(b, ITEMPROPERTIES));
+        (state ? LAMPBLOCKS_ON : LAMPBLOCKS_OFF).add(lampBlockBaseBlockItemSLBlockReg);
+        return lampBlockBaseBlockItemSLBlockReg;
     }
+
     public static void register() {
-        BLOCKS.forEach(block -> {
-            Registry.register(Registry.BLOCK, block.getRegistryName(), block.getBlock());
-            Registry.register(Registry.ITEM, block.getRegistryName(), block.getItem());
+        BLOCKS.forEach(reg -> {
+            Registry.register(Registry.BLOCK, reg.getRegistryName(), reg.getBlock());
+            Registry.register(Registry.ITEM, reg.getRegistryName(), reg.getItem());
         });
+    }
+/*
+    public static final class DeferredRegister<T> {
+        private final List<Element<T>> entries = new ArrayList<>();
+        private final DefaultedRegistry<T> registry;
+        private final String modId;
+
+        public static <T> DeferredRegister<T> create(String modId, DefaultedRegistry<T> registry) {
+            return new DeferredRegister<>(modId, registry);
+        }
+
+        private DeferredRegister(String modId, DefaultedRegistry<T> registry) {
+            this.modId = modId;
+            this.registry = registry;
+        }
+
+        @SuppressWarnings("unchecked")
+        public <I extends T> Supplier<I> register(String name, Supplier<? extends I> value) {
+            this.entries.add((Element<T>) new Element<I>(new ResourceLocation(modId, name), (Supplier<I>) value));
+            return (Supplier<I>) value;
+        }
+
+        public void register() {
+            entries.forEach(e -> Registry.register(this.registry, e.location(), e.item().get()));
+        }
+
+        private record Element<T>(ResourceLocation location, Supplier<T> item) {}
     }
 
  */
