@@ -1,20 +1,15 @@
 package com.flanks255.simplylight;
 
 import com.flanks255.simplylight.blocks.*;
-import dev.architectury.registry.registries.DeferredRegister;
-import net.minecraft.core.DefaultedRegistry;
 import net.minecraft.core.Registry;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.function.Supplier;
 
 public class SLBlocks {
     public static void init() {}
