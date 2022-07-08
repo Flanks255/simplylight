@@ -10,3 +10,9 @@ logoFile="logo.png"
 credits=""
 authors="Flanks255"
 description='''Simple light, for a complicated world.'''
+[[dependencies.simplylight]]
+modId="forge"
+mandatory=true
+versionRange="[41.0.64,)"
+ordering="NONE"
+side="BOTH"

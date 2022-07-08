@@ -1,5 +1,6 @@
 {
 	"credit": "Made with Blockbench",
+	"render_type": "solid",
 	"textures": {
 		"0": "simplylight:block/blankstripe",
 		"1": "simplylight:block/black",

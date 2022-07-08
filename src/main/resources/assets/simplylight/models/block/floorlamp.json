@@ -1,6 +1,7 @@
 ﻿{
 	"credit": "Made with Blockbench",
 	"parent": "block/block",
+	"render_type": "solid",
 	"ambientocclusion": false,
 	"textures": {
 		"0": "simplylight:block/omni",

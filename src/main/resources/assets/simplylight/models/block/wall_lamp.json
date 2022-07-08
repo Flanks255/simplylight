@@ -1,5 +1,6 @@
 {
 	"credit": "Made with Blockbench",
+	"render_type": "solid",
 	"parent": "block/block",
 	"ambientocclusion": false,
 	"textures": {

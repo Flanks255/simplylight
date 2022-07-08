@@ -14,14 +14,18 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraftforge.client.model.generators.*;
+import net.minecraftforge.client.model.generators.BlockStateProvider;
+import net.minecraftforge.client.model.generators.ConfiguredModel;
+import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 import java.util.function.Function;
 
 public class BlockStates  extends BlockStateProvider {
+    ExistingFileHelper existingFileHelper;
     public BlockStates(DataGenerator gen, ExistingFileHelper exFileHelper) {
         super(gen, SimplyLight.MODID, exFileHelper);
+        existingFileHelper = exFileHelper;
     }
 
     @Override

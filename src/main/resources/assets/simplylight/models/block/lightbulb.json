@@ -1,68 +1,14 @@
 {
-	"parent": "block/block",
-	"loader": "forge:multi-layer",
-	"textures": {
-		"main": "simplylight:block/omni",
-		"particle": "simplylight:block/omni"
-	},
-	"layers": {
-		"solid": {
-			"parent": "block/block",
-			"textures": {
-				"main": "simplylight:block/omni",
-				"particle": "simplylight:block/omni"
-			},
-			"elements": [
-				{
-					"from": [6, 0, 6],
-					"to": [10, 1, 10],
-					"shade": false,
-					"faces": {
-						"north": {"uv": [6, 11, 10, 12], "texture": "#main"},
-						"east": {"uv": [6, 11, 10, 12], "texture": "#main"},
-						"south": {"uv": [6, 11, 10, 12], "texture": "#main"},
-						"west": {"uv": [6, 11, 10, 12], "texture": "#main"},
-						"up": {"uv": [10, 7, 14, 11], "texture": "#main"},
-						"down": {"uv": [6, 7, 10, 11], "texture": "#main"}
-					}
-				},
-				{
-					"from": [7, 1, 7],
-					"to": [9, 5, 9],
-					"shade": false,
-					"faces": {
-						"north": {"uv": [10, 11, 12, 15], "texture": "#main"},
-						"east": {"uv": [12, 11, 14, 15], "texture": "#main"},
-						"south": {"uv": [10, 11, 12, 15], "texture": "#main"},
-						"west": {"uv": [12, 11, 14, 15], "texture": "#main"},
-						"up": {"uv": [14, 11, 16, 13], "texture": "#main"},
-						"down": {"uv": [14, 13, 16, 15], "texture": "#main"}
-					}
-				}
-			]
-		},
-		"translucent": {
-			"parent": "block/block",
-			"ambientocclusion": false,
-			"textures": {
-				"main": "simplylight:block/omni",
-				"particle": "simplylight:block/omni"
-			},
-			"elements": [
-				{
-					"from": [6.75, 2, 6.75],
-					"to": [9.25, 5.25, 9.25],
-					"shade": false,
-					"faces": {
-						"north": {"uv": [0, 11, 2, 13], "texture": "#main"},
-						"east": {"uv": [0, 11, 2, 13], "texture": "#main"},
-						"south": {"uv": [0, 11, 2, 13], "texture": "#main"},
-						"west": {"uv": [0, 11, 2, 13], "texture": "#main"},
-						"up": {"uv": [0, 11, 2, 13], "texture": "#main"},
-						"down": {"uv": [0, 11, 2, 13], "texture": "#main"}
-					}
-				}
-			]
-		}
-	}
+  "parent": "block/block",
+  "loader": "forge:composite",
+  "children": {
+    "first": {
+      "parent": "simplylight:/block/lightbulb_base",
+      "render_type": "solid"
+    },
+    "second": {
+      "parent": "simplylight:/block/lightbulb_glow",
+      "render_type": "translucent"
+    }
+  }
 }

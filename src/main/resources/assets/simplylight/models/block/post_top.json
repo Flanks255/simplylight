@@ -1,5 +1,6 @@
 {
 	"credit": "Made with Blockbench",
+	"render_type": "solid",
 	"textures": {
 		"1": "simplylight:block/post_lightface",
 		"2": "simplylight:block/black",
