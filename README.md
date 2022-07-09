@@ -1,6 +1,7 @@
 # simplylight
-[![Curse Forge](http://cf.way2muchnoise.eu/simply-light.svg)](https://minecraft.curseforge.com/projects/simply-light)
-[![Curse Forge](http://cf.way2muchnoise.eu/versions/simply-light.svg)](https://minecraft.curseforge.com/projects/simply-light)
+[![Curse Forge](http://cf.way2muchnoise.eu/300331.svg)](https://minecraft.curseforge.com/projects/simply-light)
+[![Curse Forge](http://cf.way2muchnoise.eu/versions/300331.svg)](https://minecraft.curseforge.com/projects/simply-light)
+[![Build and deploy](https://github.com/Flanks255/simplylight/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/Flanks255/simplylight/actions/workflows/build.yml)
 
 # What is Simply Light? 
 
