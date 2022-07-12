@@ -13,6 +13,6 @@ description='''Simple light, for a complicated world.'''
 [[dependencies.simplylight]]
 modId="forge"
 mandatory=true
-versionRange="[41.0.64,)"
+versionRange="[41.0.95,)"
 ordering="NONE"
 side="BOTH"
