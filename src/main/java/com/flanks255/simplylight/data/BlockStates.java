@@ -17,6 +17,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
+import net.minecraftforge.client.model.generators.loaders.CompositeModelBuilder;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 import java.util.function.Function;
@@ -68,14 +69,25 @@ public class BlockStates  extends BlockStateProvider {
 
         generateThinLamps();
 
-        //Light bulbs
-        myDirectionalBlock(SLBlocks.LIGHTBULB.get(), $ -> models().getExistingFile(modLoc("block/lightbulb")), 180);
-
         generateRodLamp();
+
+        generateLightBulb();
 
         generateWallLamp();
 
         generateLampPost();
+    }
+
+    private void generateLightBulb() {
+        ModelFile base = models().getExistingFile(modLoc("block/lightbulb_base"));
+        ModelFile glow = models().getExistingFile(modLoc("block/lightbulb_glow"));
+
+        var model = models().getBuilder("block/lightbulb").customLoader(CompositeModelBuilder::begin)
+                .child("Solid", models().nested().renderType("minecraft:solid").parent(base))
+                .child("Translucent", models().nested().renderType("minecraft:translucent").parent(glow))
+                .end();
+
+        myDirectionalBlock(SLBlocks.LIGHTBULB.get(), $ -> model, 180);
     }
 /*
     private void generateEdgeBlocks() {
