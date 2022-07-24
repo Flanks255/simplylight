@@ -16,9 +16,6 @@ import java.util.Set;
 
 public class SLBlocks {
     public static void init() {}
-    //public static final DeferredRegister<Block> BLOCK_REGISTRY = DeferredRegister.create(SimplyLight.MODID, Registry.BLOCK);
-    //public static final DeferredRegister<Item> ITEM_REGISTRY = DeferredRegister.create(SimplyLight.MODID, Registry.ITEM);
-
     public static final List<SLBlockReg<?,?>> BLOCKS = new ArrayList<>();
     private static final Item.Properties ITEMPROPERTIES = new Item.Properties().tab(SimplyLight.TAB);
 
@@ -32,13 +29,11 @@ public class SLBlocks {
 
     public static final SLBlockReg<LampPost, LampPostItem> LAMP_POST = new SLBlockReg<>("lamp_post", LampPost::new, b -> new LampPostItem(b, ITEMPROPERTIES));
 
-
-    public static final SLBlockReg<LampBlock, BaseBlockItem> ILLUMINANTBLOCK_ON = new SLBlockReg<>("illuminant_block_on", () -> new LampBlock(true, DyeColor.WHITE), b -> new BaseBlockItem(b, ITEMPROPERTIES));
-    public static final SLBlockReg<LampBlock, BaseBlockItem> ILLUMINANTBLOCK = new SLBlockReg<>("illuminant_block", () -> new LampBlock(false, DyeColor.WHITE), b -> new BaseBlockItem(b, ITEMPROPERTIES));
-
     public static final Set<SLBlockReg<LampBlock, BaseBlockItem>> LAMPBLOCKS_ON = new HashSet<>();
     public static final Set<SLBlockReg<LampBlock, BaseBlockItem>> LAMPBLOCKS_OFF = new HashSet<>();
 
+    public static final SLBlockReg<LampBlock, BaseBlockItem> ILLUMINANTBLOCK_ON = addLamp(DyeColor.WHITE, true);
+    public static final SLBlockReg<LampBlock, BaseBlockItem> ILLUMINANTBLOCK = addLamp(DyeColor.WHITE, false);
     public static final SLBlockReg<LampBlock, BaseBlockItem> ILLUMINANT_BLOCK_ORANGE = addLamp(DyeColor.ORANGE, false);
     public static final SLBlockReg<LampBlock, BaseBlockItem> ILLUMINANT_BLOCK_ORANGE_ON = addLamp(DyeColor.ORANGE, true);
     public static final SLBlockReg<LampBlock, BaseBlockItem> ILLUMINANT_BLOCK_MAGENTA = addLamp(DyeColor.MAGENTA, false);
@@ -71,7 +66,11 @@ public class SLBlocks {
     public static final SLBlockReg<LampBlock, BaseBlockItem> ILLUMINANT_BLOCK_BLACK_ON = addLamp(DyeColor.BLACK, true);
 
     public static SLBlockReg<LampBlock, BaseBlockItem> addLamp(DyeColor color, boolean state) {
-        SLBlockReg<LampBlock, BaseBlockItem> lampBlockBaseBlockItemSLBlockReg = new SLBlockReg<>("illuminant_" + color.getName() + "_block" + (state?"_on":""), () -> new LampBlock(state, color), b -> new BaseBlockItem(b, ITEMPROPERTIES));
+        SLBlockReg<LampBlock, BaseBlockItem> lampBlockBaseBlockItemSLBlockReg;
+        if (color == DyeColor.WHITE)
+            lampBlockBaseBlockItemSLBlockReg = new SLBlockReg<>("illuminant_block" + (state?"_on":""), () -> new LampBlock(state, color), b -> new BaseBlockItem(b, ITEMPROPERTIES));
+        else
+            lampBlockBaseBlockItemSLBlockReg = new SLBlockReg<>("illuminant_" + color.getName() + "_block" + (state?"_on":""), () -> new LampBlock(state, color), b -> new BaseBlockItem(b, ITEMPROPERTIES));
         (state ? LAMPBLOCKS_ON : LAMPBLOCKS_OFF).add(lampBlockBaseBlockItemSLBlockReg);
         return lampBlockBaseBlockItemSLBlockReg;
     }

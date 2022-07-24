@@ -29,8 +29,6 @@ public class SimplyLight implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		//SLBlocks.BLOCK_REGISTRY.register();
-		//SLBlocks.ITEM_REGISTRY.register();
 		SLBlocks.register();
 
 	}
