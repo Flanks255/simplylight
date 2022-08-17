@@ -1,4 +1,3 @@
-/*
 package com.flanks255.simplylight;
 
 
@@ -7,7 +6,7 @@ import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.client.resources.language.I18n;
-import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 
@@ -27,9 +26,8 @@ public class JEIPlugin implements IModPlugin {
         SLBlocks.ITEMS.getEntries().forEach((item) -> {
             String key = item.get().getDescriptionId()+".jei.info";
             if (I18n.exists(key)) {
-                registration.addIngredientInfo(new ItemStack(item.get()), VanillaTypes.ITEM, new TextComponent(I18n.get(key)));
+                registration.addIngredientInfo(new ItemStack(item.get()), VanillaTypes.ITEM_STACK, Component.translatable(key));
             }
         });
     }
 }
-*/
