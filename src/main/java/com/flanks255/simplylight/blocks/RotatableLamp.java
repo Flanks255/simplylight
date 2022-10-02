@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
 @SuppressWarnings("deprecation")
 public abstract class RotatableLamp extends LampBase implements SimpleWaterloggedBlock {
     public RotatableLamp(Properties props) {
-        super(props.lightLevel((bState) -> 15));
+        super(props);
         registerDefaultState(getStateDefinition().any().setValue(BlockStateProperties.WATERLOGGED, false));
     }
     public VoxelShape DOWN;
@@ -67,11 +67,6 @@ public abstract class RotatableLamp extends LampBase implements SimpleWaterlogge
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         boolean waterlogged = context.getLevel().getFluidState(context.getClickedPos()).getType() == Fluids.WATER;
         return defaultBlockState().setValue(BlockStateProperties.FACING, context.getClickedFace()).setValue(BlockStateProperties.WATERLOGGED, waterlogged);
-    }
-
-    @Override
-    public int getLightBlock(@Nonnull BlockState state, @Nonnull BlockGetter world, @Nonnull BlockPos pos) {
-        return 15;
     }
 
 }

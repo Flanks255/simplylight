@@ -27,7 +27,7 @@ public class ThinLamp extends RotatableLamp {
             false, //isFlammable
             false, //isReplaceable
             PushReaction.NORMAL
-        )).strength(1.0f));
+        )).lightLevel($ -> 15).strength(1.0f));
 
         this.thickness = thickness;
         UP = Block.box(0,0,0, 16, thickness,16);

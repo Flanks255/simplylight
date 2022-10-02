@@ -76,6 +76,7 @@ dependencies {
     runtimeOnly fg.deobf("mezz.jei:jei-${jei_version}")
 
     compileOnly fg.deobf("curse.maven:TOP-245211:3671753")
+    compileOnly fg.deobf("curse.maven:CTM-267602:3933537")
     //compileOnly fg.deobf("curse.maven:BUILDINGGADGETS-298187:3553977")
 }
 
