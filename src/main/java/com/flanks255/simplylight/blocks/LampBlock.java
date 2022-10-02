@@ -5,7 +5,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -42,7 +41,6 @@ public class LampBlock extends LampBase {
         registerDefaultState(getStateDefinition().any().setValue(ON, Default));
     }
 
-
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> blockStateBuilder) {
         blockStateBuilder.add(ON);
@@ -70,10 +68,10 @@ public class LampBlock extends LampBase {
         pLevel.setBlockAndUpdate(pPos, defaultBlockState().setValue(ON, on));
     }
 
-    @Override
+/*    @Override
     public int getLightBlock(BlockState pState, @Nonnull BlockGetter pLevel, @Nonnull BlockPos pPos) {
         return pState.getValue(ON)?15:0;
-    }
+    }*/
 
     @Override
     public boolean isSignalSource(@Nonnull BlockState pState) {

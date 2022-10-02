@@ -30,7 +30,7 @@ public class EdgeLight extends LampBase implements SimpleWaterloggedBlock {
         super(Block.Properties.of(Material.DECORATION)
             .strength(1.0f)
             .noCollission()
-            .lightLevel((bState) -> 14)
+            .lightLevel($ -> 14)
         );
 
         registerDefaultState(getStateDefinition().any().setValue(BlockStateProperties.WATERLOGGED, false));
@@ -108,12 +108,6 @@ public class EdgeLight extends LampBase implements SimpleWaterloggedBlock {
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
         pBuilder.add(NORTH, SOUTH, EAST, WEST, BlockStateProperties.WATERLOGGED);
     }
-
-    @Override
-    public int getLightBlock(@Nonnull BlockState pState, @Nonnull BlockGetter pLevel, @Nonnull BlockPos pPos) {
-        return 14;
-    }
-
     @Override
     public void addLang(BiConsumer<String, String> consumer) {
         String base = getDescriptionId();
