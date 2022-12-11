@@ -68,11 +68,6 @@ public class LampBlock extends LampBase {
         pLevel.setBlockAndUpdate(pPos, defaultBlockState().setValue(ON, on));
     }
 
-/*    @Override
-    public int getLightBlock(BlockState pState, @Nonnull BlockGetter pLevel, @Nonnull BlockPos pPos) {
-        return pState.getValue(ON)?15:0;
-    }*/
-
     @Override
     public boolean isSignalSource(@Nonnull BlockState pState) {
         return true;

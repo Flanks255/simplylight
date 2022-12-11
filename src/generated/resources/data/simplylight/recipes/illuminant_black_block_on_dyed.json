@@ -1,20 +1,21 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "tag": "simplylight:any_lamp_on"
+    },
+    "B": {
+      "item": "minecraft:black_dye"
+    }
+  },
   "pattern": [
     "AAA",
     "ABA",
     "AAA"
   ],
-  "key": {
-    "B": {
-      "item": "minecraft:black_dye"
-    },
-    "A": {
-      "tag": "simplylight:any_lamp_on"
-    }
-  },
   "result": {
-    "item": "simplylight:illuminant_black_block_on",
-    "count": 8
+    "count": 8,
+    "item": "simplylight:illuminant_black_block_on"
   }
 }

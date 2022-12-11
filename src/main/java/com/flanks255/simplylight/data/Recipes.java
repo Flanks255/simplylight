@@ -9,10 +9,7 @@ import com.google.gson.JsonObject;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.data.recipes.RecipeProvider;
-import net.minecraft.data.recipes.ShapedRecipeBuilder;
-import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.DyeItem;
@@ -22,16 +19,16 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.common.Tags;
 
 import javax.annotation.Nonnull;
-import java.nio.file.Path;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 
 public class Recipes extends RecipeProvider {
     public Recipes(DataGenerator generatorIn) {
-        super(generatorIn);
+        super(generatorIn.getPackOutput());
     }
 
     @Override
-    protected void buildCraftingRecipes(@Nonnull Consumer<FinishedRecipe> consumer) {
+    protected void buildRecipes(@Nonnull Consumer<FinishedRecipe> consumer) {
         // Illuminant Block (Off)
         ShapedBuilder.shaped(SLBlocks.ILLUMINANTBLOCK.getItem(), 4)
             .pattern("aba")
@@ -189,8 +186,9 @@ public class Recipes extends RecipeProvider {
     }
 
     @Override
-    protected void saveAdvancement(CachedOutput cachedOutput, JsonObject object, Path path) {
+    protected CompletableFuture<?> saveAdvancement(@Nonnull CachedOutput output, @Nonnull FinishedRecipe finishedRecipe, @Nonnull JsonObject advancementJson) {
         // Nope, don't want none of this...
+        return null;
     }
 
     private ResourceLocation SL_loc(String name) {
@@ -201,7 +199,7 @@ public class Recipes extends RecipeProvider {
         public static final InventoryChangeTrigger.TriggerInstance TRIGGER = has(Items.AIR);
 
         public ShapedBuilder(ItemLike pResult, int pCount) {
-            super(pResult, pCount);
+            super(RecipeCategory.MISC, pResult, pCount);
         }
 
         public static ShapedBuilder shaped(ItemLike pResult, int pCount) {
@@ -229,7 +227,7 @@ public class Recipes extends RecipeProvider {
         public static final InventoryChangeTrigger.TriggerInstance TRIGGER = has(Items.AIR);
 
         public ShapelessBuilder(ItemLike pResult, int pCount) {
-            super(pResult, pCount);
+            super(RecipeCategory.MISC, pResult, pCount);
         }
 
         public static ShapelessBuilder shapeless(ItemLike pResult, int pCount) {

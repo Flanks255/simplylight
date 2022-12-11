@@ -2,29 +2,20 @@ package com.flanks255.simplylight;
 
 import com.flanks255.simplylight.blocks.*;
 import com.google.common.collect.ImmutableSet;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import javax.annotation.Nonnull;
 import java.util.Set;
 
 public class SLBlocks {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, SimplyLight.MODID);
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, SimplyLight.MODID);
 
-    private static final Item.Properties ITEMPROPERTIES = new Item.Properties().tab(new CreativeModeTab(SimplyLight.MODID) {
-        @Nonnull
-        @Override
-        public ItemStack makeIcon() {
-            return new ItemStack(ILLUMINANTBLOCK_ON.get());
-        }
-    });
+    private static final Item.Properties ITEMPROPERTIES = new Item.Properties();
 
     public static SLBlockReg<LampBlock, BaseBlockItem> addLamp(DyeColor color, boolean state) {
         return new SLBlockReg<>("illuminant_" + color.getName() + "_block" + (state?"_on":""), () -> new LampBlock(state, color), b -> new BaseBlockItem(b, ITEMPROPERTIES));
@@ -92,5 +83,42 @@ public class SLBlocks {
         ILLUMINANT_BLOCK_YELLOW_ON, ILLUMINANT_BLOCK_LIME_ON, ILLUMINANT_BLOCK_PINK_ON, ILLUMINANT_BLOCK_GRAY_ON,
         ILLUMINANT_BLOCK_LIGHT_GRAY_ON, ILLUMINANT_BLOCK_CYAN_ON, ILLUMINANT_BLOCK_PURPLE_ON, ILLUMINANT_BLOCK_BLUE_ON,
         ILLUMINANT_BLOCK_BROWN_ON, ILLUMINANT_BLOCK_GREEN_ON, ILLUMINANT_BLOCK_RED_ON, ILLUMINANT_BLOCK_BLACK_ON
+    );
+
+    public static final Set<SLBlockReg<?,?>> TAB_ORDER = ImmutableSet.of(
+            ILLUMINANTSLAB, ILLUMINANTPANEL, WALL_LAMP, RODLAMP, LIGHTBULB, EDGELAMP, EDGELAMP_TOP, LAMP_POST,
+            ILLUMINANTBLOCK_ON,
+            ILLUMINANT_BLOCK_LIGHT_GRAY_ON,
+            ILLUMINANT_BLOCK_GRAY_ON,
+            ILLUMINANT_BLOCK_BLACK_ON,
+            ILLUMINANT_BLOCK_BROWN_ON,
+            ILLUMINANT_BLOCK_RED_ON,
+            ILLUMINANT_BLOCK_ORANGE_ON,
+            ILLUMINANT_BLOCK_YELLOW_ON,
+            ILLUMINANT_BLOCK_LIME_ON,
+            ILLUMINANT_BLOCK_GREEN_ON,
+            ILLUMINANT_BLOCK_CYAN_ON,
+            ILLUMINANT_BLOCK_LIGHT_BLUE_ON,
+            ILLUMINANT_BLOCK_BLUE_ON,
+            ILLUMINANT_BLOCK_PURPLE_ON,
+            ILLUMINANT_BLOCK_MAGENTA_ON,
+            ILLUMINANT_BLOCK_PINK_ON,
+
+            ILLUMINANTBLOCK,
+            ILLUMINANT_BLOCK_LIGHT_GRAY,
+            ILLUMINANT_BLOCK_GRAY,
+            ILLUMINANT_BLOCK_BLACK,
+            ILLUMINANT_BLOCK_BROWN,
+            ILLUMINANT_BLOCK_RED,
+            ILLUMINANT_BLOCK_ORANGE,
+            ILLUMINANT_BLOCK_YELLOW,
+            ILLUMINANT_BLOCK_LIME,
+            ILLUMINANT_BLOCK_GREEN,
+            ILLUMINANT_BLOCK_CYAN,
+            ILLUMINANT_BLOCK_LIGHT_BLUE,
+            ILLUMINANT_BLOCK_BLUE,
+            ILLUMINANT_BLOCK_PURPLE,
+            ILLUMINANT_BLOCK_MAGENTA,
+            ILLUMINANT_BLOCK_PINK
     );
 }
