@@ -25,7 +25,7 @@ import java.util.function.Function;
 public class BlockStates  extends BlockStateProvider {
     ExistingFileHelper existingFileHelper;
     public BlockStates(DataGenerator gen, ExistingFileHelper exFileHelper) {
-        super(gen, SimplyLight.MODID, exFileHelper);
+        super(gen.getPackOutput(), SimplyLight.MODID, exFileHelper);
         existingFileHelper = exFileHelper;
     }
 

@@ -14,7 +14,7 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 public class ItemModels extends ItemModelProvider {
 
     public ItemModels(DataGenerator generator, ExistingFileHelper existingFileHelper) {
-        super(generator, SimplyLight.MODID, existingFileHelper);
+        super(generator.getPackOutput(), SimplyLight.MODID, existingFileHelper);
     }
 
     @Override

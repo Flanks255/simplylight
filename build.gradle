@@ -20,8 +20,8 @@ apply plugin: "com.matthewprenger.cursegradle"
 apply from: 'https://files.saps.dev/ci/git-md-changelog.gradle'
 
 repositories {
+    maven { url = 'https://maven.creeperhost.net/' }
     maven { url "https://www.cursemaven.com" }
-    maven { url "https://dvs1.progwml6.com/files/maven" }
 }
 
 def ENV = System.getenv()
@@ -75,12 +75,12 @@ minecraft {
 
 dependencies {
     minecraft "net.minecraftforge:forge:$minecraft_version-$forge_version"
-/*    compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}") //new
+    compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}") //new
     compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}")
-    runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")*/
+    runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
 
-    //compileOnly fg.deobf("curse.maven:TOP-245211:3825695")
-    //compileOnly fg.deobf("curse.maven:BUILDINGGADGETS-298187:3829297")
+    compileOnly fg.deobf("curse.maven:TOP-245211:4159743")
+    compileOnly fg.deobf("curse.maven:BUILDINGGADGETS-298187:4423592")
 }
 
 jar {
