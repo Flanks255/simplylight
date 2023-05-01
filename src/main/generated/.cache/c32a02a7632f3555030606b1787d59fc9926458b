@@ -1,4 +1,4 @@
-// 1.19	2022-07-24T11:02:47.7436563	Block Loot Tables
+// 1.19.3	2023-04-27T18:39:08.6066791	Simply Light/Loot Tables
 e6dd109a27bf3e84d0069336fbb11b3bdf842da5 data\simplylight\loot_tables\blocks\illuminant_light_gray_block_on.json
 67c19a28cbf5835d7d36b860a1df19802cbbf019 data\simplylight\loot_tables\blocks\illuminant_gray_block_on.json
 568bf1a7469f2a91e5ffb08c91a7fa4d48113727 data\simplylight\loot_tables\blocks\illuminant_pink_block_on.json
@@ -23,8 +23,8 @@ f6ed2648e8069b5c1a2562e233bbe5eb25282837 data\simplylight\loot_tables\blocks\ill
 a64b98763a8f2ccc6f393b48918a4883ada5ce0b data\simplylight\loot_tables\blocks\wall_lamp.json
 11a89a7fbed30a907c205c487c6f65a015683a6e data\simplylight\loot_tables\blocks\illuminant_gray_block.json
 91c2ff05575fb73fb921cd315f73c021918221c2 data\simplylight\loot_tables\blocks\illuminant_cyan_block.json
-9a5ecf17279cfc5ac3b12aa0adda0522c242e0ae data\simplylight\loot_tables\blocks\illuminant_brown_block_on.json
 2f04db751a8466698c98ace54103288db1d083a3 data\simplylight\loot_tables\blocks\illuminant_green_block.json
+9a5ecf17279cfc5ac3b12aa0adda0522c242e0ae data\simplylight\loot_tables\blocks\illuminant_brown_block_on.json
 2b07a7d50538f14978158c13f12b494310224db1 data\simplylight\loot_tables\blocks\illuminant_light_gray_block.json
 47a720df86254115f3973af644098f1e55764915 data\simplylight\loot_tables\blocks\illuminant_lime_block_on.json
 4d5f2f4ad9f6363df67d1f4a77e858c9936f66b2 data\simplylight\loot_tables\blocks\illuminant_black_block.json

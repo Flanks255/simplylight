@@ -6,9 +6,12 @@ import com.flanks255.simplylight.SimplyLight;
 import com.flanks255.simplylight.blocks.BaseBlockItem;
 import com.flanks255.simplylight.blocks.LampBlock;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
@@ -19,15 +22,16 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 
 import javax.annotation.Nonnull;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 
 public class Recipes extends FabricRecipeProvider {
-    public Recipes(FabricDataGenerator generatorIn) {
-        super(generatorIn);
+    public Recipes(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> thingIDontUse) {
+        super(output);
     }
 
     @Override
-    protected void generateRecipes(Consumer<FinishedRecipe> consumer) {
+    public void buildRecipes(Consumer<FinishedRecipe> consumer) {
         // Illuminant Block (Off)
         ShapedBuilder.shaped(SLBlocks.ILLUMINANTBLOCK.getItem(), 4)
             .pattern("aba")
@@ -193,7 +197,7 @@ public class Recipes extends FabricRecipeProvider {
         public static final InventoryChangeTrigger.TriggerInstance TRIGGER = has(Items.AIR);
 
         public ShapedBuilder(ItemLike pResult, int pCount) {
-            super(pResult, pCount);
+            super(RecipeCategory.MISC, pResult, pCount);
         }
 
         public static ShapedBuilder shaped(ItemLike pResult, int pCount) {
@@ -221,7 +225,7 @@ public class Recipes extends FabricRecipeProvider {
         public static final InventoryChangeTrigger.TriggerInstance TRIGGER = has(Items.AIR);
 
         public ShapelessBuilder(ItemLike pResult, int pCount) {
-            super(pResult, pCount);
+            super(RecipeCategory.MISC, pResult, pCount);
         }
 
         public static ShapelessBuilder shapeless(ItemLike pResult, int pCount) {

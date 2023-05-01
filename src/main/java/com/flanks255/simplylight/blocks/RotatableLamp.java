@@ -4,6 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -67,6 +68,14 @@ public abstract class RotatableLamp extends LampBase implements SimpleWaterlogge
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         boolean waterlogged = context.getLevel().getFluidState(context.getClickedPos()).getType() == Fluids.WATER;
         return defaultBlockState().setValue(BlockStateProperties.FACING, context.getClickedFace()).setValue(BlockStateProperties.WATERLOGGED, waterlogged);
+    }
+
+    @Override
+    @Nonnull
+    public BlockState updateShape(BlockState blockState, @Nonnull Direction direction, @Nonnull BlockState blockState2, @Nonnull LevelAccessor levelAccessor, @Nonnull BlockPos blockPos, @Nonnull BlockPos blockPos2) {
+        if (blockState.getValue(BlockStateProperties.WATERLOGGED))
+            levelAccessor.scheduleTick(blockPos, Fluids.WATER, Fluids.WATER.getTickDelay(levelAccessor));
+        return super.updateShape(blockState, direction, blockState2, levelAccessor, blockPos, blockPos2);
     }
 
     @Override

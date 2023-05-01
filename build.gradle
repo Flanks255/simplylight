@@ -37,8 +37,8 @@ dependencies {
 
 	modImplementation "net.fabricmc.fabric-api:fabric-api-deprecated:${project.fabric_version}"
 
-	modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-fabric:9.0.491"
-	modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:9.0.491"
+	modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-fabric:10.0.596"
+	modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:10.0.596"
 }
 
 loom {

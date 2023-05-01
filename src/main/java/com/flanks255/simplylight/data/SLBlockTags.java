@@ -2,24 +2,27 @@ package com.flanks255.simplylight.data;
 
 import com.flanks255.simplylight.SLBlockReg;
 import com.flanks255.simplylight.SLBlocks;
-import net.minecraft.data.DataGenerator;
-import net.minecraft.data.tags.BlockTagsProvider;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.tags.BlockTags;
 
-public class SLBlockTags extends BlockTagsProvider {
-    public SLBlockTags(DataGenerator generatorIn) {
-        super(generatorIn);
+import java.util.concurrent.CompletableFuture;
+
+public class SLBlockTags extends FabricTagProvider.BlockTagProvider {
+    public SLBlockTags(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> thingIDontUse) {
+        super(output, thingIDontUse);
     }
 
 
     @Override
-    protected void addTags() {
-        this.tag(BlockTags.WALL_POST_OVERRIDE).add(SLBlocks.LIGHTBULB.get());
+    protected void addTags(HolderLookup.Provider arg) {
+        getOrCreateTagBuilder(BlockTags.WALL_POST_OVERRIDE).add(SLBlocks.LIGHTBULB.get());
 
         SLBlocks.BLOCKS.forEach(this::addPickaxe);
     }
 
     private void addPickaxe(SLBlockReg<?,?> block) {
-        this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(block.get());
+        getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_PICKAXE).add(block.get());
     }
 }

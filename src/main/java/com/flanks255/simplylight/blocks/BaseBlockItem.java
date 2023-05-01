@@ -5,6 +5,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
@@ -27,7 +28,7 @@ public class BaseBlockItem extends BlockItem {
         this.block = blockIn;
     }
 
-    private final Supplier<ResourceLocation> lazyRes = Suppliers.memoize(() -> Registry.ITEM.getKey(this));
+    private final Supplier<ResourceLocation> lazyRes = Suppliers.memoize(() -> BuiltInRegistries.ITEM.getKey(this));
 
     public ResourceLocation getRegistryName() {
         return lazyRes.get();
