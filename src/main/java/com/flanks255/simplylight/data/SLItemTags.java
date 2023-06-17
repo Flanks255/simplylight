@@ -14,7 +14,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class SLItemTags extends ItemTagsProvider {
     public SLItemTags(DataGenerator generator, CompletableFuture<HolderLookup.Provider> thingIDontUse, BlockTagsProvider blockTagsProvider, @Nullable ExistingFileHelper existingFileHelper) {
-        super(generator.getPackOutput(), thingIDontUse, blockTagsProvider, SimplyLight.MODID, existingFileHelper);
+        super(generator.getPackOutput(), thingIDontUse, blockTagsProvider.contentsGetter(), SimplyLight.MODID, existingFileHelper);
     }
 
     @Override

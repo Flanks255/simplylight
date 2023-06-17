@@ -17,5 +17,6 @@
   "result": {
     "count": 6,
     "item": "simplylight:edge_light"
-  }
+  },
+  "show_notification": false
 }

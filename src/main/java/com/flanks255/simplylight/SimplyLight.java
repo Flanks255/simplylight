@@ -39,7 +39,7 @@ public class SimplyLight
     public static void creativeTabEvent(CreativeModeTabEvent.Register event) {
         TAB = event.registerCreativeModeTab(new ResourceLocation(MODID, "lights"), builder -> builder
                 .icon(() -> new ItemStack(SLBlocks.ILLUMINANTBLOCK_ON.getItem()))
-                .title(Component.literal("Simply Light")).displayItems((a, output, c) -> {
+                .title(Component.literal("Simply Light")).displayItems((params, output) -> {
                     SLBlocks.TAB_ORDER.forEach(block -> output.accept(block.getItem()));
                 }));
     }

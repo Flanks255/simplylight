@@ -17,5 +17,6 @@
   "result": {
     "count": 8,
     "item": "simplylight:rodlamp"
-  }
+  },
+  "show_notification": false
 }

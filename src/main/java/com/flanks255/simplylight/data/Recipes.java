@@ -213,12 +213,14 @@ public class Recipes extends RecipeProvider {
         @Override
         public void save(@Nonnull Consumer<FinishedRecipe> pFinishedRecipeConsumer, @Nonnull ResourceLocation pRecipeId) {
             unlockedBy("", TRIGGER); //Nope
+            showNotification(false);
             super.save(pFinishedRecipeConsumer, pRecipeId);
         }
 
         @Override
         public void save(@Nonnull Consumer<FinishedRecipe> pFinishedRecipeConsumer) {
             unlockedBy("", TRIGGER); //Nope
+            showNotification(false);
             super.save(pFinishedRecipeConsumer);
         }
     }

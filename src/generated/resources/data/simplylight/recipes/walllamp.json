@@ -17,5 +17,6 @@
   "result": {
     "count": 6,
     "item": "simplylight:wall_lamp"
-  }
+  },
+  "show_notification": false
 }
