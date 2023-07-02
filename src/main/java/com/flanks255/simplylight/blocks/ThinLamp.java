@@ -6,8 +6,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
 import net.minecraft.world.level.material.PushReaction;
 
 import javax.annotation.Nullable;
@@ -18,16 +16,10 @@ public class ThinLamp extends RotatableLamp {
     private final double thickness;
 
     public ThinLamp(double thickness) {
-        super(Block.Properties.of(new Material(
-            MaterialColor.TERRACOTTA_WHITE,
-            false, //isLiquid
-            true,  //isSolid
-            true, //Blocks Movement
-            false, //isOpaque
-            false, //isFlammable
-            false, //isReplaceable
-            PushReaction.NORMAL
-        )).lightLevel($ -> 15).strength(1.0f));
+        super(Block.Properties.of()
+            .pushReaction(PushReaction.NORMAL)
+            .lightLevel($ -> 15)
+            .strength(1.0f));
 
         this.thickness = thickness;
         UP = Block.box(0,0,0, 16, thickness,16);

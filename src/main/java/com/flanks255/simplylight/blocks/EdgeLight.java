@@ -13,7 +13,6 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -27,7 +26,7 @@ public class EdgeLight extends LampBase implements SimpleWaterloggedBlock {
     private final Boolean top;
 
     public EdgeLight(Boolean top) {
-        super(Block.Properties.of(Material.DECORATION)
+        super(Block.Properties.of()
             .strength(1.0f)
             .noCollission()
             .lightLevel($ -> 14)

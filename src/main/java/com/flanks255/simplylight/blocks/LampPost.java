@@ -35,15 +35,11 @@ public class LampPost extends LampBase implements SimpleWaterloggedBlock {
     private static final VoxelShape BOTTOM_SHAPE = Stream.of(Block.box(3,0,3,13,2,13), Block.box(4,2,4,12,4,12), Block.box(6,4,6,10,16,10)).reduce((a,b) -> Shapes.join(a,b, BooleanOp.OR)).get();
 
     public LampPost() {
-        super(Block.Properties.of(new Material(MaterialColor.COLOR_BLACK,
-            false, //isLiquid
-            true,  //isSolid
-            true, //Blocks Movement
-            false, //isOpaque
-            false, //isFlammable
-            false, //isReplaceable
-            PushReaction.DESTROY
-        )).lightLevel( (bState) -> bState.getValue(POSITION) == Position.TOP?15:0).strength(1.0f));
+        super(Block.Properties.of()
+            .mapColor(MapColor.COLOR_BLACK)
+            .pushReaction(PushReaction.DESTROY)
+            .lightLevel( (bState) -> bState.getValue(POSITION) == Position.TOP?15:0)
+            .strength(1.0f));
 
         registerDefaultState(getStateDefinition().any().setValue(BlockStateProperties.WATERLOGGED, false));
     }

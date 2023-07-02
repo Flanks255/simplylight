@@ -1,14 +1,13 @@
 package com.flanks255.simplylight.blocks;
 
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.shapes.Shapes;
 
 import java.util.function.BiConsumer;
 
 public class WallLamp extends RotatableLamp{
     public WallLamp() {
-        super(Block.Properties.of(Material.DECORATION).noCollission().strength(1.0f).lightLevel($ -> 15));
+        super(Block.Properties.of().noCollission().strength(1.0f).lightLevel($ -> 15));
 
         UP = Shapes.box(0.375,0.0, 0.375,0.625, 0.125,0.625);
         DOWN = Shapes.box(0.375, 1.0 - 0.125, 0.375, 0.625, 1.0, 0.625);

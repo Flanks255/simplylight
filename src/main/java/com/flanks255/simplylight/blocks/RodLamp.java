@@ -20,16 +20,11 @@ import java.util.function.BiConsumer;
 @SuppressWarnings("deprecation")
 public class RodLamp extends LampBase implements SimpleWaterloggedBlock {
     public RodLamp () {
-        super(Block.Properties.of(new Material(
-            MaterialColor.TERRACOTTA_WHITE,
-            false, //isLiquid
-            false,  //isSolid
-            true, //Blocks Movement
-            false, //isOpaque
-            false, //isFlammable
-            false, //isReplaceable
-            PushReaction.NORMAL
-        )).strength(1.0f).lightLevel($ -> 15));
+        super(Block.Properties.of()
+            .pushReaction(PushReaction.NORMAL)
+            .mapColor(MapColor.TERRACOTTA_WHITE)
+            .strength(1.0f)
+            .lightLevel($ -> 15));
 
         registerDefaultState(getStateDefinition().any().setValue(BlockStateProperties.WATERLOGGED, false));
     }

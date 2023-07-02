@@ -1,13 +1,12 @@
 package com.flanks255.simplylight.blocks;
 
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.material.Material;
 
 import java.util.function.BiConsumer;
 
 public class LightBulb extends RotatableLamp {
     public LightBulb() {
-        super(Block.Properties.of(Material.DECORATION)
+        super(Block.Properties.of()
             .noCollission()
             .strength(1.0f)
             .lightLevel($ -> 14));
