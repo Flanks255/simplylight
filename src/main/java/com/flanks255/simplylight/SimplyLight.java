@@ -3,7 +3,10 @@ package com.flanks255.simplylight;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.CreativeModeTab;
@@ -11,6 +14,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.Comparator;
 
 public class SimplyLight implements ModInitializer {
 	public static final String MODID = "simplylight";
@@ -21,7 +26,16 @@ public class SimplyLight implements ModInitializer {
 
 	public static final TagKey<Item> ANY_STONE = TagKey.create(Registries.ITEM, new ResourceLocation(MODID, "any_stone"));
 
-	public static final CreativeModeTab TAB = FabricItemGroup.builder(new  ResourceLocation(SimplyLight.MODID, "group")).icon(() -> new ItemStack(SLBlocks.ILLUMINANTBLOCK_ON.getItem())).build();
+	public static final CreativeModeTab ITEM_GROUP = FabricItemGroup.builder()
+			.icon(() -> new ItemStack(SLBlocks.ILLUMINANTBLOCK_ON.getItem()))
+			.title(Component.translatable("itemGroup.simplylight.group"))
+			.displayItems((featureFlagSet, output) ->
+					BuiltInRegistries.ITEM.entrySet().stream()
+							.filter(entry -> entry.getKey().location().getNamespace().equals(MODID))
+							.sorted(Comparator.comparing(entry -> BuiltInRegistries.ITEM.getId(entry.getValue())))
+							.forEach(entry -> output.accept(entry.getValue())))
+			.build();
+
 
 	public SimplyLight() {
 		SLBlocks.init();
@@ -32,8 +46,6 @@ public class SimplyLight implements ModInitializer {
 	public void onInitialize() {
 		SLBlocks.register();
 
-		ItemGroupEvents.modifyEntriesEvent(TAB).register(($) ->
-				SLBlocks.TAB_ORDER.forEach(block -> $.accept(block.getItem()))
-				);
+		Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, new ResourceLocation(MODID, "simplylight"), ITEM_GROUP);
 	}
 }
