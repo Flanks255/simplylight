@@ -12,7 +12,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class SLItemTags extends ItemTagsProvider {
     public SLItemTags(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> thingIDontUse, FabricTagProvider.BlockTagProvider blockTagsProvider) {
-        super(output, thingIDontUse, blockTagsProvider);
+        super(output, thingIDontUse, blockTagsProvider.contentsGetter());
     }
 
     @Override
