@@ -4,14 +4,13 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
 
 import javax.annotation.Nonnull;
 import java.util.function.BiConsumer;
 
 public class LightBulb extends RotatableLamp {
     public LightBulb() {
-        super(Properties.of(Material.DECORATION)
+        super(Properties.of()
             .noCollission()
             .strength(1.0f)
             .lightLevel((bState) -> 14));
