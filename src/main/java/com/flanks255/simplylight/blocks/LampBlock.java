@@ -11,8 +11,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 
 import javax.annotation.Nonnull;
@@ -25,17 +24,11 @@ public class LampBlock extends LampBase {
     public final DyeColor color;
 
     public LampBlock(boolean Default, DyeColor colorIn) {
-        super(Properties.of(new Material(
-                MaterialColor.TERRACOTTA_WHITE,
-                false,
-                true,
-                true,
-                true,
-                false,
-                false,
-                PushReaction.NORMAL
-            )).strength(1.0f)
-            .lightLevel((bState)-> bState.getValue(ON) ? 15 : 0));
+        super(Block.Properties.of()
+                .strength(1.0f)
+                .pushReaction(PushReaction.NORMAL)
+                .mapColor(state -> state.getValue(ON) ? MapColor.COLOR_LIGHT_GRAY : MapColor.COLOR_BLACK)
+                .lightLevel((bState)-> bState.getValue(ON) ? 15 : 0));
         this.Default = Default;
         this.color = colorIn;
 
