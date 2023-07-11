@@ -1,24 +1,24 @@
-/*
 package com.flanks255.simplylight.data;
 
 import com.flanks255.simplylight.SLBlocks;
 import com.flanks255.simplylight.SimplyLight;
 import com.flanks255.simplylight.blocks.LampBase;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.data.DataGenerator;
 
-public class LangGen extends LanguageProvider {
-    public LangGen(DataGenerator gen) {
-        super(gen, SimplyLight.MODID, "en_us");
+public class LangGen extends FabricLanguageProvider {
+    public LangGen(FabricDataOutput output) {
+        super(output);
     }
 
     @Override
-    protected void addTranslations() {
-        add("itemGroup.simplylight", "Simply Light");
-        add("simplylight.shift", "Press <%s> for info.");
-        add("simplylight.key.shift", "Shift");
-        add("simplylight.redstone", "Redstone");
+    public void generateTranslations(TranslationBuilder translationBuilder) {
+        translationBuilder.add("itemGroup.simplylight", "Simply Light");
+        translationBuilder.add("simplylight.shift", "Press <%s> for info.");
+        translationBuilder.add("simplylight.key.shift", "Shift");
+        translationBuilder.add("simplylight.redstone", "Redstone");
 
-        SLBlocks.BLOCKS.getEntries().forEach(block -> ((LampBase) block.get()).addLang(this::add));
+        SLBlocks.BLOCKS.forEach(block -> ((LampBase) block.get()).addLang(translationBuilder::add));
     }
 }
-*/

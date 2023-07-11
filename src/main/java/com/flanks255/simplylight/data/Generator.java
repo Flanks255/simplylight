@@ -13,6 +13,6 @@ public class Generator implements DataGeneratorEntrypoint {
         //generator.addProvider(true, new ItemModels(generator, event.getExistingFileHelper()));
         var slBlockTags = pack.addProvider(SLBlockTags::new);
         pack.addProvider((output, lookup) -> new SLItemTags(output, lookup, slBlockTags));
-        //generator.addProvider(true, new LangGen(generator));
+        pack.addProvider((output, lookup) -> new LangGen(output));
     }
 }
