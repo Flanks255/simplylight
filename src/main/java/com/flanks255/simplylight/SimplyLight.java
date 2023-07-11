@@ -29,11 +29,7 @@ public class SimplyLight implements ModInitializer {
 	public static final CreativeModeTab ITEM_GROUP = FabricItemGroup.builder()
 			.icon(() -> new ItemStack(SLBlocks.ILLUMINANTBLOCK_ON.getItem()))
 			.title(Component.translatable("itemGroup.simplylight.group"))
-			.displayItems((featureFlagSet, output) ->
-					BuiltInRegistries.ITEM.entrySet().stream()
-							.filter(entry -> entry.getKey().location().getNamespace().equals(MODID))
-							.sorted(Comparator.comparing(entry -> BuiltInRegistries.ITEM.getId(entry.getValue())))
-							.forEach(entry -> output.accept(entry.getValue())))
+			.displayItems((params, output) -> SLBlocks.TAB_ORDER.forEach(block -> output.accept(block.getItem())))
 			.build();
 
 
