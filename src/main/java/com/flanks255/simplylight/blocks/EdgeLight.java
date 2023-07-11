@@ -29,7 +29,7 @@ public class EdgeLight extends LampBase implements SimpleWaterloggedBlock {
         super(Properties.of()
             .strength(1.0f)
             .noCollission()
-            .lightLevel((bState) -> 14)
+            .lightLevel($ -> 14)
         );
 
         registerDefaultState(getStateDefinition().any().setValue(BlockStateProperties.WATERLOGGED, false));
@@ -106,11 +106,6 @@ public class EdgeLight extends LampBase implements SimpleWaterloggedBlock {
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
         pBuilder.add(NORTH, SOUTH, EAST, WEST, BlockStateProperties.WATERLOGGED);
-    }
-
-    @Override
-    public int getLightBlock(@Nonnull BlockState pState, @Nonnull BlockGetter pLevel, @Nonnull BlockPos pPos) {
-        return 14;
     }
 
     @Override

@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
 @SuppressWarnings("deprecation")
 public abstract class RotatableLamp extends LampBase implements SimpleWaterloggedBlock {
     public RotatableLamp(Properties props) {
-        super(props.lightLevel((bState) -> 15));
+        super(props);
         registerDefaultState(getStateDefinition().any().setValue(BlockStateProperties.WATERLOGGED, false));
     }
     public VoxelShape DOWN;
@@ -77,10 +77,4 @@ public abstract class RotatableLamp extends LampBase implements SimpleWaterlogge
             levelAccessor.scheduleTick(blockPos, Fluids.WATER, Fluids.WATER.getTickDelay(levelAccessor));
         return super.updateShape(blockState, direction, blockState2, levelAccessor, blockPos, blockPos2);
     }
-
-    @Override
-    public int getLightBlock(@Nonnull BlockState state, @Nonnull BlockGetter world, @Nonnull BlockPos pos) {
-        return 15;
-    }
-
 }

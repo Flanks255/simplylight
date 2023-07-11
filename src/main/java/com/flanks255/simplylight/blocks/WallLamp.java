@@ -10,7 +10,10 @@ import java.util.function.BiConsumer;
 
 public class WallLamp extends RotatableLamp{
     public WallLamp() {
-        super(Properties.of().noCollission().strength(1.0f).lightLevel((bState) -> 15));
+        super(Properties.of()
+                .noCollission()
+                .strength(1.0f)
+                .lightLevel($ -> 15));
 
         UP = Shapes.box(0.375,0.0, 0.375,0.625, 0.125,0.625);
         DOWN = Shapes.box(0.375, 1.0 - 0.125, 0.375, 0.625, 1.0, 0.625);
@@ -18,11 +21,6 @@ public class WallLamp extends RotatableLamp{
         WEST = Shapes.box(1.0 - 0.1875, 0.375, 0.25, 1.0, 0.625, 0.75);
         NORTH = Shapes.box(0.25, 0.375, 1.0 - 0.1875, 0.75, 0.625, 1.0);
         SOUTH = Shapes.box(0.25, 0.375, 0.0, 0.75, 0.625, 0.1875);
-    }
-
-    @Override
-    public int getLightBlock(@Nonnull BlockState state, @Nonnull BlockGetter world, @Nonnull BlockPos pos) {
-        return 15;
     }
 
     @Override

@@ -13,18 +13,13 @@ public class LightBulb extends RotatableLamp {
         super(Properties.of()
             .noCollission()
             .strength(1.0f)
-            .lightLevel((bState) -> 14));
+            .lightLevel($ -> 14));
         UP = Block.box(6, 0, 6, 10, 5, 10);
         DOWN = Block.box(6, 11, 6, 10, 16, 10);
         EAST = Block.box(0, 6, 6, 5, 10, 10);
         WEST = Block.box(11, 6, 6, 16, 10, 10);
         NORTH = Block.box(6, 6, 11, 10, 10, 16);
         SOUTH = Block.box(6, 6, 0, 10, 10, 5);
-    }
-
-    @Override
-    public int getLightBlock(@Nonnull BlockState state, BlockGetter world, BlockPos pos) {
-        return 14;
     }
 
     @Override

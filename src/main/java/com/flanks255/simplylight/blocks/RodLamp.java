@@ -20,7 +20,9 @@ import java.util.function.BiConsumer;
 @SuppressWarnings("deprecation")
 public class RodLamp extends LampBase implements SimpleWaterloggedBlock {
     public RodLamp () {
-        super(Properties.of().strength(1.0f).lightLevel((bState) -> 15));
+        super(Properties.of()
+                .strength(1.0f)
+                .lightLevel($ -> 15));
 
         registerDefaultState(getStateDefinition().any().setValue(BlockStateProperties.WATERLOGGED, false));
     }
@@ -59,11 +61,6 @@ public class RodLamp extends LampBase implements SimpleWaterloggedBlock {
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> blockStateBuilder) {
         blockStateBuilder.add(BlockStateProperties.AXIS, BlockStateProperties.WATERLOGGED);
-    }
-
-    @Override
-    public int getLightBlock(@Nonnull BlockState state, @Nonnull BlockGetter world, @Nonnull BlockPos pos) {
-        return 15;
     }
 
     @Override
