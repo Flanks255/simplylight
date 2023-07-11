@@ -17,5 +17,6 @@
   "result": {
     "count": 8,
     "item": "simplylight:illuminant_blue_block"
-  }
+  },
+  "show_notification": false
 }

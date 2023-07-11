@@ -40,6 +40,7 @@ public class Recipes extends FabricRecipeProvider {
             .define('a', SimplyLight.ANY_STONE)
             .define('b', Items.GLOWSTONE)
             .define('c', Items.REDSTONE)
+            .showNotification(false)
             .save(consumer, SL_loc("illuminant_block"));
 
         // Illuminant Block (On)
@@ -50,6 +51,7 @@ public class Recipes extends FabricRecipeProvider {
             .define('a', SimplyLight.ANY_STONE)
             .define('b', Items.GLOWSTONE)
             .define('c', Items.REDSTONE_TORCH)
+            .showNotification(false)
             .save(consumer, SL_loc("illuminant_block_on"));
 
         // Bulbs
@@ -58,6 +60,7 @@ public class Recipes extends FabricRecipeProvider {
             .pattern("aaa")
             .define('a', SimplyLight.ANY_STONE)
             .define('b', Items.GLOWSTONE)
+            .showNotification(false)
             .save(consumer, SL_loc("bulb"));
 
         // Edge light
@@ -67,6 +70,7 @@ public class Recipes extends FabricRecipeProvider {
             .pattern("b b")
             .define('a', Items.GLOWSTONE)
             .define('b', SimplyLight.ANY_STONE)
+            .showNotification(false)
             .save(consumer, SL_loc("edge_light"));
 
         // Top Edge light from bottom
@@ -85,6 +89,7 @@ public class Recipes extends FabricRecipeProvider {
             .pattern("aaa")
             .define('a', SimplyLight.ANY_STONE)
             .define('b', Items.GLOWSTONE)
+            .showNotification(false)
             .save(consumer, SL_loc("illuminant_slab"));
 
         // Slab from panel
@@ -97,6 +102,7 @@ public class Recipes extends FabricRecipeProvider {
         ShapedBuilder.shaped(SLBlocks.ILLUMINANTPANEL.getItem(), 6)
             .pattern("aaa")
             .define('a', SLBlocks.ILLUMINANTSLAB.getItem())
+            .showNotification(false)
             .save(consumer, SL_loc("illuminant_panel"));
 
         // Rod Lamp
@@ -106,6 +112,7 @@ public class Recipes extends FabricRecipeProvider {
             .pattern("bab")
             .define('a', SimplyLight.ANY_STONE)
             .define('b', Items.GLOWSTONE_DUST)
+            .showNotification(false)
             .save(consumer, SL_loc("rodlamp"));
 
         // Wall Lamp
@@ -115,6 +122,7 @@ public class Recipes extends FabricRecipeProvider {
             .pattern("ab")
             .define('a', SimplyLight.ANY_STONE)
             .define('b', Items.GLOWSTONE)
+            .showNotification(false)
             .save(consumer, SL_loc("walllamp"));
 
         //Lamp Post
@@ -125,6 +133,7 @@ public class Recipes extends FabricRecipeProvider {
             .define('L', SimplyLight.ANY_ON_LAMP)
             .define('W', ItemTags.WALLS)
             .define('S', SimplyLight.ANY_STONE)
+            .showNotification(false)
             .save(consumer, SL_loc("lamp_post"));
 
 
@@ -176,6 +185,7 @@ public class Recipes extends FabricRecipeProvider {
             .pattern("AAA")
             .define('B', dyeItem)
             .define('A', SimplyLight.ANY_OFF_LAMP)
+            .showNotification(false)
             .save(consumer, SL_loc(item.getRegistryName().getPath()+"_dyed"));
     }
     private void dyeRecipeOn(BaseBlockItem item, Item dyeItem, Consumer<FinishedRecipe> consumer) {
@@ -185,6 +195,7 @@ public class Recipes extends FabricRecipeProvider {
             .pattern("AAA")
             .define('B', dyeItem)
             .define('A', SimplyLight.ANY_ON_LAMP)
+            .showNotification(false)
             .save(consumer, SL_loc(item.getRegistryName().getPath()+"_dyed"));
     }
 

@@ -16,5 +16,6 @@
   "result": {
     "count": 8,
     "item": "simplylight:lightbulb"
-  }
+  },
+  "show_notification": false
 }
