@@ -5,6 +5,8 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Mirror;
+import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -120,5 +122,57 @@ public class EdgeLight extends LampBase implements SimpleWaterloggedBlock {
         consumer.accept(base + ".info2", "perfect for hallways.");
 
         consumer.accept(base + ".jei.info", "Will morph depending on the blocks present around itself on placement.\nShape will persist afterward, letting you make shapes using temporary blocks.");
+    }
+
+    @Override
+    public BlockState rotate(BlockState pState, Rotation pRotation) {
+        if (pRotation != Rotation.NONE){
+            boolean oldNorth = pState.getValue(NORTH);
+            boolean oldSouth = pState.getValue(SOUTH);
+            boolean oldWest = pState.getValue(WEST);
+            boolean oldEast = pState.getValue(EAST);
+
+            if (pRotation == Rotation.CLOCKWISE_90)
+                return pState
+                        .setValue(NORTH, oldWest)
+                        .setValue(EAST, oldNorth)
+                        .setValue(SOUTH, oldEast)
+                        .setValue(WEST, oldSouth);
+            else if (pRotation == Rotation.CLOCKWISE_180) {
+                return pState
+                    .setValue(NORTH, oldSouth)
+                    .setValue(EAST, oldWest)
+                    .setValue(SOUTH, oldNorth)
+                    .setValue(WEST, oldEast);
+            } else if (pRotation == Rotation.COUNTERCLOCKWISE_90) {
+                return pState
+                    .setValue(NORTH, oldEast)
+                    .setValue(EAST, oldSouth)
+                    .setValue(SOUTH, oldWest)
+                    .setValue(WEST, oldNorth);
+            }
+        }
+        return pState;
+    }
+
+    @Override
+    public BlockState mirror(BlockState pState, Mirror pMirror) {
+        if (pMirror != Mirror.NONE) {
+            boolean oldNorth = pState.getValue(NORTH);
+            boolean oldSouth = pState.getValue(SOUTH);
+            boolean oldWest = pState.getValue(WEST);
+            boolean oldEast = pState.getValue(EAST);
+
+            if (pMirror == Mirror.FRONT_BACK) {
+                return pState
+                        .setValue(WEST, oldEast)
+                        .setValue(EAST, oldWest);
+            } else if (pMirror == Mirror.LEFT_RIGHT) {
+                return pState
+                        .setValue(NORTH, oldSouth)
+                        .setValue(SOUTH, oldNorth);
+            }
+        }
+        return pState;
     }
 }
