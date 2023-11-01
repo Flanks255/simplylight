@@ -24,7 +24,7 @@ public class SimplyLight
     public static final Logger LOGGER = LogManager.getLogger("Simply Light");
     public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, SimplyLight.MODID);
 
-    public static RegistryObject<CreativeModeTab> TAB = TABS.register("lights", () ->
+    public static final RegistryObject<CreativeModeTab> TAB = TABS.register("lights", () ->
         CreativeModeTab.builder().icon(() -> new ItemStack(SLBlocks.ILLUMINANTBLOCK_ON.getItem()))
                 .title(Component.literal("Simply Light"))
                 .displayItems((params, output) -> SLBlocks.TAB_ORDER.forEach(block -> output.accept(block.getItem())))
