@@ -2,6 +2,7 @@ package com.flanks255.simplylight.blocks;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
@@ -52,7 +53,7 @@ public class RodLamp extends LampBase implements SimpleWaterloggedBlock {
     }
 
     @Override
-    public boolean canPlaceLiquid(@Nonnull BlockGetter pLevel, @Nonnull BlockPos pPos, @Nonnull BlockState pState, @Nonnull Fluid pFluid) {
+    public boolean canPlaceLiquid(Player player, @Nonnull BlockGetter pLevel, @Nonnull BlockPos pPos, @Nonnull BlockState pState, @Nonnull Fluid pFluid) {
         return true;
     }
 
@@ -72,8 +73,9 @@ public class RodLamp extends LampBase implements SimpleWaterloggedBlock {
         return false;
     }
 
+    @Nonnull
     @Override
-    public BlockState rotate(BlockState pState, Rotation pRotation) {
+    public BlockState rotate(@Nonnull BlockState pState, @Nonnull Rotation pRotation) {
         if (pRotation != Rotation.NONE) {
             Direction.Axis axis = pState.getValue(BlockStateProperties.AXIS);
             if ((pRotation == Rotation.CLOCKWISE_90 || pRotation == Rotation.COUNTERCLOCKWISE_90) && axis.isHorizontal())

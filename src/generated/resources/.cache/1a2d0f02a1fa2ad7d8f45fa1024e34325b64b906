@@ -1,4 +1,4 @@
-// 1.20.1	2023-07-02T17:39:11.9982071	Block States: simplylight
+// 1.20.4	2024-02-03T12:08:28.7790192	Block States: simplylight
 d3935fe630df9a626a5af004711d6f44b1fc995d assets/simplylight/blockstates/illuminant_black_block.json
 d3935fe630df9a626a5af004711d6f44b1fc995d assets/simplylight/blockstates/illuminant_black_block_on.json
 3629ce2afea13d607f02d707ccba9af493556523 assets/simplylight/blockstates/illuminant_block.json
@@ -69,4 +69,4 @@ f474b5f37c04ca18870f66e37bc4e54842a06129 assets/simplylight/models/block/illumin
 75287decf0e65d489dd3abcd9e4de887c55bdc5a assets/simplylight/models/block/illuminant_red_block_on.json
 365254c2b9aac5fc6761e0dd9d13a8a4168bb5a9 assets/simplylight/models/block/illuminant_yellow_block.json
 557660883921a2a412949422a9f0b07e67ebfd02 assets/simplylight/models/block/illuminant_yellow_block_on.json
-87e1b56617b1c67a9f33b5373016a498fdb2c848 assets/simplylight/models/block/lightbulb.json
+128e9ef1985a19f6fe36f259c3e77af19410ab91 assets/simplylight/models/block/lightbulb.json

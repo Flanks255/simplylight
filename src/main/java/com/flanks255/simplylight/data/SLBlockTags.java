@@ -6,13 +6,13 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.common.data.BlockTagsProvider;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.data.BlockTagsProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
 
 public class SLBlockTags extends BlockTagsProvider {
     public SLBlockTags(DataGenerator generator, CompletableFuture<HolderLookup.Provider> thingIDontUse, @Nullable ExistingFileHelper existingFileHelper) {
@@ -25,7 +25,7 @@ public class SLBlockTags extends BlockTagsProvider {
         SLBlocks.BLOCKS.getEntries().forEach(this::addPickaxe);
     }
 
-    private void addPickaxe(Supplier<Block> block) {
+    private void addPickaxe(DeferredHolder<Block, ? extends Block> block) {
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(block.get());
     }
 }

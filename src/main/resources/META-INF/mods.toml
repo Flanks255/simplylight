@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[46,)"
+loaderVersion="[2,)"
 license="MIT"
 issueTrackerURL="https://github.com/Flanks255/simplylight/issues"
 [[mods]]
@@ -11,8 +11,8 @@ credits=""
 authors="Flanks255"
 description='''Simple light, for a complicated world.'''
 [[dependencies.simplylight]]
-modId="forge"
-mandatory=true
-versionRange="[46.0.0,)"
+modId="neoforge"
+required=true
+versionRange="[20.4,)"
 ordering="NONE"
 side="BOTH"

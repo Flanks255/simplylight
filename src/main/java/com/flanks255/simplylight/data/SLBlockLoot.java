@@ -7,7 +7,7 @@ import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 import javax.annotation.Nonnull;
 import java.util.List;
@@ -24,7 +24,7 @@ public class SLBlockLoot extends BlockLootSubProvider {
 
     @Override
     protected void generate() {
-        for(RegistryObject<Block> block : SLBlocks.BLOCKS.getEntries()) {
+        for(DeferredHolder<Block, ? extends Block> block : SLBlocks.BLOCKS.getEntries()) {
             this.dropSelf(block.get());
         }
     }
@@ -32,6 +32,6 @@ public class SLBlockLoot extends BlockLootSubProvider {
     @Nonnull
     @Override
     protected Iterable<Block> getKnownBlocks() {
-        return SLBlocks.BLOCKS.getEntries().stream().map(RegistryObject::get).collect(Collectors.toList());
+        return SLBlocks.BLOCKS.getEntries().stream().map(DeferredHolder::get).collect(Collectors.toList());
     }
 }

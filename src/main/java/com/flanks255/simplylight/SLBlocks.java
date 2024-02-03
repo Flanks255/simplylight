@@ -4,16 +4,14 @@ import com.flanks255.simplylight.blocks.*;
 import com.google.common.collect.ImmutableSet;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.Set;
 
 public class SLBlocks {
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, SimplyLight.MODID);
-    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, SimplyLight.MODID);
+    public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(SimplyLight.MODID);
+    public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(SimplyLight.MODID);
 
     private static final Item.Properties ITEMPROPERTIES = new Item.Properties();
 
