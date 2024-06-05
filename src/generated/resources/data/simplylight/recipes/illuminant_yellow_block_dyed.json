@@ -16,7 +16,7 @@
   ],
   "result": {
     "count": 8,
-    "item": "simplylight:illuminant_yellow_block"
+    "id": "simplylight:illuminant_yellow_block"
   },
   "show_notification": false
 }

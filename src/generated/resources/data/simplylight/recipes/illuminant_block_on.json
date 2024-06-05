@@ -3,7 +3,7 @@
   "category": "misc",
   "key": {
     "a": {
-      "tag": "forge:stone"
+      "tag": "c:stones"
     },
     "b": {
       "item": "minecraft:glowstone"
@@ -19,7 +19,7 @@
   ],
   "result": {
     "count": 4,
-    "item": "simplylight:illuminant_block_on"
+    "id": "simplylight:illuminant_block_on"
   },
   "show_notification": false
 }

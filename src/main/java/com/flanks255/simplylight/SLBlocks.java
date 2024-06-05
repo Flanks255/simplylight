@@ -32,7 +32,7 @@ public class SLBlocks {
     public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANTPANEL = new SLBlockReg<>("illuminant_panel",() -> new ThinLamp(4), b -> new BaseBlockItem(b, ITEMPROPERTIES));
     public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANTSLAB = new SLBlockReg<>("illuminant_slab",() -> new ThinLamp(8), b -> new BaseBlockItem(b, ITEMPROPERTIES));
 
-    public static final SLBlockReg<LampPost, LampPostItem> LAMP_POST = new SLBlockReg<>("lamp_post", LampPost::new, b -> new LampPostItem(b, ITEMPROPERTIES));
+    public static final SLBlockReg<LampPost, LampPostItem> LAMP_POST = new SLBlockReg<>("lamp_post", LampPost::new, b -> new LampPostItem(b));
 
 
     public static final SLBlockReg<LampBlock, BaseBlockItem> ILLUMINANTBLOCK_ON = new SLBlockReg<>("illuminant_block_on", () -> new LampBlock(true, DyeColor.WHITE), b -> new BaseBlockItem(b, ITEMPROPERTIES));

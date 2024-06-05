@@ -6,7 +6,7 @@
       "tag": "simplylight:any_lamp_on"
     },
     "S": {
-      "tag": "forge:stone"
+      "tag": "c:stones"
     },
     "W": {
       "tag": "minecraft:walls"
@@ -19,7 +19,7 @@
   ],
   "result": {
     "count": 2,
-    "item": "simplylight:lamp_post"
+    "id": "simplylight:lamp_post"
   },
   "show_notification": false
 }
