@@ -11,7 +11,7 @@
   ],
   "result": {
     "count": 6,
-    "item": "simplylight:illuminant_panel"
+    "id": "simplylight:illuminant_panel"
   },
   "show_notification": false
 }
