@@ -3,10 +3,10 @@
   "category": "misc",
   "key": {
     "a": {
-      "tag": "c:stones"
+      "tag": "forge:stone"
     },
     "b": {
-      "tag": "c:dusts/glowstone"
+      "tag": "forge:dusts/glowstone"
     }
   },
   "pattern": [
@@ -16,7 +16,7 @@
   ],
   "result": {
     "count": 8,
-    "id": "simplylight:rodlamp"
+    "item": "simplylight:rodlamp"
   },
   "show_notification": false
 }

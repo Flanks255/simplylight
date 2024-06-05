@@ -8,7 +8,6 @@ import com.flanks255.simplylight.blocks.LampBlock;
 import com.flanks255.simplylight.util.NoAdvRecipeOutput;
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
-import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
@@ -20,11 +19,10 @@ import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.common.Tags;
 
 import javax.annotation.Nonnull;
-import java.util.concurrent.CompletableFuture;
 
 public class Recipes extends RecipeProvider {
-    public Recipes(DataGenerator generatorIn, CompletableFuture<HolderLookup.Provider> thingIDontUse) {
-        super(generatorIn.getPackOutput(), thingIDontUse);
+    public Recipes(DataGenerator generatorIn) {
+        super(generatorIn.getPackOutput());
     }
 
     @Override
@@ -35,7 +33,7 @@ public class Recipes extends RecipeProvider {
             .pattern("aba")
             .pattern("bcb")
             .pattern("aba")
-            .define('a', Tags.Items.STONES)
+            .define('a', Tags.Items.STONE)
             .define('b', Items.GLOWSTONE)
             .define('c', Tags.Items.DUSTS_REDSTONE)
             .save(output, SL_loc("illuminant_block"));
@@ -45,7 +43,7 @@ public class Recipes extends RecipeProvider {
             .pattern("aba")
             .pattern("bcb")
             .pattern("aba")
-            .define('a', Tags.Items.STONES)
+            .define('a', Tags.Items.STONE)
             .define('b', Items.GLOWSTONE)
             .define('c', Items.REDSTONE_TORCH)
             .save(output, SL_loc("illuminant_block_on"));
@@ -54,7 +52,7 @@ public class Recipes extends RecipeProvider {
         ShapedBuilder.shaped(SLBlocks.LIGHTBULB.getItem(), 8)
             .pattern(" b ")
             .pattern("aaa")
-            .define('a', Tags.Items.STONES)
+            .define('a', Tags.Items.STONE)
             .define('b', Items.GLOWSTONE)
             .save(output, SL_loc("bulb"));
 
@@ -64,7 +62,7 @@ public class Recipes extends RecipeProvider {
             .pattern("aaa")
             .pattern("b b")
             .define('a', Items.GLOWSTONE)
-            .define('b', Tags.Items.STONES)
+            .define('b', Tags.Items.STONE)
             .save(output, SL_loc("edge_light"));
 
         // Top Edge light from bottom
@@ -81,7 +79,7 @@ public class Recipes extends RecipeProvider {
         ShapedBuilder.shaped(SLBlocks.ILLUMINANTSLAB.getItem(), 6)
             .pattern("bbb")
             .pattern("aaa")
-            .define('a', Tags.Items.STONES)
+            .define('a', Tags.Items.STONE)
             .define('b', Items.GLOWSTONE)
             .save(output, SL_loc("illuminant_slab"));
 
@@ -102,7 +100,7 @@ public class Recipes extends RecipeProvider {
             .pattern("bab")
             .pattern("bab")
             .pattern("bab")
-            .define('a', Tags.Items.STONES)
+            .define('a', Tags.Items.STONE)
             .define('b', Tags.Items.DUSTS_GLOWSTONE)
             .save(output, SL_loc("rodlamp"));
 
@@ -111,7 +109,7 @@ public class Recipes extends RecipeProvider {
             .pattern("aa")
             .pattern("ab")
             .pattern("ab")
-            .define('a', Tags.Items.STONES)
+            .define('a', Tags.Items.STONE)
             .define('b', Items.GLOWSTONE)
             .save(output, SL_loc("walllamp"));
 
@@ -122,7 +120,7 @@ public class Recipes extends RecipeProvider {
             .pattern("SSS")
             .define('L', SimplyLight.ANY_ON_LAMP)
             .define('W', ItemTags.WALLS)
-            .define('S', Tags.Items.STONES)
+            .define('S', Tags.Items.STONE)
             .save(output, SL_loc("lamp_post"));
 
 

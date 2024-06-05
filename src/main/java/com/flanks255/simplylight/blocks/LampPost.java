@@ -46,7 +46,7 @@ public class LampPost extends LampBase implements SimpleWaterloggedBlock {
     }
 
     @Override
-    public boolean isPathfindable(@Nonnull BlockState pState, @Nonnull PathComputationType pType) {
+    public boolean isPathfindable(@Nonnull BlockState pState, @Nonnull BlockGetter pLevel, @Nonnull BlockPos pPos, @Nonnull PathComputationType pType) {
         return false;
     }
 

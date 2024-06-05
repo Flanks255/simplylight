@@ -13,6 +13,6 @@ description='''Simple light, for a complicated world.'''
 [[dependencies.simplylight]]
 modId="neoforge"
 required=true
-versionRange="[20.6,)"
+versionRange="[20.4,)"
 ordering="NONE"
 side="BOTH"
