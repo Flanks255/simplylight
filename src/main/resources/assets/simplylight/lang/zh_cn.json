@@ -1,0 +1,42 @@
+{
+    "itemGroup.simplylight": "简单的光源",
+    "simplylight.shift": "按住<%s>获取更多信息。",
+    "simplylight.key.shift": "Shift",
+
+    "block.simplylight.illuminant_slab": "光源台阶",
+    "block.simplylight.illuminant_slab.info": "简单的光源台阶，",
+    "block.simplylight.illuminant_slab.info2": "可以放置在方块任意面。",
+
+    "block.simplylight.illuminant_panel": "光源面板",
+    "block.simplylight.illuminant_panel.info": "简单的LED面板灯，",
+    "block.simplylight.illuminant_panel.info2": "可以放置在方块任意面。",
+
+
+    "block.simplylight.illuminant_block": "光源方块",
+    "block.simplylight.illuminant_block.info": "简单的光源方块，",
+    "block.simplylight.illuminant_block.info2": "可以用§4红石信号§r激活。",
+
+    "block.simplylight.illuminant_block_on": "光源方块（反转）",
+    "block.simplylight.illuminant_block_on.info": "简单的光源方块，",
+    "block.simplylight.illuminant_block_on.info2": "可以用§4红石信号§r关闭。",
+
+    "block.simplylight.wall_lamp": "光源灯具",
+    "block.simplylight.wall_lamp.info": "可以挂在墙上，或粘在天花板或地板上。",
+
+    "block.simplylight.edge_light": "动态边沿灯（底部）",
+    "block.simplylight.edge_light.info": "绕下墙而走，",
+    "block.simplylight.edge_light.info2": "是布置走廊光源的完美选择。",
+
+    "block.simplylight.edge_light_top": "动态边沿灯（顶部）",
+    "block.simplylight.edge_light_top.info": "绕上墙而走，",
+    "block.simplylight.edge_light_top.info2": "适合放在走廊顶上。",
+
+    "block.simplylight.lightbulb": "简易灯泡",
+    "block.simplylight.lightbulb.info": "只是一个简单的灯泡，",
+    "block.simplylight.lightbulb.info2": "可以放置在方块任意面。",
+
+    "block.simplylight.rodlamp": "光源灯柱",
+    "block.simplylight.rodlamp.info": "一个简单的发光棒。",
+    "block.simplylight.rodlamp.info2": "可以放置在任何方向。"
+
+}
