@@ -31,8 +31,8 @@ public class SimplyLight
                 .displayItems((params, output) -> SLBlocks.TAB_ORDER.forEach(block -> output.accept(block.getItem())))
                 .build());
 
-    public static final TagKey<Item> ANY_ON_LAMP = TagKey.create(Registries.ITEM, new ResourceLocation(MODID, "any_lamp_on"));
-    public static final TagKey<Item> ANY_OFF_LAMP = TagKey.create(Registries.ITEM, new ResourceLocation(MODID, "any_lamp_off"));
+    public static final TagKey<Item> ANY_ON_LAMP = TagKey.create(Registries.ITEM, SLRes("any_lamp_on"));
+    public static final TagKey<Item> ANY_OFF_LAMP = TagKey.create(Registries.ITEM, SLRes("any_lamp_off"));
 
     public SimplyLight(IEventBus bus) {
         SLBlocks.init(bus);
@@ -41,5 +41,9 @@ public class SimplyLight
         bus.addListener(Generator::gatherData);
 
         RecipeUnlocker.register(SimplyLight.MODID, NeoForge.EVENT_BUS, 3);
+    }
+
+    public static ResourceLocation SLRes(String path) {
+        return ResourceLocation.fromNamespaceAndPath(SimplyLight.MODID, path);
     }
 }

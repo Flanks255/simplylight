@@ -17,8 +17,8 @@ import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 
 public class SLBlockLoot extends BlockLootSubProvider {
-    protected SLBlockLoot() {
-        super(Set.of(), FeatureFlags.REGISTRY.allFlags());
+    protected SLBlockLoot(HolderLookup.Provider thing) {
+        super(Set.of(), FeatureFlags.REGISTRY.allFlags(), thing);
     }
     public static LootTableProvider getProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> thingIDontUse) {
         return new LootTableProvider(output, Set.of(), List.of(new LootTableProvider.SubProviderEntry(SLBlockLoot::new, LootContextParamSets.BLOCK)), thingIDontUse);
