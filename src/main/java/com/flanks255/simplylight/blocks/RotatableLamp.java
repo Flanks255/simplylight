@@ -2,10 +2,13 @@ package com.flanks255.simplylight.blocks;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Mirror;
+import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -48,7 +51,7 @@ public abstract class RotatableLamp extends LampBase implements SimpleWaterlogge
     }
 
     @Override
-    public boolean canPlaceLiquid(@Nonnull BlockGetter world, @Nonnull BlockPos blockpos, @Nonnull BlockState blockState, @Nonnull Fluid fluid) {
+    public boolean canPlaceLiquid(Player player, @Nonnull BlockGetter blockGetter, @Nonnull BlockPos blockPos, @Nonnull BlockState blockState, @Nonnull Fluid fluid) {
         return true;
     }
 
@@ -76,5 +79,17 @@ public abstract class RotatableLamp extends LampBase implements SimpleWaterlogge
         if (blockState.getValue(BlockStateProperties.WATERLOGGED))
             levelAccessor.scheduleTick(blockPos, Fluids.WATER, Fluids.WATER.getTickDelay(levelAccessor));
         return super.updateShape(blockState, direction, blockState2, levelAccessor, blockPos, blockPos2);
+    }
+
+    @Nonnull
+    @Override
+    public BlockState mirror(BlockState pState, Mirror pMirror) {
+        return pState.rotate(pMirror.getRotation(pState.getValue(BlockStateProperties.FACING)));
+    }
+
+    @Nonnull
+    @Override
+    public BlockState rotate(BlockState pState, Rotation pRotation) {
+        return pState.setValue(BlockStateProperties.FACING, pRotation.rotate(pState.getValue(BlockStateProperties.FACING)));
     }
 }

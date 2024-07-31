@@ -5,13 +5,13 @@ import com.flanks255.simplylight.SLBlocks;
 import com.flanks255.simplylight.SimplyLight;
 import com.flanks255.simplylight.blocks.BaseBlockItem;
 import com.flanks255.simplylight.blocks.LampBlock;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;
+import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
@@ -23,7 +23,6 @@ import net.minecraft.world.level.ItemLike;
 
 import javax.annotation.Nonnull;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.Consumer;
 
 public class Recipes extends FabricRecipeProvider {
     public Recipes(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> thingIDontUse) {
@@ -31,7 +30,7 @@ public class Recipes extends FabricRecipeProvider {
     }
 
     @Override
-    public void buildRecipes(Consumer<FinishedRecipe> consumer) {
+    public void buildRecipes(RecipeOutput output) {
         // Illuminant Block (Off)
         ShapedBuilder.shaped(SLBlocks.ILLUMINANTBLOCK.getItem(), 4)
             .pattern("aba")
@@ -41,7 +40,7 @@ public class Recipes extends FabricRecipeProvider {
             .define('b', Items.GLOWSTONE)
             .define('c', Items.REDSTONE)
             .showNotification(false)
-            .save(consumer, SL_loc("illuminant_block"));
+            .save(output, SL_loc("illuminant_block"));
 
         // Illuminant Block (On)
         ShapedBuilder.shaped(SLBlocks.ILLUMINANTBLOCK_ON.getItem(), 4)
@@ -52,7 +51,7 @@ public class Recipes extends FabricRecipeProvider {
             .define('b', Items.GLOWSTONE)
             .define('c', Items.REDSTONE_TORCH)
             .showNotification(false)
-            .save(consumer, SL_loc("illuminant_block_on"));
+            .save(output, SL_loc("illuminant_block_on"));
 
         // Bulbs
         ShapedBuilder.shaped(SLBlocks.LIGHTBULB.getItem(), 8)
@@ -61,7 +60,7 @@ public class Recipes extends FabricRecipeProvider {
             .define('a', SimplyLight.ANY_STONE)
             .define('b', Items.GLOWSTONE)
             .showNotification(false)
-            .save(consumer, SL_loc("bulb"));
+            .save(output, SL_loc("bulb"));
 
         // Edge light
         ShapedBuilder.shaped(SLBlocks.EDGELAMP.getItem(), 6)
@@ -71,17 +70,17 @@ public class Recipes extends FabricRecipeProvider {
             .define('a', Items.GLOWSTONE)
             .define('b', SimplyLight.ANY_STONE)
             .showNotification(false)
-            .save(consumer, SL_loc("edge_light"));
+            .save(output, SL_loc("edge_light"));
 
         // Top Edge light from bottom
         ShapelessBuilder.shapeless(SLBlocks.EDGELAMP_TOP.getItem())
             .requires(SLBlocks.EDGELAMP.getItem())
-            .save(consumer, SL_loc("edge_light_top"));
+            .save(output, SL_loc("edge_light_top"));
 
         // Bottom Edge light from top
         ShapelessBuilder.shapeless(SLBlocks.EDGELAMP.getItem())
             .requires(SLBlocks.EDGELAMP_TOP.getItem())
-            .save(consumer, SL_loc("edge_light_bottom_from_top"));
+            .save(output, SL_loc("edge_light_bottom_from_top"));
 
         // Slabs
         ShapedBuilder.shaped(SLBlocks.ILLUMINANTSLAB.getItem(), 6)
@@ -90,20 +89,20 @@ public class Recipes extends FabricRecipeProvider {
             .define('a', SimplyLight.ANY_STONE)
             .define('b', Items.GLOWSTONE)
             .showNotification(false)
-            .save(consumer, SL_loc("illuminant_slab"));
+            .save(output, SL_loc("illuminant_slab"));
 
         // Slab from panel
         ShapelessBuilder.shapeless(SLBlocks.ILLUMINANTSLAB.getItem())
             .requires(SLBlocks.ILLUMINANTPANEL.getItem())
             .requires(SLBlocks.ILLUMINANTPANEL.getItem())
-            .save(consumer, SL_loc("illuminant_slab_from_panel"));
+            .save(output, SL_loc("illuminant_slab_from_panel"));
 
         // Panels
         ShapedBuilder.shaped(SLBlocks.ILLUMINANTPANEL.getItem(), 6)
             .pattern("aaa")
             .define('a', SLBlocks.ILLUMINANTSLAB.getItem())
             .showNotification(false)
-            .save(consumer, SL_loc("illuminant_panel"));
+            .save(output, SL_loc("illuminant_panel"));
 
         // Rod Lamp
         ShapedBuilder.shaped(SLBlocks.RODLAMP.getItem(), 8)
@@ -113,7 +112,7 @@ public class Recipes extends FabricRecipeProvider {
             .define('a', SimplyLight.ANY_STONE)
             .define('b', Items.GLOWSTONE_DUST)
             .showNotification(false)
-            .save(consumer, SL_loc("rodlamp"));
+            .save(output, SL_loc("rodlamp"));
 
         // Wall Lamp
         ShapedBuilder.shaped(SLBlocks.WALL_LAMP.getItem(), 6)
@@ -123,7 +122,7 @@ public class Recipes extends FabricRecipeProvider {
             .define('a', SimplyLight.ANY_STONE)
             .define('b', Items.GLOWSTONE)
             .showNotification(false)
-            .save(consumer, SL_loc("walllamp"));
+            .save(output, SL_loc("walllamp"));
 
         //Lamp Post
         ShapedBuilder.shaped(SLBlocks.LAMP_POST.getItem(), 2)
@@ -134,20 +133,20 @@ public class Recipes extends FabricRecipeProvider {
             .define('W', ItemTags.WALLS)
             .define('S', SimplyLight.ANY_STONE)
             .showNotification(false)
-            .save(consumer, SL_loc("lamp_post"));
+            .save(output, SL_loc("lamp_post"));
 
 
         SLBlocks.LAMPBLOCKS_ON.forEach( lamp -> {
-            dyeRecipeOn(lamp.getItem(), DyeItem.byColor(lamp.getBlock().color), consumer);
-            toggleOn(lamp, consumer);
+            dyeRecipeOn(lamp.getItem(), DyeItem.byColor(lamp.getBlock().color), output);
+            toggleOn(lamp, output);
         });
         SLBlocks.LAMPBLOCKS_OFF.forEach( lamp -> {
-            dyeRecipeOff(lamp.getItem(), DyeItem.byColor(lamp.getBlock().color), consumer);
-            toggleOff(lamp, consumer);
+            dyeRecipeOff(lamp.getItem(), DyeItem.byColor(lamp.getBlock().color), output);
+            toggleOff(lamp, output);
         });
     }
 
-    private void toggleOn(SLBlockReg<LampBlock, BaseBlockItem> block, Consumer<FinishedRecipe> consumer) {
+    private void toggleOn(SLBlockReg<LampBlock, BaseBlockItem> block, RecipeOutput output) {
         Item item = null;
         for (SLBlockReg<LampBlock, BaseBlockItem> reg : SLBlocks.LAMPBLOCKS_OFF) {
             if (reg.getBlock().color == block.getBlock().color) {
@@ -160,9 +159,9 @@ public class Recipes extends FabricRecipeProvider {
 
         ShapelessBuilder.shapeless(block.getItem())
             .requires(item)
-            .save(consumer, SL_loc(block.getItem().getRegistryName().getPath()+"_toggle"));
+            .save(output, SL_loc(block.getItem().getRegistryName().getPath()+"_toggle"));
     }
-    private void toggleOff(SLBlockReg<LampBlock, BaseBlockItem> block, Consumer<FinishedRecipe> consumer) {
+    private void toggleOff(SLBlockReg<LampBlock, BaseBlockItem> block, RecipeOutput output) {
         Item item = null;
         for (SLBlockReg<LampBlock, BaseBlockItem> reg : SLBlocks.LAMPBLOCKS_ON) {
             if (reg.getBlock().color == block.getBlock().color) {
@@ -175,10 +174,10 @@ public class Recipes extends FabricRecipeProvider {
 
         ShapelessBuilder.shapeless(block.getItem())
             .requires(item)
-            .save(consumer, SL_loc(block.getItem().getRegistryName().getPath()+"_toggle"));
+            .save(output, SL_loc(block.getItem().getRegistryName().getPath()+"_toggle"));
     }
 
-    private void dyeRecipeOff(BaseBlockItem item, Item dyeItem, Consumer<FinishedRecipe> consumer) {
+    private void dyeRecipeOff(BaseBlockItem item, Item dyeItem, RecipeOutput output) {
         ShapedBuilder.shaped(item, 8)
             .pattern("AAA")
             .pattern("ABA")
@@ -186,9 +185,9 @@ public class Recipes extends FabricRecipeProvider {
             .define('B', dyeItem)
             .define('A', SimplyLight.ANY_OFF_LAMP)
             .showNotification(false)
-            .save(consumer, SL_loc(item.getRegistryName().getPath()+"_dyed"));
+            .save(output, SL_loc(item.getRegistryName().getPath()+"_dyed"));
     }
-    private void dyeRecipeOn(BaseBlockItem item, Item dyeItem, Consumer<FinishedRecipe> consumer) {
+    private void dyeRecipeOn(BaseBlockItem item, Item dyeItem, RecipeOutput output) {
         ShapedBuilder.shaped(item, 8)
             .pattern("AAA")
             .pattern("ABA")
@@ -196,7 +195,7 @@ public class Recipes extends FabricRecipeProvider {
             .define('B', dyeItem)
             .define('A', SimplyLight.ANY_ON_LAMP)
             .showNotification(false)
-            .save(consumer, SL_loc(item.getRegistryName().getPath()+"_dyed"));
+            .save(output, SL_loc(item.getRegistryName().getPath()+"_dyed"));
     }
 
 
@@ -205,7 +204,7 @@ public class Recipes extends FabricRecipeProvider {
     }
 
     private static class ShapedBuilder extends ShapedRecipeBuilder {
-        public static final InventoryChangeTrigger.TriggerInstance TRIGGER = has(Items.AIR);
+        public static final Criterion<InventoryChangeTrigger.TriggerInstance> TRIGGER = has(Items.AIR);
 
         public ShapedBuilder(ItemLike pResult, int pCount) {
             super(RecipeCategory.MISC, pResult, pCount);
@@ -220,20 +219,20 @@ public class Recipes extends FabricRecipeProvider {
         }
 
         @Override
-        public void save(@Nonnull Consumer<FinishedRecipe> pFinishedRecipeConsumer, @Nonnull ResourceLocation pRecipeId) {
+        public void save(@Nonnull RecipeOutput output, @Nonnull ResourceLocation pRecipeId) {
             unlockedBy("", TRIGGER); //Nope
-            super.save(NoAdvFR.Inject(pFinishedRecipeConsumer), pRecipeId);
+            super.save(new NoAdvRecipeOutput(output), pRecipeId);
         }
 
         @Override
-        public void save(@Nonnull Consumer<FinishedRecipe> pFinishedRecipeConsumer) {
+        public void save(@Nonnull RecipeOutput output) {
             unlockedBy("", TRIGGER); //Nope
-            super.save(NoAdvFR.Inject(pFinishedRecipeConsumer));
+            super.save(new NoAdvRecipeOutput(output));
         }
     }
 
     private static class ShapelessBuilder extends ShapelessRecipeBuilder {
-        public static final InventoryChangeTrigger.TriggerInstance TRIGGER = has(Items.AIR);
+        public static final Criterion<InventoryChangeTrigger.TriggerInstance> TRIGGER = has(Items.AIR);
 
         public ShapelessBuilder(ItemLike pResult, int pCount) {
             super(RecipeCategory.MISC, pResult, pCount);
@@ -248,15 +247,15 @@ public class Recipes extends FabricRecipeProvider {
         }
 
         @Override
-        public void save(@Nonnull Consumer<FinishedRecipe> pFinishedRecipeConsumer, @Nonnull ResourceLocation pRecipeId) {
+        public void save(@Nonnull RecipeOutput output, @Nonnull ResourceLocation pRecipeId) {
             unlockedBy("", TRIGGER); //Nope
-            super.save(NoAdvFR.Inject(pFinishedRecipeConsumer), pRecipeId);
+            super.save(new NoAdvRecipeOutput(output), pRecipeId);
         }
 
         @Override
-        public void save(@Nonnull Consumer<FinishedRecipe> pFinishedRecipeConsumer) {
+        public void save(@Nonnull RecipeOutput output) {
             unlockedBy("", TRIGGER); //Nope
-            super.save(NoAdvFR.Inject(pFinishedRecipeConsumer));
+            super.save(new NoAdvRecipeOutput(output));
         }
     }
 }

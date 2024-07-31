@@ -20,7 +20,7 @@ public class RecipeUnlocker {
             MinecraftServer server = player.getServer();
             if (server != null) {
                 var recipes = new ArrayList<>(server.getRecipeManager().getRecipes());
-                recipes.removeIf((recipe -> !recipe.getId().getNamespace().contains(SimplyLight.MODID)));
+                recipes.removeIf((recipe -> !recipe.id().getNamespace().contains(SimplyLight.MODID)));
                 player.awardRecipes(recipes);
             }
         }

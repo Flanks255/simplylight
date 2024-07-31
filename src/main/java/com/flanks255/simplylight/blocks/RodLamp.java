@@ -1,9 +1,12 @@
 package com.flanks255.simplylight.blocks;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -48,7 +51,7 @@ public class RodLamp extends LampBase implements SimpleWaterloggedBlock {
     }
 
     @Override
-    public boolean canPlaceLiquid(@Nonnull BlockGetter pLevel, @Nonnull BlockPos pPos, @Nonnull BlockState pState, @Nonnull Fluid pFluid) {
+    public boolean canPlaceLiquid(Player player, @Nonnull BlockGetter blockGetter, @Nonnull BlockPos blockPos, @Nonnull BlockState blockState, @Nonnull Fluid fluid) {
         return true;
     }
 
@@ -74,5 +77,16 @@ public class RodLamp extends LampBase implements SimpleWaterloggedBlock {
         consumer.accept(base, "Illuminant Rod");
         consumer.accept(base + ".info", "A simple rod of light.");
         consumer.accept(base + ".info2", "Can be placed in any direction.");
+    }
+
+    @Nonnull
+    @Override
+    public BlockState rotate(@Nonnull BlockState pState, @Nonnull Rotation pRotation) {
+        if (pRotation != Rotation.NONE) {
+            Direction.Axis axis = pState.getValue(BlockStateProperties.AXIS);
+            if ((pRotation == Rotation.CLOCKWISE_90 || pRotation == Rotation.COUNTERCLOCKWISE_90) && axis.isHorizontal())
+                return pState.setValue(BlockStateProperties.AXIS, axis == Direction.Axis.X ? Direction.Axis.Z : Direction.Axis.X);
+        }
+        return pState;
     }
 }

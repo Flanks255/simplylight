@@ -6,7 +6,9 @@ plugins {
 sourceCompatibility = JavaVersion.VERSION_17
 targetCompatibility = JavaVersion.VERSION_17
 
-archivesBaseName = project.archives_base_name
+base {
+	archivesName = project.archives_base_name
+}
 version = "${minecraft_version}-${mod_version}"
 group = project.maven_group
 
@@ -32,13 +34,10 @@ dependencies {
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
-	//modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-
-	modImplementation "net.fabricmc.fabric-api:fabric-api-deprecated:${project.fabric_version}"
-
-	modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-fabric:12.0.626"
-	modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:12.0.626"
+	modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-fabric:14.1.742"
+	modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:14.1.742"
 }
 
 loom {
