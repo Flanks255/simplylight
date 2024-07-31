@@ -8,7 +8,6 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.material.PushReaction;
 
-import javax.annotation.Nullable;
 import java.util.function.BiConsumer;
 
 public class ThinLamp extends RotatableLamp {
@@ -30,7 +29,7 @@ public class ThinLamp extends RotatableLamp {
         SOUTH = Block.box(0,0,0, 16,16, thickness);
     }
 
-    @Nullable
+
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext useContext) {
         BlockPos pos = useContext.getClickedPos().relative(useContext.getClickedFace().getOpposite());

@@ -1,4 +1,4 @@
-// 1.20.1	2023-07-11T17:17:29.2433475	Simply Light/Tags for minecraft:item
-4127a80fcf55bcdd61fb81371d22b7193448b90b data\simplylight\tags\items\any_lamp_off.json
+// 1.20.4	2024-07-31T16:16:14.2535911	Simply Light/Tags for minecraft:item
+e5a1f17ec8363b9461329576bdeca4654c617f36 data\simplylight\tags\items\any_lamp_on.json
 7c57fd79587c1978662fddd8cce6a5d4c4e17a06 data\simplylight\tags\items\any_stone.json
-521a75a6814e0f90835360ec654d1f778b4456bb data\simplylight\tags\items\any_lamp_on.json
+dd9f08a5605f706f1c6a97bb78f0fc1ed7a61098 data\simplylight\tags\items\any_lamp_off.json

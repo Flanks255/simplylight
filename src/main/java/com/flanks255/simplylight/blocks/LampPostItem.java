@@ -8,8 +8,6 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.level.block.Block;
 
-import javax.annotation.Nonnull;
-
 
 public class LampPostItem extends BaseBlockItem {
     public LampPostItem(Block pBlock, Properties pProperties) {
@@ -24,9 +22,9 @@ public class LampPostItem extends BaseBlockItem {
 
     private static Multimap<Attribute, AttributeModifier> attributes;
 
-    @Nonnull
+    
     @Override
-    public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(@Nonnull EquipmentSlot pEquipmentSlot) {
+    public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers( EquipmentSlot pEquipmentSlot) {
         return pEquipmentSlot == EquipmentSlot.MAINHAND? attributes: super.getDefaultAttributeModifiers(pEquipmentSlot);
     }
 }

@@ -9,7 +9,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.List;
@@ -37,7 +36,7 @@ public class SLBlockLoot extends BlockLootSubProvider {
     }
 
     @Override
-    public void generate(@NotNull BiConsumer<ResourceLocation, LootTable.Builder> biConsumer) {
+    public void generate(BiConsumer<ResourceLocation, LootTable.Builder> biConsumer) {
         generate();
 
         map.forEach(biConsumer);

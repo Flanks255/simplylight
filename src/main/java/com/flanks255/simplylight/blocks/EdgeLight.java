@@ -20,8 +20,6 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.util.function.BiConsumer;
 
 public class EdgeLight extends LampBase implements SimpleWaterloggedBlock {
@@ -57,10 +55,9 @@ public class EdgeLight extends LampBase implements SimpleWaterloggedBlock {
     public static final BooleanProperty SOUTH = BooleanProperty.create("south");
     public static final BooleanProperty EAST = BooleanProperty.create("east");
     public static final BooleanProperty WEST = BooleanProperty.create("west");
-
-    @Nonnull
+    
     @Override
-    public VoxelShape getShape(BlockState pState, @Nonnull BlockGetter pLevel, @Nonnull BlockPos pPos, @Nonnull CollisionContext pContext) {
+    public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
         VoxelShape shape = Shapes.empty();
         if (pState.getValue(NORTH))
             shape = Shapes.or(shape, VS_NORTH);
@@ -84,7 +81,7 @@ public class EdgeLight extends LampBase implements SimpleWaterloggedBlock {
         return canSupportCenter(context.getLevel(),pos,direction.getOpposite());
     }
 
-    @Nullable
+    
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         boolean waterlogged = context.getLevel().getFluidState(context.getClickedPos()).getType() == Fluids.WATER;
@@ -96,11 +93,10 @@ public class EdgeLight extends LampBase implements SimpleWaterloggedBlock {
     }
 
     @Override
-    public boolean canPlaceLiquid(Player player, @Nonnull BlockGetter blockGetter, @Nonnull BlockPos blockPos, @Nonnull BlockState blockState, @Nonnull Fluid fluid) {
+    public boolean canPlaceLiquid(Player player, BlockGetter blockGetter, BlockPos blockPos, BlockState blockState, Fluid fluid) {
         return true;
     }
-
-    @Nonnull
+    
     @Override
     public FluidState getFluidState(BlockState pState) {
         return pState.getValue(BlockStateProperties.WATERLOGGED)? Fluids.WATER.getSource(false) : super.getFluidState(pState);
@@ -126,9 +122,9 @@ public class EdgeLight extends LampBase implements SimpleWaterloggedBlock {
         consumer.accept(base + ".jei.info", "Will morph depending on the blocks present around itself on placement.\nShape will persist afterward, letting you make shapes using temporary blocks.");
     }
 
-    @Nonnull
+    
     @Override
-    public BlockState rotate(@Nonnull BlockState pState, @Nonnull Rotation pRotation) {
+    public BlockState rotate( BlockState pState,  Rotation pRotation) {
         if (pRotation != Rotation.NONE){
             boolean oldNorth = pState.getValue(NORTH);
             boolean oldSouth = pState.getValue(SOUTH);
@@ -158,9 +154,9 @@ public class EdgeLight extends LampBase implements SimpleWaterloggedBlock {
         return pState;
     }
 
-    @Nonnull
+    
     @Override
-    public BlockState mirror(@Nonnull BlockState pState, @Nonnull Mirror pMirror) {
+    public BlockState mirror( BlockState pState,  Mirror pMirror) {
         if (pMirror != Mirror.NONE) {
             boolean oldNorth = pState.getValue(NORTH);
             boolean oldSouth = pState.getValue(SOUTH);

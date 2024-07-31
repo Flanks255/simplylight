@@ -21,7 +21,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 
-import javax.annotation.Nonnull;
 import java.util.concurrent.CompletableFuture;
 
 public class Recipes extends FabricRecipeProvider {
@@ -219,13 +218,13 @@ public class Recipes extends FabricRecipeProvider {
         }
 
         @Override
-        public void save(@Nonnull RecipeOutput output, @Nonnull ResourceLocation pRecipeId) {
+        public void save( RecipeOutput output,  ResourceLocation pRecipeId) {
             unlockedBy("", TRIGGER); //Nope
             super.save(new NoAdvRecipeOutput(output), pRecipeId);
         }
 
         @Override
-        public void save(@Nonnull RecipeOutput output) {
+        public void save( RecipeOutput output) {
             unlockedBy("", TRIGGER); //Nope
             super.save(new NoAdvRecipeOutput(output));
         }
@@ -247,13 +246,13 @@ public class Recipes extends FabricRecipeProvider {
         }
 
         @Override
-        public void save(@Nonnull RecipeOutput output, @Nonnull ResourceLocation pRecipeId) {
+        public void save( RecipeOutput output,  ResourceLocation pRecipeId) {
             unlockedBy("", TRIGGER); //Nope
             super.save(new NoAdvRecipeOutput(output), pRecipeId);
         }
 
         @Override
-        public void save(@Nonnull RecipeOutput output) {
+        public void save( RecipeOutput output) {
             unlockedBy("", TRIGGER); //Nope
             super.save(new NoAdvRecipeOutput(output));
         }

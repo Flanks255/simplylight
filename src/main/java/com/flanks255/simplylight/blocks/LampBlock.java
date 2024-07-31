@@ -5,7 +5,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -14,8 +13,6 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.util.function.BiConsumer;
 
 public class LampBlock extends LampBase {
@@ -41,14 +38,14 @@ public class LampBlock extends LampBase {
         blockStateBuilder.add(ON);
     }
 
-    @Nullable
+    
     @Override
-    public BlockState getStateForPlacement(@Nonnull BlockPlaceContext context) {
+    public BlockState getStateForPlacement( BlockPlaceContext context) {
         return this.defaultBlockState().setValue(ON, Default);
     }
 
     @Override
-    public void setPlacedBy(@Nonnull Level pLevel, @Nonnull BlockPos pPos, @Nonnull BlockState pState, @Nullable LivingEntity pPlacer, @Nonnull ItemStack pStack) {
+    public void setPlacedBy( Level pLevel,  BlockPos pPos,  BlockState pState,  LivingEntity pPlacer,  ItemStack pStack) {
         super.setPlacedBy(pLevel, pPos, pState, pPlacer, pStack);
         boolean powered = pLevel.hasNeighborSignal(pPos);
         if (powered) {
@@ -57,14 +54,14 @@ public class LampBlock extends LampBase {
     }
 
     @Override
-    public void neighborChanged(@Nonnull BlockState pState, @Nonnull Level pLevel, @Nonnull BlockPos pPos, @Nonnull Block pBlock, @Nonnull BlockPos pFromPos, boolean pIsMoving) {
+    public void neighborChanged( BlockState pState,  Level pLevel,  BlockPos pPos,  Block pBlock,  BlockPos pFromPos, boolean pIsMoving) {
         super.neighborChanged(pState, pLevel, pPos, pBlock, pFromPos, pIsMoving);
         boolean on = Default != pLevel.hasNeighborSignal(pPos);
         pLevel.setBlockAndUpdate(pPos, defaultBlockState().setValue(ON, on));
     }
 
     @Override
-    public boolean isSignalSource(@Nonnull BlockState pState) {
+    public boolean isSignalSource( BlockState pState) {
         return true;
     }
 

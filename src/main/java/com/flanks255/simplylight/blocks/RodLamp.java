@@ -11,13 +11,13 @@ import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.material.*;
+import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.util.function.BiConsumer;
 
 @SuppressWarnings("deprecation")
@@ -34,9 +34,9 @@ public class RodLamp extends LampBase implements SimpleWaterloggedBlock {
     private final VoxelShape EastWest = Block.box(0,7,7, 16,9,9);
     private final VoxelShape NorthSouth = Block.box(7,7,0, 9,9,16);
 
-    @Nonnull
+    
     @Override
-    public VoxelShape getShape(BlockState pState, @Nonnull BlockGetter pLevel, @Nonnull BlockPos pPos, @Nonnull CollisionContext pContext) {
+    public VoxelShape getShape(BlockState pState,  BlockGetter pLevel,  BlockPos pPos,  CollisionContext pContext) {
         return switch (pState.getValue(BlockStateProperties.AXIS)) {
             case X -> EastWest;
             case Y -> UpDown;
@@ -44,18 +44,18 @@ public class RodLamp extends LampBase implements SimpleWaterloggedBlock {
         };
     }
 
-    @Nullable
+    
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext placeContext) {
         return defaultBlockState().setValue(BlockStateProperties.AXIS, placeContext.getClickedFace().getAxis()).setValue(BlockStateProperties.WATERLOGGED, false);
     }
 
     @Override
-    public boolean canPlaceLiquid(Player player, @Nonnull BlockGetter blockGetter, @Nonnull BlockPos blockPos, @Nonnull BlockState blockState, @Nonnull Fluid fluid) {
+    public boolean canPlaceLiquid(Player player,  BlockGetter blockGetter,  BlockPos blockPos,  BlockState blockState,  Fluid fluid) {
         return true;
     }
 
-    @Nonnull
+    
     @Override
     public FluidState getFluidState(BlockState p_204507_1_) {
         return p_204507_1_.getValue(BlockStateProperties.WATERLOGGED)? Fluids.WATER.getSource(false) : super.getFluidState(p_204507_1_);
@@ -67,7 +67,7 @@ public class RodLamp extends LampBase implements SimpleWaterloggedBlock {
     }
 
     @Override
-    public boolean isPathfindable(@Nonnull BlockState pState, @Nonnull BlockGetter pLevel, @Nonnull BlockPos pPos, @Nonnull PathComputationType pType) {
+    public boolean isPathfindable( BlockState pState,  BlockGetter pLevel,  BlockPos pPos,  PathComputationType pType) {
         return false;
     }
 
@@ -79,9 +79,9 @@ public class RodLamp extends LampBase implements SimpleWaterloggedBlock {
         consumer.accept(base + ".info2", "Can be placed in any direction.");
     }
 
-    @Nonnull
+    
     @Override
-    public BlockState rotate(@Nonnull BlockState pState, @Nonnull Rotation pRotation) {
+    public BlockState rotate( BlockState pState,  Rotation pRotation) {
         if (pRotation != Rotation.NONE) {
             Direction.Axis axis = pState.getValue(BlockStateProperties.AXIS);
             if ((pRotation == Rotation.CLOCKWISE_90 || pRotation == Rotation.COUNTERCLOCKWISE_90) && axis.isHorizontal())

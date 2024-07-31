@@ -19,9 +19,6 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 @SuppressWarnings("deprecation")
 public abstract class RotatableLamp extends LampBase implements SimpleWaterloggedBlock {
     public RotatableLamp(Properties props) {
@@ -35,9 +32,9 @@ public abstract class RotatableLamp extends LampBase implements SimpleWaterlogge
     public VoxelShape WEST;
     public VoxelShape EAST;
 
-    @Nonnull
+    
     @Override
-    public VoxelShape getShape(BlockState blockState, @Nonnull BlockGetter world, @Nonnull BlockPos blockPos, @Nonnull CollisionContext context) {
+    public VoxelShape getShape(BlockState blockState,  BlockGetter world,  BlockPos blockPos,  CollisionContext context) {
         Direction facing = blockState.getValue(BlockStateProperties.FACING);
         //D-U-N-S-W-E
         return switch (facing.get3DDataValue()) {
@@ -51,11 +48,11 @@ public abstract class RotatableLamp extends LampBase implements SimpleWaterlogge
     }
 
     @Override
-    public boolean canPlaceLiquid(Player player, @Nonnull BlockGetter blockGetter, @Nonnull BlockPos blockPos, @Nonnull BlockState blockState, @Nonnull Fluid fluid) {
+    public boolean canPlaceLiquid(Player player,  BlockGetter blockGetter,  BlockPos blockPos,  BlockState blockState,  Fluid fluid) {
         return true;
     }
 
-    @Nonnull
+    
     @Override
     public FluidState getFluidState(BlockState blockState) {
         return blockState.getValue(BlockStateProperties.WATERLOGGED)? Fluids.WATER.getSource(false) : super.getFluidState(blockState);
@@ -66,7 +63,7 @@ public abstract class RotatableLamp extends LampBase implements SimpleWaterlogge
         builder.add(BlockStateProperties.FACING, BlockStateProperties.WATERLOGGED);
     }
 
-    @Nullable
+    
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         boolean waterlogged = context.getLevel().getFluidState(context.getClickedPos()).getType() == Fluids.WATER;
@@ -74,20 +71,20 @@ public abstract class RotatableLamp extends LampBase implements SimpleWaterlogge
     }
 
     @Override
-    @Nonnull
-    public BlockState updateShape(BlockState blockState, @Nonnull Direction direction, @Nonnull BlockState blockState2, @Nonnull LevelAccessor levelAccessor, @Nonnull BlockPos blockPos, @Nonnull BlockPos blockPos2) {
+    
+    public BlockState updateShape(BlockState blockState,  Direction direction,  BlockState blockState2,  LevelAccessor levelAccessor,  BlockPos blockPos,  BlockPos blockPos2) {
         if (blockState.getValue(BlockStateProperties.WATERLOGGED))
             levelAccessor.scheduleTick(blockPos, Fluids.WATER, Fluids.WATER.getTickDelay(levelAccessor));
         return super.updateShape(blockState, direction, blockState2, levelAccessor, blockPos, blockPos2);
     }
 
-    @Nonnull
+    
     @Override
     public BlockState mirror(BlockState pState, Mirror pMirror) {
         return pState.rotate(pMirror.getRotation(pState.getValue(BlockStateProperties.FACING)));
     }
 
-    @Nonnull
+    
     @Override
     public BlockState rotate(BlockState pState, Rotation pRotation) {
         return pState.setValue(BlockStateProperties.FACING, pRotation.rotate(pState.getValue(BlockStateProperties.FACING)));

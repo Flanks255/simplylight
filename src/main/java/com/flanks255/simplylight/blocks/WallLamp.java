@@ -1,11 +1,7 @@
 package com.flanks255.simplylight.blocks;
 
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.Shapes;
 
-import javax.annotation.Nonnull;
 import java.util.function.BiConsumer;
 
 public class WallLamp extends RotatableLamp{
