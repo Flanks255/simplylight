@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "tag": "simplylight:any_panel"
+    },
+    "B": {
+      "item": "minecraft:brown_dye"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "ABA",
+    "AAA"
+  ],
+  "result": {
+    "count": 6,
+    "id": "simplylight:illuminant_panel_brown"
+  },
+  "show_notification": false
+}

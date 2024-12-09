@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "tag": "simplylight:any_panel"
+    },
+    "B": {
+      "item": "minecraft:light_gray_dye"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "ABA",
+    "AAA"
+  ],
+  "result": {
+    "count": 6,
+    "id": "simplylight:illuminant_panel_light_gray"
+  },
+  "show_notification": false
+}

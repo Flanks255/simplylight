@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "tag": "simplylight:any_slab"
+    },
+    "B": {
+      "item": "minecraft:yellow_dye"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "ABA",
+    "AAA"
+  ],
+  "result": {
+    "count": 6,
+    "id": "simplylight:illuminant_slab_yellow"
+  },
+  "show_notification": false
+}

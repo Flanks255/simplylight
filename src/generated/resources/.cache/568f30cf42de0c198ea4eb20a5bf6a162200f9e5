@@ -1,3 +1,7 @@
-// 1.21	2024-07-10T08:39:30.2511214	Tags for minecraft:item mod id simplylight
-484a255f7a37ebf0c60c2d17dc376a334effba01 data/simplylight/tags/item/any_lamp_off.json
-ab2c358f0a10b4ee93325e6ebcef8339a2a31ea6 data/simplylight/tags/item/any_lamp_on.json
+// 1.21.1	2024-12-08T17:30:28.0387187	Tags for minecraft:item mod id simplylight
+62313fddde399837d538754b1408099d4c50d640 data/simplylight/tags/item/any_bulb.json
+a73e0c664a91abcb9bd2d865be233e33f090d4bb data/simplylight/tags/item/any_lamp_off.json
+be1c7166f910490d184557169a205b01f36651b3 data/simplylight/tags/item/any_lamp_on.json
+e25557639822c3b0365df03cdc2304971cedab68 data/simplylight/tags/item/any_panel.json
+ff878829bd374b61366e9befb5268f7b2f2f0496 data/simplylight/tags/item/any_rod.json
+21b72e319803e3f9350ceab6449851734fc6afe5 data/simplylight/tags/item/any_slab.json

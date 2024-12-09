@@ -1,6 +1,7 @@
 package com.flanks255.simplylight.blocks;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -14,14 +15,16 @@ import java.util.function.BiConsumer;
 public class ThinLamp extends RotatableLamp {
 
     private final double thickness;
+    public final DyeColor color;
 
-    public ThinLamp(double thickness) {
+    public ThinLamp(double thickness, DyeColor colorIn) {
         super(Block.Properties.of()
             .pushReaction(PushReaction.NORMAL)
             .lightLevel($ -> 15)
             .strength(1.0f));
 
         this.thickness = thickness;
+        this.color = colorIn;
         UP = Block.box(0,0,0, 16, thickness,16);
         DOWN = Block.box(0,16 - thickness,0, 16,16,16);
         EAST = Block.box(0,0,0, thickness,16,16);
@@ -45,13 +48,34 @@ public class ThinLamp extends RotatableLamp {
     public void addLang(BiConsumer<String, String> consumer) {
         String base = getDescriptionId();
 
-        if (thickness == 8) {
-            consumer.accept(base, "Illuminant Slab");
-            consumer.accept(base + ".info", "Simple half-slab light,");
-        } else {
-            consumer.accept(base, "Illuminant Panel");
-            consumer.accept(base + ".info", "Simple LED panel light,");
-        }
+        String colorname = switch (color) {
+            case RED -> "Red";
+            case BLUE -> "Blue";
+            case CYAN -> "Cyan";
+            case GRAY -> "Gray";
+            case LIME -> "Lime";
+            case MAGENTA -> "Magenta";
+            case PINK -> "Pink";
+            case BLACK -> "Black";
+            case BROWN -> "Brown";
+            case GREEN -> "Green";
+            case ORANGE -> "Orange";
+            case PURPLE -> "Purple";
+            case YELLOW -> "Yellow";
+            case LIGHT_BLUE -> "Light Blue";
+            case LIGHT_GRAY -> "Light Gray";
+            default -> "";
+        };
+
+        String type = thickness == 8 ? "Slab" : "Panel";
+        String type2 = thickness == 8 ? "half-slab" : "LED panel";
+
+        if (color == DyeColor.WHITE)
+            consumer.accept(base, "Illuminant " + type);
+        else
+            consumer.accept(base, "Illuminant " + colorname + " " + type);
+
+        consumer.accept(base + ".info", "Simple " + type2 + " light,");
 
         consumer.accept(base + ".info2", "Place in any direction.");
     }

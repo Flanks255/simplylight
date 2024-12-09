@@ -13,6 +13,7 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.DyeItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -78,7 +79,7 @@ public class Recipes extends RecipeProvider {
             .save(output, SimplyLight.SLRes("edge_light_bottom_from_top"));
 
         // Slabs
-        ShapedBuilder.shaped(SLBlocks.ILLUMINANTSLAB.getItem(), 6)
+        ShapedBuilder.shaped(SLBlocks.ILLUMINANT_SLAB.getItem(), 6)
             .pattern("bbb")
             .pattern("aaa")
             .define('a', Tags.Items.STONES)
@@ -86,15 +87,15 @@ public class Recipes extends RecipeProvider {
             .save(output, SimplyLight.SLRes("illuminant_slab"));
 
         // Slab from panel
-        ShapelessBuilder.shapeless(SLBlocks.ILLUMINANTSLAB.getItem())
-            .requires(SLBlocks.ILLUMINANTPANEL.getItem())
-            .requires(SLBlocks.ILLUMINANTPANEL.getItem())
+        ShapelessBuilder.shapeless(SLBlocks.ILLUMINANT_SLAB.getItem())
+            .requires(SLBlocks.ILLUMINANT_PANEL.getItem())
+            .requires(SLBlocks.ILLUMINANT_PANEL.getItem())
             .save(output, SimplyLight.SLRes("illuminant_slab_from_panel"));
 
         // Panels
-        ShapedBuilder.shaped(SLBlocks.ILLUMINANTPANEL.getItem(), 6)
+        ShapedBuilder.shaped(SLBlocks.ILLUMINANT_PANEL.getItem(), 6)
             .pattern("aaa")
-            .define('a', SLBlocks.ILLUMINANTSLAB.getItem())
+            .define('a', SLBlocks.ILLUMINANT_SLAB.getItem())
             .save(output, SimplyLight.SLRes("illuminant_panel"));
 
         // Rod Lamp
@@ -127,13 +128,25 @@ public class Recipes extends RecipeProvider {
 
 
         SLBlocks.LAMPBLOCKS_ON.forEach( lamp -> {
-            dyeRecipeOn(lamp.getItem(), DyeItem.byColor(lamp.getBlock().color), output);
+            dyeRecipe(lamp.getItem(), DyeItem.byColor(lamp.getBlock().color), SimplyLight.ANY_ON_LAMP, output);
             toggleOn(lamp, output);
         });
         SLBlocks.LAMPBLOCKS_OFF.forEach( lamp -> {
-            dyeRecipeOff(lamp.getItem(), DyeItem.byColor(lamp.getBlock().color), output);
+            dyeRecipe(lamp.getItem(), DyeItem.byColor(lamp.getBlock().color), SimplyLight.ANY_OFF_LAMP, output);
             toggleOff(lamp, output);
         });
+
+        SLBlocks.SLABS.forEach( slab ->
+                dyeRecipe(slab.getItem(), DyeItem.byColor(slab.getBlock().color), SimplyLight.ANY_SLAB, output));
+
+        SLBlocks.PANELS.forEach( panel ->
+                dyeRecipe(panel.getItem(), DyeItem.byColor(panel.getBlock().color), SimplyLight.ANY_PANEL, output));
+
+        SLBlocks.RODS.forEach( rod ->
+                dyeRecipe(rod.getItem(), DyeItem.byColor(rod.getBlock().color), SimplyLight.ANY_ROD, output));
+
+        SLBlocks.BULBS.forEach( bulb ->
+                dyeRecipe(bulb.getItem(), DyeItem.byColor(bulb.getBlock().color), SimplyLight.ANY_BULB, output));
     }
 
     private void toggleOn(SLBlockReg<LampBlock, BaseBlockItem> block, RecipeOutput consumer) {
@@ -167,23 +180,14 @@ public class Recipes extends RecipeProvider {
             .save(consumer, SimplyLight.SLRes(block.getItem().getRegistryName().getPath()+"_toggle"));
     }
 
-    private void dyeRecipeOff(BaseBlockItem item, Item dyeItem, RecipeOutput consumer) {
-        ShapedBuilder.shaped(item, 8)
+    private void dyeRecipe(BaseBlockItem result, Item dyeItem, TagKey<Item> inputTag, RecipeOutput consumer) {
+        ShapedBuilder.shaped(result, 6)
             .pattern("AAA")
             .pattern("ABA")
             .pattern("AAA")
             .define('B', dyeItem)
-            .define('A', SimplyLight.ANY_OFF_LAMP)
-            .save(consumer, SimplyLight.SLRes(item.getRegistryName().getPath()+"_dyed"));
-    }
-    private void dyeRecipeOn(BaseBlockItem item, Item dyeItem, RecipeOutput consumer) {
-        ShapedBuilder.shaped(item, 8)
-            .pattern("AAA")
-            .pattern("ABA")
-            .pattern("AAA")
-            .define('B', dyeItem)
-            .define('A', SimplyLight.ANY_ON_LAMP)
-            .save(consumer, SimplyLight.SLRes(item.getRegistryName().getPath()+"_dyed"));
+            .define('A', inputTag)
+            .save(consumer, SimplyLight.SLRes(result.getRegistryName().getPath() + "_dyed"));
     }
 
     private static class ShapedBuilder extends ShapedRecipeBuilder {

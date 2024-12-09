@@ -1,0 +1,7 @@
+{
+  "parent": "simplylight:block/rodlamp",
+  "textures": {
+    "all": "simplylight:block/omni/omni2_orange",
+    "particle": "simplylight:block/omni/omni2_orange"
+  }
+}

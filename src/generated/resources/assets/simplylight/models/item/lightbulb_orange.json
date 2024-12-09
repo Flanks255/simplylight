@@ -1,0 +1,12 @@
+{
+  "parent": "simplylight:block/lightbulb_orange",
+  "display": {
+    "head": {
+      "translation": [
+        0,
+        14,
+        0
+      ]
+    }
+  }
+}

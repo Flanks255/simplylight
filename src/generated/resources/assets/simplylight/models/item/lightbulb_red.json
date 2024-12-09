@@ -1,0 +1,12 @@
+{
+  "parent": "simplylight:block/lightbulb_red",
+  "display": {
+    "head": {
+      "translation": [
+        0,
+        14,
+        0
+      ]
+    }
+  }
+}

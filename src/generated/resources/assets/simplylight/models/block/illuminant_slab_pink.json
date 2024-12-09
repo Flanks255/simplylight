@@ -1,0 +1,6 @@
+{
+  "parent": "simplylight:block/illuminant_slab",
+  "textures": {
+    "up": "simplylight:block/slab/illuminant_slab_pink"
+  }
+}

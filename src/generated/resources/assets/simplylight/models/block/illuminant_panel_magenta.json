@@ -1,0 +1,6 @@
+{
+  "parent": "simplylight:block/illuminant_panel",
+  "textures": {
+    "up": "simplylight:block/panel/illuminant_panel_magenta"
+  }
+}

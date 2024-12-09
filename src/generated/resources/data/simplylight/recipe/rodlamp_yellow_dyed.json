@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "tag": "simplylight:any_rod"
+    },
+    "B": {
+      "item": "minecraft:yellow_dye"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "ABA",
+    "AAA"
+  ],
+  "result": {
+    "count": 6,
+    "id": "simplylight:rodlamp_yellow"
+  },
+  "show_notification": false
+}

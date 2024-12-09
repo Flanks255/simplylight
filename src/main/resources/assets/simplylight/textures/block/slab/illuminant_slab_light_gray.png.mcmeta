@@ -1,0 +1,8 @@
+{
+  "ctm": {
+    "ctm_version": 1,
+    "type": "ctm",
+    "layer": "SOLID",
+    "textures": [ "simplylight:block/slab/illuminant_slab_light_gray_ctm" ]
+  }
+}

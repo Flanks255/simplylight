@@ -3,9 +3,7 @@ package com.flanks255.simplylight.data;
 import com.flanks255.simplylight.SLBlockReg;
 import com.flanks255.simplylight.SLBlocks;
 import com.flanks255.simplylight.SimplyLight;
-import com.flanks255.simplylight.blocks.BaseBlockItem;
-import com.flanks255.simplylight.blocks.LampBlock;
-import com.flanks255.simplylight.blocks.LampPost;
+import com.flanks255.simplylight.blocks.*;
 import net.minecraft.core.Direction;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
@@ -69,25 +67,56 @@ public class BlockStates  extends BlockStateProvider {
 
         generateThinLamps();
 
-        generateRodLamp();
+        generateRodLamps();
 
-        generateLightBulb();
+        generateBulbs();
 
         generateWallLamp();
 
         generateLampPost();
     }
 
-    private void generateLightBulb() {
-        ModelFile base = models().getExistingFile(modLoc("block/lightbulb_base"));
-        ModelFile glow = models().getExistingFile(modLoc("block/lightbulb_glow"));
+    private void generateLightBulb(SLBlockReg<LightBulb, BaseBlockItem> block) {
+        boolean isWhite = block.getBlock().color == DyeColor.WHITE;
+        ModelFile base;
+        ModelFile glow;
+        if (isWhite) {
+            base = models().getExistingFile(modLoc("block/lightbulb_base"));
+            glow = models().getExistingFile(modLoc("block/lightbulb_glow"));
+        }
+        else {
+            base = models().getExistingFile(modLoc("block/lightbulb_base_" + block.getBlock().color.getName()));
+            glow = models().getExistingFile(modLoc("block/lightbulb_glow_" + block.getBlock().color.getName()));
+        }
 
-        var model = models().getBuilder("block/lightbulb").customLoader(CompositeModelBuilder::begin)
+        var model = models().getBuilder(isWhite? "block/lightbulb" : "block/lightbulb_" + block.getBlock().color.getName()).customLoader(CompositeModelBuilder::begin)
                 .child("Solid", models().nested().renderType("minecraft:solid").parent(base))
                 .child("Translucent", models().nested().renderType("minecraft:translucent").parent(glow))
                 .end();
 
-        myDirectionalBlock(SLBlocks.LIGHTBULB.get(), $ -> model, 180);
+        myDirectionalBlock(block.get(), $ -> model, 180);
+    }
+
+    private void generateBulbs() {
+        generateLightBulb(SLBlocks.LIGHTBULB);
+        generateLightBulb(SLBlocks.LIGHTBULB_RED);
+        generateLightBulb(SLBlocks.LIGHTBULB_LIME);
+        generateLightBulb(SLBlocks.LIGHTBULB_LIGHT_BLUE);
+        generateLightBulb(SLBlocks.LIGHTBULB_MAGENTA);
+        generateLightBulb(SLBlocks.LIGHTBULB_YELLOW);
+        generateLightBulb(SLBlocks.LIGHTBULB_ORANGE);
+        generateLightBulb(SLBlocks.LIGHTBULB_LIGHT_GRAY);
+    }
+
+    private void generateRodLamps() {
+        generateRodLamp(SLBlocks.RODLAMP);
+        generateRodLamp(SLBlocks.RODLAMP_RED);
+        generateRodLamp(SLBlocks.RODLAMP_LIME);
+        generateRodLamp(SLBlocks.RODLAMP_LIGHT_BLUE);
+        generateRodLamp(SLBlocks.RODLAMP_MAGENTA);
+        generateRodLamp(SLBlocks.RODLAMP_YELLOW);
+        generateRodLamp(SLBlocks.RODLAMP_ORANGE);
+        generateRodLamp(SLBlocks.RODLAMP_LIGHT_GRAY);
     }
 /*
     private void generateEdgeBlocks() {
@@ -133,20 +162,64 @@ public class BlockStates  extends BlockStateProvider {
     }
 
     private void generateThinLamps() {
-        myDirectionalBlock(SLBlocks.ILLUMINANTSLAB.get(), $ -> models().getExistingFile(modLoc("block/illuminant_slab")), 180);
-        myDirectionalBlock(SLBlocks.ILLUMINANTPANEL.get(), $ -> models().getExistingFile(modLoc("block/illuminant_panel")), 180);
+        myDirectionalBlock(SLBlocks.ILLUMINANT_SLAB.get(), $ -> models().getExistingFile(modLoc("block/illuminant_slab")), 180);
+
+        generateSlab(SLBlocks.ILLUMINANT_SLAB_RED);
+        generateSlab(SLBlocks.ILLUMINANT_SLAB_GREEN);
+        generateSlab(SLBlocks.ILLUMINANT_SLAB_BLUE);
+        generateSlab(SLBlocks.ILLUMINANT_SLAB_YELLOW);
+        generateSlab(SLBlocks.ILLUMINANT_SLAB_ORANGE);
+        generateSlab(SLBlocks.ILLUMINANT_SLAB_PINK);
+        generateSlab(SLBlocks.ILLUMINANT_SLAB_LIME);
+        generateSlab(SLBlocks.ILLUMINANT_SLAB_CYAN);
+        generateSlab(SLBlocks.ILLUMINANT_SLAB_PURPLE);
+        generateSlab(SLBlocks.ILLUMINANT_SLAB_MAGENTA);
+        generateSlab(SLBlocks.ILLUMINANT_SLAB_LIGHT_GRAY);
+        generateSlab(SLBlocks.ILLUMINANT_SLAB_GRAY);
+        generateSlab(SLBlocks.ILLUMINANT_SLAB_LIGHT_BLUE);
+        generateSlab(SLBlocks.ILLUMINANT_SLAB_BROWN);
+        generateSlab(SLBlocks.ILLUMINANT_SLAB_BLACK);
+
+        myDirectionalBlock(SLBlocks.ILLUMINANT_PANEL.get(), $ -> models().getExistingFile(modLoc("block/illuminant_panel")), 180);
+
+        generatePanel(SLBlocks.ILLUMINANT_PANEL_RED);
+        generatePanel(SLBlocks.ILLUMINANT_PANEL_GREEN);
+        generatePanel(SLBlocks.ILLUMINANT_PANEL_BLUE);
+        generatePanel(SLBlocks.ILLUMINANT_PANEL_YELLOW);
+        generatePanel(SLBlocks.ILLUMINANT_PANEL_ORANGE);
+        generatePanel(SLBlocks.ILLUMINANT_PANEL_PINK);
+        generatePanel(SLBlocks.ILLUMINANT_PANEL_LIME);
+        generatePanel(SLBlocks.ILLUMINANT_PANEL_CYAN);
+        generatePanel(SLBlocks.ILLUMINANT_PANEL_PURPLE);
+        generatePanel(SLBlocks.ILLUMINANT_PANEL_MAGENTA);
+        generatePanel(SLBlocks.ILLUMINANT_PANEL_LIGHT_GRAY);
+        generatePanel(SLBlocks.ILLUMINANT_PANEL_GRAY);
+        generatePanel(SLBlocks.ILLUMINANT_PANEL_LIGHT_BLUE);
+        generatePanel(SLBlocks.ILLUMINANT_PANEL_BROWN);
+        generatePanel(SLBlocks.ILLUMINANT_PANEL_BLACK);
     }
 
-    void generateRodLamp() {
-        Block block = SLBlocks.RODLAMP.get();
-        ModelFile model = models().getExistingFile(modLoc("block/rodlamp"));
-        getVariantBuilder(block)
-            .partialState().with(RotatedPillarBlock.AXIS, Direction.Axis.Y)
-            .modelForState().modelFile(model).addModel()
-            .partialState().with(RotatedPillarBlock.AXIS, Direction.Axis.Z)
-            .modelForState().modelFile(model).rotationX(90).addModel()
-            .partialState().with(RotatedPillarBlock.AXIS, Direction.Axis.X)
-            .modelForState().modelFile(model).rotationX(90).rotationY(90).addModel();
+    private void generateSlab(SLBlockReg<ThinLamp, BaseBlockItem> block) {
+        myDirectionalBlock(block.get(), $ -> models().getExistingFile(modLoc("block/illuminant_slab_"+ block.getBlock().color.getName())), 180);
+    }
+
+    private void generatePanel(SLBlockReg<ThinLamp, BaseBlockItem> block) {
+        myDirectionalBlock(block.get(), $ -> models().getExistingFile(modLoc("block/illuminant_panel_"+ block.getBlock().color.getName())), 180);
+    }
+    void generateRodLamp(SLBlockReg<RodLamp, BaseBlockItem> block) {
+        ModelFile model;
+        if (block.getBlock().color == DyeColor.WHITE)
+            model = models().getExistingFile(modLoc("block/rodlamp"));
+        else
+            model = models().getExistingFile(modLoc("block/rodlamp_" + block.getBlock().color.getName()));
+
+        getVariantBuilder(block.getBlock())
+                .partialState().with(RotatedPillarBlock.AXIS, Direction.Axis.Y)
+                .modelForState().modelFile(model).addModel()
+                .partialState().with(RotatedPillarBlock.AXIS, Direction.Axis.Z)
+                .modelForState().modelFile(model).rotationX(90).addModel()
+                .partialState().with(RotatedPillarBlock.AXIS, Direction.Axis.X)
+                .modelForState().modelFile(model).rotationX(90).rotationY(90).addModel();
     }
 
     private void generateLampBlock() {
@@ -173,7 +246,7 @@ public class BlockStates  extends BlockStateProvider {
     }
 
     private void generateColorModels() {
-        for (DyeColor color: DyeColor.values()) {
+        for (DyeColor color: DyeColor.values()) { // Full blocks
             if (color == DyeColor.WHITE) continue;
 
             ResourceLocation tex = modLoc("block/full_block/illuminant_"+ color.getName() +"_block");
@@ -181,6 +254,39 @@ public class BlockStates  extends BlockStateProvider {
 
             models().withExistingParent("block/illuminant_" + color.getName() + "_block", modLoc("block/illuminant_block")).texture("all", tex).texture("particle", tex);
             models().withExistingParent("block/illuminant_" + color.getName() + "_block_on", modLoc("block/illuminant_block")).texture("all", tex_on).texture("particle", tex_on);
+        }
+
+        for (DyeColor color: DyeColor.values()) { // Slabs blocks
+            if (color == DyeColor.WHITE) continue;
+
+            ResourceLocation tex = modLoc("block/slab/illuminant_slab_"+ color.getName());
+
+            models().withExistingParent("block/illuminant_slab_" + color.getName(), modLoc("block/illuminant_slab")).texture("up", tex);
+        }
+
+        for (DyeColor color: DyeColor.values()) { // Panels
+            if (color == DyeColor.WHITE) continue;
+
+            ResourceLocation tex = modLoc("block/panel/illuminant_panel_"+ color.getName());
+
+            models().withExistingParent("block/illuminant_panel_" + color.getName(), modLoc("block/illuminant_panel")).texture("up", tex);
+        }
+
+        for (DyeColor color: SLBlocks.LIMITED_COLORS) { // Rods
+            if (color == DyeColor.WHITE) continue;
+
+            ResourceLocation tex = modLoc("block/omni/omni2_"+ color.getName());
+
+            models().withExistingParent("block/rodlamp_" + color.getName(), modLoc("block/rodlamp")).texture("all", tex).texture("particle", tex);
+        }
+
+        for (DyeColor color: SLBlocks.LIMITED_COLORS) { // Light Bulbs
+            if (color == DyeColor.WHITE) continue;
+
+            ResourceLocation tex = modLoc("block/omni/omni_"+ color.getName());
+
+            models().withExistingParent("block/lightbulb_base_" + color.getName(), modLoc("block/lightbulb_base")).texture("main", tex).texture("particle", tex);
+            models().withExistingParent("block/lightbulb_glow_" + color.getName(), modLoc("block/lightbulb_glow")).texture("main", tex).texture("particle", tex);
         }
     }
 

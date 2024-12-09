@@ -3,6 +3,7 @@ package com.flanks255.simplylight.blocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
@@ -22,15 +23,19 @@ import java.util.function.BiConsumer;
 
 @SuppressWarnings("deprecation")
 public class RodLamp extends LampBase implements SimpleWaterloggedBlock {
-    public RodLamp () {
+    public RodLamp (DyeColor color) {
         super(Block.Properties.of()
             .pushReaction(PushReaction.NORMAL)
             .mapColor(MapColor.TERRACOTTA_WHITE)
             .strength(1.0f)
             .lightLevel($ -> 15));
 
+        this.color = color;
+
         registerDefaultState(getStateDefinition().any().setValue(BlockStateProperties.WATERLOGGED, false));
     }
+
+    public final DyeColor color;
 
     private final VoxelShape UpDown = Block.box(7,0,7, 9,16,9);
     private final VoxelShape EastWest = Block.box(0,7,7, 16,9,9);
@@ -87,7 +92,30 @@ public class RodLamp extends LampBase implements SimpleWaterloggedBlock {
     @Override
     public void addLang(BiConsumer<String, String> consumer) {
         String base = getDescriptionId();
-        consumer.accept(base, "Illuminant Rod");
+
+        String colorname = switch (color) {
+            case RED -> "Red";
+            case BLUE -> "Blue";
+            case CYAN -> "Cyan";
+            case GRAY -> "Gray";
+            case LIME -> "Lime";
+            case MAGENTA -> "Magenta";
+            case PINK -> "Pink";
+            case BLACK -> "Black";
+            case BROWN -> "Brown";
+            case GREEN -> "Green";
+            case ORANGE -> "Orange";
+            case PURPLE -> "Purple";
+            case YELLOW -> "Yellow";
+            case LIGHT_BLUE -> "Light Blue";
+            case LIGHT_GRAY -> "Light Gray";
+            default -> "";
+        };
+
+        if (color == DyeColor.WHITE)
+            consumer.accept(base, "Illuminant Rod");
+        else
+            consumer.accept(base, "Illuminant " + colorname + " Rod");
         consumer.accept(base + ".info", "A simple rod of light.");
         consumer.accept(base + ".info2", "Can be placed in any direction.");
     }

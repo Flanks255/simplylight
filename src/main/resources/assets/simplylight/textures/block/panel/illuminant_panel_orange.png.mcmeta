@@ -1,0 +1,8 @@
+{
+  "ctm": {
+    "ctm_version": 1,
+    "type": "ctm",
+    "layer": "SOLID",
+    "textures": [ "simplylight:block/panel/illuminant_panel_orange_ctm" ]
+  }
+}

@@ -25,14 +25,28 @@ public class SimplyLight
     public static final Logger LOGGER = LogManager.getLogger("Simply Light");
     public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, SimplyLight.MODID);
 
+    private static final CreativeModeTab.DisplayItemsGenerator TABITEMS = (params, output) -> {
+        SLBlocks.TAB_ORDER.forEach(block -> output.accept(block.getItem()));
+        SLBlocks.LAMPBLOCKS_ON.forEach(block -> output.accept(block.getItem()));
+        SLBlocks.LAMPBLOCKS_OFF.forEach(block -> output.accept(block.getItem()));
+        SLBlocks.SLABS.forEach(block -> output.accept(block.getItem()));
+        SLBlocks.PANELS.forEach(block -> output.accept(block.getItem()));
+        SLBlocks.RODS.forEach(block -> output.accept(block.getItem()));
+        SLBlocks.BULBS.forEach(block -> output.accept(block.getItem()));
+    };
+
     public static final Supplier<CreativeModeTab> TAB = TABS.register("lights", () ->
         CreativeModeTab.builder().icon(() -> new ItemStack(SLBlocks.ILLUMINANTBLOCK_ON.getItem()))
                 .title(Component.literal("Simply Light"))
-                .displayItems((params, output) -> SLBlocks.TAB_ORDER.forEach(block -> output.accept(block.getItem())))
+                .displayItems(TABITEMS)
                 .build());
 
     public static final TagKey<Item> ANY_ON_LAMP = TagKey.create(Registries.ITEM, SLRes("any_lamp_on"));
     public static final TagKey<Item> ANY_OFF_LAMP = TagKey.create(Registries.ITEM, SLRes("any_lamp_off"));
+    public static final TagKey<Item> ANY_SLAB = TagKey.create(Registries.ITEM, SLRes("any_slab"));
+    public static final TagKey<Item> ANY_PANEL = TagKey.create(Registries.ITEM, SLRes("any_panel"));
+    public static final TagKey<Item> ANY_ROD = TagKey.create(Registries.ITEM, SLRes("any_rod"));
+    public static final TagKey<Item> ANY_BULB = TagKey.create(Registries.ITEM, SLRes("any_bulb"));
 
     public SimplyLight(IEventBus bus) {
         SLBlocks.init(bus);

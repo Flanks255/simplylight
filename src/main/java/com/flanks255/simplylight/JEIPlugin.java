@@ -1,4 +1,3 @@
-/*
 package com.flanks255.simplylight;
 
 
@@ -15,7 +14,7 @@ import javax.annotation.Nonnull;
 
 @JeiPlugin
 public class JEIPlugin implements IModPlugin {
-    public static final ResourceLocation ID = new ResourceLocation(SimplyLight.MODID, "jei_plugin");
+    public static final ResourceLocation ID = SimplyLight.SLRes("jei_plugin");
     @Nonnull
     @Override
     public ResourceLocation getPluginUid() {
@@ -32,4 +31,3 @@ public class JEIPlugin implements IModPlugin {
         });
     }
 }
-*/
