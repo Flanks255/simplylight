@@ -1,12 +1,12 @@
 modLoader="javafml"
-loaderVersion="[2,)"
+loaderVersion="${loader_version}"
 license="MIT"
 issueTrackerURL="https://github.com/Flanks255/simplylight/issues"
 [[mods]]
 modId="simplylight"
-version="${file.jarVersion}"
+version="${mod_version}"
 displayName="Simply Light"
-logoFile="logo.png"
+logoFile= "../../resources/logo.png"
 credits=""
 authors="Flanks255"
 description='''Simple light, for a complicated world.'''
