@@ -3,6 +3,6 @@
     "ctm_version": 1,
     "type": "ctm",
     "layer": "SOLID",
-    "textures": [ "simplylight:block/illuminant_slab_ctm" ]
+    "textures": [ "simplylight:block/full_block/ctm/illuminant_block_ctm" ]
   }
 }

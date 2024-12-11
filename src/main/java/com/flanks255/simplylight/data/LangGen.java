@@ -17,6 +17,7 @@ public class LangGen extends LanguageProvider {
         add("simplylight.shift", "Press <%s> for info.");
         add("simplylight.key.shift", "Shift");
         add("simplylight.redstone", "Redstone");
+        add("simplylight.pack.fullblock_ctm", "Simply Light Full block CTM");
 
         SLBlocks.BLOCKS.getEntries().forEach(block -> ((LampBase) block.get()).addLang(this::add));
     }

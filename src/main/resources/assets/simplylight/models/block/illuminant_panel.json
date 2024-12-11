@@ -3,10 +3,10 @@
     "render_type": "solid",
     "ambientocclusion":false,
     "textures":{
-        "particle": "simplylight:block/illuminant_block",
-        "up":"simplylight:block/illuminant_panel",
-        "sides":"simplylight:block/illuminant_slab_sides",
-        "down":"simplylight:block/illuminant_slab_down"
+        "particle": "simplylight:block/full_block/illuminant_block",
+        "up":"simplylight:block/panel/illuminant_panel",
+        "sides":"simplylight:block/slab/illuminant_slab_sides",
+        "down":"simplylight:block/slab/illuminant_slab_down"
     },
     "elements":[
         {

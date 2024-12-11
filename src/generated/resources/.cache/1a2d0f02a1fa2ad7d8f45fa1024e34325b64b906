@@ -1,4 +1,4 @@
-// 1.21.1	2024-12-08T17:35:46.1207313	Block States: simplylight
+// 1.21.1	2024-12-09T18:02:15.1224366	Block States: simplylight
 d3935fe630df9a626a5af004711d6f44b1fc995d assets/simplylight/blockstates/illuminant_black_block.json
 d3935fe630df9a626a5af004711d6f44b1fc995d assets/simplylight/blockstates/illuminant_black_block_on.json
 3629ce2afea13d607f02d707ccba9af493556523 assets/simplylight/blockstates/illuminant_block.json
@@ -83,8 +83,8 @@ fe7dd36a74c0eca5f801cfd950d67cdf699f2944 assets/simplylight/blockstates/rodlamp_
 55f8b4a0edbf9373b2ba1932c14f647e5bb55f8e assets/simplylight/blockstates/wall_lamp.json
 5bd29ddb9f87fa540f6b734e1e9c8bc0769ba01e assets/simplylight/models/block/illuminant_black_block.json
 d0ebf11e67aebed3c157fd7a08fffaafd801f88c assets/simplylight/models/block/illuminant_black_block_on.json
-c304e736bf4a2f79269c195aa2fd95bf84eaa079 assets/simplylight/models/block/illuminant_block.json
-e99146ebc8010068eb6db427f5e60804ac8d117c assets/simplylight/models/block/illuminant_block_on.json
+7691087815ea3f56401c7747fddccbd85211695c assets/simplylight/models/block/illuminant_block.json
+1e950904a0d2b3f7cf808f15b9f91d703d894cd7 assets/simplylight/models/block/illuminant_block_on.json
 8d16e96f2f57647a99d8af9518667e2c67a27d9c assets/simplylight/models/block/illuminant_blue_block.json
 bc085a3db833ffc091f4888bb5f59553052ad7fe assets/simplylight/models/block/illuminant_blue_block_on.json
 313eb96b67248446498a3a51c1e1e3581bf2bc22 assets/simplylight/models/block/illuminant_brown_block.json

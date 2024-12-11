@@ -254,6 +254,7 @@
   "block.simplylight.wall_lamp.info": "Hangs from walls, or sticks to ceilings and floors.",
   "itemGroup.simplylight": "Simply Light",
   "simplylight.key.shift": "Shift",
+  "simplylight.pack.fullblock_ctm": "Simply Light Full block CTM",
   "simplylight.redstone": "Redstone",
   "simplylight.shift": "Press <%s> for info."
 }

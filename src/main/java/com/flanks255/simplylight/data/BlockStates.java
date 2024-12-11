@@ -223,8 +223,8 @@ public class BlockStates  extends BlockStateProvider {
     }
 
     private void generateLampBlock() {
-        ResourceLocation offTex = modLoc("block/illuminant_block");
-        ResourceLocation onTex = modLoc("block/illuminant_block_on");
+        ResourceLocation offTex = modLoc("block/full_block/illuminant_block");
+        ResourceLocation onTex = modLoc("block/full_block/illuminant_block_on");
 
         var illuminantBlockBuilder = models().withExistingParent(SLBlocks.ILLUMINANTBLOCK.get().getRegistryName().getPath(), "cube")
             .texture("all", offTex).texture("particle", offTex).ao(false).element();
