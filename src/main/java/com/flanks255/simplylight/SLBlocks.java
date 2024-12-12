@@ -31,6 +31,10 @@ public class SLBlocks {
         return new SLBlockReg<>("lightbulb_" + color.getName(), () -> new LightBulb(color), b -> new BaseBlockItem(b, ITEMPROPERTIES));
     }
 
+    public static SLBlockReg<Fixture, BaseBlockItem> addFixture(DyeColor color) {
+        return new SLBlockReg<>("wall_lamp_" + color.getName(), () -> new Fixture(color), b -> new BaseBlockItem(b, ITEMPROPERTIES));
+    }
+
     public static void init(IEventBus bus) {
         BLOCKS.register(bus);
         ITEMS.register(bus);
@@ -40,7 +44,6 @@ public class SLBlocks {
     public static final SLBlockReg<EdgeLight, BaseBlockItem> EDGELAMP = new SLBlockReg<>("edge_light", () -> new EdgeLight(false), b -> new BaseBlockItem(b, ITEMPROPERTIES));
 
     public static final SLBlockReg<RodLamp, BaseBlockItem> RODLAMP = new SLBlockReg<>("rodlamp", () -> new RodLamp(DyeColor.WHITE), b -> new BaseBlockItem(b, ITEMPROPERTIES));
-
     public static final SLBlockReg<RodLamp, BaseBlockItem> RODLAMP_LIGHT_BLUE = addRod(DyeColor.LIGHT_BLUE);
     public static final SLBlockReg<RodLamp, BaseBlockItem> RODLAMP_YELLOW = addRod(DyeColor.YELLOW);
     public static final SLBlockReg<RodLamp, BaseBlockItem> RODLAMP_LIME = addRod(DyeColor.LIME);
@@ -51,7 +54,6 @@ public class SLBlocks {
 
 
     public static final SLBlockReg<LightBulb, BaseBlockItem> LIGHTBULB = new SLBlockReg<>("lightbulb", () -> new LightBulb(DyeColor.WHITE), b -> new BaseBlockItem(b, ITEMPROPERTIES));
-
     public static final SLBlockReg<LightBulb, BaseBlockItem> LIGHTBULB_ORANGE = addBulb(DyeColor.ORANGE);
     public static final SLBlockReg<LightBulb, BaseBlockItem> LIGHTBULB_MAGENTA = addBulb(DyeColor.MAGENTA);
     public static final SLBlockReg<LightBulb, BaseBlockItem> LIGHTBULB_LIGHT_BLUE = addBulb(DyeColor.LIGHT_BLUE);
@@ -61,9 +63,25 @@ public class SLBlocks {
     public static final SLBlockReg<LightBulb, BaseBlockItem> LIGHTBULB_RED = addBulb(DyeColor.RED);
 
 
-    public static final SLBlockReg<WallLamp, BaseBlockItem> WALL_LAMP = new SLBlockReg<>("wall_lamp", WallLamp::new, b -> new BaseBlockItem(b, ITEMPROPERTIES));
-    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_PANEL = new SLBlockReg<>("illuminant_panel",() -> new ThinLamp(4, DyeColor.WHITE), b -> new BaseBlockItem(b, ITEMPROPERTIES));
+    // TODO 1.22, change registry name to fixture
+    public static final SLBlockReg<Fixture, BaseBlockItem> FIXTURE = new SLBlockReg<>("wall_lamp", () -> new Fixture(DyeColor.WHITE), b -> new BaseBlockItem(b, ITEMPROPERTIES));
+    public static final SLBlockReg<Fixture, BaseBlockItem> FIXTURE_ORANGE = addFixture(DyeColor.ORANGE);
+    public static final SLBlockReg<Fixture, BaseBlockItem> FIXTURE_MAGENTA = addFixture(DyeColor.MAGENTA);
+    public static final SLBlockReg<Fixture, BaseBlockItem> FIXTURE_LIGHT_BLUE = addFixture(DyeColor.LIGHT_BLUE);
+    public static final SLBlockReg<Fixture, BaseBlockItem> FIXTURE_YELLOW = addFixture(DyeColor.YELLOW);
+    public static final SLBlockReg<Fixture, BaseBlockItem> FIXTURE_LIME = addFixture(DyeColor.LIME);
+    public static final SLBlockReg<Fixture, BaseBlockItem> FIXTURE_PINK = addFixture(DyeColor.PINK);
+    public static final SLBlockReg<Fixture, BaseBlockItem> FIXTURE_GRAY = addFixture(DyeColor.GRAY);
+    public static final SLBlockReg<Fixture, BaseBlockItem> FIXTURE_LIGHT_GRAY = addFixture(DyeColor.LIGHT_GRAY);
+    public static final SLBlockReg<Fixture, BaseBlockItem> FIXTURE_CYAN = addFixture(DyeColor.CYAN);
+    public static final SLBlockReg<Fixture, BaseBlockItem> FIXTURE_PURPLE = addFixture(DyeColor.PURPLE);
+    public static final SLBlockReg<Fixture, BaseBlockItem> FIXTURE_BLUE = addFixture(DyeColor.BLUE);
+    public static final SLBlockReg<Fixture, BaseBlockItem> FIXTURE_BROWN = addFixture(DyeColor.BROWN);
+    public static final SLBlockReg<Fixture, BaseBlockItem> FIXTURE_GREEN = addFixture(DyeColor.GREEN);
+    public static final SLBlockReg<Fixture, BaseBlockItem> FIXTURE_RED = addFixture(DyeColor.RED);
+    public static final SLBlockReg<Fixture, BaseBlockItem> FIXTURE_BLACK = addFixture(DyeColor.BLACK);
 
+    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_PANEL = new SLBlockReg<>("illuminant_panel",() -> new ThinLamp(4, DyeColor.WHITE), b -> new BaseBlockItem(b, ITEMPROPERTIES));
     public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_PANEL_ORANGE = addThin(4, DyeColor.ORANGE);
     public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_PANEL_MAGENTA = addThin(4, DyeColor.MAGENTA);
     public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_PANEL_LIGHT_BLUE = addThin(4, DyeColor.LIGHT_BLUE);
@@ -81,7 +99,6 @@ public class SLBlocks {
     public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_PANEL_BLACK = addThin(4, DyeColor.BLACK);
 
     public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_SLAB = new SLBlockReg<>("illuminant_slab",() -> new ThinLamp(8, DyeColor.WHITE), b -> new BaseBlockItem(b, ITEMPROPERTIES));
-
     public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_SLAB_ORANGE = addThin(8, DyeColor.ORANGE);
     public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_SLAB_MAGENTA = addThin(8, DyeColor.MAGENTA);
     public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_SLAB_LIGHT_BLUE = addThin(8, DyeColor.LIGHT_BLUE);
@@ -174,11 +191,14 @@ public class SLBlocks {
             LIGHTBULB_MAGENTA
     );
 
-    public static final Set<DyeColor> LIMITED_COLORS = ImmutableSet.of(
-            DyeColor.WHITE, DyeColor.ORANGE, DyeColor.MAGENTA, DyeColor.LIGHT_BLUE,
-            DyeColor.YELLOW, DyeColor.LIME, DyeColor.LIGHT_GRAY, DyeColor.RED);
+    public static final Set<SLBlockReg<Fixture, BaseBlockItem>> FIXTURES = ImmutableSet.of(
+            FIXTURE, FIXTURE_LIGHT_GRAY, FIXTURE_GRAY, FIXTURE_BLACK,
+            FIXTURE_BROWN, FIXTURE_RED, FIXTURE_ORANGE, FIXTURE_YELLOW,
+            FIXTURE_LIME, FIXTURE_GREEN, FIXTURE_CYAN, FIXTURE_LIGHT_BLUE,
+            FIXTURE_BLUE, FIXTURE_PURPLE, FIXTURE_MAGENTA, FIXTURE_PINK
+    );
 
     public static final Set<SLBlockReg<?,?>> TAB_ORDER = ImmutableSet.of(
-            WALL_LAMP, RODLAMP, EDGELAMP, EDGELAMP_TOP, LAMP_POST
+            RODLAMP, EDGELAMP, EDGELAMP_TOP, LAMP_POST
     );
 }

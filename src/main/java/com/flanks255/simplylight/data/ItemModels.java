@@ -4,6 +4,8 @@ import com.flanks255.simplylight.SLBlocks;
 import com.flanks255.simplylight.SimplyLight;
 import com.flanks255.simplylight.blocks.LampBase;
 import com.flanks255.simplylight.blocks.LampBlock;
+import com.flanks255.simplylight.blocks.LightBulb;
+import com.flanks255.simplylight.blocks.Fixture;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.level.block.Block;
@@ -35,7 +37,7 @@ public class ItemModels extends ItemModelProvider {
                 generateLampPost(path);
             } else if (block instanceof LampBlock) {
                 getBuilder(path).parent(new ModelFile.UncheckedModelFile(modLoc("block/" + path)));
-            } else if (block == SLBlocks.WALL_LAMP.get()) {
+            } else if (block instanceof Fixture) {
                 getBuilder(path).parent(new ModelFile.UncheckedModelFile(modLoc("block/" + path)))
                     .transforms().transform(ItemDisplayContext.HEAD)
                     .scale(1f, 1f, 1f)
@@ -44,7 +46,7 @@ public class ItemModels extends ItemModelProvider {
                     .rotation(0, -180, 0)
                     .scale(1f, 1f, 1f)
                     .translation(0, 0, -8).end();
-            } else if (block == SLBlocks.LIGHTBULB.get()) {
+            } else if (block instanceof LightBulb) {
                 getBuilder(path).parent(new ModelFile.UncheckedModelFile(modLoc("block/" + path)))
                     .transforms().transform(ItemDisplayContext.HEAD)
                     .scale(1f, 1f, 1f)

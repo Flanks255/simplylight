@@ -1,4 +1,4 @@
-// 1.21.1	2024-12-08T17:21:09.6597083	Loot Tables
+// 1.21.1	2024-12-11T18:55:33.4468571	Loot Tables
 d7a52f89b69180522e53f4e2b8eb3ccda222f8bc data/simplylight/loot_table/blocks/edge_light.json
 65bdff2228ab6198a0139f3af778093b361ebec5 data/simplylight/loot_table/blocks/edge_light_top.json
 ba8a968fc0df23f5b3a9495ea0c90b3162db057e data/simplylight/loot_table/blocks/illuminant_black_block.json
@@ -83,3 +83,18 @@ ba723ddd5484ca84defb58d5a77d0234d02ce9ff data/simplylight/loot_table/blocks/rodl
 201ecb1d8dba78866d8e41a061d82fe66af25e69 data/simplylight/loot_table/blocks/rodlamp_red.json
 7de9a41753c03ded9c05c5fbf1e49850a2015e6b data/simplylight/loot_table/blocks/rodlamp_yellow.json
 bcab5fb61f75ab0aa79c499a8cb5fb40718d4558 data/simplylight/loot_table/blocks/wall_lamp.json
+56dac8bed2c888ee0e7f67ff0d2f819177766511 data/simplylight/loot_table/blocks/wall_lamp_black.json
+b927e0b1e8bb6067d575031eeb5d25daade41681 data/simplylight/loot_table/blocks/wall_lamp_blue.json
+3a6eeed0f5308cd46cf666a638dbcc6362b4a41d data/simplylight/loot_table/blocks/wall_lamp_brown.json
+f51543dbff2ec1b77dbfddc7474f89e8ebbd797b data/simplylight/loot_table/blocks/wall_lamp_cyan.json
+c8c8206e397c280ae9aa0e64c8fc9108a2ecff01 data/simplylight/loot_table/blocks/wall_lamp_gray.json
+64328d5308e7ddcf03ee31ec7100277eab968379 data/simplylight/loot_table/blocks/wall_lamp_green.json
+6c368efe63130d86e450fec80af5526fb65b0677 data/simplylight/loot_table/blocks/wall_lamp_light_blue.json
+9e70b46a220bfd55ad9be086ea750d271634d131 data/simplylight/loot_table/blocks/wall_lamp_light_gray.json
+d5f6625540266acb0c4d4f180595f3829ca095fa data/simplylight/loot_table/blocks/wall_lamp_lime.json
+58cc044eb3c3a027171a89025091712f93b8961e data/simplylight/loot_table/blocks/wall_lamp_magenta.json
+51e7b040ba79be974c6c76bf3c6b077d75f6726c data/simplylight/loot_table/blocks/wall_lamp_orange.json
+5e98712f26f296569dbb16515513fb7ebadac484 data/simplylight/loot_table/blocks/wall_lamp_pink.json
+bd1e9a3b15f4a266dc610a8d3d9d2d0b57b420d3 data/simplylight/loot_table/blocks/wall_lamp_purple.json
+11b413a8f89844e0cebb952371c802059fc68ff9 data/simplylight/loot_table/blocks/wall_lamp_red.json
+1ae7a9ee0093b3b1875ebcf3e294a85161458bb1 data/simplylight/loot_table/blocks/wall_lamp_yellow.json

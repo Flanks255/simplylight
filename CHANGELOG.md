@@ -1,6 +1,6 @@
 # x.x.x+mc1.21.1
 * Added CTM textures for Illuminant Blocks in a disabled by default built-in optional resource pack.
-* Added variations to Bulbs, Rods,
+* Added variations to Bulbs, Rods, Fixtures
 
 # 1.4.6+1.21
 * Ported to 1.21.0 NeoForge

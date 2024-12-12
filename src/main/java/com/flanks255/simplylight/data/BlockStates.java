@@ -36,8 +36,8 @@ public class BlockStates  extends BlockStateProvider {
         SLBlocks.PANELS.forEach(this::generatePanel);
         SLBlocks.RODS.forEach(this::generateRodLamp);
         SLBlocks.BULBS.forEach(this::generateLightBulb);
+        SLBlocks.FIXTURES.forEach(this::generateWallLamp);
 
-        generateWallLamp();
         generateLampPost();
     }
 
@@ -158,10 +158,21 @@ public class BlockStates  extends BlockStateProvider {
             .partialState().with(LampPost.POSITION, LampPost.Position.TOP).modelForState()
             .modelFile(top).addModel();
     }
-    private void generateWallLamp() {
-        ModelFile wallModel = models().getExistingFile(modLoc("block/wall_lamp"));
-        ModelFile floorModel = models().getExistingFile(modLoc("block/floorlamp"));
-        getVariantBuilder(SLBlocks.WALL_LAMP.get())
+    private void generateWallLamp(SLBlockReg<Fixture, BaseBlockItem> block) {
+        DyeColor color = block.getBlock().color;
+        ModelFile wallModel;
+        ModelFile floorModel;
+
+        if (color == DyeColor.WHITE) {
+            wallModel = models().getExistingFile(modLoc("block/wall_lamp"));
+            floorModel = models().getExistingFile(modLoc("block/floor_lamp"));
+        }
+        else {
+            ResourceLocation tex = modLoc("block/omni/omni_"+ color.getName());
+            wallModel = models().withExistingParent("block/wall_lamp_" + color.getName(), modLoc("block/wall_lamp")).texture("0", tex).texture("particle", tex);
+            floorModel = models().withExistingParent("block/floor_lamp_" + color.getName(), modLoc("block/floor_lamp")).texture("0", tex).texture("particle", tex);
+        }
+        getVariantBuilder(block.get())
             .partialState().with(BlockStateProperties.FACING, Direction.UP)
             .modelForState().modelFile(floorModel).addModel()
             .partialState().with(BlockStateProperties.FACING, Direction.DOWN)

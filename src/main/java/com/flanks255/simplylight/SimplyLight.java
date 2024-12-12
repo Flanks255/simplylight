@@ -39,6 +39,7 @@ public class SimplyLight
         SLBlocks.PANELS.forEach(block -> output.accept(block.getItem()));
         SLBlocks.RODS.forEach(block -> output.accept(block.getItem()));
         SLBlocks.BULBS.forEach(block -> output.accept(block.getItem()));
+        SLBlocks.FIXTURES.forEach(block -> output.accept(block.getItem()));
     };
 
     public static final Supplier<CreativeModeTab> TAB = TABS.register("lights", () ->
@@ -53,6 +54,7 @@ public class SimplyLight
     public static final TagKey<Item> ANY_PANEL = TagKey.create(Registries.ITEM, SLRes("any_panel"));
     public static final TagKey<Item> ANY_ROD = TagKey.create(Registries.ITEM, SLRes("any_rod"));
     public static final TagKey<Item> ANY_BULB = TagKey.create(Registries.ITEM, SLRes("any_bulb"));
+    public static final TagKey<Item> ANY_FIXTURE = TagKey.create(Registries.ITEM, SLRes("any_fixture"));
 
     public SimplyLight(IEventBus bus, ModContainer container, Dist dist) {
         SLBlocks.init(bus);

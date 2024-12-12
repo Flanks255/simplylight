@@ -108,7 +108,7 @@ public class Recipes extends RecipeProvider {
             .save(output, SimplyLight.SLRes("rodlamp"));
 
         // Wall Lamp
-        ShapedBuilder.shaped(SLBlocks.WALL_LAMP.getItem(), 6)
+        ShapedBuilder.shaped(SLBlocks.FIXTURE.getItem(), 6)
             .pattern("aa")
             .pattern("ab")
             .pattern("ab")
@@ -147,6 +147,9 @@ public class Recipes extends RecipeProvider {
 
         SLBlocks.BULBS.forEach( bulb ->
                 dyeRecipe(bulb.getItem(), DyeItem.byColor(bulb.getBlock().color), SimplyLight.ANY_BULB, output));
+
+        SLBlocks.FIXTURES.forEach(fixture ->
+                dyeRecipe(fixture.getItem(), DyeItem.byColor(fixture.getBlock().color), SimplyLight.ANY_FIXTURE, output));
     }
 
     private void toggleOn(SLBlockReg<LampBlock, BaseBlockItem> block, RecipeOutput consumer) {
