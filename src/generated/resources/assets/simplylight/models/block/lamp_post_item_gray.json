@@ -1,0 +1,6 @@
+{
+  "parent": "simplylight:block/lamp_post_item",
+  "textures": {
+    "3_1": "simplylight:block/post/post_lightface_gray"
+  }
+}

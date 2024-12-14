@@ -2,11 +2,19 @@
   "values": [
     "simplylight:lightbulb",
     "simplylight:lightbulb_light_gray",
+    "simplylight:lightbulb_gray",
+    "simplylight:lightbulb_black",
+    "simplylight:lightbulb_brown",
     "simplylight:lightbulb_red",
     "simplylight:lightbulb_orange",
     "simplylight:lightbulb_yellow",
     "simplylight:lightbulb_lime",
+    "simplylight:lightbulb_green",
+    "simplylight:lightbulb_cyan",
     "simplylight:lightbulb_light_blue",
-    "simplylight:lightbulb_magenta"
+    "simplylight:lightbulb_blue",
+    "simplylight:lightbulb_purple",
+    "simplylight:lightbulb_magenta",
+    "simplylight:lightbulb_pink"
   ]
 }

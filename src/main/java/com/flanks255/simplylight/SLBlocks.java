@@ -35,6 +35,10 @@ public class SLBlocks {
         return new SLBlockReg<>("wall_lamp_" + color.getName(), () -> new Fixture(color), b -> new BaseBlockItem(b, ITEMPROPERTIES));
     }
 
+    public static SLBlockReg<LampPost, LampPostItem> addPost(DyeColor color) {
+        return new SLBlockReg<>("lamp_post_" + color.getName(), () -> new LampPost(color), LampPostItem::new);
+    }
+
     public static void init(IEventBus bus) {
         BLOCKS.register(bus);
         ITEMS.register(bus);
@@ -67,8 +71,16 @@ public class SLBlocks {
     public static final SLBlockReg<LightBulb, BaseBlockItem> LIGHTBULB_LIGHT_BLUE = addBulb(DyeColor.LIGHT_BLUE);
     public static final SLBlockReg<LightBulb, BaseBlockItem> LIGHTBULB_YELLOW = addBulb(DyeColor.YELLOW);
     public static final SLBlockReg<LightBulb, BaseBlockItem> LIGHTBULB_LIME = addBulb(DyeColor.LIME);
+    public static final SLBlockReg<LightBulb, BaseBlockItem> LIGHTBULB_PINK = addBulb(DyeColor.PINK);
+    public static final SLBlockReg<LightBulb, BaseBlockItem> LIGHTBULB_GRAY = addBulb(DyeColor.GRAY);
     public static final SLBlockReg<LightBulb, BaseBlockItem> LIGHTBULB_LIGHT_GRAY = addBulb(DyeColor.LIGHT_GRAY);
+    public static final SLBlockReg<LightBulb, BaseBlockItem> LIGHTBULB_CYAN = addBulb(DyeColor.CYAN);
+    public static final SLBlockReg<LightBulb, BaseBlockItem> LIGHTBULB_PURPLE = addBulb(DyeColor.PURPLE);
+    public static final SLBlockReg<LightBulb, BaseBlockItem> LIGHTBULB_BLUE = addBulb(DyeColor.BLUE);
+    public static final SLBlockReg<LightBulb, BaseBlockItem> LIGHTBULB_BROWN = addBulb(DyeColor.BROWN);
+    public static final SLBlockReg<LightBulb, BaseBlockItem> LIGHTBULB_GREEN = addBulb(DyeColor.GREEN);
     public static final SLBlockReg<LightBulb, BaseBlockItem> LIGHTBULB_RED = addBulb(DyeColor.RED);
+    public static final SLBlockReg<LightBulb, BaseBlockItem> LIGHTBULB_BLACK = addBulb(DyeColor.BLACK);
 
 
     // TODO 1.22, change registry name to fixture
@@ -124,7 +136,22 @@ public class SLBlocks {
     public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_SLAB_BLACK = addThin(8, DyeColor.BLACK);
 
 
-    public static final SLBlockReg<LampPost, LampPostItem> LAMP_POST = new SLBlockReg<>("lamp_post", LampPost::new, b -> new LampPostItem(b));
+    public static final SLBlockReg<LampPost, LampPostItem> LAMP_POST = new SLBlockReg<>("lamp_post", () -> new LampPost(DyeColor.WHITE), LampPostItem::new);
+    public static final SLBlockReg<LampPost, LampPostItem> LAMP_POST_ORANGE = addPost(DyeColor.ORANGE);
+    public static final SLBlockReg<LampPost, LampPostItem> LAMP_POST_MAGENTA = addPost(DyeColor.MAGENTA);
+    public static final SLBlockReg<LampPost, LampPostItem> LAMP_POST_LIGHT_BLUE = addPost(DyeColor.LIGHT_BLUE);
+    public static final SLBlockReg<LampPost, LampPostItem> LAMP_POST_YELLOW = addPost(DyeColor.YELLOW);
+    public static final SLBlockReg<LampPost, LampPostItem> LAMP_POST_LIME = addPost(DyeColor.LIME);
+    public static final SLBlockReg<LampPost, LampPostItem> LAMP_POST_PINK = addPost(DyeColor.PINK);
+    public static final SLBlockReg<LampPost, LampPostItem> LAMP_POST_GRAY = addPost(DyeColor.GRAY);
+    public static final SLBlockReg<LampPost, LampPostItem> LAMP_POST_LIGHT_GRAY = addPost(DyeColor.LIGHT_GRAY);
+    public static final SLBlockReg<LampPost, LampPostItem> LAMP_POST_CYAN = addPost(DyeColor.CYAN);
+    public static final SLBlockReg<LampPost, LampPostItem> LAMP_POST_PURPLE = addPost(DyeColor.PURPLE);
+    public static final SLBlockReg<LampPost, LampPostItem> LAMP_POST_BLUE = addPost(DyeColor.BLUE);
+    public static final SLBlockReg<LampPost, LampPostItem> LAMP_POST_BROWN = addPost(DyeColor.BROWN);
+    public static final SLBlockReg<LampPost, LampPostItem> LAMP_POST_GREEN = addPost(DyeColor.GREEN);
+    public static final SLBlockReg<LampPost, LampPostItem> LAMP_POST_RED = addPost(DyeColor.RED);
+    public static final SLBlockReg<LampPost, LampPostItem> LAMP_POST_BLACK = addPost(DyeColor.BLACK);
 
     public static final SLBlockReg<LampBlock, BaseBlockItem> ILLUMINANTBLOCK_ON = new SLBlockReg<>("illuminant_block_on", () -> new LampBlock(true, DyeColor.WHITE), b -> new BaseBlockItem(b, ITEMPROPERTIES));
     public static final SLBlockReg<LampBlock, BaseBlockItem> ILLUMINANTBLOCK = new SLBlockReg<>("illuminant_block", () -> new LampBlock(false, DyeColor.WHITE), b -> new BaseBlockItem(b, ITEMPROPERTIES));
@@ -196,9 +223,10 @@ public class SLBlocks {
     );
 
     public static final Set<SLBlockReg<LightBulb, BaseBlockItem>> BULBS = ImmutableSet.of(
-            LIGHTBULB, LIGHTBULB_LIGHT_GRAY, LIGHTBULB_RED, LIGHTBULB_ORANGE, LIGHTBULB_YELLOW,
-            LIGHTBULB_LIME, LIGHTBULB_LIGHT_BLUE,
-            LIGHTBULB_MAGENTA
+            LIGHTBULB, LIGHTBULB_LIGHT_GRAY, LIGHTBULB_GRAY, LIGHTBULB_BLACK,
+            LIGHTBULB_BROWN, LIGHTBULB_RED, LIGHTBULB_ORANGE, LIGHTBULB_YELLOW,
+            LIGHTBULB_LIME, LIGHTBULB_GREEN, LIGHTBULB_CYAN, LIGHTBULB_LIGHT_BLUE,
+            LIGHTBULB_BLUE, LIGHTBULB_PURPLE, LIGHTBULB_MAGENTA, LIGHTBULB_PINK
     );
 
     public static final Set<SLBlockReg<Fixture, BaseBlockItem>> FIXTURES = ImmutableSet.of(
@@ -208,7 +236,14 @@ public class SLBlocks {
             FIXTURE_BLUE, FIXTURE_PURPLE, FIXTURE_MAGENTA, FIXTURE_PINK
     );
 
+    public static final Set<SLBlockReg<LampPost, LampPostItem>> POSTS = ImmutableSet.of(
+            LAMP_POST, LAMP_POST_LIGHT_GRAY, LAMP_POST_GRAY, LAMP_POST_BLACK,
+            LAMP_POST_BROWN, LAMP_POST_RED, LAMP_POST_ORANGE, LAMP_POST_YELLOW,
+            LAMP_POST_LIME, LAMP_POST_GREEN, LAMP_POST_CYAN, LAMP_POST_LIGHT_BLUE,
+            LAMP_POST_BLUE, LAMP_POST_PURPLE, LAMP_POST_MAGENTA, LAMP_POST_PINK
+    );
+
     public static final Set<SLBlockReg<?,?>> TAB_ORDER = ImmutableSet.of(
-            EDGELAMP, EDGELAMP_TOP, LAMP_POST
+            EDGELAMP, EDGELAMP_TOP
     );
 }

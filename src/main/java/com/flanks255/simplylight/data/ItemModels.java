@@ -2,11 +2,9 @@ package com.flanks255.simplylight.data;
 
 import com.flanks255.simplylight.SLBlocks;
 import com.flanks255.simplylight.SimplyLight;
-import com.flanks255.simplylight.blocks.LampBase;
-import com.flanks255.simplylight.blocks.LampBlock;
-import com.flanks255.simplylight.blocks.LightBulb;
-import com.flanks255.simplylight.blocks.Fixture;
+import com.flanks255.simplylight.blocks.*;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
@@ -33,8 +31,8 @@ public class ItemModels extends ItemModelProvider {
                 registerEdgeBlockBottom(path);
             } else if (block == SLBlocks.EDGELAMP_TOP.get()) {
                 registerEdgeBlockTop(path);
-            } else if (block == SLBlocks.LAMP_POST.get()) {
-                generateLampPost(path);
+            } else if (block instanceof LampPost post) {
+                generateLampPost(path, post);
             } else if (block instanceof LampBlock) {
                 getBuilder(path).parent(new ModelFile.UncheckedModelFile(modLoc("block/" + path)));
             } else if (block instanceof Fixture) {
@@ -68,8 +66,17 @@ public class ItemModels extends ItemModelProvider {
         }
     }
 
-    private void generateLampPost(String path) {
-        getBuilder(path).parent(new ModelFile.UncheckedModelFile(modLoc("block/lamp_post")))
+    private void generateLampPost(String path, LampPost block) {
+        ModelFile model;
+        DyeColor color = block.color;
+
+        if (color == DyeColor.WHITE) {
+            model = new ModelFile.UncheckedModelFile(modLoc("block/lamp_post_item"));
+        } else {
+            model = new ModelFile.UncheckedModelFile(modLoc("block/lamp_post_item_" + color.getName()));
+        }
+
+        getBuilder(path).parent(model)
             .transforms().transform(ItemDisplayContext.GUI)
             .rotation(45,45,-45)
             .scale(0.33f,0.33f,0.33f)

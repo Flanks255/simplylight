@@ -4,6 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -35,7 +36,9 @@ public class LampPost extends LampBase implements SimpleWaterloggedBlock {
     private static final VoxelShape MIDDLE_SHAPE = Stream.of(Block.box(6,0,6,10,10,10), Block.box(5,10,5,11,16,11)).reduce((a,b) -> Shapes.join(a,b, BooleanOp.OR)).get();
     private static final VoxelShape BOTTOM_SHAPE = Stream.of(Block.box(3,0,3,13,2,13), Block.box(4,2,4,12,4,12), Block.box(6,4,6,10,16,10)).reduce((a,b) -> Shapes.join(a,b, BooleanOp.OR)).get();
 
-    public LampPost() {
+    public final DyeColor color;
+
+    public LampPost(DyeColor color) {
         super(Block.Properties.of()
             .mapColor(MapColor.COLOR_BLACK)
             .pushReaction(PushReaction.DESTROY)
@@ -43,6 +46,8 @@ public class LampPost extends LampBase implements SimpleWaterloggedBlock {
             .strength(1.0f));
 
         registerDefaultState(getStateDefinition().any().setValue(BlockStateProperties.WATERLOGGED, false));
+
+        this.color = color;
     }
 
     @Override
@@ -123,7 +128,29 @@ public class LampPost extends LampBase implements SimpleWaterloggedBlock {
     @Override
     public void addLang(BiConsumer<String, String> consumer) {
         String base = this.getDescriptionId();
-        consumer.accept(base, "Illuminant Column");
+
+        String colorname = switch (color) {
+            case RED -> "Red";
+            case BLUE -> "Blue";
+            case CYAN -> "Cyan";
+            case GRAY -> "Gray";
+            case LIME -> "Lime";
+            case MAGENTA -> "Magenta";
+            case PINK -> "Pink";
+            case BLACK -> "Black";
+            case BROWN -> "Brown";
+            case GREEN -> "Green";
+            case ORANGE -> "Orange";
+            case PURPLE -> "Purple";
+            case YELLOW -> "Yellow";
+            case LIGHT_BLUE -> "Light Blue";
+            case LIGHT_GRAY -> "Light Gray";
+            default -> "";
+        };
+        if (color == DyeColor.WHITE)
+            consumer.accept(base, "Illuminant Column");
+        else
+            consumer.accept(base, "Illuminant " + colorname + " Column");
         consumer.accept(base + ".info", "3 Block tall lamp post.");
         consumer.accept(base + ".info2", "Top block emits light.");
     }

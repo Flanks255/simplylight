@@ -37,8 +37,7 @@ public class BlockStates  extends BlockStateProvider {
         SLBlocks.RODS.forEach(this::generateRodLamp);
         SLBlocks.BULBS.forEach(this::generateLightBulb);
         SLBlocks.FIXTURES.forEach(this::generateWallLamp);
-
-        generateLampPost();
+        SLBlocks.POSTS.forEach(this::generateLampPost);
     }
 
     private void generateLampBlockModels() {
@@ -145,12 +144,24 @@ public class BlockStates  extends BlockStateProvider {
     }
 */
 
-    private void generateLampPost() {
+    private void generateLampPost(SLBlockReg<LampPost, LampPostItem> block) {
         ModelFile base = models().getExistingFile(modLoc("block/post_base"));
         ModelFile mid = models().getExistingFile(modLoc("block/post_mid"));
-        ModelFile top = models().getExistingFile(modLoc("block/post_top"));
+        ModelFile top;
+        DyeColor color = block.getBlock().color;
 
-        getVariantBuilder(SLBlocks.LAMP_POST.get())
+        if (color == DyeColor.WHITE) {
+            top = models().getExistingFile(modLoc("block/post_top")); //undyed top already exists
+        }
+        else {
+            ResourceLocation tex = modLoc("block/post/post_lightface_"+ color.getName());
+            top = models().withExistingParent("block/post_top_" + color.getName(), modLoc("block/post_top"))
+                    .texture("1", tex); //generate a new top.
+            models().withExistingParent("block/lamp_post_item_" + color.getName(), modLoc("block/lamp_post_item"))
+                    .texture("3_1", tex); //generate full model for the item.
+        }
+
+        getVariantBuilder(block.get())
             .partialState().with(LampPost.POSITION, LampPost.Position.BOTTOM).modelForState()
             .modelFile(base).addModel()
             .partialState().with(LampPost.POSITION, LampPost.Position.MIDDLE).modelForState()

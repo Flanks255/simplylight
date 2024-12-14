@@ -1,0 +1,17 @@
+{
+  "children": {
+    "Solid": {
+      "parent": "simplylight:block/lightbulb_base_green",
+      "render_type": "minecraft:solid"
+    },
+    "Translucent": {
+      "parent": "simplylight:block/lightbulb_glow_green",
+      "render_type": "minecraft:translucent"
+    }
+  },
+  "item_render_order": [
+    "Solid",
+    "Translucent"
+  ],
+  "loader": "neoforge:composite"
+}

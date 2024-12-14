@@ -150,6 +150,9 @@ public class Recipes extends RecipeProvider {
 
         SLBlocks.FIXTURES.forEach(fixture ->
                 dyeRecipe(fixture.getItem(), DyeItem.byColor(fixture.getBlock().color), SimplyLight.ANY_FIXTURE, output));
+
+        SLBlocks.POSTS.forEach(post ->
+                dyeRecipe(post.getItem(), DyeItem.byColor(post.getBlock().color), SimplyLight.ANY_POST, output));
     }
 
     private void toggleOn(SLBlockReg<LampBlock, BaseBlockItem> block, RecipeOutput consumer) {

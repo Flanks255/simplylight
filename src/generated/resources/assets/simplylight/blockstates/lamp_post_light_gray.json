@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "position=bottom": {
+      "model": "simplylight:block/post_base"
+    },
+    "position=middle": {
+      "model": "simplylight:block/post_mid"
+    },
+    "position=top": {
+      "model": "simplylight:block/post_top_light_gray"
+    }
+  }
+}
