@@ -1,0 +1,16 @@
+ - white - 255 255 255
+ - orange - 255 177 35
+ - magenta - 227 74 246
+ - light_blue - 126 228 254
+ - yellow - 247 248 64
+ - lime - 128 211 38
+ - pink - 255 181 255
+ - gray - 79 79 79
+ - light_gray - 134 134 134
+ - cyan - 74 157 192
+ - purple - 173 90 211
+ - blue - 82 120 230
+ - brown - 141 98 30
+ - green - 80 153 63
+ - red - 233 52 52
+ - black - 26 26 26
