@@ -2,11 +2,19 @@
   "values": [
     "simplylight:rodlamp",
     "simplylight:rodlamp_light_gray",
+    "simplylight:rodlamp_gray",
+    "simplylight:rodlamp_black",
+    "simplylight:rodlamp_brown",
     "simplylight:rodlamp_red",
     "simplylight:rodlamp_orange",
     "simplylight:rodlamp_yellow",
     "simplylight:rodlamp_lime",
+    "simplylight:rodlamp_green",
+    "simplylight:rodlamp_cyan",
     "simplylight:rodlamp_light_blue",
-    "simplylight:rodlamp_magenta"
+    "simplylight:rodlamp_blue",
+    "simplylight:rodlamp_purple",
+    "simplylight:rodlamp_magenta",
+    "simplylight:rodlamp_pink"
   ]
 }

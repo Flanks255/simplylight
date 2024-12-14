@@ -1,4 +1,4 @@
-// 1.21.1	2024-12-11T18:55:33.4468571	Loot Tables
+// 1.21.1	2024-12-14T11:54:55.7785072	Loot Tables
 d7a52f89b69180522e53f4e2b8eb3ccda222f8bc data/simplylight/loot_table/blocks/edge_light.json
 65bdff2228ab6198a0139f3af778093b361ebec5 data/simplylight/loot_table/blocks/edge_light_top.json
 ba8a968fc0df23f5b3a9495ea0c90b3162db057e data/simplylight/loot_table/blocks/illuminant_black_block.json
@@ -75,11 +75,19 @@ dac5970b28cd2cac206836f355620fed8fc20983 data/simplylight/loot_table/blocks/ligh
 3c5a929a676f98d4466dd7cb97c74c00a260f935 data/simplylight/loot_table/blocks/lightbulb_red.json
 9231771e786adb2b863c1ae279c073b5e135cb79 data/simplylight/loot_table/blocks/lightbulb_yellow.json
 3fcba13daf6f7ca5cd6f812fc13abd8b2fd31d97 data/simplylight/loot_table/blocks/rodlamp.json
+16444324349b7220c4132eb2013ab794c4ee6aaa data/simplylight/loot_table/blocks/rodlamp_black.json
+7400b61bf010e11fc2bf5a704cb1aa6c5a710037 data/simplylight/loot_table/blocks/rodlamp_blue.json
+2ef3e59f2ab257aceba9742351ba754b3cda51d5 data/simplylight/loot_table/blocks/rodlamp_brown.json
+a564dc42fdd5e2ce660141132a2db2814c808a6f data/simplylight/loot_table/blocks/rodlamp_cyan.json
+7145578a9372035e445e39063fa32a3fdf6703d2 data/simplylight/loot_table/blocks/rodlamp_gray.json
+50157720176f40c11e043a3f2166371138c367ed data/simplylight/loot_table/blocks/rodlamp_green.json
 24d1aa72ca28d6f0b79b3f94987c05ba7be05217 data/simplylight/loot_table/blocks/rodlamp_light_blue.json
 5ed65a4b3cb44401e509d861ae0d0a2710b6300e data/simplylight/loot_table/blocks/rodlamp_light_gray.json
 e92c5b3af0d0fe775008948b9bb8120302838613 data/simplylight/loot_table/blocks/rodlamp_lime.json
 86d20f54cbc966a0e2b4bbca90628ad876187a3f data/simplylight/loot_table/blocks/rodlamp_magenta.json
 ba723ddd5484ca84defb58d5a77d0234d02ce9ff data/simplylight/loot_table/blocks/rodlamp_orange.json
+f8ff1ec19efb9dfb7eab685af09559b3e489ce0b data/simplylight/loot_table/blocks/rodlamp_pink.json
+4e812433a4d7b049217d59d5da03cbc83c75f4df data/simplylight/loot_table/blocks/rodlamp_purple.json
 201ecb1d8dba78866d8e41a061d82fe66af25e69 data/simplylight/loot_table/blocks/rodlamp_red.json
 7de9a41753c03ded9c05c5fbf1e49850a2015e6b data/simplylight/loot_table/blocks/rodlamp_yellow.json
 bcab5fb61f75ab0aa79c499a8cb5fb40718d4558 data/simplylight/loot_table/blocks/wall_lamp.json

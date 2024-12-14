@@ -44,13 +44,21 @@ public class SLBlocks {
     public static final SLBlockReg<EdgeLight, BaseBlockItem> EDGELAMP = new SLBlockReg<>("edge_light", () -> new EdgeLight(false), b -> new BaseBlockItem(b, ITEMPROPERTIES));
 
     public static final SLBlockReg<RodLamp, BaseBlockItem> RODLAMP = new SLBlockReg<>("rodlamp", () -> new RodLamp(DyeColor.WHITE), b -> new BaseBlockItem(b, ITEMPROPERTIES));
+    public static final SLBlockReg<RodLamp, BaseBlockItem> RODLAMP_ORANGE = addRod(DyeColor.ORANGE);
+    public static final SLBlockReg<RodLamp, BaseBlockItem> RODLAMP_MAGENTA = addRod(DyeColor.MAGENTA);
     public static final SLBlockReg<RodLamp, BaseBlockItem> RODLAMP_LIGHT_BLUE = addRod(DyeColor.LIGHT_BLUE);
     public static final SLBlockReg<RodLamp, BaseBlockItem> RODLAMP_YELLOW = addRod(DyeColor.YELLOW);
     public static final SLBlockReg<RodLamp, BaseBlockItem> RODLAMP_LIME = addRod(DyeColor.LIME);
-    public static final SLBlockReg<RodLamp, BaseBlockItem> RODLAMP_MAGENTA = addRod(DyeColor.MAGENTA);
-    public static final SLBlockReg<RodLamp, BaseBlockItem> RODLAMP_ORANGE = addRod(DyeColor.ORANGE);
-    public static final SLBlockReg<RodLamp, BaseBlockItem> RODLAMP_RED = addRod(DyeColor.RED);
+    public static final SLBlockReg<RodLamp, BaseBlockItem> RODLAMP_PINK = addRod(DyeColor.PINK);
+    public static final SLBlockReg<RodLamp, BaseBlockItem> RODLAMP_GRAY = addRod(DyeColor.GRAY);
     public static final SLBlockReg<RodLamp, BaseBlockItem> RODLAMP_LIGHT_GRAY = addRod(DyeColor.LIGHT_GRAY);
+    public static final SLBlockReg<RodLamp, BaseBlockItem> RODLAMP_CYAN = addRod(DyeColor.CYAN);
+    public static final SLBlockReg<RodLamp, BaseBlockItem> RODLAMP_PURPLE = addRod(DyeColor.PURPLE);
+    public static final SLBlockReg<RodLamp, BaseBlockItem> RODLAMP_BLUE = addRod(DyeColor.BLUE);
+    public static final SLBlockReg<RodLamp, BaseBlockItem> RODLAMP_BROWN = addRod(DyeColor.BROWN);
+    public static final SLBlockReg<RodLamp, BaseBlockItem> RODLAMP_GREEN = addRod(DyeColor.GREEN);
+    public static final SLBlockReg<RodLamp, BaseBlockItem> RODLAMP_RED = addRod(DyeColor.RED);
+    public static final SLBlockReg<RodLamp, BaseBlockItem> RODLAMP_BLACK = addRod(DyeColor.BLACK);
 
 
     public static final SLBlockReg<LightBulb, BaseBlockItem> LIGHTBULB = new SLBlockReg<>("lightbulb", () -> new LightBulb(DyeColor.WHITE), b -> new BaseBlockItem(b, ITEMPROPERTIES));
@@ -181,8 +189,10 @@ public class SLBlocks {
     );
 
     public static final Set<SLBlockReg<RodLamp, BaseBlockItem>> RODS = ImmutableSet.of(
-        RODLAMP, RODLAMP_LIGHT_GRAY, RODLAMP_RED, RODLAMP_ORANGE,
-        RODLAMP_YELLOW, RODLAMP_LIME, RODLAMP_LIGHT_BLUE, RODLAMP_MAGENTA
+            RODLAMP, RODLAMP_LIGHT_GRAY, RODLAMP_GRAY, RODLAMP_BLACK,
+            RODLAMP_BROWN, RODLAMP_RED, RODLAMP_ORANGE, RODLAMP_YELLOW,
+            RODLAMP_LIME, RODLAMP_GREEN, RODLAMP_CYAN, RODLAMP_LIGHT_BLUE,
+            RODLAMP_BLUE, RODLAMP_PURPLE, RODLAMP_MAGENTA, RODLAMP_PINK
     );
 
     public static final Set<SLBlockReg<LightBulb, BaseBlockItem>> BULBS = ImmutableSet.of(
@@ -199,6 +209,6 @@ public class SLBlocks {
     );
 
     public static final Set<SLBlockReg<?,?>> TAB_ORDER = ImmutableSet.of(
-            RODLAMP, EDGELAMP, EDGELAMP_TOP, LAMP_POST
+            EDGELAMP, EDGELAMP_TOP, LAMP_POST
     );
 }

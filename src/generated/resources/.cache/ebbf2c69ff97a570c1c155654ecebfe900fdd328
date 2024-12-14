@@ -1,4 +1,4 @@
-// 1.21.1	2024-12-11T18:55:33.4488588	Item Models: simplylight
+// 1.21.1	2024-12-14T11:54:55.7845127	Item Models: simplylight
 5491830b873630f7e62a44c71a3a87e988ab6a08 assets/simplylight/models/item/edge_light.json
 7d303b4bd1b9f2ad47872a4bc85411f4dbe8c6af assets/simplylight/models/item/edge_light_top.json
 fc84b8dfc45654a6a8157b30082a590832d20d1d assets/simplylight/models/item/illuminant_black_block.json
@@ -75,11 +75,19 @@ f3fb16a6cb523335214797acd67e3b58bcfb2f1c assets/simplylight/models/item/lightbul
 588057fb9863b2e70689e477810e3288f87d6786 assets/simplylight/models/item/lightbulb_red.json
 c41fc4dd4b955cdf319aceeac42e31e8a118b4e7 assets/simplylight/models/item/lightbulb_yellow.json
 f9852151f20c886dffcb3a996fa19a1cd634b8f7 assets/simplylight/models/item/rodlamp.json
+8549b25c0905a552c954b76aed94488e25827cb2 assets/simplylight/models/item/rodlamp_black.json
+b6d3f703bc6207be5daaa5c281bd31fd0f099045 assets/simplylight/models/item/rodlamp_blue.json
+28d2817827f6f6b5947cfc4d051fdcd7ce9dffd2 assets/simplylight/models/item/rodlamp_brown.json
+908a35239d43b45f92e1cc9be715b565b2aca76f assets/simplylight/models/item/rodlamp_cyan.json
+5d3e7430a18f64a07ce92f1fb7c84cdbeb1b87aa assets/simplylight/models/item/rodlamp_gray.json
+a0c680344a2f2230757c863b5a255c585129e190 assets/simplylight/models/item/rodlamp_green.json
 3b271d747f273993d4ac4d6538ef50575868cbd8 assets/simplylight/models/item/rodlamp_light_blue.json
 96c2e51458f8079a99a5696cad9271cb032b5a25 assets/simplylight/models/item/rodlamp_light_gray.json
 5ef9fdd71c695c4557f22318392e251da0a1e788 assets/simplylight/models/item/rodlamp_lime.json
 c4f564daa7b09470866c40c65f0785971d211308 assets/simplylight/models/item/rodlamp_magenta.json
 a66d24512ede0193e2891b49280c229bd822217b assets/simplylight/models/item/rodlamp_orange.json
+66fc6a3f76b0ff6375c2547ace62d3889a6883fb assets/simplylight/models/item/rodlamp_pink.json
+79d87ee93b0273cd1cfe4cfe6200fb3daf622dff assets/simplylight/models/item/rodlamp_purple.json
 5916e342a8f53446f28d36d8f167046d29a2182e assets/simplylight/models/item/rodlamp_red.json
 92e17474ccd4a5be0f392da645d328594400151f assets/simplylight/models/item/rodlamp_yellow.json
 b7139a2648f0e0bb24ce3ab5f8da7fb5a9e7b872 assets/simplylight/models/item/wall_lamp.json
