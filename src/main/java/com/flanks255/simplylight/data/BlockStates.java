@@ -15,6 +15,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.client.model.generators.MultiPartBlockStateBuilder;
 import net.neoforged.neoforge.client.model.generators.loaders.CompositeModelBuilder;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
@@ -38,6 +39,8 @@ public class BlockStates  extends BlockStateProvider {
         SLBlocks.BULBS.forEach(this::generateLightBulb);
         SLBlocks.FIXTURES.forEach(this::generateWallLamp);
         SLBlocks.POSTS.forEach(this::generateLampPost);
+        SLBlocks.EDGE_LIGHTS.forEach(this::generateEdgeBlock);
+        SLBlocks.EDGE_LIGHTS_TOP.forEach(this::generateTopEdgeBlock);
     }
 
     private void generateLampBlockModels() {
@@ -143,6 +146,86 @@ public class BlockStates  extends BlockStateProvider {
 
     }
 */
+    private void generateEdgeBlock(SLBlockReg<EdgeLight, BaseBlockItem> block) {
+        DyeColor color = block.getBlock().color;
+        ModelFile model;
+        if (color == DyeColor.WHITE)
+            model = models().getExistingFile(modLoc("block/edge_light"));
+        else {
+            ResourceLocation tex = modLoc("block/omni/omni_"+ color.getName());
+            model = models().withExistingParent("block/edge_light_" + color.getName(), modLoc("block/edge_light")).texture("0", tex).texture("particle", tex);
+        }
+
+        MultiPartBlockStateBuilder builder = getMultipartBuilder(block.get());
+        builder.part().modelFile(model).addModel().useOr().nestedGroup()
+                .condition(EdgeLight.NORTH, true).end()
+                .nestedGroup()
+                    .condition(EdgeLight.NORTH, false)
+                    .condition(EdgeLight.SOUTH, false)
+                    .condition(EdgeLight.EAST, false)
+                    .condition(EdgeLight.WEST, false).end();
+        builder.part().modelFile(model).rotationY(180).addModel().useOr()
+                .nestedGroup().condition(EdgeLight.SOUTH, true).end()
+                .nestedGroup()
+                    .condition(EdgeLight.NORTH, false)
+                    .condition(EdgeLight.SOUTH, false)
+                    .condition(EdgeLight.EAST, false)
+                    .condition(EdgeLight.WEST, false).end();
+        builder.part().modelFile(model).rotationY(90).addModel().useOr()
+                .nestedGroup().condition(EdgeLight.EAST, true).end()
+                .nestedGroup()
+                    .condition(EdgeLight.NORTH, false)
+                    .condition(EdgeLight.SOUTH, false)
+                    .condition(EdgeLight.EAST, false)
+                    .condition(EdgeLight.WEST, false).end();
+        builder.part().modelFile(model).rotationY(270).addModel().useOr()
+                .nestedGroup().condition(EdgeLight.WEST, true).end()
+                .nestedGroup()
+                    .condition(EdgeLight.NORTH, false)
+                    .condition(EdgeLight.SOUTH, false)
+                    .condition(EdgeLight.EAST, false)
+                    .condition(EdgeLight.WEST, false).end();
+    }
+
+    private void generateTopEdgeBlock(SLBlockReg<EdgeLight, BaseBlockItem> block) {
+        DyeColor color = block.getBlock().color;
+        ModelFile model;
+        if (color == DyeColor.WHITE)
+            model = models().getExistingFile(modLoc("block/edge_light"));
+        else {
+            model = models().getExistingFile(modLoc("block/edge_light_" + color.getName()));
+        }
+
+        MultiPartBlockStateBuilder builder = getMultipartBuilder(block.get());
+        builder.part().modelFile(model).rotationY(180).rotationX(180).addModel().useOr().nestedGroup()
+                .condition(EdgeLight.NORTH, true).end()
+                .nestedGroup()
+                .condition(EdgeLight.NORTH, false)
+                .condition(EdgeLight.SOUTH, false)
+                .condition(EdgeLight.EAST, false)
+                .condition(EdgeLight.WEST, false).end();
+        builder.part().modelFile(model).rotationX(180).addModel().useOr()
+                .nestedGroup().condition(EdgeLight.SOUTH, true).end()
+                .nestedGroup()
+                .condition(EdgeLight.NORTH, false)
+                .condition(EdgeLight.SOUTH, false)
+                .condition(EdgeLight.EAST, false)
+                .condition(EdgeLight.WEST, false).end();
+        builder.part().modelFile(model).rotationY(270).rotationX(180).addModel().useOr()
+                .nestedGroup().condition(EdgeLight.EAST, true).end()
+                .nestedGroup()
+                .condition(EdgeLight.NORTH, false)
+                .condition(EdgeLight.SOUTH, false)
+                .condition(EdgeLight.EAST, false)
+                .condition(EdgeLight.WEST, false).end();
+        builder.part().modelFile(model).rotationY(90).rotationX(180).addModel().useOr()
+                .nestedGroup().condition(EdgeLight.WEST, true).end()
+                .nestedGroup()
+                .condition(EdgeLight.NORTH, false)
+                .condition(EdgeLight.SOUTH, false)
+                .condition(EdgeLight.EAST, false)
+                .condition(EdgeLight.WEST, false).end();
+    }
 
     private void generateLampPost(SLBlockReg<LampPost, LampPostItem> block) {
         ModelFile base = models().getExistingFile(modLoc("block/post_base"));

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "tag": "simplylight:any_edge_light"
+    },
+    "B": {
+      "item": "minecraft:brown_dye"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "ABA",
+    "AAA"
+  ],
+  "result": {
+    "count": 6,
+    "id": "simplylight:edge_light_brown"
+  },
+  "show_notification": false
+}

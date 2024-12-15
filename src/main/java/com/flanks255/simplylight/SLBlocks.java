@@ -39,14 +39,14 @@ public class SLBlocks {
         return new SLBlockReg<>("lamp_post_" + color.getName(), () -> new LampPost(color), LampPostItem::new);
     }
 
+    public static SLBlockReg<EdgeLight, BaseBlockItem> addEdge(DyeColor color, boolean top) {
+        return new SLBlockReg<>("edge_light_" + (top?"top_":"") + color.getName(), () -> new EdgeLight(top, color), b -> new BaseBlockItem(b, ITEMPROPERTIES));
+    }
+
     public static void init(IEventBus bus) {
         BLOCKS.register(bus);
         ITEMS.register(bus);
     }
-
-    public static final SLBlockReg<EdgeLight, BaseBlockItem> EDGELAMP_TOP = new SLBlockReg<>("edge_light_top", () -> new EdgeLight(true), b -> new BaseBlockItem(b, ITEMPROPERTIES));
-    public static final SLBlockReg<EdgeLight, BaseBlockItem> EDGELAMP = new SLBlockReg<>("edge_light", () -> new EdgeLight(false), b -> new BaseBlockItem(b, ITEMPROPERTIES));
-
     public static final SLBlockReg<RodLamp, BaseBlockItem> RODLAMP = new SLBlockReg<>("rodlamp", () -> new RodLamp(DyeColor.WHITE), b -> new BaseBlockItem(b, ITEMPROPERTIES));
     public static final SLBlockReg<RodLamp, BaseBlockItem> RODLAMP_ORANGE = addRod(DyeColor.ORANGE);
     public static final SLBlockReg<RodLamp, BaseBlockItem> RODLAMP_MAGENTA = addRod(DyeColor.MAGENTA);
@@ -64,6 +64,38 @@ public class SLBlocks {
     public static final SLBlockReg<RodLamp, BaseBlockItem> RODLAMP_RED = addRod(DyeColor.RED);
     public static final SLBlockReg<RodLamp, BaseBlockItem> RODLAMP_BLACK = addRod(DyeColor.BLACK);
 
+    public static final SLBlockReg<EdgeLight, BaseBlockItem> EDGELAMP = new SLBlockReg<>("edge_light", () -> new EdgeLight(false, DyeColor.WHITE), b -> new BaseBlockItem(b, ITEMPROPERTIES));
+    public static final SLBlockReg<EdgeLight, BaseBlockItem> EDGELAMP_TOP = new SLBlockReg<>("edge_light_top", () -> new EdgeLight(true, DyeColor.WHITE), b -> new BaseBlockItem(b, ITEMPROPERTIES));
+    public static final SLBlockReg<EdgeLight, BaseBlockItem> EDGELAMP_ORANGE = addEdge(DyeColor.ORANGE, false);
+    public static final SLBlockReg<EdgeLight, BaseBlockItem> EDGELAMP_ORANGE_TOP = addEdge(DyeColor.ORANGE, true);
+    public static final SLBlockReg<EdgeLight, BaseBlockItem> EDGELAMP_MAGENTA = addEdge(DyeColor.MAGENTA, false);
+    public static final SLBlockReg<EdgeLight, BaseBlockItem> EDGELAMP_MAGENTA_TOP = addEdge(DyeColor.MAGENTA, true);
+    public static final SLBlockReg<EdgeLight, BaseBlockItem> EDGELAMP_LIGHT_BLUE = addEdge(DyeColor.LIGHT_BLUE, false);
+    public static final SLBlockReg<EdgeLight, BaseBlockItem> EDGELAMP_LIGHT_BLUE_TOP = addEdge(DyeColor.LIGHT_BLUE, true);
+    public static final SLBlockReg<EdgeLight, BaseBlockItem> EDGELAMP_YELLOW = addEdge(DyeColor.YELLOW, false);
+    public static final SLBlockReg<EdgeLight, BaseBlockItem> EDGELAMP_YELLOW_TOP = addEdge(DyeColor.YELLOW, true);
+    public static final SLBlockReg<EdgeLight, BaseBlockItem> EDGELAMP_LIME = addEdge(DyeColor.LIME, false);
+    public static final SLBlockReg<EdgeLight, BaseBlockItem> EDGELAMP_LIME_TOP = addEdge(DyeColor.LIME, true);
+    public static final SLBlockReg<EdgeLight, BaseBlockItem> EDGELAMP_PINK = addEdge(DyeColor.PINK, false);
+    public static final SLBlockReg<EdgeLight, BaseBlockItem> EDGELAMP_PINK_TOP = addEdge(DyeColor.PINK, true);
+    public static final SLBlockReg<EdgeLight, BaseBlockItem> EDGELAMP_GRAY = addEdge(DyeColor.GRAY, false);
+    public static final SLBlockReg<EdgeLight, BaseBlockItem> EDGELAMP_GRAY_TOP = addEdge(DyeColor.GRAY, true);
+    public static final SLBlockReg<EdgeLight, BaseBlockItem> EDGELAMP_LIGHT_GRAY = addEdge(DyeColor.LIGHT_GRAY, false);
+    public static final SLBlockReg<EdgeLight, BaseBlockItem> EDGELAMP_LIGHT_GRAY_TOP = addEdge(DyeColor.LIGHT_GRAY, true);
+    public static final SLBlockReg<EdgeLight, BaseBlockItem> EDGELAMP_CYAN = addEdge(DyeColor.CYAN, false);
+    public static final SLBlockReg<EdgeLight, BaseBlockItem> EDGELAMP_CYAN_TOP = addEdge(DyeColor.CYAN, true);
+    public static final SLBlockReg<EdgeLight, BaseBlockItem> EDGELAMP_PURPLE = addEdge(DyeColor.PURPLE, false);
+    public static final SLBlockReg<EdgeLight, BaseBlockItem> EDGELAMP_PURPLE_TOP = addEdge(DyeColor.PURPLE, true);
+    public static final SLBlockReg<EdgeLight, BaseBlockItem> EDGELAMP_BLUE = addEdge(DyeColor.BLUE, false);
+    public static final SLBlockReg<EdgeLight, BaseBlockItem> EDGELAMP_BLUE_TOP = addEdge(DyeColor.BLUE, true);
+    public static final SLBlockReg<EdgeLight, BaseBlockItem> EDGELAMP_BROWN = addEdge(DyeColor.BROWN, false);
+    public static final SLBlockReg<EdgeLight, BaseBlockItem> EDGELAMP_BROWN_TOP = addEdge(DyeColor.BROWN, true);
+    public static final SLBlockReg<EdgeLight, BaseBlockItem> EDGELAMP_GREEN = addEdge(DyeColor.GREEN, false);
+    public static final SLBlockReg<EdgeLight, BaseBlockItem> EDGELAMP_GREEN_TOP = addEdge(DyeColor.GREEN, true);
+    public static final SLBlockReg<EdgeLight, BaseBlockItem> EDGELAMP_RED = addEdge(DyeColor.RED, false);
+    public static final SLBlockReg<EdgeLight, BaseBlockItem> EDGELAMP_RED_TOP = addEdge(DyeColor.RED, true);
+    public static final SLBlockReg<EdgeLight, BaseBlockItem> EDGELAMP_BLACK = addEdge(DyeColor.BLACK, false);
+    public static final SLBlockReg<EdgeLight, BaseBlockItem> EDGELAMP_BLACK_TOP = addEdge(DyeColor.BLACK, true);
 
     public static final SLBlockReg<LightBulb, BaseBlockItem> LIGHTBULB = new SLBlockReg<>("lightbulb", () -> new LightBulb(DyeColor.WHITE), b -> new BaseBlockItem(b, ITEMPROPERTIES));
     public static final SLBlockReg<LightBulb, BaseBlockItem> LIGHTBULB_ORANGE = addBulb(DyeColor.ORANGE);
@@ -243,7 +275,17 @@ public class SLBlocks {
             LAMP_POST_BLUE, LAMP_POST_PURPLE, LAMP_POST_MAGENTA, LAMP_POST_PINK
     );
 
-    public static final Set<SLBlockReg<?,?>> TAB_ORDER = ImmutableSet.of(
-            EDGELAMP, EDGELAMP_TOP
+    public static final Set<SLBlockReg<EdgeLight, BaseBlockItem>> EDGE_LIGHTS = ImmutableSet.of(
+            EDGELAMP, EDGELAMP_LIGHT_GRAY, EDGELAMP_GRAY, EDGELAMP_BLACK,
+            EDGELAMP_BROWN, EDGELAMP_RED, EDGELAMP_ORANGE, EDGELAMP_YELLOW,
+            EDGELAMP_LIME, EDGELAMP_GREEN, EDGELAMP_CYAN, EDGELAMP_LIGHT_BLUE,
+            EDGELAMP_BLUE, EDGELAMP_PURPLE, EDGELAMP_MAGENTA, EDGELAMP_PINK
+    );
+
+    public static final Set<SLBlockReg<EdgeLight, BaseBlockItem>> EDGE_LIGHTS_TOP = ImmutableSet.of(
+            EDGELAMP_TOP, EDGELAMP_LIGHT_GRAY_TOP, EDGELAMP_GRAY_TOP, EDGELAMP_BLACK_TOP,
+            EDGELAMP_BROWN_TOP, EDGELAMP_RED_TOP, EDGELAMP_ORANGE_TOP, EDGELAMP_YELLOW_TOP,
+            EDGELAMP_LIME_TOP, EDGELAMP_GREEN_TOP, EDGELAMP_CYAN_TOP, EDGELAMP_LIGHT_BLUE_TOP,
+            EDGELAMP_BLUE_TOP, EDGELAMP_PURPLE_TOP, EDGELAMP_MAGENTA_TOP, EDGELAMP_PINK_TOP
     );
 }

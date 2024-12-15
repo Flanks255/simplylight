@@ -1,0 +1,65 @@
+{
+  "parent": "simplylight:block/edge_light_orange",
+  "display": {
+    "firstperson_righthand": {
+      "rotation": [
+        -45,
+        0,
+        90
+      ],
+      "translation": [
+        -7.5,
+        6.5,
+        4.5
+      ]
+    },
+    "fixed": {
+      "rotation": [
+        0,
+        -180,
+        0
+      ],
+      "translation": [
+        0,
+        7.5,
+        -8
+      ]
+    },
+    "gui": {
+      "rotation": [
+        30,
+        -135,
+        180
+      ],
+      "scale": [
+        0.625,
+        0.625,
+        0.625
+      ],
+      "translation": [
+        0,
+        -6,
+        0
+      ]
+    },
+    "head": {
+      "translation": [
+        0,
+        14,
+        1.5
+      ]
+    },
+    "thirdperson_righthand": {
+      "rotation": [
+        -45,
+        0,
+        90
+      ],
+      "translation": [
+        -7.5,
+        6.5,
+        4.5
+      ]
+    }
+  }
+}

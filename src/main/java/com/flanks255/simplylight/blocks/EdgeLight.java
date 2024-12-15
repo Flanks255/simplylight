@@ -1,10 +1,16 @@
 package com.flanks255.simplylight.blocks;
 
+import com.flanks255.simplylight.SLBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
@@ -16,6 +22,7 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -26,17 +33,16 @@ import java.util.function.BiConsumer;
 
 public class EdgeLight extends LampBase implements SimpleWaterloggedBlock {
 
-    private final Boolean top;
+    public final Boolean top;
+    public final DyeColor color;
 
-    public EdgeLight(Boolean top) {
+    public EdgeLight(Boolean top, DyeColor color) {
         super(Block.Properties.of()
             .strength(1.0f)
             .noCollission()
             .lightLevel($ -> 14)
         );
-
-        registerDefaultState(getStateDefinition().any().setValue(BlockStateProperties.WATERLOGGED, false));
-
+        this.color = color;
         this.top = top;
         if (top) {
             VS_WEST = Shapes.box(0.0, 0.9375, 0.0, 0.0625, 1.0, 1.0);
@@ -113,11 +119,31 @@ public class EdgeLight extends LampBase implements SimpleWaterloggedBlock {
     @Override
     public void addLang(BiConsumer<String, String> consumer) {
         String base = getDescriptionId();
+        DyeColor color = this.color;
 
-        if (top)
-            consumer.accept(base, "Dynamic Edge Light (top)");
+        String colorname = switch (color) {
+            case RED -> "Red";
+            case BLUE -> "Blue";
+            case CYAN -> "Cyan";
+            case GRAY -> "Gray";
+            case LIME -> "Lime";
+            case MAGENTA -> "Magenta";
+            case PINK -> "Pink";
+            case BLACK -> "Black";
+            case BROWN -> "Brown";
+            case GREEN -> "Green";
+            case ORANGE -> "Orange";
+            case PURPLE -> "Purple";
+            case YELLOW -> "Yellow";
+            case LIGHT_BLUE -> "Light Blue";
+            case LIGHT_GRAY -> "Light Gray";
+            default -> "";
+        };
+
+        if (color == DyeColor.WHITE)
+            consumer.accept(base, "Dynamic Edge Light ("+ (top?"top":"bottom") +")");
         else
-            consumer.accept(base, "Dynamic Edge Light (bottom)");
+            consumer.accept(base, "Dynamic " + colorname + " Edge Light ("+ (top?"top":"bottom") +")");
 
         consumer.accept(base + ".info", "Follows walls around itself,");
         consumer.accept(base + ".info2", "perfect for hallways.");
@@ -125,8 +151,9 @@ public class EdgeLight extends LampBase implements SimpleWaterloggedBlock {
         consumer.accept(base + ".jei.info", "Will morph depending on the blocks present around itself on placement.\nShape will persist afterward, letting you make shapes using temporary blocks.");
     }
 
+    @Nonnull
     @Override
-    public BlockState rotate(BlockState pState, Rotation pRotation) {
+    public BlockState rotate(@Nonnull BlockState pState, @Nonnull Rotation pRotation) {
         if (pRotation != Rotation.NONE){
             boolean oldNorth = pState.getValue(NORTH);
             boolean oldSouth = pState.getValue(SOUTH);
@@ -156,8 +183,9 @@ public class EdgeLight extends LampBase implements SimpleWaterloggedBlock {
         return pState;
     }
 
+    @Nonnull
     @Override
-    public BlockState mirror(BlockState pState, Mirror pMirror) {
+    public BlockState mirror(@Nonnull BlockState pState, @Nonnull Mirror pMirror) {
         if (pMirror != Mirror.NONE) {
             boolean oldNorth = pState.getValue(NORTH);
             boolean oldSouth = pState.getValue(SOUTH);

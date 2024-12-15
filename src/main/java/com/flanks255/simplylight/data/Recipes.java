@@ -153,6 +153,12 @@ public class Recipes extends RecipeProvider {
 
         SLBlocks.POSTS.forEach(post ->
                 dyeRecipe(post.getItem(), DyeItem.byColor(post.getBlock().color), SimplyLight.ANY_POST, output));
+
+        SLBlocks.EDGE_LIGHTS.forEach(edge ->
+                dyeRecipe(edge.getItem(), DyeItem.byColor(edge.getBlock().color), SimplyLight.ANY_EDGE_LIGHT, output));
+
+        SLBlocks.EDGE_LIGHTS_TOP.forEach(edge ->
+                dyeRecipe(edge.getItem(), DyeItem.byColor(edge.getBlock().color), SimplyLight.ANY_EDGE_LIGHT_TOP, output));
     }
 
     private void toggleOn(SLBlockReg<LampBlock, BaseBlockItem> block, RecipeOutput consumer) {

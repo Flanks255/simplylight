@@ -27,5 +27,7 @@ public class SLItemTags extends ItemTagsProvider {
         SLBlocks.BULBS.forEach( bulb -> tag(SimplyLight.ANY_BULB).add(bulb.getItem()));
         SLBlocks.FIXTURES.forEach( fixture -> tag(SimplyLight.ANY_FIXTURE).add(fixture.getItem()));
         SLBlocks.POSTS.forEach( post -> tag(SimplyLight.ANY_POST).add(post.getItem()));
+        SLBlocks.EDGE_LIGHTS.forEach( edge -> tag(SimplyLight.ANY_EDGE_LIGHT).add(edge.getItem()));
+        SLBlocks.EDGE_LIGHTS_TOP.forEach( edge -> tag(SimplyLight.ANY_EDGE_LIGHT_TOP).add(edge.getItem()));
     }
 }

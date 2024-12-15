@@ -26,47 +26,44 @@ public class ItemModels extends ItemModelProvider {
     private void registerBlockItem(Block blockIn) {
         if (blockIn instanceof LampBase block) {
             String path = block.getRegistryName().getPath();
-            // Edge lights, rotate them so you can see them.
-            if (block == SLBlocks.EDGELAMP.get()) {
-                registerEdgeBlockBottom(path);
-            } else if (block == SLBlocks.EDGELAMP_TOP.get()) {
-                registerEdgeBlockTop(path);
-            } else if (block instanceof LampPost post) {
-                generateLampPost(path, post);
-            } else if (block instanceof LampBlock) {
-                getBuilder(path).parent(new ModelFile.UncheckedModelFile(modLoc("block/" + path)));
-            } else if (block instanceof Fixture) {
-                getBuilder(path).parent(new ModelFile.UncheckedModelFile(modLoc("block/" + path)))
-                    .transforms().transform(ItemDisplayContext.HEAD)
-                    .scale(1f, 1f, 1f)
-                    .translation(0, 4.5f, 14).end()
-                    .transform(ItemDisplayContext.FIXED)
-                    .rotation(0, -180, 0)
-                    .scale(1f, 1f, 1f)
-                    .translation(0, 0, -8).end();
-            } else if (block instanceof LightBulb) {
-                getBuilder(path).parent(new ModelFile.UncheckedModelFile(modLoc("block/" + path)))
-                    .transforms().transform(ItemDisplayContext.HEAD)
-                    .scale(1f, 1f, 1f)
-                    .translation(0, 14, 0).end()
-                    .transform(ItemDisplayContext.FIRST_PERSON_RIGHT_HAND)
-                    .translation(0, 8, 0).end()
-                    .transform(ItemDisplayContext.FIRST_PERSON_LEFT_HAND)
-                    .translation(0, 8, 0).end()
-                    .transform(ItemDisplayContext.THIRD_PERSON_RIGHT_HAND)
-                    .translation(0, 8, 0).end()
-                    .transform(ItemDisplayContext.THIRD_PERSON_LEFT_HAND)
-                    .translation(0, 8, 0).end();
-            } else {
-                getBuilder(path).parent(new ModelFile.UncheckedModelFile(modLoc("block/" + path)))
-                    .transforms().transform(ItemDisplayContext.HEAD)
-                    .scale(1f, 1f, 1f)
-                    .translation(0, 14, 0).end();
+            switch (block) {
+                case EdgeLight edge when !edge.top -> registerEdgeBlockBottom(edge);
+                case EdgeLight edge -> registerEdgeBlockTop(edge);
+                case LampPost post -> generateLampPost(post);
+                case LampBlock lampBlock ->
+                        getBuilder(path).parent(new ModelFile.UncheckedModelFile(modLoc("block/" + path)));
+                case Fixture fixture ->
+                        getBuilder(path).parent(new ModelFile.UncheckedModelFile(modLoc("block/" + path)))
+                                .transforms().transform(ItemDisplayContext.HEAD)
+                                .scale(1f, 1f, 1f)
+                                .translation(0, 4.5f, 14).end()
+                                .transform(ItemDisplayContext.FIXED)
+                                .rotation(0, -180, 0)
+                                .scale(1f, 1f, 1f)
+                                .translation(0, 0, -8).end();
+                case LightBulb lightBulb ->
+                        getBuilder(path).parent(new ModelFile.UncheckedModelFile(modLoc("block/" + path)))
+                                .transforms().transform(ItemDisplayContext.HEAD)
+                                .scale(1f, 1f, 1f)
+                                .translation(0, 14, 0).end()
+                                .transform(ItemDisplayContext.FIRST_PERSON_RIGHT_HAND)
+                                .translation(0, 8, 0).end()
+                                .transform(ItemDisplayContext.FIRST_PERSON_LEFT_HAND)
+                                .translation(0, 8, 0).end()
+                                .transform(ItemDisplayContext.THIRD_PERSON_RIGHT_HAND)
+                                .translation(0, 8, 0).end()
+                                .transform(ItemDisplayContext.THIRD_PERSON_LEFT_HAND)
+                                .translation(0, 8, 0).end();
+                default -> getBuilder(path).parent(new ModelFile.UncheckedModelFile(modLoc("block/" + path)))
+                        .transforms().transform(ItemDisplayContext.HEAD)
+                        .scale(1f, 1f, 1f)
+                        .translation(0, 14, 0).end();
             }
         }
     }
 
-    private void generateLampPost(String path, LampPost block) {
+    private void generateLampPost(LampPost block) {
+        String path = block.getRegistryName().getPath();
         ModelFile model;
         DyeColor color = block.color;
 
@@ -102,8 +99,18 @@ public class ItemModels extends ItemModelProvider {
 
 
 
-    private void registerEdgeBlockTop(String path) {
-        getBuilder(path).parent(new ModelFile.UncheckedModelFile(modLoc("block/edge_light")))
+    private void registerEdgeBlockTop(EdgeLight block) {
+        ModelFile model;
+        DyeColor color = block.color;
+        String path = block.getRegistryName().getPath();
+
+        if (color == DyeColor.WHITE) {
+            model = new ModelFile.UncheckedModelFile(modLoc("block/edge_light"));
+        } else {
+            model = new ModelFile.UncheckedModelFile(modLoc("block/edge_light_" + color.getName()));
+        }
+
+        getBuilder(path).parent(model)
             .transforms().transform(ItemDisplayContext.GUI)
             .rotation(30, -135, 180)
             .scale(0.625f, 0.625f, 0.625f)
@@ -128,8 +135,18 @@ public class ItemModels extends ItemModelProvider {
             .end();
     }
 
-    private void registerEdgeBlockBottom(String path) {
-        getBuilder(path).parent(new ModelFile.UncheckedModelFile(modLoc("block/edge_light")))
+    private void registerEdgeBlockBottom(EdgeLight block) {
+        ModelFile model;
+        DyeColor color = block.color;
+        String path = block.getRegistryName().getPath();
+
+        if (color == DyeColor.WHITE) {
+            model = new ModelFile.UncheckedModelFile(modLoc("block/edge_light"));
+        } else {
+            model = new ModelFile.UncheckedModelFile(modLoc("block/edge_light_" + color.getName()));
+        }
+
+        getBuilder(path).parent(model)
             .transforms().transform(ItemDisplayContext.GUI)
             .rotation(30, -135, 180)
             .translation(0,-6,0)

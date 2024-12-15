@@ -32,7 +32,6 @@ public class SimplyLight
     public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, SimplyLight.MODID);
 
     private static final CreativeModeTab.DisplayItemsGenerator TABITEMS = (params, output) -> {
-        SLBlocks.TAB_ORDER.forEach(block -> output.accept(block.getItem()));
         SLBlocks.LAMPBLOCKS_ON.forEach(block -> output.accept(block.getItem()));
         SLBlocks.LAMPBLOCKS_OFF.forEach(block -> output.accept(block.getItem()));
         SLBlocks.SLABS.forEach(block -> output.accept(block.getItem()));
@@ -41,6 +40,8 @@ public class SimplyLight
         SLBlocks.BULBS.forEach(block -> output.accept(block.getItem()));
         SLBlocks.FIXTURES.forEach(block -> output.accept(block.getItem()));
         SLBlocks.POSTS.forEach(block -> output.accept(block.getItem()));
+        SLBlocks.EDGE_LIGHTS.forEach(block -> output.accept(block.getItem()));
+        SLBlocks.EDGE_LIGHTS_TOP.forEach(block -> output.accept(block.getItem()));
     };
 
     public static final Supplier<CreativeModeTab> TAB = TABS.register("lights", () ->
@@ -57,6 +58,8 @@ public class SimplyLight
     public static final TagKey<Item> ANY_BULB = TagKey.create(Registries.ITEM, SLRes("any_bulb"));
     public static final TagKey<Item> ANY_FIXTURE = TagKey.create(Registries.ITEM, SLRes("any_fixture"));
     public static final TagKey<Item> ANY_POST = TagKey.create(Registries.ITEM, SLRes("any_post"));
+    public static final TagKey<Item> ANY_EDGE_LIGHT = TagKey.create(Registries.ITEM, SLRes("any_edge_light"));
+    public static final TagKey<Item> ANY_EDGE_LIGHT_TOP = TagKey.create(Registries.ITEM, SLRes("any_edge_light_top"));
 
     public SimplyLight(IEventBus bus, ModContainer container, Dist dist) {
         SLBlocks.init(bus);
