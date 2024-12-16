@@ -145,9 +145,10 @@ public class EdgeLight extends LampBase implements SimpleWaterloggedBlock {
         else
             consumer.accept(base, "Dynamic " + colorname + " Edge Light ("+ (top?"top":"bottom") +")");
 
+        if (color != DyeColor.WHITE)
+            return;
         consumer.accept(base + ".info", "Follows walls around itself,");
         consumer.accept(base + ".info2", "perfect for hallways.");
-
         consumer.accept(base + ".jei.info", "Will morph depending on the blocks present around itself on placement.\nShape will persist afterward, letting you make shapes using temporary blocks.");
     }
 

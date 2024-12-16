@@ -47,6 +47,9 @@ public class Fixture extends RotatableLamp{
             consumer.accept(base, "Illuminant Fixture");
         else
             consumer.accept(base, "Illuminant " + colorname + " Fixture");
+
+        if (color != DyeColor.WHITE)
+            return;
         consumer.accept(base + ".info", "Hangs from walls, or sticks to ceilings and floors.");
     }
 }

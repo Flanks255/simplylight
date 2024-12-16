@@ -93,6 +93,10 @@ public class LampBlock extends LampBase {
             };
             consumer.accept(base, "Illuminant " + colorname + " Block" + (Default ? " (Inverted)" : ""));
         }
+
+        if (color != DyeColor.WHITE)
+            return;
+
         consumer.accept(base + ".info", "Simple light block,");
         if (Default)
             consumer.accept(base + ".info2", "Deactivates by %s.");

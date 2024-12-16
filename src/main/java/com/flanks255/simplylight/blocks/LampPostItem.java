@@ -7,10 +7,16 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.level.block.Block;
 
+import java.util.function.Supplier;
+
 
 public class LampPostItem extends BaseBlockItem {
-    public LampPostItem(Block pBlock) {
-        super(pBlock, new Item.Properties().attributes(createAttributes()));
+    public LampPostItem(Block pBlock, Supplier<Block> alternateTooltipBlock) {
+        super(pBlock, new Item.Properties().attributes(createAttributes()), alternateTooltipBlock);
+    }
+
+    public LampPostItem(Block blockIn, Properties builder) {
+        super(blockIn, builder);
     }
 
     private static ItemAttributeModifiers createAttributes() {

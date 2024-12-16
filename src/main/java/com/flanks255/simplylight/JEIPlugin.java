@@ -1,6 +1,7 @@
 package com.flanks255.simplylight;
 
 
+import com.flanks255.simplylight.blocks.BaseBlockItem;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.constants.VanillaTypes;
@@ -23,10 +24,13 @@ public class JEIPlugin implements IModPlugin {
 
     @Override
     public void registerRecipes(@Nonnull IRecipeRegistration registration) {
-        SLBlocks.ITEMS.getEntries().forEach((item) -> {
-            String key = item.get().getDescriptionId()+".jei.info";
+        SLBlocks.ITEMS.getEntries().forEach((itemSupplier) -> {
+            var item = itemSupplier.get();
+            String key = item.getDescriptionId()+".jei.info";
+            if (item instanceof BaseBlockItem)
+                key = ((BaseBlockItem)item).getTooltipBase()+".jei.info";
             if (I18n.exists(key)) {
-                registration.addIngredientInfo(new ItemStack(item.get()), VanillaTypes.ITEM_STACK, Component.translatable(key));
+                registration.addIngredientInfo(new ItemStack(item), VanillaTypes.ITEM_STACK, Component.translatable(key));
             }
         });
     }

@@ -31,16 +31,17 @@ public class BlockStates  extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
         generateLampBlockModels();
-        SLBlocks.LAMPBLOCKS_ON.forEach(this::generateLampBlock);
-        SLBlocks.LAMPBLOCKS_OFF.forEach(this::generateLampBlock);
-        SLBlocks.SLABS.forEach(this::generateSlab);
-        SLBlocks.PANELS.forEach(this::generatePanel);
-        SLBlocks.RODS.forEach(this::generateRodLamp);
-        SLBlocks.BULBS.forEach(this::generateLightBulb);
-        SLBlocks.FIXTURES.forEach(this::generateWallLamp);
-        SLBlocks.POSTS.forEach(this::generateLampPost);
-        SLBlocks.EDGE_LIGHTS.forEach(this::generateEdgeBlock);
-        SLBlocks.EDGE_LIGHTS_TOP.forEach(this::generateTopEdgeBlock);
+        SLBlocks.LAMPBLOCKS_ON.forEach(this::generateLampBlock); // 2x16 = 32
+        SLBlocks.LAMPBLOCKS_OFF.forEach(this::generateLampBlock); // 2x16 = 32
+        SLBlocks.SLABS.forEach(this::generateSlab); // 2x16x6 = 192
+        SLBlocks.PANELS.forEach(this::generatePanel); // 2x16x6 = 192
+        SLBlocks.RODS.forEach(this::generateRodLamp); // 2x3x16 = 96
+        SLBlocks.BULBS.forEach(this::generateLightBulb); // 2x16x6 = 192
+        SLBlocks.FIXTURES.forEach(this::generateWallLamp); // 2x16x6 = 192
+        SLBlocks.POSTS.forEach(this::generateLampPost); // 2x16x3 = 96
+        SLBlocks.EDGE_LIGHTS.forEach(this::generateEdgeBlock); // 2x16x16 = 512
+        SLBlocks.EDGE_LIGHTS_TOP.forEach(this::generateTopEdgeBlock); // 2x16x16 = 512
+        // Total Blockstates: 2048
     }
 
     private void generateLampBlockModels() {

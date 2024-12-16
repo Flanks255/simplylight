@@ -116,6 +116,9 @@ public class RodLamp extends LampBase implements SimpleWaterloggedBlock {
             consumer.accept(base, "Illuminant Rod");
         else
             consumer.accept(base, "Illuminant " + colorname + " Rod");
+
+        if (color != DyeColor.WHITE)
+            return;
         consumer.accept(base + ".info", "A simple rod of light.");
         consumer.accept(base + ".info2", "Can be placed in any direction.");
     }

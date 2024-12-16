@@ -50,6 +50,9 @@ public class LightBulb extends RotatableLamp {
             consumer.accept(base, "Simple Light Bulb");
         else
             consumer.accept(base, "Simple " + colorname + " Light Bulb");
+
+        if (color != DyeColor.WHITE)
+            return;
         consumer.accept(base + ".info", "Just a simple light bulb,");
         consumer.accept(base + ".info2", "place in any direction.");
     }

@@ -22,6 +22,13 @@ public class BaseBlockItem extends BlockItem implements Equipable {
     {
         super(blockIn, builder);
         this.block = blockIn;
+        this.alternateTooltipBlock = null;
+    }
+
+    public BaseBlockItem(Block block, Properties properties, Supplier<Block> alternateTooltipBlock) {
+        super(block, properties);
+        this.block = block;
+        this.alternateTooltipBlock = alternateTooltipBlock.get();
     }
 
     private final Supplier<ResourceLocation> lazyRes = Suppliers.memoize(() -> BuiltInRegistries.ITEM.getKey(this));
@@ -31,24 +38,33 @@ public class BaseBlockItem extends BlockItem implements Equipable {
     }
 
     private final Block block;
+    private final Block alternateTooltipBlock;
 
 /*    @Override
     public boolean canEquip(@Nonnull ItemStack stack, @Nonnull EquipmentSlot armorType, @Nonnull Entity entity) {
         return armorType == EquipmentSlot.HEAD || super.canEquip(stack, armorType, entity);
     }*/
 
+    public String getTooltipBase() {
+        if (alternateTooltipBlock != null)
+            return alternateTooltipBlock.getDescriptionId();
+        return block.getDescriptionId();
+    }
+
     @OnlyIn(Dist.CLIENT)
     @Override
     public void appendHoverText(@Nonnull ItemStack stack, @Nonnull TooltipContext context, @Nonnull List<Component> tooltip, @Nonnull TooltipFlag flagIn) {
         super.appendHoverText(stack, context, tooltip, flagIn);
+        String tooltipBase = getTooltipBase();
+
         boolean redstoneFlag = block instanceof LampBlock;
-        if (Screen.hasShiftDown() && I18n.exists(block.getDescriptionId() + ".info")) {
-            tooltip.add(Component.translatable(block.getDescriptionId() + ".info").withStyle(ChatFormatting.GRAY));
-            if (I18n.exists(block.getDescriptionId()+".info2")) {
+        if (Screen.hasShiftDown() && I18n.exists(tooltipBase + ".info")) {
+            tooltip.add(Component.translatable(tooltipBase + ".info").withStyle(ChatFormatting.GRAY));
+            if (I18n.exists(tooltipBase+".info2")) {
                 if (redstoneFlag)
-                    tooltip.add(Component.translatable(block.getDescriptionId() + ".info2", Component.translatable("simplylight.redstone").withStyle(ChatFormatting.DARK_RED)).withStyle(ChatFormatting.GRAY));
+                    tooltip.add(Component.translatable(tooltipBase + ".info2", Component.translatable("simplylight.redstone").withStyle(ChatFormatting.DARK_RED)).withStyle(ChatFormatting.GRAY));
                 else
-                    tooltip.add(Component.translatable(block.getDescriptionId() + ".info2").withStyle(ChatFormatting.GRAY));
+                    tooltip.add(Component.translatable(tooltipBase + ".info2").withStyle(ChatFormatting.GRAY));
             }
         }
         else {

@@ -4,10 +4,12 @@ import com.flanks255.simplylight.blocks.*;
 import com.google.common.collect.ImmutableSet;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.Set;
+import java.util.function.Supplier;
 
 public class SLBlocks {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(SimplyLight.MODID);
@@ -16,31 +18,31 @@ public class SLBlocks {
     private static final Item.Properties ITEMPROPERTIES = new Item.Properties();
 
     public static SLBlockReg<LampBlock, BaseBlockItem> addLamp(DyeColor color, boolean state) {
-        return new SLBlockReg<>("illuminant_" + color.getName() + "_block" + (state?"_on":""), () -> new LampBlock(state, color), b -> new BaseBlockItem(b, ITEMPROPERTIES));
+        return new SLBlockReg<>("illuminant_" + color.getName() + "_block" + (state?"_on":""), () -> new LampBlock(state, color), b -> new BaseBlockItem(b, ITEMPROPERTIES, state?ILLUMINANTBLOCK_ON::getBlock:ILLUMINANTBLOCK::getBlock));
     }
 
-    public static SLBlockReg<ThinLamp, BaseBlockItem> addThin(int thick, DyeColor color) {
-        return new SLBlockReg<>("illuminant_" + (thick == 8?"slab":"panel") + "_" + color.getName(), () -> new ThinLamp(thick, color), b -> new BaseBlockItem(b, ITEMPROPERTIES));
+    public static SLBlockReg<ThinLamp, BaseBlockItem> addThin(boolean panel, DyeColor color) {
+        return new SLBlockReg<>("illuminant_" + (panel ?"panel":"slab") + "_" + color.getName(), () -> new ThinLamp(panel?4:8, color), b -> new BaseBlockItem(b, ITEMPROPERTIES, panel?ILLUMINANT_PANEL::getBlock:ILLUMINANT_SLAB::getBlock));
     }
 
     public static SLBlockReg<RodLamp, BaseBlockItem> addRod(DyeColor color) {
-        return new SLBlockReg<>("rodlamp_" + color.getName(), () -> new RodLamp(color), b -> new BaseBlockItem(b, ITEMPROPERTIES));
+        return new SLBlockReg<>("rodlamp_" + color.getName(), () -> new RodLamp(color), b -> new BaseBlockItem(b, ITEMPROPERTIES, RODLAMP::getBlock));
     }
 
     public static SLBlockReg<LightBulb, BaseBlockItem> addBulb(DyeColor color) {
-        return new SLBlockReg<>("lightbulb_" + color.getName(), () -> new LightBulb(color), b -> new BaseBlockItem(b, ITEMPROPERTIES));
+        return new SLBlockReg<>("lightbulb_" + color.getName(), () -> new LightBulb(color), b -> new BaseBlockItem(b, ITEMPROPERTIES, LIGHTBULB::getBlock));
     }
 
     public static SLBlockReg<Fixture, BaseBlockItem> addFixture(DyeColor color) {
-        return new SLBlockReg<>("wall_lamp_" + color.getName(), () -> new Fixture(color), b -> new BaseBlockItem(b, ITEMPROPERTIES));
+        return new SLBlockReg<>("wall_lamp_" + color.getName(), () -> new Fixture(color), b -> new BaseBlockItem(b, ITEMPROPERTIES, FIXTURE::getBlock));
     }
 
     public static SLBlockReg<LampPost, LampPostItem> addPost(DyeColor color) {
-        return new SLBlockReg<>("lamp_post_" + color.getName(), () -> new LampPost(color), LampPostItem::new);
+        return new SLBlockReg<>("lamp_post_" + color.getName(), () -> new LampPost(color), b -> new LampPostItem(b, LAMP_POST::getBlock));
     }
 
     public static SLBlockReg<EdgeLight, BaseBlockItem> addEdge(DyeColor color, boolean top) {
-        return new SLBlockReg<>("edge_light_" + (top?"top_":"") + color.getName(), () -> new EdgeLight(top, color), b -> new BaseBlockItem(b, ITEMPROPERTIES));
+        return new SLBlockReg<>("edge_light_" + (top?"top_":"") + color.getName(), () -> new EdgeLight(top, color), b -> new BaseBlockItem(b, ITEMPROPERTIES, top? EDGELAMP_TOP::getBlock:EDGELAMP::getBlock));
     }
 
     public static void init(IEventBus bus) {
@@ -134,41 +136,41 @@ public class SLBlocks {
     public static final SLBlockReg<Fixture, BaseBlockItem> FIXTURE_BLACK = addFixture(DyeColor.BLACK);
 
     public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_PANEL = new SLBlockReg<>("illuminant_panel",() -> new ThinLamp(4, DyeColor.WHITE), b -> new BaseBlockItem(b, ITEMPROPERTIES));
-    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_PANEL_ORANGE = addThin(4, DyeColor.ORANGE);
-    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_PANEL_MAGENTA = addThin(4, DyeColor.MAGENTA);
-    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_PANEL_LIGHT_BLUE = addThin(4, DyeColor.LIGHT_BLUE);
-    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_PANEL_YELLOW = addThin(4, DyeColor.YELLOW);
-    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_PANEL_LIME = addThin(4, DyeColor.LIME);
-    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_PANEL_PINK = addThin(4, DyeColor.PINK);
-    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_PANEL_GRAY = addThin(4, DyeColor.GRAY);
-    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_PANEL_LIGHT_GRAY = addThin(4, DyeColor.LIGHT_GRAY);
-    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_PANEL_CYAN = addThin(4, DyeColor.CYAN);
-    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_PANEL_PURPLE = addThin(4, DyeColor.PURPLE);
-    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_PANEL_BLUE = addThin(4, DyeColor.BLUE);
-    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_PANEL_BROWN = addThin(4, DyeColor.BROWN);
-    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_PANEL_GREEN = addThin(4, DyeColor.GREEN);
-    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_PANEL_RED = addThin(4, DyeColor.RED);
-    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_PANEL_BLACK = addThin(4, DyeColor.BLACK);
+    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_PANEL_ORANGE = addThin(true, DyeColor.ORANGE);
+    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_PANEL_MAGENTA = addThin(true, DyeColor.MAGENTA);
+    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_PANEL_LIGHT_BLUE = addThin(true, DyeColor.LIGHT_BLUE);
+    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_PANEL_YELLOW = addThin(true, DyeColor.YELLOW);
+    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_PANEL_LIME = addThin(true, DyeColor.LIME);
+    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_PANEL_PINK = addThin(true, DyeColor.PINK);
+    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_PANEL_GRAY = addThin(true, DyeColor.GRAY);
+    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_PANEL_LIGHT_GRAY = addThin(true, DyeColor.LIGHT_GRAY);
+    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_PANEL_CYAN = addThin(true, DyeColor.CYAN);
+    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_PANEL_PURPLE = addThin(true, DyeColor.PURPLE);
+    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_PANEL_BLUE = addThin(true, DyeColor.BLUE);
+    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_PANEL_BROWN = addThin(true, DyeColor.BROWN);
+    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_PANEL_GREEN = addThin(true, DyeColor.GREEN);
+    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_PANEL_RED = addThin(true, DyeColor.RED);
+    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_PANEL_BLACK = addThin(true, DyeColor.BLACK);
 
     public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_SLAB = new SLBlockReg<>("illuminant_slab",() -> new ThinLamp(8, DyeColor.WHITE), b -> new BaseBlockItem(b, ITEMPROPERTIES));
-    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_SLAB_ORANGE = addThin(8, DyeColor.ORANGE);
-    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_SLAB_MAGENTA = addThin(8, DyeColor.MAGENTA);
-    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_SLAB_LIGHT_BLUE = addThin(8, DyeColor.LIGHT_BLUE);
-    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_SLAB_YELLOW = addThin(8, DyeColor.YELLOW);
-    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_SLAB_LIME = addThin(8, DyeColor.LIME);
-    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_SLAB_PINK = addThin(8, DyeColor.PINK);
-    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_SLAB_GRAY = addThin(8, DyeColor.GRAY);
-    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_SLAB_LIGHT_GRAY = addThin(8, DyeColor.LIGHT_GRAY);
-    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_SLAB_CYAN = addThin(8, DyeColor.CYAN);
-    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_SLAB_PURPLE = addThin(8, DyeColor.PURPLE);
-    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_SLAB_BLUE = addThin(8, DyeColor.BLUE);
-    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_SLAB_BROWN = addThin(8, DyeColor.BROWN);
-    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_SLAB_GREEN = addThin(8, DyeColor.GREEN);
-    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_SLAB_RED = addThin(8, DyeColor.RED);
-    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_SLAB_BLACK = addThin(8, DyeColor.BLACK);
+    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_SLAB_ORANGE = addThin(false, DyeColor.ORANGE);
+    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_SLAB_MAGENTA = addThin(false, DyeColor.MAGENTA);
+    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_SLAB_LIGHT_BLUE = addThin(false, DyeColor.LIGHT_BLUE);
+    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_SLAB_YELLOW = addThin(false, DyeColor.YELLOW);
+    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_SLAB_LIME = addThin(false, DyeColor.LIME);
+    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_SLAB_PINK = addThin(false, DyeColor.PINK);
+    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_SLAB_GRAY = addThin(false, DyeColor.GRAY);
+    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_SLAB_LIGHT_GRAY = addThin(false, DyeColor.LIGHT_GRAY);
+    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_SLAB_CYAN = addThin(false, DyeColor.CYAN);
+    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_SLAB_PURPLE = addThin(false, DyeColor.PURPLE);
+    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_SLAB_BLUE = addThin(false, DyeColor.BLUE);
+    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_SLAB_BROWN = addThin(false, DyeColor.BROWN);
+    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_SLAB_GREEN = addThin(false, DyeColor.GREEN);
+    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_SLAB_RED = addThin(false, DyeColor.RED);
+    public static final SLBlockReg<ThinLamp, BaseBlockItem> ILLUMINANT_SLAB_BLACK = addThin(false, DyeColor.BLACK);
 
 
-    public static final SLBlockReg<LampPost, LampPostItem> LAMP_POST = new SLBlockReg<>("lamp_post", () -> new LampPost(DyeColor.WHITE), LampPostItem::new);
+    public static final SLBlockReg<LampPost, LampPostItem> LAMP_POST = new SLBlockReg<>("lamp_post", () -> new LampPost(DyeColor.WHITE), b -> new LampPostItem(b, ITEMPROPERTIES));
     public static final SLBlockReg<LampPost, LampPostItem> LAMP_POST_ORANGE = addPost(DyeColor.ORANGE);
     public static final SLBlockReg<LampPost, LampPostItem> LAMP_POST_MAGENTA = addPost(DyeColor.MAGENTA);
     public static final SLBlockReg<LampPost, LampPostItem> LAMP_POST_LIGHT_BLUE = addPost(DyeColor.LIGHT_BLUE);

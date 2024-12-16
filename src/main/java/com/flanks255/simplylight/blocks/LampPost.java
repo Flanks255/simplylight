@@ -151,6 +151,9 @@ public class LampPost extends LampBase implements SimpleWaterloggedBlock {
             consumer.accept(base, "Illuminant Column");
         else
             consumer.accept(base, "Illuminant " + colorname + " Column");
+
+        if (color != DyeColor.WHITE)
+            return;
         consumer.accept(base + ".info", "3 Block tall lamp post.");
         consumer.accept(base + ".info2", "Top block emits light.");
     }

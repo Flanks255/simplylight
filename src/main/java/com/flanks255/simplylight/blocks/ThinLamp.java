@@ -75,8 +75,9 @@ public class ThinLamp extends RotatableLamp {
         else
             consumer.accept(base, "Illuminant " + colorname + " " + type);
 
+        if (color != DyeColor.WHITE)
+            return;
         consumer.accept(base + ".info", "Simple " + type2 + " light,");
-
         consumer.accept(base + ".info2", "Place in any direction.");
     }
 }
