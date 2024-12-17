@@ -4,46 +4,16 @@ import com.flanks255.simplylight.blocks.*;
 import com.google.common.collect.ImmutableSet;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.Set;
-import java.util.function.Supplier;
 
 public class SLBlocks {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(SimplyLight.MODID);
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(SimplyLight.MODID);
 
     private static final Item.Properties ITEMPROPERTIES = new Item.Properties();
-
-    public static SLBlockReg<LampBlock, BaseBlockItem> addLamp(DyeColor color, boolean state) {
-        return new SLBlockReg<>("illuminant_" + color.getName() + "_block" + (state?"_on":""), () -> new LampBlock(state, color), b -> new BaseBlockItem(b, ITEMPROPERTIES, state?ILLUMINANTBLOCK_ON::getBlock:ILLUMINANTBLOCK::getBlock));
-    }
-
-    public static SLBlockReg<ThinLamp, BaseBlockItem> addThin(boolean panel, DyeColor color) {
-        return new SLBlockReg<>("illuminant_" + (panel ?"panel":"slab") + "_" + color.getName(), () -> new ThinLamp(panel?4:8, color), b -> new BaseBlockItem(b, ITEMPROPERTIES, panel?ILLUMINANT_PANEL::getBlock:ILLUMINANT_SLAB::getBlock));
-    }
-
-    public static SLBlockReg<RodLamp, BaseBlockItem> addRod(DyeColor color) {
-        return new SLBlockReg<>("rodlamp_" + color.getName(), () -> new RodLamp(color), b -> new BaseBlockItem(b, ITEMPROPERTIES, RODLAMP::getBlock));
-    }
-
-    public static SLBlockReg<LightBulb, BaseBlockItem> addBulb(DyeColor color) {
-        return new SLBlockReg<>("lightbulb_" + color.getName(), () -> new LightBulb(color), b -> new BaseBlockItem(b, ITEMPROPERTIES, LIGHTBULB::getBlock));
-    }
-
-    public static SLBlockReg<Fixture, BaseBlockItem> addFixture(DyeColor color) {
-        return new SLBlockReg<>("wall_lamp_" + color.getName(), () -> new Fixture(color), b -> new BaseBlockItem(b, ITEMPROPERTIES, FIXTURE::getBlock));
-    }
-
-    public static SLBlockReg<LampPost, LampPostItem> addPost(DyeColor color) {
-        return new SLBlockReg<>("lamp_post_" + color.getName(), () -> new LampPost(color), b -> new LampPostItem(b, LAMP_POST::getBlock));
-    }
-
-    public static SLBlockReg<EdgeLight, BaseBlockItem> addEdge(DyeColor color, boolean top) {
-        return new SLBlockReg<>("edge_light_" + (top?"top_":"") + color.getName(), () -> new EdgeLight(top, color), b -> new BaseBlockItem(b, ITEMPROPERTIES, top? EDGELAMP_TOP::getBlock:EDGELAMP::getBlock));
-    }
 
     public static void init(IEventBus bus) {
         BLOCKS.register(bus);
@@ -221,6 +191,33 @@ public class SLBlocks {
     public static final SLBlockReg<LampBlock, BaseBlockItem> ILLUMINANT_BLOCK_BLACK = addLamp(DyeColor.BLACK, false);
     public static final SLBlockReg<LampBlock, BaseBlockItem> ILLUMINANT_BLOCK_BLACK_ON = addLamp(DyeColor.BLACK, true);
 
+    public static SLBlockReg<LampBlock, BaseBlockItem> addLamp(DyeColor color, boolean state) {
+        return new SLBlockReg<>("illuminant_" + color.getName() + "_block" + (state?"_on":""), () -> new LampBlock(state, color), b -> new BaseBlockItem(b, ITEMPROPERTIES, state?ILLUMINANTBLOCK_ON::getBlock:ILLUMINANTBLOCK::getBlock));
+    }
+
+    public static SLBlockReg<ThinLamp, BaseBlockItem> addThin(boolean panel, DyeColor color) {
+        return new SLBlockReg<>("illuminant_" + (panel ?"panel":"slab") + "_" + color.getName(), () -> new ThinLamp(panel?4:8, color), b -> new BaseBlockItem(b, ITEMPROPERTIES, panel?ILLUMINANT_PANEL::getBlock:ILLUMINANT_SLAB::getBlock));
+    }
+
+    public static SLBlockReg<RodLamp, BaseBlockItem> addRod(DyeColor color) {
+        return new SLBlockReg<>("rodlamp_" + color.getName(), () -> new RodLamp(color), b -> new BaseBlockItem(b, ITEMPROPERTIES, RODLAMP::getBlock));
+    }
+
+    public static SLBlockReg<LightBulb, BaseBlockItem> addBulb(DyeColor color) {
+        return new SLBlockReg<>("lightbulb_" + color.getName(), () -> new LightBulb(color), b -> new BaseBlockItem(b, ITEMPROPERTIES, LIGHTBULB::getBlock));
+    }
+
+    public static SLBlockReg<Fixture, BaseBlockItem> addFixture(DyeColor color) {
+        return new SLBlockReg<>("wall_lamp_" + color.getName(), () -> new Fixture(color), b -> new BaseBlockItem(b, ITEMPROPERTIES, FIXTURE::getBlock));
+    }
+
+    public static SLBlockReg<LampPost, LampPostItem> addPost(DyeColor color) {
+        return new SLBlockReg<>("lamp_post_" + color.getName(), () -> new LampPost(color), b -> new LampPostItem(b, LAMP_POST::getBlock));
+    }
+
+    public static SLBlockReg<EdgeLight, BaseBlockItem> addEdge(DyeColor color, boolean top) {
+        return new SLBlockReg<>("edge_light_" + (top?"top_":"") + color.getName(), () -> new EdgeLight(top, color), b -> new BaseBlockItem(b, ITEMPROPERTIES, top? EDGELAMP_TOP::getBlock:EDGELAMP::getBlock));
+    }
 
     public static final Set<SLBlockReg<LampBlock, BaseBlockItem>> LAMPBLOCKS_OFF = ImmutableSet.of(
             ILLUMINANTBLOCK, ILLUMINANT_BLOCK_LIGHT_GRAY, ILLUMINANT_BLOCK_GRAY, ILLUMINANT_BLOCK_BLACK,

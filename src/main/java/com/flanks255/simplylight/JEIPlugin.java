@@ -27,8 +27,8 @@ public class JEIPlugin implements IModPlugin {
         SLBlocks.ITEMS.getEntries().forEach((itemSupplier) -> {
             var item = itemSupplier.get();
             String key = item.getDescriptionId()+".jei.info";
-            if (item instanceof BaseBlockItem)
-                key = ((BaseBlockItem)item).getTooltipBase()+".jei.info";
+            if (item instanceof BaseBlockItem baseBlockItem)
+                key = baseBlockItem.getTooltipBase()+".jei.info";
             if (I18n.exists(key)) {
                 registration.addIngredientInfo(new ItemStack(item), VanillaTypes.ITEM_STACK, Component.translatable(key));
             }

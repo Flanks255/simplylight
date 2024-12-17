@@ -40,11 +40,6 @@ public class BaseBlockItem extends BlockItem implements Equipable {
     private final Block block;
     private final Block alternateTooltipBlock;
 
-/*    @Override
-    public boolean canEquip(@Nonnull ItemStack stack, @Nonnull EquipmentSlot armorType, @Nonnull Entity entity) {
-        return armorType == EquipmentSlot.HEAD || super.canEquip(stack, armorType, entity);
-    }*/
-
     public String getTooltipBase() {
         if (alternateTooltipBlock != null)
             return alternateTooltipBlock.getDescriptionId();
