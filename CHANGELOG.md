@@ -3,6 +3,7 @@
 * Added variations to Bulbs, Rods, Fixtures, Columns and Edge lights.
 * Added Full Japanese(ja_jp) translation, Thanks Momo-i2!
 * Added Partial Chinese(zh_cn) translation from Aemande123.
+* Fixed missing particle texture on the Bulbs.
 
 # 1.4.6+1.21
 * Ported to 1.21.0 NeoForge

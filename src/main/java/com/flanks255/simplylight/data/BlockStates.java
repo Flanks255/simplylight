@@ -133,6 +133,8 @@ public class BlockStates  extends BlockStateProvider {
                 .child("Translucent", models().nested().renderType("minecraft:translucent").parent(glow))
                 .end();
 
+        model.texture("particle", isWhite? modLoc("block/omni"): modLoc("block/omni/omni_"+ color.getName()));
+
         myDirectionalBlock(block.get(), $ -> model, 180);
     }
 

@@ -13,5 +13,8 @@
     "Solid",
     "Translucent"
   ],
-  "loader": "neoforge:composite"
+  "loader": "neoforge:composite",
+  "textures": {
+    "particle": "simplylight:block/omni/omni_purple"
+  }
 }
