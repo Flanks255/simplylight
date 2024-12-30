@@ -1,6 +1,7 @@
 package com.flanks255.simplylight;
 
 import com.flanks255.simplylight.data.Generator;
+import com.flanks255.simplylight.network.SLNetwork;
 import com.flanks255.simplylight.util.RecipeUnlocker;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -66,6 +67,7 @@ public class SimplyLight
         TABS.register(bus);
 
         bus.addListener(Generator::gatherData);
+        bus.addListener(SLNetwork::register);
 
         RecipeUnlocker.register(SimplyLight.MODID, NeoForge.EVENT_BUS, 4);
 

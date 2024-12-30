@@ -19,6 +19,13 @@ public class LangGen extends LanguageProvider {
         add("simplylight.redstone", "Redstone");
         add("simplylight.pack.fullblock_ctm", "Simply Light Full block CTM");
 
+        add("simplylight.gui.facing", "Facing");
+        add("simplylight.gui.exit", "Exit");
+        add("simplylight.gui.north", "North");
+        add("simplylight.gui.east", "East");
+        add("simplylight.gui.south", "South");
+        add("simplylight.gui.west", "West");
+
         SLBlocks.BLOCKS.getEntries().forEach(block -> ((LampBase) block.get()).addLang(this::add));
     }
 }

@@ -1,13 +1,12 @@
 package com.flanks255.simplylight.blocks;
 
-import com.flanks255.simplylight.SLBlocks;
+import com.flanks255.simplylight.network.OpenEdgeEditorPacket;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -26,6 +25,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.neoforged.neoforge.network.PacketDistributor;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -81,6 +81,34 @@ public class EdgeLight extends LampBase implements SimpleWaterloggedBlock {
             return VS_ALL;
 
         return shape;
+    }
+
+    @Nonnull
+    @Override
+    protected InteractionResult useWithoutItem(@Nonnull BlockState state, @Nonnull Level level, @Nonnull BlockPos pos, @Nonnull Player player, @Nonnull BlockHitResult hitResult) {
+        if (!level.isClientSide && player.isCrouching() && player instanceof ServerPlayer serverPlayer) {
+            byte stateByte = 0;
+            stateByte += (byte) (state.getValue(NORTH)?1:0);
+            stateByte += (byte) (state.getValue(EAST)?2:0);
+            stateByte += (byte) (state.getValue(SOUTH)?4:0);
+            stateByte += (byte) (state.getValue(WEST)?8:0);
+
+            PacketDistributor.sendToPlayer(serverPlayer, new OpenEdgeEditorPacket(pos, stateByte));
+        }
+        return super.useWithoutItem(state, level, pos, player, hitResult);
+    }
+
+    public static void updateShape(Level level, BlockPos pos, byte state) {
+        if (level.isClientSide)
+            return;
+        if (level.getBlockState(pos).getBlock() instanceof EdgeLight) {
+            BlockState blockState = level.getBlockState(pos);
+            blockState = blockState.setValue(NORTH, (state & 1) != 0);
+            blockState = blockState.setValue(EAST, (state & 2) != 0);
+            blockState = blockState.setValue(SOUTH, (state & 4) != 0);
+            blockState = blockState.setValue(WEST, (state & 8) != 0);
+            level.setBlockAndUpdate(pos, blockState);
+        }
     }
 
     public boolean checkSide(BlockPlaceContext context, Direction direction) {
