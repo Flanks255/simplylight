@@ -7,6 +7,7 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
@@ -61,10 +62,28 @@ public class EdgeEditorGUI extends Screen {
         Player player = Minecraft.getInstance().player;
         if (player == null)
             return;
-        Component string = Component.translatable("simplylight.gui.facing");
-        int x = guiLeft + xSize - font.width(string) - 4;
-        guiGraphics.drawString(font, string, x, guiTop + 8, 0x404040, false);
-        guiGraphics.drawString(font, player.getNearestViewDirection().toString(), x, guiTop + 18, 0x404040, false);
+        Component facing = Component.translatable("simplylight.gui.facing");
+        Component direction = getDirectionText(getNearestHorizontal(player));
+        int x = (guiLeft + xSize - 4) - Math.max(font.width(facing), font.width(direction));
+        guiGraphics.drawString(font, facing, x, guiTop + 8, 0x404040, false);
+        guiGraphics.drawString(font, direction, x, guiTop + 18, 0x404040, false);
+    }
+
+    private Direction getNearestHorizontal(Player player) {
+        for (Direction direction : Direction.orderedByNearest(player)) {
+            if (direction.getAxis().isHorizontal())
+                return direction;
+        }
+        return Direction.NORTH;
+    }
+
+    private Component getDirectionText(Direction direction) {
+        return switch(direction) {
+            case EAST -> Component.translatable("simplylight.gui.east");
+            case SOUTH -> Component.translatable("simplylight.gui.south");
+            case WEST -> Component.translatable("simplylight.gui.west");
+            default -> Component.translatable("simplylight.gui.north");
+        };
     }
 
     private void button(Button button) {

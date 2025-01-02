@@ -1,3 +1,7 @@
+# 1.5.1+mc1.21.1
+* Localized the facing direction in the Edge light editor gui.
+* Merged updated Japanese translation.
+
 # 1.5.0+mc1.21.1
 * Added color variations to Bulbs, Rods, Fixtures, Columns and Edge lights.
 * Added CTM textures for Illuminant Blocks in a disabled by default built-in optional resource pack.
