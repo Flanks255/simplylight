@@ -86,7 +86,7 @@ public class Recipes extends RecipeProvider {
             .define('b', Items.GLOWSTONE)
             .save(output, SimplyLight.SLRes("illuminant_slab"));
 
-        // Slab from panel
+/*        // Slab from panel
         ShapelessBuilder.shapeless(SLBlocks.ILLUMINANT_SLAB.getItem())
             .requires(SLBlocks.ILLUMINANT_PANEL.getItem())
             .requires(SLBlocks.ILLUMINANT_PANEL.getItem())
@@ -96,7 +96,24 @@ public class Recipes extends RecipeProvider {
         ShapedBuilder.shaped(SLBlocks.ILLUMINANT_PANEL.getItem(), 6)
             .pattern("aaa")
             .define('a', SLBlocks.ILLUMINANT_SLAB.getItem())
-            .save(output, SimplyLight.SLRes("illuminant_panel"));
+            .save(output, SimplyLight.SLRes("illuminant_panel"));*/
+
+        panelSlabRecipe(SLBlocks.ILLUMINANT_PANEL.getItem(), SLBlocks.ILLUMINANT_SLAB.getItem(), output);
+        panelSlabRecipe(SLBlocks.ILLUMINANT_PANEL_ORANGE.getItem(), SLBlocks.ILLUMINANT_SLAB_ORANGE.getItem(), output);
+        panelSlabRecipe(SLBlocks.ILLUMINANT_PANEL_MAGENTA.getItem(), SLBlocks.ILLUMINANT_SLAB_MAGENTA.getItem(), output);
+        panelSlabRecipe(SLBlocks.ILLUMINANT_PANEL_LIGHT_BLUE.getItem(), SLBlocks.ILLUMINANT_SLAB_LIGHT_BLUE.getItem(), output);
+        panelSlabRecipe(SLBlocks.ILLUMINANT_PANEL_YELLOW.getItem(), SLBlocks.ILLUMINANT_SLAB_YELLOW.getItem(), output);
+        panelSlabRecipe(SLBlocks.ILLUMINANT_PANEL_LIME.getItem(), SLBlocks.ILLUMINANT_SLAB_LIME.getItem(), output);
+        panelSlabRecipe(SLBlocks.ILLUMINANT_PANEL_PINK.getItem(), SLBlocks.ILLUMINANT_SLAB_PINK.getItem(), output);
+        panelSlabRecipe(SLBlocks.ILLUMINANT_PANEL_GRAY.getItem(), SLBlocks.ILLUMINANT_SLAB_GRAY.getItem(), output);
+        panelSlabRecipe(SLBlocks.ILLUMINANT_PANEL_LIGHT_GRAY.getItem(), SLBlocks.ILLUMINANT_SLAB_LIGHT_GRAY.getItem(), output);
+        panelSlabRecipe(SLBlocks.ILLUMINANT_PANEL_CYAN.getItem(), SLBlocks.ILLUMINANT_SLAB_CYAN.getItem(), output);
+        panelSlabRecipe(SLBlocks.ILLUMINANT_PANEL_PURPLE.getItem(), SLBlocks.ILLUMINANT_SLAB_PURPLE.getItem(), output);
+        panelSlabRecipe(SLBlocks.ILLUMINANT_PANEL_BLUE.getItem(), SLBlocks.ILLUMINANT_SLAB_BLUE.getItem(), output);
+        panelSlabRecipe(SLBlocks.ILLUMINANT_PANEL_BROWN.getItem(), SLBlocks.ILLUMINANT_SLAB_BROWN.getItem(), output);
+        panelSlabRecipe(SLBlocks.ILLUMINANT_PANEL_GREEN.getItem(), SLBlocks.ILLUMINANT_SLAB_GREEN.getItem(), output);
+        panelSlabRecipe(SLBlocks.ILLUMINANT_PANEL_BLACK.getItem(), SLBlocks.ILLUMINANT_SLAB_BLACK.getItem(), output);
+        panelSlabRecipe(SLBlocks.ILLUMINANT_PANEL_RED.getItem(), SLBlocks.ILLUMINANT_SLAB_RED.getItem(), output);
 
         // Rod Lamp
         ShapedBuilder.shaped(SLBlocks.RODLAMP.getItem(), 8)
@@ -200,6 +217,18 @@ public class Recipes extends RecipeProvider {
             .define('B', dyeItem)
             .define('A', inputTag)
             .save(consumer, SimplyLight.SLRes(result.getRegistryName().getPath() + "_dyed"));
+    }
+
+    private void panelSlabRecipe(BaseBlockItem panel, BaseBlockItem slab, RecipeOutput consumer) {
+        ShapedBuilder.shaped(panel, 6)
+            .pattern("AAA")
+            .define('A', slab)
+            .save(consumer, SimplyLight.SLRes(panel.getRegistryName().getPath() + "_split"));
+
+        ShapelessBuilder.shapeless(slab)
+                .requires(panel)
+                .requires(panel)
+                .save(consumer, SimplyLight.SLRes(slab.getRegistryName().getPath() + "_combine"));
     }
 
     private static class ShapedBuilder extends ShapedRecipeBuilder {

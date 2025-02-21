@@ -2,16 +2,16 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "a": {
-      "item": "simplylight:illuminant_slab"
+    "A": {
+      "item": "simplylight:illuminant_slab_lime"
     }
   },
   "pattern": [
-    "aaa"
+    "AAA"
   ],
   "result": {
     "count": 6,
-    "id": "simplylight:illuminant_panel"
+    "id": "simplylight:illuminant_panel_lime"
   },
   "show_notification": false
 }

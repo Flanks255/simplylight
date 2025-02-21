@@ -1,3 +1,7 @@
+# 1.5.3+mc1.21.1
+* Fixed dye recipes giving the wrong amount of items.
+* Added Split and Combine recipes for dyed slabs and panels.
+
 # 1.5.2+mc1.21.1
 * Fixed edge lights missing default state causing waterlogging with building gadgets.
 
