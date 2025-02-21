@@ -193,7 +193,7 @@ public class Recipes extends RecipeProvider {
     }
 
     private void dyeRecipe(BaseBlockItem result, Item dyeItem, TagKey<Item> inputTag, RecipeOutput consumer) {
-        ShapedBuilder.shaped(result, 6)
+        ShapedBuilder.shaped(result, 8)
             .pattern("AAA")
             .pattern("ABA")
             .pattern("AAA")
