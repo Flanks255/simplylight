@@ -51,6 +51,13 @@ public class EdgeLight extends LampBase implements SimpleWaterloggedBlock {
             VS_NORTH = Shapes.box(0.0, 0.9375, 0.0, 1.0, 1.0, 0.0625);
             VS_ALL = Shapes.or(VS_WEST, VS_EAST, VS_NORTH, VS_SOUTH);
         }
+
+        registerDefaultState(getStateDefinition().any()
+            .setValue(NORTH, false)
+            .setValue(SOUTH, false)
+            .setValue(EAST, false)
+            .setValue(WEST, false)
+            .setValue(BlockStateProperties.WATERLOGGED, false));
     }
 
     public VoxelShape VS_WEST = Shapes.box(0.0, 0.0, 0.0, 0.0625, 0.0625, 1.0);

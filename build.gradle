@@ -87,7 +87,7 @@ dependencies {
     runtimeOnly "curse.maven:JADE-324717:5493270"
     runtimeOnly "curse.maven:ATLAS-633577:5490697"
     runtimeOnly "curse.maven:CTM-267602:5587515"
-    //compileOnly fg.deobf("curse.maven:BUILDINGGADGETS-298187:4423592")
+    runtimeOnly "curse.maven:BUILDINGGADGETS-298187:5968587"
 }
 
 jar {

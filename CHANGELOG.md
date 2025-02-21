@@ -1,3 +1,6 @@
+# 1.5.2+mc1.21.1
+* Fixed edge lights missing default state causing waterlogging with building gadgets.
+
 # 1.5.1+mc1.21.1
 * Localized the facing direction in the Edge light editor gui.
 * Merged updated Japanese translation.
