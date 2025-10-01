@@ -41,19 +41,22 @@ neoForge {
     }
 }
 
-var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {
-    var replaceProperties = [
-            loader_version:neoforge_loader_version_range,
-            mod_version:version
-    ]
+sourceSets.main.resources { srcDir 'src/generated/resources' }
 
-    inputs.properties replaceProperties
-    expand replaceProperties
-    from "src/main/templates"
-    into "build/generated/sources/modMetadata"
+repositories {
+    maven { url = 'https://maven.creeperhost.net/' }
+    maven { url = 'https://www.cursemaven.com' }
+    maven { url = 'https://maven.saps.dev/releases' }
 }
 
-sourceSets.main.resources.srcDir generateModMetadata
-neoForge.ideSyncTask generateModMetadata
+dependencies {
+    compileOnly "mezz.jei:jei-${jei_mc_version}-common-api:${jei_version}"//new
+    compileOnly "mezz.jei:jei-${jei_mc_version}-neoforge-api:${jei_version}"
+    runtimeOnly "mezz.jei:jei-${jei_mc_version}-neoforge:${jei_version}"
 
-sourceSets.main.resources { srcDir 'src/generated/resources' }
+//    compileOnly fg.deobf("curse.maven:TOP-245211:4159743")
+    runtimeOnly "curse.maven:JADE-324717:5493270"
+    runtimeOnly "curse.maven:ATLAS-633577:5490697"
+    runtimeOnly "curse.maven:CTM-267602:5587515"
+    runtimeOnly "curse.maven:BUILDINGGADGETS-298187:5968587"
+}

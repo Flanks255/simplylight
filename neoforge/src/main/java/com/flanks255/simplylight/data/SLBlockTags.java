@@ -1,7 +1,8 @@
 package com.flanks255.simplylight.data;
 
 import com.flanks255.simplylight.SLBlocks;
-import com.flanks255.simplylight.SimplyLight;
+import com.flanks255.simplylight.SimplyLightCommon;
+import com.flanks255.simplylight.SimplyLightNeoForge;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.tags.BlockTags;
@@ -16,7 +17,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class SLBlockTags extends BlockTagsProvider {
     public SLBlockTags(DataGenerator generator, CompletableFuture<HolderLookup.Provider> thingIDontUse, @Nullable ExistingFileHelper existingFileHelper) {
-        super(generator.getPackOutput(), thingIDontUse, SimplyLight.MODID, existingFileHelper);
+        super(generator.getPackOutput(), thingIDontUse, SimplyLightCommon.MODID, existingFileHelper);
     }
     @Override
     protected void addTags(@Nonnull HolderLookup.Provider something) {

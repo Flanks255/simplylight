@@ -15,7 +15,7 @@ import javax.annotation.Nonnull;
 
 @JeiPlugin
 public class JEIPlugin implements IModPlugin {
-    public static final ResourceLocation ID = SimplyLight.SLRes("jei_plugin");
+    public static final ResourceLocation ID = SimplyLightNeoForge.SLRes("jei_plugin");
     @Nonnull
     @Override
     public ResourceLocation getPluginUid() {

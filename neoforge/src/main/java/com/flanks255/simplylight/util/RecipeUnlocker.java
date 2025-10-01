@@ -1,6 +1,7 @@
 package com.flanks255.simplylight.util;
 
-import com.flanks255.simplylight.SimplyLight;
+import com.flanks255.simplylight.SimplyLightCommon;
+import com.flanks255.simplylight.SimplyLightNeoForge;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
@@ -33,7 +34,7 @@ public class RecipeUnlocker {
             MinecraftServer server = player.getServer();
             if (server != null) {
                 var recipes = new ArrayList<>(server.getRecipeManager().getRecipes());
-                recipes.removeIf((recipe -> !recipe.id().getNamespace().contains(SimplyLight.MODID)));
+                recipes.removeIf((recipe -> !recipe.id().getNamespace().contains(SimplyLightCommon.MODID)));
                 player.awardRecipes(recipes);
                 tag.putInt(modTag, version);
             }

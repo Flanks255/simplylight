@@ -25,12 +25,10 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.function.Supplier;
 
-@Mod(SimplyLight.MODID)
-public class SimplyLight
+@Mod(SimplyLightCommon.MODID)
+public class SimplyLightNeoForge
 {
-    public static final String MODID = "simplylight";
-    public static final Logger LOGGER = LogManager.getLogger("Simply Light");
-    public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, SimplyLight.MODID);
+    public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, SimplyLightCommon.MODID);
 
     private static final CreativeModeTab.DisplayItemsGenerator TABITEMS = (params, output) -> {
         SLBlocks.LAMPBLOCKS_ON.forEach(block -> output.accept(block.getItem()));
@@ -62,22 +60,22 @@ public class SimplyLight
     public static final TagKey<Item> ANY_EDGE_LIGHT = TagKey.create(Registries.ITEM, SLRes("any_edge_light"));
     public static final TagKey<Item> ANY_EDGE_LIGHT_TOP = TagKey.create(Registries.ITEM, SLRes("any_edge_light_top"));
 
-    public SimplyLight(IEventBus bus, ModContainer container, Dist dist) {
+    public SimplyLightNeoForge(IEventBus bus, ModContainer container, Dist dist) {
         SLBlocks.init(bus);
         TABS.register(bus);
 
         bus.addListener(Generator::gatherData);
         bus.addListener(SLNetwork::register);
 
-        RecipeUnlocker.register(SimplyLight.MODID, NeoForge.EVENT_BUS, 4);
+        RecipeUnlocker.register(SimplyLightCommon.MODID, NeoForge.EVENT_BUS, 4);
 
         if (dist.isClient()) {
-            bus.addListener(SimplyLight::PackFinders);
+            bus.addListener(SimplyLightNeoForge::PackFinders);
         }
     }
 
     public static ResourceLocation SLRes(String path) {
-        return ResourceLocation.fromNamespaceAndPath(SimplyLight.MODID, path);
+        return ResourceLocation.fromNamespaceAndPath(SimplyLightCommon.MODID, path);
     }
 
     public static void PackFinders(AddPackFindersEvent event) {

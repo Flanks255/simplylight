@@ -1,10 +1,10 @@
 modLoader="javafml"
-loaderVersion="${loader_version}"
+loaderVersion="${neoforge_loader_version_range}"
 license="MIT"
 issueTrackerURL="https://github.com/Flanks255/simplylight/issues"
 [[mods]]
 modId="simplylight"
-version="${mod_version}"
+version="${version}"
 displayName="Simply Light"
 logoFile= "logo.png"
 credits=""

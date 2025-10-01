@@ -1,6 +1,6 @@
 package com.flanks255.simplylight.gui;
 
-import com.flanks255.simplylight.SimplyLight;
+import com.flanks255.simplylight.SimplyLightNeoForge;
 import com.flanks255.simplylight.network.UpdateEdgeLightPacket;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
@@ -16,7 +16,7 @@ import net.neoforged.neoforge.network.PacketDistributor;
 import javax.annotation.Nonnull;
 
 public class EdgeEditorGUI extends Screen {
-    private static final ResourceLocation BG = SimplyLight.SLRes("textures/gui/small_editor.png");
+    private static final ResourceLocation BG = SimplyLightNeoForge.SLRes("textures/gui/small_editor.png");
 
     private final BlockPos target;
     private byte state;
@@ -100,7 +100,7 @@ public class EdgeEditorGUI extends Screen {
     }
 
     class SwitchButton extends Button {
-        private static final ResourceLocation SWITCH = SimplyLight.SLRes("textures/gui/switch.png");
+        private static final ResourceLocation SWITCH = SimplyLightNeoForge.SLRes("textures/gui/switch.png");
         public SwitchButton(int x, int y, Component text, boolean initial, OnPress pressable) {
             super(x,y,32,16, text, pressable, Button.DEFAULT_NARRATION);
             this.textKey = text;

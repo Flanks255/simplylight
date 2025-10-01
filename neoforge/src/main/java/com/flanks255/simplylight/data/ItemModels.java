@@ -1,7 +1,8 @@
 package com.flanks255.simplylight.data;
 
 import com.flanks255.simplylight.SLBlocks;
-import com.flanks255.simplylight.SimplyLight;
+import com.flanks255.simplylight.SimplyLightCommon;
+import com.flanks255.simplylight.SimplyLightNeoForge;
 import com.flanks255.simplylight.blocks.*;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.item.DyeColor;
@@ -15,7 +16,7 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 public class ItemModels extends ItemModelProvider {
 
     public ItemModels(DataGenerator generator, ExistingFileHelper existingFileHelper) {
-        super(generator.getPackOutput(), SimplyLight.MODID, existingFileHelper);
+        super(generator.getPackOutput(), SimplyLightCommon.MODID, existingFileHelper);
     }
 
     @Override

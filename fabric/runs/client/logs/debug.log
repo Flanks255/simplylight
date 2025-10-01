@@ -1,12 +1,12 @@
-[17:30:35] [main/INFO] (FabricLoader/GameProvider) Loading Minecraft 1.21.1 with Fabric Loader 0.16.9
-[17:30:35] [main/DEBUG] (FabricLoader/GamePatch) Found game constructor: net.minecraft.client.main.Main -> net.minecraft.client.Minecraft
-[17:30:35] [main/DEBUG] (FabricLoader/GamePatch) Patching game constructor <init>(Lnet/minecraft/client/main/GameConfig;)V
-[17:30:35] [main/DEBUG] (FabricLoader/GamePatch) Run directory field is thought to be net/minecraft/client/Minecraft/gameDirectory
-[17:30:35] [main/DEBUG] (FabricLoader/GamePatch) Applying brand name hook to net/minecraft/client/ClientBrandRetriever::getClientModName
-[17:30:35] [main/DEBUG] (FabricLoader/GamePatch) Applying brand name hook to net/minecraft/server/MinecraftServer::getServerModName
-[17:30:35] [main/DEBUG] (FabricLoader/Mappings) Loading mappings took 100 ms
-[17:30:35] [main/DEBUG] (FabricLoader/GamePatch) Patched 3 classs
-[17:30:35] [main/ERROR] (FabricLoader) Incompatible mods found!
+[07:43:38] [main/INFO] (FabricLoader/GameProvider) Loading Minecraft 1.21.1 with Fabric Loader 0.16.9
+[07:43:38] [main/DEBUG] (FabricLoader/GamePatch) Found game constructor: net.minecraft.client.main.Main -> net.minecraft.client.Minecraft
+[07:43:38] [main/DEBUG] (FabricLoader/GamePatch) Patching game constructor <init>(Lnet/minecraft/client/main/GameConfig;)V
+[07:43:38] [main/DEBUG] (FabricLoader/GamePatch) Run directory field is thought to be net/minecraft/client/Minecraft/gameDirectory
+[07:43:38] [main/DEBUG] (FabricLoader/GamePatch) Applying brand name hook to net/minecraft/client/ClientBrandRetriever::getClientModName
+[07:43:38] [main/DEBUG] (FabricLoader/GamePatch) Applying brand name hook to net/minecraft/server/MinecraftServer::getServerModName
+[07:43:38] [main/DEBUG] (FabricLoader/Mappings) Loading mappings took 91 ms
+[07:43:38] [main/DEBUG] (FabricLoader/GamePatch) Patched 3 classs
+[07:43:38] [main/ERROR] (FabricLoader) Incompatible mods found!
 net.fabricmc.loader.impl.FormattedException: net.fabricmc.loader.impl.discovery.ModResolutionException: Mod discovery failed!
 	at net.fabricmc.loader.impl.FormattedException.ofLocalized(FormattedException.java:63) ~[fabric-loader-0.16.9.jar:?]
 	at net.fabricmc.loader.impl.FabricLoaderImpl.load(FabricLoaderImpl.java:198) ~[fabric-loader-0.16.9.jar:?]

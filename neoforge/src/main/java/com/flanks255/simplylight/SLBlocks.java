@@ -10,8 +10,8 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import java.util.Set;
 
 public class SLBlocks {
-    public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(SimplyLight.MODID);
-    public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(SimplyLight.MODID);
+    public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(SimplyLightCommon.MODID);
+    public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(SimplyLightCommon.MODID);
 
     private static final Item.Properties ITEMPROPERTIES = new Item.Properties();
 

@@ -2,7 +2,7 @@ package com.flanks255.simplylight;
 
 import net.minecraftforge.fml.common.Mod;
 
-@Mod(SimplyLightCommon.MOD_ID)
+@Mod(SimplyLightCommon.MODID)
 public class SimplyLightForge {
 
     public SimplyLightForge() {

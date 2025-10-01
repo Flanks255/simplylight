@@ -1,5 +1,5 @@
-[17:30:35] [main/INFO] (FabricLoader/GameProvider) Loading Minecraft 1.21.1 with Fabric Loader 0.16.9
-[17:30:35] [main/ERROR] (FabricLoader) Incompatible mods found!
+[07:43:38] [main/INFO] (FabricLoader/GameProvider) Loading Minecraft 1.21.1 with Fabric Loader 0.16.9
+[07:43:38] [main/ERROR] (FabricLoader) Incompatible mods found!
 net.fabricmc.loader.impl.FormattedException: net.fabricmc.loader.impl.discovery.ModResolutionException: Mod discovery failed!
 	at net.fabricmc.loader.impl.FormattedException.ofLocalized(FormattedException.java:63) ~[fabric-loader-0.16.9.jar:?]
 	at net.fabricmc.loader.impl.FabricLoaderImpl.load(FabricLoaderImpl.java:198) ~[fabric-loader-0.16.9.jar:?]

@@ -2,7 +2,8 @@ package com.flanks255.simplylight.data;
 
 import com.flanks255.simplylight.SLBlockReg;
 import com.flanks255.simplylight.SLBlocks;
-import com.flanks255.simplylight.SimplyLight;
+import com.flanks255.simplylight.SimplyLightCommon;
+import com.flanks255.simplylight.SimplyLightNeoForge;
 import com.flanks255.simplylight.blocks.*;
 import net.minecraft.core.Direction;
 import net.minecraft.data.DataGenerator;
@@ -24,7 +25,7 @@ import java.util.function.Function;
 public class BlockStates  extends BlockStateProvider {
     ExistingFileHelper existingFileHelper;
     public BlockStates(DataGenerator gen, ExistingFileHelper exFileHelper) {
-        super(gen.getPackOutput(), SimplyLight.MODID, exFileHelper);
+        super(gen.getPackOutput(), SimplyLightCommon.MODID, exFileHelper);
         existingFileHelper = exFileHelper;
     }
 
@@ -141,7 +142,7 @@ public class BlockStates  extends BlockStateProvider {
 /*
     private void generateEdgeBlocks() {
         ModelFile model = models().getExistingFile(modLoc("block/edge_light"));
-        MultiPartBlockStateBuilder builder = getMultipartBuilder(SimplyLight.EDGELAMP.get());
+        MultiPartBlockStateBuilder builder = getMultipartBuilder(SimplyLightNeoForge.EDGELAMP.get());
 
         builder.part().modelFile(model).addModel().useOr()
                 .condition(EdgeLight.NORTH, true);
