@@ -1,6 +1,6 @@
 package com.flanks255.simplylight.network;
 
-import com.flanks255.simplylight.SimplyLightNeoForge;
+import com.flanks255.simplylight.SimplyLightCommon;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
@@ -11,7 +11,7 @@ import net.neoforged.neoforge.network.handling.IPayloadContext;
 import javax.annotation.Nonnull;
 
 public record OpenEdgeEditorPacket(BlockPos target, byte initialState) implements CustomPacketPayload {
-    public static final Type<OpenEdgeEditorPacket> TYPE = new CustomPacketPayload.Type<>(SimplyLightNeoForge.SLRes("open_edge_editor"));
+    public static final Type<OpenEdgeEditorPacket> TYPE = new CustomPacketPayload.Type<>(SimplyLightCommon.SLRes("open_edge_editor"));
     public static final StreamCodec<FriendlyByteBuf, OpenEdgeEditorPacket> STREAM_CODEC = StreamCodec.composite(
             BlockPos.STREAM_CODEC, $ -> $.target,
             ByteBufCodecs.BYTE, $ -> $.initialState,

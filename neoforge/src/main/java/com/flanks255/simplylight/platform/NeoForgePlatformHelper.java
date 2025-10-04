@@ -1,6 +1,7 @@
 package com.flanks255.simplylight.platform;
 
 import com.flanks255.simplylight.network.OpenEdgeEditorPacket;
+import com.flanks255.simplylight.network.UpdateEdgeLightPacket;
 import com.flanks255.simplylight.platform.services.IPlatformHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
@@ -28,5 +29,10 @@ public class NeoForgePlatformHelper implements IPlatformHelper {
     @Override
     public void sendEdgeEditorPacket(ServerPlayer player, BlockPos pos, byte initialState) {
         PacketDistributor.sendToPlayer(player, new OpenEdgeEditorPacket(pos, initialState));
+    }
+
+    @Override
+    public void sendEdgeUpdatePacket(BlockPos targetPos, byte newState) {
+        PacketDistributor.sendToServer(new UpdateEdgeLightPacket(targetPos, newState));
     }
 }

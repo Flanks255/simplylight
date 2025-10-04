@@ -2,7 +2,6 @@ package com.flanks255.simplylight.data;
 
 import com.flanks255.simplylight.SLBlocks;
 import com.flanks255.simplylight.SimplyLightCommon;
-import com.flanks255.simplylight.SimplyLightNeoForge;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.ItemTagsProvider;
@@ -20,15 +19,15 @@ public class SLItemTags extends ItemTagsProvider {
 
     @Override
     protected void addTags(@Nonnull HolderLookup.Provider useless) {
-        SLBlocks.LAMPBLOCKS_ON.forEach( lamp -> tag(SimplyLightNeoForge.ANY_ON_LAMP).add(lamp.getItem()));
-        SLBlocks.LAMPBLOCKS_OFF.forEach( lamp -> tag(SimplyLightNeoForge.ANY_OFF_LAMP).add(lamp.getItem()));
-        SLBlocks.SLABS.forEach( slab -> tag(SimplyLightNeoForge.ANY_SLAB).add(slab.getItem()));
-        SLBlocks.PANELS.forEach( panel -> tag(SimplyLightNeoForge.ANY_PANEL).add(panel.getItem()));
-        SLBlocks.RODS.forEach( rod -> tag(SimplyLightNeoForge.ANY_ROD).add(rod.getItem()));
-        SLBlocks.BULBS.forEach( bulb -> tag(SimplyLightNeoForge.ANY_BULB).add(bulb.getItem()));
-        SLBlocks.FIXTURES.forEach( fixture -> tag(SimplyLightNeoForge.ANY_FIXTURE).add(fixture.getItem()));
-        SLBlocks.POSTS.forEach( post -> tag(SimplyLightNeoForge.ANY_POST).add(post.getItem()));
-        SLBlocks.EDGE_LIGHTS.forEach( edge -> tag(SimplyLightNeoForge.ANY_EDGE_LIGHT).add(edge.getItem()));
-        SLBlocks.EDGE_LIGHTS_TOP.forEach( edge -> tag(SimplyLightNeoForge.ANY_EDGE_LIGHT_TOP).add(edge.getItem()));
+        SLBlocks.LAMPBLOCKS_ON.forEach( lamp -> tag(SimplyLightCommon.ANY_ON_LAMP).add(lamp.getItem()));
+        SLBlocks.LAMPBLOCKS_OFF.forEach( lamp -> tag(SimplyLightCommon.ANY_OFF_LAMP).add(lamp.getItem()));
+        SLBlocks.SLABS.forEach( slab -> tag(SimplyLightCommon.ANY_SLAB).add(slab.getItem()));
+        SLBlocks.PANELS.forEach( panel -> tag(SimplyLightCommon.ANY_PANEL).add(panel.getItem()));
+        SLBlocks.RODS.forEach( rod -> tag(SimplyLightCommon.ANY_ROD).add(rod.getItem()));
+        SLBlocks.BULBS.forEach( bulb -> tag(SimplyLightCommon.ANY_BULB).add(bulb.getItem()));
+        SLBlocks.FIXTURES.forEach( fixture -> tag(SimplyLightCommon.ANY_FIXTURE).add(fixture.getItem()));
+        SLBlocks.POSTS.forEach( post -> tag(SimplyLightCommon.ANY_POST).add(post.getItem()));
+        SLBlocks.EDGE_LIGHTS.forEach( edge -> tag(SimplyLightCommon.ANY_EDGE_LIGHT).add(edge.getItem()));
+        SLBlocks.EDGE_LIGHTS_TOP.forEach( edge -> tag(SimplyLightCommon.ANY_EDGE_LIGHT_TOP).add(edge.getItem()));
     }
 }

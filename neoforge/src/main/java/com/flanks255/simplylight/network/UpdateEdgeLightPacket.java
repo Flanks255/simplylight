@@ -1,6 +1,6 @@
 package com.flanks255.simplylight.network;
 
-import com.flanks255.simplylight.SimplyLightNeoForge;
+import com.flanks255.simplylight.SimplyLightCommon;
 import com.flanks255.simplylight.blocks.EdgeLight;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
@@ -12,7 +12,7 @@ import net.neoforged.neoforge.network.handling.IPayloadContext;
 import javax.annotation.Nonnull;
 
 public record UpdateEdgeLightPacket(BlockPos pos, byte state) implements CustomPacketPayload {
-    public static final Type<UpdateEdgeLightPacket> TYPE = new CustomPacketPayload.Type<>(SimplyLightNeoForge.SLRes("update_edge_light"));
+    public static final Type<UpdateEdgeLightPacket> TYPE = new CustomPacketPayload.Type<>(SimplyLightCommon.SLRes("update_edge_light"));
     public static final StreamCodec<FriendlyByteBuf, UpdateEdgeLightPacket> STREAM_CODEC = StreamCodec.composite(
             BlockPos.STREAM_CODEC, $ -> $.pos,
             ByteBufCodecs.BYTE, $ -> $.state,

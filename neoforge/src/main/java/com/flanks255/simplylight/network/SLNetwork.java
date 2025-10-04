@@ -1,7 +1,6 @@
 package com.flanks255.simplylight.network;
 
 import com.flanks255.simplylight.SimplyLightCommon;
-import com.flanks255.simplylight.SimplyLightNeoForge;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 
 public class SLNetwork {

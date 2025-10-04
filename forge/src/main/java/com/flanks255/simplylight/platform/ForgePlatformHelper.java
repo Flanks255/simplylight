@@ -30,4 +30,9 @@ public class ForgePlatformHelper implements IPlatformHelper {
     public void sendEdgeEditorPacket(ServerPlayer player, BlockPos pos, byte initialState) {
         //TODO implement
     }
+
+    @Override
+    public void sendEdgeUpdatePacket(BlockPos targetPos, byte newState) {
+        //TODO implement
+    }
 }

@@ -2,7 +2,7 @@ package com.flanks255.simplylight.data;
 
 import com.flanks255.simplylight.SLBlockReg;
 import com.flanks255.simplylight.SLBlocks;
-import com.flanks255.simplylight.SimplyLightNeoForge;
+import com.flanks255.simplylight.SimplyLightCommon;
 import com.flanks255.simplylight.blocks.BaseBlockItem;
 import com.flanks255.simplylight.blocks.LampBlock;
 import com.flanks255.simplylight.util.NoAdvRecipeOutput;
@@ -39,7 +39,7 @@ public class Recipes extends RecipeProvider {
             .define('a', Tags.Items.STONES)
             .define('b', Items.GLOWSTONE)
             .define('c', Tags.Items.DUSTS_REDSTONE)
-            .save(output, SimplyLightNeoForge.SLRes("illuminant_block"));
+            .save(output, SimplyLightCommon.SLRes("illuminant_block"));
 
         // Illuminant Block (On)
         ShapedBuilder.shaped(SLBlocks.ILLUMINANTBLOCK_ON.getItem(), 4)
@@ -49,7 +49,7 @@ public class Recipes extends RecipeProvider {
             .define('a', Tags.Items.STONES)
             .define('b', Items.GLOWSTONE)
             .define('c', Items.REDSTONE_TORCH)
-            .save(output, SimplyLightNeoForge.SLRes("illuminant_block_on"));
+            .save(output, SimplyLightCommon.SLRes("illuminant_block_on"));
 
         // Bulbs
         ShapedBuilder.shaped(SLBlocks.LIGHTBULB.getItem(), 8)
@@ -57,7 +57,7 @@ public class Recipes extends RecipeProvider {
             .pattern("aaa")
             .define('a', Tags.Items.STONES)
             .define('b', Items.GLOWSTONE)
-            .save(output, SimplyLightNeoForge.SLRes("bulb"));
+            .save(output, SimplyLightCommon.SLRes("bulb"));
 
         // Edge light
         ShapedBuilder.shaped(SLBlocks.EDGELAMP.getItem(), 6)
@@ -66,17 +66,17 @@ public class Recipes extends RecipeProvider {
             .pattern("b b")
             .define('a', Items.GLOWSTONE)
             .define('b', Tags.Items.STONES)
-            .save(output, SimplyLightNeoForge.SLRes("edge_light"));
+            .save(output, SimplyLightCommon.SLRes("edge_light"));
 
         // Top Edge light from bottom
         ShapelessBuilder.shapeless(SLBlocks.EDGELAMP_TOP.getItem())
             .requires(SLBlocks.EDGELAMP.getItem())
-            .save(output, SimplyLightNeoForge.SLRes("edge_light_top"));
+            .save(output, SimplyLightCommon.SLRes("edge_light_top"));
 
         // Bottom Edge light from top
         ShapelessBuilder.shapeless(SLBlocks.EDGELAMP.getItem())
             .requires(SLBlocks.EDGELAMP_TOP.getItem())
-            .save(output, SimplyLightNeoForge.SLRes("edge_light_bottom_from_top"));
+            .save(output, SimplyLightCommon.SLRes("edge_light_bottom_from_top"));
 
         // Slabs
         ShapedBuilder.shaped(SLBlocks.ILLUMINANT_SLAB.getItem(), 6)
@@ -84,7 +84,7 @@ public class Recipes extends RecipeProvider {
             .pattern("aaa")
             .define('a', Tags.Items.STONES)
             .define('b', Items.GLOWSTONE)
-            .save(output, SimplyLightNeoForge.SLRes("illuminant_slab"));
+            .save(output, SimplyLightCommon.SLRes("illuminant_slab"));
 
 /*        // Slab from panel
         ShapelessBuilder.shapeless(SLBlocks.ILLUMINANT_SLAB.getItem())
@@ -122,7 +122,7 @@ public class Recipes extends RecipeProvider {
             .pattern("bab")
             .define('a', Tags.Items.STONES)
             .define('b', Tags.Items.DUSTS_GLOWSTONE)
-            .save(output, SimplyLightNeoForge.SLRes("rodlamp"));
+            .save(output, SimplyLightCommon.SLRes("rodlamp"));
 
         // Wall Lamp
         ShapedBuilder.shaped(SLBlocks.FIXTURE.getItem(), 6)
@@ -131,51 +131,51 @@ public class Recipes extends RecipeProvider {
             .pattern("ab")
             .define('a', Tags.Items.STONES)
             .define('b', Items.GLOWSTONE)
-            .save(output, SimplyLightNeoForge.SLRes("walllamp"));
+            .save(output, SimplyLightCommon.SLRes("walllamp"));
 
         //Lamp Post
         ShapedBuilder.shaped(SLBlocks.LAMP_POST.getItem(), 2)
             .pattern(" L ")
             .pattern(" W ")
             .pattern("SSS")
-            .define('L', SimplyLightNeoForge.ANY_ON_LAMP)
+            .define('L', SimplyLightCommon.ANY_ON_LAMP)
             .define('W', ItemTags.WALLS)
             .define('S', Tags.Items.STONES)
-            .save(output, SimplyLightNeoForge.SLRes("lamp_post"));
+            .save(output, SimplyLightCommon.SLRes("lamp_post"));
 
 
         SLBlocks.LAMPBLOCKS_ON.forEach( lamp -> {
-            dyeRecipe(lamp.getItem(), DyeItem.byColor(lamp.getBlock().color), SimplyLightNeoForge.ANY_ON_LAMP, output);
+            dyeRecipe(lamp.getItem(), DyeItem.byColor(lamp.getBlock().color), SimplyLightCommon.ANY_ON_LAMP, output);
             toggleOn(lamp, output);
         });
         SLBlocks.LAMPBLOCKS_OFF.forEach( lamp -> {
-            dyeRecipe(lamp.getItem(), DyeItem.byColor(lamp.getBlock().color), SimplyLightNeoForge.ANY_OFF_LAMP, output);
+            dyeRecipe(lamp.getItem(), DyeItem.byColor(lamp.getBlock().color), SimplyLightCommon.ANY_OFF_LAMP, output);
             toggleOff(lamp, output);
         });
 
         SLBlocks.SLABS.forEach( slab ->
-                dyeRecipe(slab.getItem(), DyeItem.byColor(slab.getBlock().color), SimplyLightNeoForge.ANY_SLAB, output));
+                dyeRecipe(slab.getItem(), DyeItem.byColor(slab.getBlock().color), SimplyLightCommon.ANY_SLAB, output));
 
         SLBlocks.PANELS.forEach( panel ->
-                dyeRecipe(panel.getItem(), DyeItem.byColor(panel.getBlock().color), SimplyLightNeoForge.ANY_PANEL, output));
+                dyeRecipe(panel.getItem(), DyeItem.byColor(panel.getBlock().color), SimplyLightCommon.ANY_PANEL, output));
 
         SLBlocks.RODS.forEach( rod ->
-                dyeRecipe(rod.getItem(), DyeItem.byColor(rod.getBlock().color), SimplyLightNeoForge.ANY_ROD, output));
+                dyeRecipe(rod.getItem(), DyeItem.byColor(rod.getBlock().color), SimplyLightCommon.ANY_ROD, output));
 
         SLBlocks.BULBS.forEach( bulb ->
-                dyeRecipe(bulb.getItem(), DyeItem.byColor(bulb.getBlock().color), SimplyLightNeoForge.ANY_BULB, output));
+                dyeRecipe(bulb.getItem(), DyeItem.byColor(bulb.getBlock().color), SimplyLightCommon.ANY_BULB, output));
 
         SLBlocks.FIXTURES.forEach(fixture ->
-                dyeRecipe(fixture.getItem(), DyeItem.byColor(fixture.getBlock().color), SimplyLightNeoForge.ANY_FIXTURE, output));
+                dyeRecipe(fixture.getItem(), DyeItem.byColor(fixture.getBlock().color), SimplyLightCommon.ANY_FIXTURE, output));
 
         SLBlocks.POSTS.forEach(post ->
-                dyeRecipe(post.getItem(), DyeItem.byColor(post.getBlock().color), SimplyLightNeoForge.ANY_POST, output));
+                dyeRecipe(post.getItem(), DyeItem.byColor(post.getBlock().color), SimplyLightCommon.ANY_POST, output));
 
         SLBlocks.EDGE_LIGHTS.forEach(edge ->
-                dyeRecipe(edge.getItem(), DyeItem.byColor(edge.getBlock().color), SimplyLightNeoForge.ANY_EDGE_LIGHT, output));
+                dyeRecipe(edge.getItem(), DyeItem.byColor(edge.getBlock().color), SimplyLightCommon.ANY_EDGE_LIGHT, output));
 
         SLBlocks.EDGE_LIGHTS_TOP.forEach(edge ->
-                dyeRecipe(edge.getItem(), DyeItem.byColor(edge.getBlock().color), SimplyLightNeoForge.ANY_EDGE_LIGHT_TOP, output));
+                dyeRecipe(edge.getItem(), DyeItem.byColor(edge.getBlock().color), SimplyLightCommon.ANY_EDGE_LIGHT_TOP, output));
     }
 
     private void toggleOn(SLBlockReg<LampBlock, BaseBlockItem> block, RecipeOutput consumer) {
@@ -191,7 +191,7 @@ public class Recipes extends RecipeProvider {
 
         ShapelessBuilder.shapeless(block.getItem())
             .requires(item)
-            .save(consumer, SimplyLightNeoForge.SLRes(block.getItem().getRegistryName().getPath()+"_toggle"));
+            .save(consumer, SimplyLightCommon.SLRes(block.getItem().getRegistryName().getPath()+"_toggle"));
     }
     private void toggleOff(SLBlockReg<LampBlock, BaseBlockItem> block, RecipeOutput consumer) {
         Item item = null;
@@ -206,7 +206,7 @@ public class Recipes extends RecipeProvider {
 
         ShapelessBuilder.shapeless(block.getItem())
             .requires(item)
-            .save(consumer, SimplyLightNeoForge.SLRes(block.getItem().getRegistryName().getPath()+"_toggle"));
+            .save(consumer, SimplyLightCommon.SLRes(block.getItem().getRegistryName().getPath()+"_toggle"));
     }
 
     private void dyeRecipe(BaseBlockItem result, Item dyeItem, TagKey<Item> inputTag, RecipeOutput consumer) {
@@ -216,19 +216,19 @@ public class Recipes extends RecipeProvider {
             .pattern("AAA")
             .define('B', dyeItem)
             .define('A', inputTag)
-            .save(consumer, SimplyLightNeoForge.SLRes(result.getRegistryName().getPath() + "_dyed"));
+            .save(consumer, SimplyLightCommon.SLRes(result.getRegistryName().getPath() + "_dyed"));
     }
 
     private void panelSlabRecipe(BaseBlockItem panel, BaseBlockItem slab, RecipeOutput consumer) {
         ShapedBuilder.shaped(panel, 6)
             .pattern("AAA")
             .define('A', slab)
-            .save(consumer, SimplyLightNeoForge.SLRes(panel.getRegistryName().getPath() + "_split"));
+            .save(consumer, SimplyLightCommon.SLRes(panel.getRegistryName().getPath() + "_split"));
 
         ShapelessBuilder.shapeless(slab)
                 .requires(panel)
                 .requires(panel)
-                .save(consumer, SimplyLightNeoForge.SLRes(slab.getRegistryName().getPath() + "_combine"));
+                .save(consumer, SimplyLightCommon.SLRes(slab.getRegistryName().getPath() + "_combine"));
     }
 
     private static class ShapedBuilder extends ShapedRecipeBuilder {

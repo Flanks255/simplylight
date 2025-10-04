@@ -1,7 +1,7 @@
 package com.flanks255.simplylight.gui;
 
-import com.flanks255.simplylight.SimplyLightNeoForge;
-import com.flanks255.simplylight.network.UpdateEdgeLightPacket;
+import com.flanks255.simplylight.SimplyLightCommon;
+import com.flanks255.simplylight.platform.Services;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
@@ -11,12 +11,11 @@ import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
-import net.neoforged.neoforge.network.PacketDistributor;
 
 import javax.annotation.Nonnull;
 
 public class EdgeEditorGUI extends Screen {
-    private static final ResourceLocation BG = SimplyLightNeoForge.SLRes("textures/gui/small_editor.png");
+    private static final ResourceLocation BG = SimplyLightCommon.SLRes("textures/gui/small_editor.png");
 
     private final BlockPos target;
     private byte state;
@@ -91,7 +90,7 @@ public class EdgeEditorGUI extends Screen {
             btn.state = !btn.state;
 
         this.state = (byte) ((north.state?1:0) | (east.state?2:0) | (south.state?4:0) | (west.state?8:0));
-        PacketDistributor.sendToServer(new UpdateEdgeLightPacket(target, state));
+        Services.PLATFORM.sendEdgeUpdatePacket(target, state);
     }
 
     @Override
@@ -100,7 +99,7 @@ public class EdgeEditorGUI extends Screen {
     }
 
     class SwitchButton extends Button {
-        private static final ResourceLocation SWITCH = SimplyLightNeoForge.SLRes("textures/gui/switch.png");
+        private static final ResourceLocation SWITCH = SimplyLightCommon.SLRes("textures/gui/switch.png");
         public SwitchButton(int x, int y, Component text, boolean initial, OnPress pressable) {
             super(x,y,32,16, text, pressable, Button.DEFAULT_NARRATION);
             this.textKey = text;
