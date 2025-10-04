@@ -16,9 +16,9 @@ import net.minecraft.world.level.material.*;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.util.function.BiConsumer;
 
 @SuppressWarnings("deprecation")
@@ -41,9 +41,9 @@ public class RodLamp extends LampBase implements SimpleWaterloggedBlock {
     private final VoxelShape EastWest = Block.box(0,7,7, 16,9,9);
     private final VoxelShape NorthSouth = Block.box(7,7,0, 9,9,16);
 
-    @Nonnull
+    @NotNull
     @Override
-    public VoxelShape getShape(BlockState pState, @Nonnull BlockGetter pLevel, @Nonnull BlockPos pPos, @Nonnull CollisionContext pContext) {
+    public VoxelShape getShape(BlockState pState, @NotNull BlockGetter pLevel, @NotNull BlockPos pPos, @NotNull CollisionContext pContext) {
         return switch (pState.getValue(BlockStateProperties.AXIS)) {
             case X -> EastWest;
             case Y -> UpDown;
@@ -58,11 +58,11 @@ public class RodLamp extends LampBase implements SimpleWaterloggedBlock {
     }
 
     @Override
-    public boolean canPlaceLiquid(Player player, @Nonnull BlockGetter pLevel, @Nonnull BlockPos pPos, @Nonnull BlockState pState, @Nonnull Fluid pFluid) {
+    public boolean canPlaceLiquid(Player player, @NotNull BlockGetter pLevel, @NotNull BlockPos pPos, @NotNull BlockState pState, @NotNull Fluid pFluid) {
         return true;
     }
 
-    @Nonnull
+    @NotNull
     @Override
     public FluidState getFluidState(BlockState p_204507_1_) {
         return p_204507_1_.getValue(BlockStateProperties.WATERLOGGED)? Fluids.WATER.getSource(false) : super.getFluidState(p_204507_1_);
@@ -74,13 +74,13 @@ public class RodLamp extends LampBase implements SimpleWaterloggedBlock {
     }
 
     @Override
-    public boolean isPathfindable(@Nonnull BlockState pState, @Nonnull PathComputationType pType) {
+    public boolean isPathfindable(@NotNull BlockState pState, @NotNull PathComputationType pType) {
         return false;
     }
 
-    @Nonnull
+    @NotNull
     @Override
-    public BlockState rotate(@Nonnull BlockState pState, @Nonnull Rotation pRotation) {
+    public BlockState rotate(@NotNull BlockState pState, @NotNull Rotation pRotation) {
         if (pRotation != Rotation.NONE) {
             Direction.Axis axis = pState.getValue(BlockStateProperties.AXIS);
             if ((pRotation == Rotation.CLOCKWISE_90 || pRotation == Rotation.COUNTERCLOCKWISE_90) && axis.isHorizontal())

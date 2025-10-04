@@ -23,7 +23,7 @@ public class SLBlockTags extends BlockTagsProvider {
     protected void addTags(@Nonnull HolderLookup.Provider something) {
         this.tag(BlockTags.WALL_POST_OVERRIDE).add(SLBlocks.LIGHTBULB.get());
 
-        SLBlocks.BLOCKS.getEntries().forEach(this::addPickaxe);
+        SimplyLightNeoForge.BLOCKS.getEntries().forEach(this::addPickaxe);
     }
 
     private void addPickaxe(DeferredHolder<Block, ? extends Block> block) {

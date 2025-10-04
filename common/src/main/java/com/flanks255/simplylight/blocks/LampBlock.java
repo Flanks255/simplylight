@@ -12,9 +12,9 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.util.function.BiConsumer;
 
 public class LampBlock extends LampBase {
@@ -41,12 +41,12 @@ public class LampBlock extends LampBase {
 
     @Nullable
     @Override
-    public BlockState getStateForPlacement(@Nonnull BlockPlaceContext context) {
+    public BlockState getStateForPlacement(@NotNull BlockPlaceContext context) {
         return this.defaultBlockState().setValue(ON, Default);
     }
 
     @Override
-    public void setPlacedBy(@Nonnull Level pLevel, @Nonnull BlockPos pPos, @Nonnull BlockState pState, @Nullable LivingEntity pPlacer, @Nonnull ItemStack pStack) {
+    public void setPlacedBy(@NotNull Level pLevel, @NotNull BlockPos pPos, @NotNull BlockState pState, @Nullable LivingEntity pPlacer, @NotNull ItemStack pStack) {
         super.setPlacedBy(pLevel, pPos, pState, pPlacer, pStack);
         boolean powered = pLevel.hasNeighborSignal(pPos);
         if (powered) {
@@ -55,14 +55,14 @@ public class LampBlock extends LampBase {
     }
 
     @Override
-    public void neighborChanged(@Nonnull BlockState pState, @Nonnull Level pLevel, @Nonnull BlockPos pPos, @Nonnull Block pBlock, @Nonnull BlockPos pFromPos, boolean pIsMoving) {
+    public void neighborChanged(@NotNull BlockState pState, @NotNull Level pLevel, @NotNull BlockPos pPos, @NotNull Block pBlock, @NotNull BlockPos pFromPos, boolean pIsMoving) {
         super.neighborChanged(pState, pLevel, pPos, pBlock, pFromPos, pIsMoving);
         boolean on = Default != pLevel.hasNeighborSignal(pPos);
         pLevel.setBlockAndUpdate(pPos, defaultBlockState().setValue(ON, on));
     }
 
     @Override
-    public boolean isSignalSource(@Nonnull BlockState pState) {
+    public boolean isSignalSource(@NotNull BlockState pState) {
         return true;
     }
 

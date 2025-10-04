@@ -22,9 +22,9 @@ import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.util.function.BiConsumer;
 import java.util.stream.Stream;
 
@@ -51,24 +51,24 @@ public class LampPost extends LampBase implements SimpleWaterloggedBlock {
     }
 
     @Override
-    public boolean isPathfindable(@Nonnull BlockState pState, @Nonnull PathComputationType pType) {
+    public boolean isPathfindable(@NotNull BlockState pState, @NotNull PathComputationType pType) {
         return false;
     }
 
     @Override
-    public boolean canPlaceLiquid(Player player, @Nonnull BlockGetter pLevel, @Nonnull BlockPos pPos, @Nonnull BlockState pState, @Nonnull Fluid pFluid) {
+    public boolean canPlaceLiquid(Player player, @NotNull BlockGetter pLevel, @NotNull BlockPos pPos, @NotNull BlockState pState, @NotNull Fluid pFluid) {
         return SimpleWaterloggedBlock.super.canPlaceLiquid(player, pLevel, pPos, pState, pFluid);
     }
 
-    @Nonnull
+    @NotNull
     @Override
     public FluidState getFluidState(BlockState pState) {
         return pState.getValue(BlockStateProperties.WATERLOGGED)? Fluids.WATER.getSource(false) : super.getFluidState(pState);
     }
 
-    @Nonnull
+    @NotNull
     @Override
-    public VoxelShape getShape(@Nonnull BlockState pState, @Nonnull BlockGetter pLevel, @Nonnull BlockPos pPos, @Nonnull CollisionContext pContext) {
+    public VoxelShape getShape(@NotNull BlockState pState, @NotNull BlockGetter pLevel, @NotNull BlockPos pPos, @NotNull CollisionContext pContext) {
         return switch (pState.getValue(POSITION)) {
             case TOP -> TOP_SHAPE;
             case MIDDLE -> MIDDLE_SHAPE;
@@ -82,7 +82,7 @@ public class LampPost extends LampBase implements SimpleWaterloggedBlock {
     }
 
     @Override
-    public void setPlacedBy(Level pLevel, BlockPos pPos, BlockState pState, @Nullable LivingEntity pPlacer, @Nonnull ItemStack pStack) {
+    public void setPlacedBy(Level pLevel, BlockPos pPos, BlockState pState, @Nullable LivingEntity pPlacer, @NotNull ItemStack pStack) {
         pLevel.setBlock(pPos.above(), pState.setValue(POSITION, Position.MIDDLE), 3);
         pLevel.setBlock(pPos.above(2), pState.setValue(POSITION, Position.TOP), 3);
     }
@@ -99,7 +99,7 @@ public class LampPost extends LampBase implements SimpleWaterloggedBlock {
     }
 
     @Override
-    public void onRemove(@Nonnull BlockState pState, @Nonnull Level pLevel, @Nonnull BlockPos pPos, @Nonnull BlockState pNewState, boolean pIsMoving) {
+    public void onRemove(@NotNull BlockState pState, @NotNull Level pLevel, @NotNull BlockPos pPos, @NotNull BlockState pNewState, boolean pIsMoving) {
         super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
         if (pNewState.getBlock() == this)
             return;
@@ -168,7 +168,7 @@ public class LampPost extends LampBase implements SimpleWaterloggedBlock {
         }
 
         private final String name;
-        @Nonnull
+        @NotNull
         @Override
         public String getSerializedName() {
             return name;

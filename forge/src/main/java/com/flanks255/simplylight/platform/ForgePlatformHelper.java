@@ -1,6 +1,8 @@
 package com.flanks255.simplylight.platform;
 
 import com.flanks255.simplylight.platform.services.IPlatformHelper;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.loading.FMLLoader;
 
@@ -22,5 +24,10 @@ public class ForgePlatformHelper implements IPlatformHelper {
     public boolean isDevelopmentEnvironment() {
 
         return !FMLLoader.isProduction();
+    }
+
+    @Override
+    public void sendEdgeEditorPacket(ServerPlayer player, BlockPos pos, byte initialState) {
+        //TODO implement
     }
 }

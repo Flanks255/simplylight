@@ -1,5 +1,8 @@
 package com.flanks255.simplylight.platform.services;
 
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerPlayer;
+
 public interface IPlatformHelper {
 
     /**
@@ -33,4 +36,6 @@ public interface IPlatformHelper {
 
         return isDevelopmentEnvironment() ? "development" : "production";
     }
+
+    void sendEdgeEditorPacket(ServerPlayer player, BlockPos pos, byte initialState);
 }

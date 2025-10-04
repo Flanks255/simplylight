@@ -3,7 +3,6 @@ package com.flanks255.simplylight.data;
 import com.flanks255.simplylight.SLBlockReg;
 import com.flanks255.simplylight.SLBlocks;
 import com.flanks255.simplylight.SimplyLightCommon;
-import com.flanks255.simplylight.SimplyLightNeoForge;
 import com.flanks255.simplylight.blocks.*;
 import net.minecraft.core.Direction;
 import net.minecraft.data.DataGenerator;

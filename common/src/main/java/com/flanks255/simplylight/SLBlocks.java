@@ -4,21 +4,15 @@ import com.flanks255.simplylight.blocks.*;
 import com.google.common.collect.ImmutableSet;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
-import net.neoforged.bus.api.IEventBus;
-import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.Set;
 
 public class SLBlocks {
-    public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(SimplyLightCommon.MODID);
-    public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(SimplyLightCommon.MODID);
+    public static void load() {
+    }
 
     private static final Item.Properties ITEMPROPERTIES = new Item.Properties();
 
-    public static void init(IEventBus bus) {
-        BLOCKS.register(bus);
-        ITEMS.register(bus);
-    }
     public static final SLBlockReg<RodLamp, BaseBlockItem> RODLAMP = new SLBlockReg<>("rodlamp", () -> new RodLamp(DyeColor.WHITE), b -> new BaseBlockItem(b, ITEMPROPERTIES));
     public static final SLBlockReg<RodLamp, BaseBlockItem> RODLAMP_ORANGE = addRod(DyeColor.ORANGE);
     public static final SLBlockReg<RodLamp, BaseBlockItem> RODLAMP_MAGENTA = addRod(DyeColor.MAGENTA);

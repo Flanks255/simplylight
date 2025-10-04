@@ -10,10 +10,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
+import org.jetbrains.annotations.NotNull;
 
-import javax.annotation.Nonnull;
 import java.util.List;
 import java.util.function.Supplier;
 
@@ -46,9 +44,8 @@ public class BaseBlockItem extends BlockItem implements Equipable {
         return block.getDescriptionId();
     }
 
-    @OnlyIn(Dist.CLIENT)
     @Override
-    public void appendHoverText(@Nonnull ItemStack stack, @Nonnull TooltipContext context, @Nonnull List<Component> tooltip, @Nonnull TooltipFlag flagIn) {
+    public void appendHoverText(@NotNull ItemStack stack, @NotNull TooltipContext context, @NotNull List<Component> tooltip, @NotNull TooltipFlag flagIn) {
         super.appendHoverText(stack, context, tooltip, flagIn);
         String tooltipBase = getTooltipBase();
 
@@ -68,7 +65,7 @@ public class BaseBlockItem extends BlockItem implements Equipable {
     }
 
     @Override
-    public EquipmentSlot getEquipmentSlot() {
+    public @NotNull EquipmentSlot getEquipmentSlot() {
         return EquipmentSlot.HEAD;
     }
 }

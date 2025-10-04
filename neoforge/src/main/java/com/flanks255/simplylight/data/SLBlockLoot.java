@@ -1,6 +1,6 @@
 package com.flanks255.simplylight.data;
 
-import com.flanks255.simplylight.SLBlocks;
+import com.flanks255.simplylight.SimplyLightNeoForge;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.BlockLootSubProvider;
@@ -26,7 +26,7 @@ public class SLBlockLoot extends BlockLootSubProvider {
 
     @Override
     protected void generate() {
-        for(DeferredHolder<Block, ? extends Block> block : SLBlocks.BLOCKS.getEntries()) {
+        for(DeferredHolder<Block, ? extends Block> block : SimplyLightNeoForge.BLOCKS.getEntries()) {
             this.dropSelf(block.get());
         }
     }
@@ -34,6 +34,6 @@ public class SLBlockLoot extends BlockLootSubProvider {
     @Nonnull
     @Override
     protected Iterable<Block> getKnownBlocks() {
-        return SLBlocks.BLOCKS.getEntries().stream().map(DeferredHolder::get).collect(Collectors.toList());
+        return SimplyLightNeoForge.BLOCKS.getEntries().stream().map(DeferredHolder::get).collect(Collectors.toList());
     }
 }

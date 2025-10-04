@@ -1,6 +1,6 @@
 package com.flanks255.simplylight.blocks;
 
-import com.flanks255.simplylight.network.OpenEdgeEditorPacket;
+import com.flanks255.simplylight.platform.Services;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
@@ -25,10 +25,9 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.neoforged.neoforge.network.PacketDistributor;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.util.function.BiConsumer;
 
 public class EdgeLight extends LampBase implements SimpleWaterloggedBlock {
@@ -71,9 +70,9 @@ public class EdgeLight extends LampBase implements SimpleWaterloggedBlock {
     public static final BooleanProperty EAST = BooleanProperty.create("east");
     public static final BooleanProperty WEST = BooleanProperty.create("west");
 
-    @Nonnull
+    @NotNull
     @Override
-    public VoxelShape getShape(BlockState pState, @Nonnull BlockGetter pLevel, @Nonnull BlockPos pPos, @Nonnull CollisionContext pContext) {
+    public VoxelShape getShape(BlockState pState, @NotNull BlockGetter pLevel, @NotNull BlockPos pPos, @NotNull CollisionContext pContext) {
         VoxelShape shape = Shapes.empty();
         if (pState.getValue(NORTH))
             shape = Shapes.or(shape, VS_NORTH);
@@ -90,9 +89,9 @@ public class EdgeLight extends LampBase implements SimpleWaterloggedBlock {
         return shape;
     }
 
-    @Nonnull
+    @NotNull
     @Override
-    protected InteractionResult useWithoutItem(@Nonnull BlockState state, @Nonnull Level level, @Nonnull BlockPos pos, @Nonnull Player player, @Nonnull BlockHitResult hitResult) {
+    protected InteractionResult useWithoutItem(@NotNull BlockState state, @NotNull Level level, @NotNull BlockPos pos, @NotNull Player player, @NotNull BlockHitResult hitResult) {
         if (!level.isClientSide && player.isCrouching() && player instanceof ServerPlayer serverPlayer) {
             byte stateByte = 0;
             stateByte += (byte) (state.getValue(NORTH)?1:0);
@@ -100,7 +99,8 @@ public class EdgeLight extends LampBase implements SimpleWaterloggedBlock {
             stateByte += (byte) (state.getValue(SOUTH)?4:0);
             stateByte += (byte) (state.getValue(WEST)?8:0);
 
-            PacketDistributor.sendToPlayer(serverPlayer, new OpenEdgeEditorPacket(pos, stateByte));
+            //PacketDistributor.sendToPlayer(serverPlayer, new OpenEdgeEditorPacket(pos, stateByte));
+            Services.PLATFORM.sendEdgeEditorPacket(serverPlayer, pos, stateByte);
         }
         return super.useWithoutItem(state, level, pos, player, hitResult);
     }
@@ -137,11 +137,11 @@ public class EdgeLight extends LampBase implements SimpleWaterloggedBlock {
     }
 
     @Override
-    public boolean canPlaceLiquid(Player pPlayer, @Nonnull BlockGetter pLevel, @Nonnull BlockPos pPos, @Nonnull BlockState pState, @Nonnull Fluid pFluid) {
+    public boolean canPlaceLiquid(Player pPlayer, @NotNull BlockGetter pLevel, @NotNull BlockPos pPos, @NotNull BlockState pState, @NotNull Fluid pFluid) {
         return true;
     }
 
-    @Nonnull
+    @NotNull
     @Override
     public FluidState getFluidState(BlockState pState) {
         return pState.getValue(BlockStateProperties.WATERLOGGED)? Fluids.WATER.getSource(false) : super.getFluidState(pState);
@@ -187,9 +187,9 @@ public class EdgeLight extends LampBase implements SimpleWaterloggedBlock {
         consumer.accept(base + ".jei.info", "Will morph depending on the blocks present around itself on placement.\nShape will persist afterward, letting you make shapes using temporary blocks.");
     }
 
-    @Nonnull
+    @NotNull
     @Override
-    public BlockState rotate(@Nonnull BlockState pState, @Nonnull Rotation pRotation) {
+    public BlockState rotate(@NotNull BlockState pState, @NotNull Rotation pRotation) {
         if (pRotation != Rotation.NONE){
             boolean oldNorth = pState.getValue(NORTH);
             boolean oldSouth = pState.getValue(SOUTH);
@@ -219,9 +219,9 @@ public class EdgeLight extends LampBase implements SimpleWaterloggedBlock {
         return pState;
     }
 
-    @Nonnull
+    @NotNull
     @Override
-    public BlockState mirror(@Nonnull BlockState pState, @Nonnull Mirror pMirror) {
+    public BlockState mirror(@NotNull BlockState pState, @NotNull Mirror pMirror) {
         if (pMirror != Mirror.NONE) {
             boolean oldNorth = pState.getValue(NORTH);
             boolean oldSouth = pState.getValue(SOUTH);

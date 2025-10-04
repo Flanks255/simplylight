@@ -1,6 +1,5 @@
 package com.flanks255.simplylight.data;
 
-import com.flanks255.simplylight.SLBlocks;
 import com.flanks255.simplylight.SimplyLightCommon;
 import com.flanks255.simplylight.SimplyLightNeoForge;
 import com.flanks255.simplylight.blocks.LampBase;
@@ -27,6 +26,6 @@ public class LangGen extends LanguageProvider {
         add("simplylight.gui.south", "South");
         add("simplylight.gui.west", "West");
 
-        SLBlocks.BLOCKS.getEntries().forEach(block -> ((LampBase) block.get()).addLang(this::add));
+        SimplyLightNeoForge.BLOCKS.getEntries().forEach(block -> ((LampBase) block.get()).addLang(this::add));
     }
 }

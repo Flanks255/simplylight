@@ -1,6 +1,5 @@
 package com.flanks255.simplylight.data;
 
-import com.flanks255.simplylight.SLBlocks;
 import com.flanks255.simplylight.SimplyLightCommon;
 import com.flanks255.simplylight.SimplyLightNeoForge;
 import com.flanks255.simplylight.blocks.*;
@@ -21,7 +20,7 @@ public class ItemModels extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        SLBlocks.BLOCKS.getEntries().forEach((block) -> registerBlockItem(block.get()));
+        SimplyLightNeoForge.BLOCKS.getEntries().forEach((block) -> registerBlockItem(block.get()));
     }
 
     private void registerBlockItem(Block blockIn) {

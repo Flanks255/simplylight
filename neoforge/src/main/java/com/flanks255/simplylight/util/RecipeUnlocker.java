@@ -1,7 +1,6 @@
 package com.flanks255.simplylight.util;
 
 import com.flanks255.simplylight.SimplyLightCommon;
-import com.flanks255.simplylight.SimplyLightNeoForge;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;

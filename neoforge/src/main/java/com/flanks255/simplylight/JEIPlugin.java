@@ -24,7 +24,7 @@ public class JEIPlugin implements IModPlugin {
 
     @Override
     public void registerRecipes(@Nonnull IRecipeRegistration registration) {
-        SLBlocks.ITEMS.getEntries().forEach((itemSupplier) -> {
+        SimplyLightNeoForge.ITEMS.getEntries().forEach((itemSupplier) -> {
             var item = itemSupplier.get();
             String key = item.getDescriptionId()+".jei.info";
             if (item instanceof BaseBlockItem baseBlockItem)

@@ -29,6 +29,8 @@ import java.util.function.Supplier;
 public class SimplyLightNeoForge
 {
     public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, SimplyLightCommon.MODID);
+    public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(SimplyLightCommon.MODID);
+    public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(SimplyLightCommon.MODID);
 
     private static final CreativeModeTab.DisplayItemsGenerator TABITEMS = (params, output) -> {
         SLBlocks.LAMPBLOCKS_ON.forEach(block -> output.accept(block.getItem()));
@@ -61,8 +63,12 @@ public class SimplyLightNeoForge
     public static final TagKey<Item> ANY_EDGE_LIGHT_TOP = TagKey.create(Registries.ITEM, SLRes("any_edge_light_top"));
 
     public SimplyLightNeoForge(IEventBus bus, ModContainer container, Dist dist) {
-        SLBlocks.init(bus);
+        SimplyLightCommon.init();
+        BLOCKS.register(bus);
+        ITEMS.register(bus);
         TABS.register(bus);
+
+        SLBlocks.load();
 
         bus.addListener(Generator::gatherData);
         bus.addListener(SLNetwork::register);

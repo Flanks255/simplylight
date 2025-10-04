@@ -17,9 +17,8 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 @SuppressWarnings("deprecation")
 public abstract class RotatableLamp extends LampBase implements SimpleWaterloggedBlock {
@@ -34,9 +33,9 @@ public abstract class RotatableLamp extends LampBase implements SimpleWaterlogge
     public VoxelShape WEST;
     public VoxelShape EAST;
 
-    @Nonnull
+    @NotNull
     @Override
-    public VoxelShape getShape(BlockState blockState, @Nonnull BlockGetter world, @Nonnull BlockPos blockPos, @Nonnull CollisionContext context) {
+    public VoxelShape getShape(BlockState blockState, @NotNull BlockGetter world, @NotNull BlockPos blockPos, @NotNull CollisionContext context) {
         Direction facing = blockState.getValue(BlockStateProperties.FACING);
         //D-U-N-S-W-E
         return switch (facing.get3DDataValue()) {
@@ -50,11 +49,11 @@ public abstract class RotatableLamp extends LampBase implements SimpleWaterlogge
     }
 
     @Override
-    public boolean canPlaceLiquid(Player player, @Nonnull BlockGetter world, @Nonnull BlockPos blockpos, @Nonnull BlockState blockState, @Nonnull Fluid fluid) {
+    public boolean canPlaceLiquid(Player player, @NotNull BlockGetter world, @NotNull BlockPos blockpos, @NotNull BlockState blockState, @NotNull Fluid fluid) {
         return true;
     }
 
-    @Nonnull
+    @NotNull
     @Override
     public FluidState getFluidState(BlockState blockState) {
         return blockState.getValue(BlockStateProperties.WATERLOGGED)? Fluids.WATER.getSource(false) : super.getFluidState(blockState);
@@ -73,12 +72,12 @@ public abstract class RotatableLamp extends LampBase implements SimpleWaterlogge
     }
 
     @Override
-    public BlockState mirror(BlockState pState, Mirror pMirror) {
+    public @NotNull BlockState mirror(BlockState pState, Mirror pMirror) {
         return pState.rotate(pMirror.getRotation(pState.getValue(BlockStateProperties.FACING)));
     }
 
     @Override
-    public BlockState rotate(BlockState pState, Rotation pRotation) {
+    public @NotNull BlockState rotate(BlockState pState, Rotation pRotation) {
         return pState.setValue(BlockStateProperties.FACING, pRotation.rotate(pState.getValue(BlockStateProperties.FACING)));
     }
 }
