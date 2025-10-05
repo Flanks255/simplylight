@@ -1,20 +1,19 @@
-package com.flanks255.simplylight.data;
+package com.flanks255.simplylight.datagen;
 
-import com.flanks255.simplylight.SimplyLightNeoForge;
+import com.flanks255.simplylight.SimplyLightFabric;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.data.loot.LootTableProvider;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.flag.FeatureFlags;
-import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import net.neoforged.neoforge.registries.DeferredHolder;
 
-import javax.annotation.Nonnull;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
+import java.util.function.BiConsumer;
 
 public class SLBlockLoot extends BlockLootSubProvider {
     protected SLBlockLoot(HolderLookup.Provider thing) {
@@ -25,15 +24,14 @@ public class SLBlockLoot extends BlockLootSubProvider {
     }
 
     @Override
-    protected void generate() {
-        for(DeferredHolder<Block, ? extends Block> block : SimplyLightNeoForge.BLOCKS.getEntries()) {
-            dropSelf(block.get());
-        }
+    public void generate() {
+        SimplyLightFabric.BLOCKS.forEach(block -> dropSelf(block.getB()));
     }
 
-    @Nonnull
     @Override
-    protected Iterable<Block> getKnownBlocks() {
-        return SimplyLightNeoForge.BLOCKS.getEntries().stream().map(DeferredHolder::get).collect(Collectors.toList());
+    public void generate(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> biConsumer) {
+        generate();
+
+        map.forEach(biConsumer);
     }
 }
