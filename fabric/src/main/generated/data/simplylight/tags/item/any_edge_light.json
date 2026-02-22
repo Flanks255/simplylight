@@ -1,0 +1,20 @@
+{
+  "values": [
+    "simplylight:edge_light",
+    "simplylight:edge_light_light_gray",
+    "simplylight:edge_light_gray",
+    "simplylight:edge_light_black",
+    "simplylight:edge_light_brown",
+    "simplylight:edge_light_red",
+    "simplylight:edge_light_orange",
+    "simplylight:edge_light_yellow",
+    "simplylight:edge_light_lime",
+    "simplylight:edge_light_green",
+    "simplylight:edge_light_cyan",
+    "simplylight:edge_light_light_blue",
+    "simplylight:edge_light_blue",
+    "simplylight:edge_light_purple",
+    "simplylight:edge_light_magenta",
+    "simplylight:edge_light_pink"
+  ]
+}

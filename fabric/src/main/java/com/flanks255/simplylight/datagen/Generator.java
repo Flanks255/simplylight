@@ -13,5 +13,6 @@ public class Generator implements DataGeneratorEntrypoint {
         pack.addProvider((output, lookup) -> new SLItemTags(output, lookup, blockTags.contentsGetter()));
         pack.addProvider(SLBlockLoot::getProvider);
         pack.addProvider(SLRecipes::new);
+        pack.addProvider(SLBlockStates::new);
     }
 }

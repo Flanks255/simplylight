@@ -21,8 +21,6 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.NotNull;
 
-import javax.annotation.Nonnull;
-
 
 public class CommonRecipes {
     public static void buildRecipes(@NotNull RecipeOutput output, @NotNull TagKey<Item> stoneTag, @NotNull TagKey<Item> glowstoneTag, @NotNull TagKey<Item> redstoneTag) {
@@ -229,14 +227,14 @@ public class CommonRecipes {
         }
 
         @Override
-        public void save(@Nonnull RecipeOutput pFinishedRecipeConsumer, @Nonnull ResourceLocation pRecipeId) {
+        public void save(@NotNull RecipeOutput pFinishedRecipeConsumer, @NotNull ResourceLocation pRecipeId) {
             unlockedBy("", TRIGGER); //Nope
             showNotification(false);
             super.save(pFinishedRecipeConsumer, pRecipeId);
         }
 
         @Override
-        public void save(@Nonnull RecipeOutput pFinishedRecipeConsumer) {
+        public void save(@NotNull RecipeOutput pFinishedRecipeConsumer) {
             unlockedBy("", TRIGGER); //Nope
             showNotification(false);
             super.save(pFinishedRecipeConsumer);
@@ -259,13 +257,13 @@ public class CommonRecipes {
         }
 
         @Override
-        public void save(@Nonnull RecipeOutput output, @Nonnull ResourceLocation pRecipeId) {
+        public void save(@NotNull RecipeOutput output, @NotNull ResourceLocation pRecipeId) {
             unlockedBy("", TRIGGER); //Nope
             super.save(output, pRecipeId);
         }
 
         @Override
-        public void save(@Nonnull RecipeOutput output) {
+        public void save(@NotNull RecipeOutput output) {
             unlockedBy("", TRIGGER); //Nope
             super.save(output);
         }

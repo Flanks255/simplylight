@@ -3,6 +3,7 @@ package com.flanks255.simplylight.data;
 import com.flanks255.simplylight.SimplyLightCommon;
 import com.flanks255.simplylight.SimplyLightNeoForge;
 import com.flanks255.simplylight.blocks.LampBase;
+import com.flanks255.simplylight.datagen.CommonLang;
 import net.minecraft.data.DataGenerator;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 
@@ -13,19 +14,8 @@ public class LangGen extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
-        add("itemGroup.simplylight", "Simply Light");
-        add("simplylight.shift", "Press <%s> for info.");
-        add("simplylight.key.shift", "Shift");
-        add("simplylight.redstone", "Redstone");
-        add("simplylight.pack.fullblock_ctm", "Simply Light Full block CTM");
+        CommonLang.buildLang(this::add);
 
-        add("simplylight.gui.facing", "Facing");
-        add("simplylight.gui.exit", "Exit");
-        add("simplylight.gui.north", "North");
-        add("simplylight.gui.east", "East");
-        add("simplylight.gui.south", "South");
-        add("simplylight.gui.west", "West");
-
-        SimplyLightNeoForge.BLOCKS.getEntries().forEach(block -> ((LampBase) block.get()).addLang(this::add));
+        SimplyLightNeoForge.BLOCKS.getEntries().forEach(block -> ((LampBase) block.get()).addLang(this::add)); //TODO
     }
 }

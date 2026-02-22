@@ -15,18 +15,7 @@ public class SLLang extends FabricLanguageProvider {
 
     @Override
     public void generateTranslations(HolderLookup.Provider provider, TranslationBuilder builder) {
-        builder.add("itemGroup.simplylight", "Simply Light");
-        builder.add("simplylight.shift", "Press <%s> for info.");
-        builder.add("simplylight.key.shift", "Shift");
-        builder.add("simplylight.redstone", "Redstone");
-        builder.add("simplylight.pack.fullblock_ctm", "Simply Light Full block CTM");
-        builder.add("simplylight.gui.facing", "Facing");
-        builder.add("simplylight.gui.exit", "Exit");
-        builder.add("simplylight.gui.north", "North");
-        builder.add("simplylight.gui.east", "East");
-        builder.add("simplylight.gui.south", "South");
-        builder.add("simplylight.gui.west", "West");
-
-        SimplyLightFabric.BLOCKS.forEach(block -> ((LampBase) block.getB()).addLang(builder::add));
+        CommonLang.buildLang(builder::add);
+        SimplyLightFabric.BLOCKS.forEach(block -> ((LampBase) block.getB()).addLang(builder::add)); //TODO abstract this
     }
 }

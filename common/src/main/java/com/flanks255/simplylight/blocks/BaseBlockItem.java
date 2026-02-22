@@ -1,5 +1,6 @@
 package com.flanks255.simplylight.blocks;
 
+import com.flanks255.simplylight.SLBlockReg;
 import com.google.common.base.Suppliers;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
@@ -23,10 +24,10 @@ public class BaseBlockItem extends BlockItem implements Equipable {
         this.alternateTooltipBlock = null;
     }
 
-    public BaseBlockItem(Block block, Properties properties, Supplier<Block> alternateTooltipBlock) {
+    public BaseBlockItem(Block block, Properties properties, SLBlockReg<?,?> alternateTooltipBlock) {
         super(block, properties);
         this.block = block;
-        this.alternateTooltipBlock = alternateTooltipBlock.get();
+        this.alternateTooltipBlock = alternateTooltipBlock;
     }
 
     private final Supplier<ResourceLocation> lazyRes = Suppliers.memoize(() -> BuiltInRegistries.ITEM.getKey(this));
@@ -36,11 +37,11 @@ public class BaseBlockItem extends BlockItem implements Equipable {
     }
 
     private final Block block;
-    private final Block alternateTooltipBlock;
+    private final SLBlockReg<?,?> alternateTooltipBlock;
 
     public String getTooltipBase() {
         if (alternateTooltipBlock != null)
-            return alternateTooltipBlock.getDescriptionId();
+            return alternateTooltipBlock.getBlock().getDescriptionId();
         return block.getDescriptionId();
     }
 

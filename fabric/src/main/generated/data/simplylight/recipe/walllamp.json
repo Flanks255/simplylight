@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "a": {
+      "tag": "c:stones"
+    },
+    "b": {
+      "item": "minecraft:glowstone"
+    }
+  },
+  "pattern": [
+    "aa",
+    "ab",
+    "ab"
+  ],
+  "result": {
+    "count": 6,
+    "id": "simplylight:wall_lamp"
+  },
+  "show_notification": false
+}

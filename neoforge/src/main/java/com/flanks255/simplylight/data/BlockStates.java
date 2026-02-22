@@ -21,7 +21,7 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 import java.util.function.Function;
 
-public class BlockStates  extends BlockStateProvider {
+public class BlockStates extends BlockStateProvider {
     ExistingFileHelper existingFileHelper;
     public BlockStates(DataGenerator gen, ExistingFileHelper exFileHelper) {
         super(gen.getPackOutput(), SimplyLightCommon.MODID, exFileHelper);

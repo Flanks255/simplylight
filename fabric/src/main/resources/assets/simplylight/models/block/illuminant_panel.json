@@ -1,0 +1,24 @@
+{
+    "parent": "block/block",
+    "ambientocclusion":false,
+    "textures":{
+        "particle": "simplylight:block/full_block/illuminant_block",
+        "up":"simplylight:block/panel/illuminant_panel",
+        "sides":"simplylight:block/slab/illuminant_slab_sides",
+        "down":"simplylight:block/slab/illuminant_slab_down"
+    },
+    "elements":[
+        {
+            "shade": false,
+            "from": [ 0,0,0], "to": [16,4,16],
+            "faces":{
+                "down": { "texture": "#down", "cullface": "down" },
+                "up": { "texture": "#up" },
+                "north": { "uv": [0,8,16,12] , "texture": "#sides", "cullface": "north" },
+                "south": { "uv": [0,8,16,12] , "texture": "#sides", "cullface": "south" },
+                "west": { "uv": [0,8,16,12] , "texture": "#sides", "cullface": "west" },
+                "east": { "uv": [0,8,16,12] , "texture": "#sides", "cullface": "east" }
+            }
+        }
+    ]
+}

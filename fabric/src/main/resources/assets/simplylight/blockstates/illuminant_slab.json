@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "simplylight:block/illuminant_slab",
+      "x": 180
+    },
+    "facing=up": {
+      "model": "simplylight:block/illuminant_slab"
+    },
+    "facing=north": {
+      "model": "simplylight:block/illuminant_slab",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "simplylight:block/illuminant_slab",
+      "x": 90,
+      "y": 180
+    },
+    "facing=west": {
+      "model": "simplylight:block/illuminant_slab",
+      "x": 90,
+      "y": 270
+    },
+    "facing=east": {
+      "model": "simplylight:block/illuminant_slab",
+      "x": 90,
+      "y": 90
+    }
+  }
+}

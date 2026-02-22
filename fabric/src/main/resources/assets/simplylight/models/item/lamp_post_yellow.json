@@ -1,0 +1,62 @@
+{
+  "parent": "simplylight:block/lamp_post_item_yellow",
+  "display": {
+    "firstperson_lefthand": {
+      "scale": [
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    "firstperson_righthand": {
+      "scale": [
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    "fixed": {
+      "scale": [
+        0.33,
+        0.33,
+        0.33
+      ]
+    },
+    "ground": {
+      "scale": [
+        0.33,
+        0.33,
+        0.33
+      ],
+      "translation": [
+        0,
+        8,
+        0
+      ]
+    },
+    "gui": {
+      "rotation": [
+        45,
+        45,
+        -45
+      ],
+      "scale": [
+        0.33,
+        0.33,
+        0.33
+      ]
+    },
+    "head": {
+      "scale": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "translation": [
+        0,
+        18.5,
+        0
+      ]
+    }
+  }
+}

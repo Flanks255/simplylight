@@ -1,0 +1,26 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "simplylight:block/floor_lamp_red",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "simplylight:block/wall_lamp_red",
+      "y": 270
+    },
+    "facing=north": {
+      "model": "simplylight:block/wall_lamp_red",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "simplylight:block/wall_lamp_red"
+    },
+    "facing=up": {
+      "model": "simplylight:block/floor_lamp_red"
+    },
+    "facing=west": {
+      "model": "simplylight:block/wall_lamp_red",
+      "y": 90
+    }
+  }
+}

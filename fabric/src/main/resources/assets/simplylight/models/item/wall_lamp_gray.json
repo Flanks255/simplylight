@@ -1,0 +1,24 @@
+{
+  "parent": "simplylight:block/wall_lamp_gray",
+  "display": {
+    "fixed": {
+      "rotation": [
+        0,
+        -180,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        -8
+      ]
+    },
+    "head": {
+      "translation": [
+        0,
+        4.5,
+        14
+      ]
+    }
+  }
+}

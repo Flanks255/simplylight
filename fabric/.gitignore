@@ -1,0 +1,11 @@
+*.ipr
+*.iml
+*.iws
+build/
+out/
+run/
+.gradle/
+.idea/
+/logs/
+/runs/
+*.afphoto

@@ -12,14 +12,16 @@ public class FabricRegistrationHelper implements IRegistrationHelper {
 
     @Override
     public <B extends Block> Supplier<B> registerBlock(String name, Supplier<B> blockSupplier) {
-        SimplyLightFabric.BLOCKS.add(new Pair<>(name, blockSupplier.get()));
-        return blockSupplier;
+        B block = blockSupplier.get();
+        SimplyLightFabric.BLOCKS.add(new Pair<>(name, block));
+        return () -> block;
     }
 
     @Override
     public <I extends Item> Supplier<I> registerItem(String name, Supplier<I> itemSupplier) {
-        SimplyLightFabric.ITEMS.add(new Pair<>(name, itemSupplier.get()));
-        return itemSupplier;
+        I item = itemSupplier.get();
+        SimplyLightFabric.ITEMS.add(new Pair<>(name, item));
+        return () -> item;
     }
 
 

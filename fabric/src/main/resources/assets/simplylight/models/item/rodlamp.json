@@ -1,0 +1,12 @@
+{
+  "parent": "simplylight:block/rodlamp",
+  "display": {
+    "head": {
+      "translation": [
+        0,
+        14,
+        0
+      ]
+    }
+  }
+}

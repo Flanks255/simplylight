@@ -11,8 +11,8 @@ import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
+import org.jetbrains.annotations.NotNull;
 
-import javax.annotation.Nonnull;
 
 public class EdgeEditorGUI extends Screen {
     private static final ResourceLocation BG = SimplyLightCommon.SLRes("textures/gui/small_editor.png");
@@ -55,7 +55,7 @@ public class EdgeEditorGUI extends Screen {
     }
 
     @Override
-    public void render(@Nonnull GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
+    public void render(@NotNull GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
         super.render(guiGraphics, mouseX, mouseY, partialTick);
 
         Player player = Minecraft.getInstance().player;
@@ -109,7 +109,7 @@ public class EdgeEditorGUI extends Screen {
         private final Component textKey;
 
         @Override
-        public void renderWidget(@Nonnull GuiGraphics gg, int p_renderButton_1_, int p_renderButton_2_, float p_renderButton_3_) {
+        public void renderWidget(@NotNull GuiGraphics gg, int p_renderButton_1_, int p_renderButton_2_, float p_renderButton_3_) {
             gg.blit(SWITCH, this.getX(), this.getY(), this.width, this.height,0,this.state?16:0,32,16, 32 ,32);
             gg.drawString(font, textKey, this.getX() + 34, this.getY() + 4, 0x404040, false);
         }

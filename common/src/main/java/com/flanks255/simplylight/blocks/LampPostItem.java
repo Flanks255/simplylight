@@ -1,5 +1,6 @@
 package com.flanks255.simplylight.blocks;
 
+import com.flanks255.simplylight.SLBlockReg;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -11,7 +12,7 @@ import java.util.function.Supplier;
 
 
 public class LampPostItem extends BaseBlockItem {
-    public LampPostItem(Block pBlock, Supplier<Block> alternateTooltipBlock) {
+    public LampPostItem(Block pBlock, SLBlockReg<?,?> alternateTooltipBlock) {
         super(pBlock, new Item.Properties().attributes(createAttributes()), alternateTooltipBlock);
     }
 

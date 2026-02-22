@@ -5,6 +5,7 @@ plugins {
 
 neoForge {
     version = neoforge_version
+    def commonResources = project(':common').file('src/main/resources/')
     // Automatically enable neoforge AccessTransformers if the file exists
     def at = project(':common').file('src/main/resources/META-INF/accesstransformer.cfg')
     if (at.exists()) {
@@ -27,7 +28,7 @@ neoForge {
 
             // DataGen can be run by - "./gradlew :neoforge:runData" in Terminal.
             // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
-            programArguments.addAll '--mod', 'simplylight', '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
+            programArguments.addAll '--mod', 'simplylight', '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath(), '--existing', commonResources.getAbsolutePath()
 
         }
         server {
@@ -55,7 +56,7 @@ dependencies {
     runtimeOnly "mezz.jei:jei-${jei_mc_version}-neoforge:${jei_version}"
 
 //    compileOnly fg.deobf("curse.maven:TOP-245211:4159743")
-    runtimeOnly "curse.maven:JADE-324717:5493270"
+    runtimeOnly "curse.maven:JADE-324717:6853386"
     runtimeOnly "curse.maven:ATLAS-633577:5490697"
     runtimeOnly "curse.maven:CTM-267602:5587515"
     runtimeOnly "curse.maven:BUILDINGGADGETS-298187:5968587"

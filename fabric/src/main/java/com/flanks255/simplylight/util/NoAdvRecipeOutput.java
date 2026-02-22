@@ -5,6 +5,7 @@ import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Recipe;
+import org.jetbrains.annotations.NotNull;
 
 public class NoAdvRecipeOutput implements RecipeOutput {
     private final RecipeOutput inner;
@@ -14,7 +15,7 @@ public class NoAdvRecipeOutput implements RecipeOutput {
 
     
     @Override
-    public Advancement.Builder advancement() {
+    public Advancement.@NotNull Builder advancement() {
         return inner.advancement();
     }
 

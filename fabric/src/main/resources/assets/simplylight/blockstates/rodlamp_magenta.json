@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "simplylight:block/rodlamp_magenta",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "simplylight:block/rodlamp_magenta"
+    },
+    "axis=z": {
+      "model": "simplylight:block/rodlamp_magenta",
+      "x": 90
+    }
+  }
+}
