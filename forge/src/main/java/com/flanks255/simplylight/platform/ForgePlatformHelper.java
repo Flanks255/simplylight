@@ -1,10 +1,14 @@
 package com.flanks255.simplylight.platform;
 
+import com.flanks255.simplylight.SimplyLightForge;
+import com.flanks255.simplylight.network.OpenEdgeEditorPacket;
+import com.flanks255.simplylight.network.UpdateEdgeLightPacket;
 import com.flanks255.simplylight.platform.services.IPlatformHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.loading.FMLLoader;
+import net.minecraftforge.network.PacketDistributor;
 
 public class ForgePlatformHelper implements IPlatformHelper {
 
@@ -28,11 +32,11 @@ public class ForgePlatformHelper implements IPlatformHelper {
 
     @Override
     public void sendEdgeEditorPacket(ServerPlayer player, BlockPos pos, byte initialState) {
-        //TODO implement
+        SimplyLightForge.NETWORK_CHANNEL.send(new OpenEdgeEditorPacket(pos, initialState), PacketDistributor.PLAYER.with(player));
     }
 
     @Override
     public void sendEdgeUpdatePacket(BlockPos targetPos, byte newState) {
-        //TODO implement
+        SimplyLightForge.NETWORK_CHANNEL.send(new UpdateEdgeLightPacket(targetPos, newState), PacketDistributor.SERVER.noArg());
     }
 }

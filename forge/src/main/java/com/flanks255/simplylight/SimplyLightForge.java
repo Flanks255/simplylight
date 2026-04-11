@@ -1,6 +1,7 @@
 package com.flanks255.simplylight;
 
 import com.flanks255.simplylight.data.Generator;
+import com.flanks255.simplylight.network.SLNetwork;
 import com.flanks255.simplylight.util.RecipeUnlocker;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -12,6 +13,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.network.SimpleChannel;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -23,6 +25,8 @@ public class SimplyLightForge {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, SimplyLightCommon.MODID);
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, SimplyLightCommon.MODID);
 
+    public static SimpleChannel NETWORK_CHANNEL;
+
     public static final Supplier<CreativeModeTab> TAB = TABS.register("lights", () ->
             CreativeModeTab.builder().icon(() -> new ItemStack(SLBlocks.ILLUMINANTBLOCK_ON.getItem()))
                     .title(Component.literal("Simply Light"))
@@ -32,6 +36,8 @@ public class SimplyLightForge {
     public SimplyLightForge(FMLJavaModLoadingContext context) {
         IEventBus bus = context.getModEventBus();
         SimplyLightCommon.init();
+
+        NETWORK_CHANNEL = SLNetwork.register();
 
         BLOCKS.register(bus);
         ITEMS.register(bus);
