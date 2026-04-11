@@ -1,7 +1,12 @@
 package com.flanks255.simplylight;
 
+import com.flanks255.simplylight.blocks.EdgeLight;
+import com.flanks255.simplylight.network.OpenEdgeEditorPacket;
+import com.flanks255.simplylight.network.UpdateEdgeLightPacket;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
@@ -33,6 +38,10 @@ public class SimplyLightFabric implements ModInitializer {
         registerBlocksAndItems();
         SimplyLightCommon.init();
         Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, SimplyLightCommon.SLRes("simplylight"), ITEM_GROUP);
+
+        PayloadTypeRegistry.playS2C().register(OpenEdgeEditorPacket.TYPE, OpenEdgeEditorPacket.STREAM_CODEC);
+        PayloadTypeRegistry.playC2S().register(UpdateEdgeLightPacket.TYPE, UpdateEdgeLightPacket.STREAM_CODEC);
+        ServerPlayNetworking.registerGlobalReceiver(UpdateEdgeLightPacket.TYPE,  (packet, context) -> EdgeLight.updateShape(context.player().level(), packet.pos(), packet.state()));
     }
 
     public static void registerBlocksAndItems() {

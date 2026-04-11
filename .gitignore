@@ -6,6 +6,8 @@ out/
 run/
 .gradle/
 .idea/
-/logs/
-/runs/
+logs/
+runs/
+/fabric/logs/
+/fabric/runs/
 *.afphoto

@@ -13,7 +13,6 @@ public class SLBlockStates extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockModelGenerators generator) {
-
     }
 
     @Override

@@ -18,6 +18,9 @@
         "main": [
           "com.flanks255.simplylight.SimplyLightFabric"
         ],
+        "client": [
+          "com.flanks255.simplylight.SimplyLightFabricClient"
+        ],
         "fabric-datagen": [
           "com.flanks255.simplylight.datagen.Generator"
         ]
