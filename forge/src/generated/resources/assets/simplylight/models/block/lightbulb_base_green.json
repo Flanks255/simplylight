@@ -1,0 +1,7 @@
+{
+  "parent": "simplylight:block/lightbulb_base",
+  "textures": {
+    "main": "simplylight:block/omni/omni_green",
+    "particle": "simplylight:block/omni/omni_green"
+  }
+}

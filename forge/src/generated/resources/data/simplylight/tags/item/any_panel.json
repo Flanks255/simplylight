@@ -1,0 +1,20 @@
+{
+  "values": [
+    "simplylight:illuminant_panel",
+    "simplylight:illuminant_panel_light_gray",
+    "simplylight:illuminant_panel_gray",
+    "simplylight:illuminant_panel_black",
+    "simplylight:illuminant_panel_brown",
+    "simplylight:illuminant_panel_red",
+    "simplylight:illuminant_panel_orange",
+    "simplylight:illuminant_panel_yellow",
+    "simplylight:illuminant_panel_lime",
+    "simplylight:illuminant_panel_green",
+    "simplylight:illuminant_panel_cyan",
+    "simplylight:illuminant_panel_light_blue",
+    "simplylight:illuminant_panel_blue",
+    "simplylight:illuminant_panel_purple",
+    "simplylight:illuminant_panel_magenta",
+    "simplylight:illuminant_panel_pink"
+  ]
+}

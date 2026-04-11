@@ -1,0 +1,7 @@
+{
+  "parent": "simplylight:block/lightbulb_glow",
+  "textures": {
+    "main": "simplylight:block/omni/omni_orange",
+    "particle": "simplylight:block/omni/omni_orange"
+  }
+}

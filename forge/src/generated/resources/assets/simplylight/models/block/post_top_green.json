@@ -1,0 +1,6 @@
+{
+  "parent": "simplylight:block/post_top",
+  "textures": {
+    "1": "simplylight:block/post/post_lightface_green"
+  }
+}

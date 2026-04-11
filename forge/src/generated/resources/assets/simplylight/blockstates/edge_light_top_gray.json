@@ -1,0 +1,83 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "simplylight:block/edge_light_gray",
+        "x": 180,
+        "y": 180
+      },
+      "when": {
+        "OR": [
+          {
+            "north": "true"
+          },
+          {
+            "east": "false",
+            "north": "false",
+            "south": "false",
+            "west": "false"
+          }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "simplylight:block/edge_light_gray",
+        "x": 180
+      },
+      "when": {
+        "OR": [
+          {
+            "south": "true"
+          },
+          {
+            "east": "false",
+            "north": "false",
+            "south": "false",
+            "west": "false"
+          }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "simplylight:block/edge_light_gray",
+        "x": 180,
+        "y": 270
+      },
+      "when": {
+        "OR": [
+          {
+            "east": "true"
+          },
+          {
+            "east": "false",
+            "north": "false",
+            "south": "false",
+            "west": "false"
+          }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "simplylight:block/edge_light_gray",
+        "x": 180,
+        "y": 90
+      },
+      "when": {
+        "OR": [
+          {
+            "west": "true"
+          },
+          {
+            "east": "false",
+            "north": "false",
+            "south": "false",
+            "west": "false"
+          }
+        ]
+      }
+    }
+  ]
+}

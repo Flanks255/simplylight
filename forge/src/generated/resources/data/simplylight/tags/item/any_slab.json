@@ -1,0 +1,20 @@
+{
+  "values": [
+    "simplylight:illuminant_slab",
+    "simplylight:illuminant_slab_light_gray",
+    "simplylight:illuminant_slab_gray",
+    "simplylight:illuminant_slab_black",
+    "simplylight:illuminant_slab_brown",
+    "simplylight:illuminant_slab_red",
+    "simplylight:illuminant_slab_orange",
+    "simplylight:illuminant_slab_yellow",
+    "simplylight:illuminant_slab_lime",
+    "simplylight:illuminant_slab_green",
+    "simplylight:illuminant_slab_cyan",
+    "simplylight:illuminant_slab_light_blue",
+    "simplylight:illuminant_slab_blue",
+    "simplylight:illuminant_slab_purple",
+    "simplylight:illuminant_slab_magenta",
+    "simplylight:illuminant_slab_pink"
+  ]
+}

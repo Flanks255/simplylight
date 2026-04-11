@@ -1,0 +1,7 @@
+{
+  "parent": "simplylight:block/edge_light",
+  "textures": {
+    "0": "simplylight:block/omni/omni_blue",
+    "particle": "simplylight:block/omni/omni_blue"
+  }
+}

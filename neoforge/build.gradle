@@ -6,6 +6,7 @@ plugins {
 neoForge {
     version = neoforge_version
     def commonResources = project(':common').file('src/main/resources/')
+    def ENV = System.getenv()
     // Automatically enable neoforge AccessTransformers if the file exists
     def at = project(':common').file('src/main/resources/META-INF/accesstransformer.cfg')
     if (at.exists()) {
@@ -22,6 +23,13 @@ neoForge {
         }
         client {
             client()
+            programArguments.addAll('--width', '1280', '--height', '720')
+            if (ENV.MCDEVUSER) {
+                programArguments.addAll('--username', ENV.MCDEVUSER)
+            }
+            if (ENV.MCDEVUUID) {
+                programArguments.addAll('--uuid', ENV.MCDEVUUID)
+            }
         }
         data {
             data()
@@ -33,6 +41,7 @@ neoForge {
         }
         server {
             server()
+            programArguments.addAll('--nogui')
         }
     }
     mods {

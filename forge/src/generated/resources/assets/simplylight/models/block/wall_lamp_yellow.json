@@ -1,0 +1,7 @@
+{
+  "parent": "simplylight:block/wall_lamp",
+  "textures": {
+    "0": "simplylight:block/omni/omni_yellow",
+    "particle": "simplylight:block/omni/omni_yellow"
+  }
+}

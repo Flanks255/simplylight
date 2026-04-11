@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "a": {
+      "tag": "c:stones"
+    },
+    "b": {
+      "item": "minecraft:glowstone"
+    },
+    "c": {
+      "tag": "c:dusts/redstone"
+    }
+  },
+  "pattern": [
+    "aba",
+    "bcb",
+    "aba"
+  ],
+  "result": {
+    "count": 4,
+    "id": "simplylight:illuminant_block"
+  },
+  "show_notification": false
+}

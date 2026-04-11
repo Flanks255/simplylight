@@ -1,0 +1,79 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "simplylight:block/edge_light_pink"
+      },
+      "when": {
+        "OR": [
+          {
+            "north": "true"
+          },
+          {
+            "east": "false",
+            "north": "false",
+            "south": "false",
+            "west": "false"
+          }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "simplylight:block/edge_light_pink",
+        "y": 180
+      },
+      "when": {
+        "OR": [
+          {
+            "south": "true"
+          },
+          {
+            "east": "false",
+            "north": "false",
+            "south": "false",
+            "west": "false"
+          }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "simplylight:block/edge_light_pink",
+        "y": 90
+      },
+      "when": {
+        "OR": [
+          {
+            "east": "true"
+          },
+          {
+            "east": "false",
+            "north": "false",
+            "south": "false",
+            "west": "false"
+          }
+        ]
+      }
+    },
+    {
+      "apply": {
+        "model": "simplylight:block/edge_light_pink",
+        "y": 270
+      },
+      "when": {
+        "OR": [
+          {
+            "west": "true"
+          },
+          {
+            "east": "false",
+            "north": "false",
+            "south": "false",
+            "west": "false"
+          }
+        ]
+      }
+    }
+  ]
+}
