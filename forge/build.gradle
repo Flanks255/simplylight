@@ -2,9 +2,6 @@ plugins {
     id 'multiloader-loader'
     id 'net.minecraftforge.gradle' version '[6.0.24,6.2)'
 }
-base {
-    archivesName = "${mod_name}-forge-${minecraft_version}"
-}
 
 minecraft {
     mappings channel: 'official', version: minecraft_version
@@ -59,14 +56,6 @@ dependencies {
 
     // Forge's hack fix
     implementation('net.sf.jopt-simple:jopt-simple:5.0.4') { version { strictly '5.0.4' } }
-}
-
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            fg.component(it)
-        }
-    }
 }
 
 sourceSets.each {
