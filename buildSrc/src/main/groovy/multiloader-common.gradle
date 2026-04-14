@@ -112,8 +112,15 @@ publishing {
         }
     }
     repositories {
-        maven {
-            url System.getenv('local_maven_url')
+        def saps_token = providers.environmentVariable("SAPS_TOKEN")
+        if (saps_token.isPresent()) {
+            maven {
+                url "https://maven.saps.dev/releases"
+                credentials {
+                    username = "flanks"
+                    password = saps_token.get()
+                }
+            }
         }
     }
 }

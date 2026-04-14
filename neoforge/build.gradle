@@ -59,14 +59,18 @@ repositories {
     maven { url = 'https://maven.saps.dev/releases' }
 }
 
+configurations {
+    runtimeClasspath.extendsFrom localRuntime
+}
+
 dependencies {
     compileOnly "mezz.jei:jei-${jei_mc_version}-common-api:${jei_version}"//new
     compileOnly "mezz.jei:jei-${jei_mc_version}-neoforge-api:${jei_version}"
-    runtimeOnly "mezz.jei:jei-${jei_mc_version}-neoforge:${jei_version}"
+    localRuntime "mezz.jei:jei-${jei_mc_version}-neoforge:${jei_version}"
 
 //    compileOnly fg.deobf("curse.maven:TOP-245211:4159743")
-    runtimeOnly "curse.maven:JADE-324717:6853386"
-    runtimeOnly "curse.maven:ATLAS-633577:5490697"
-    runtimeOnly "curse.maven:CTM-267602:5587515"
-    runtimeOnly "curse.maven:BUILDINGGADGETS-298187:5968587"
+    localRuntime "curse.maven:JADE-324717:6853386"
+    localRuntime "curse.maven:ATLAS-633577:5490697"
+    localRuntime "curse.maven:CTM-267602:5587515"
+    localRuntime "curse.maven:BUILDINGGADGETS-298187:5968587"
 }

@@ -1,4 +1,5 @@
-# simplylight
+# Simply Light
+
 [![Curse Forge](http://cf.way2muchnoise.eu/300331.svg)](https://minecraft.curseforge.com/projects/simply-light)
 [![Curse Forge](http://cf.way2muchnoise.eu/versions/300331.svg)](https://minecraft.curseforge.com/projects/simply-light)
 [![Release](https://github.com/Flanks255/simplylight/actions/workflows/release.yml/badge.svg?branch=master)](https://github.com/Flanks255/simplylight/actions/workflows/release.yml)

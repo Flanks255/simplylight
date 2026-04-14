@@ -1,0 +1,30 @@
+// From Mikey
+/**
+ * Seek out the changelog for the current version and return it as a string.
+ */
+ext.createChangelog = () -> {
+    def changelogText = new File("CHANGELOG.md").text
+    def changelog = ""
+
+    def lines = changelogText.split("\n")
+    def inChangelog = false
+    for (int i = 0; i < lines.size(); i++) {
+        def line = lines[i]
+        if (line.startsWith("# ")) {
+            if (inChangelog) {
+                break
+            } else {
+                if (line.contains(project.version)) {
+                    inChangelog = true
+                }
+            }
+        }
+
+        if (inChangelog) {
+            changelog += line + "\n"
+        }
+    }
+
+    def output = changelog.trim()
+    return output.empty ? "No changelog found" : output
+}

@@ -1,6 +1,66 @@
 plugins {
     // see https://fabricmc.net/develop/ for new versions
-    id 'fabric-loom' version '1.8-SNAPSHOT' apply false
+    id 'fabric-loom' version '1.13-SNAPSHOT' apply false
     // see https://projects.neoforged.net/neoforged/moddevgradle for new versions
-    id 'net.neoforged.moddev' version '2.0.49-beta' apply false
+    id 'net.neoforged.moddev' version '2.0.141' apply false
+    id "me.modmuss50.mod-publish-plugin" version "1.1.0"
+}
+
+apply from: './helpers.gradle'
+
+allprojects {
+    repositories {
+        // Remove past 26.1
+        maven {
+            url = "https://libraries.minecraft.net/"
+            content {
+                includeGroup("org.lwjgl")
+            }
+        }
+    }
+}
+
+def cfToken = providers.environmentVariable("CURSEFORGE_KEY")
+def ghToken = providers.environmentVariable("GITHUB_TOKEN")
+
+publishMods {
+    dryRun = !cfToken.isPresent() || !ghToken.isPresent()
+    type = STABLE
+    version = "${project.version}"
+
+    changelog = createChangelog().trim()
+
+    def createDist = (String modLoader, String jarTask) -> curseforgeOptions {
+        file = project.provider { project(":$modLoader").tasks[jarTask] }.flatMap { it.archiveFile }
+        displayName = "Simply Light ${modLoader.capitalize()} ${project.version}"
+        modLoaders.add(modLoader)
+        accessToken = cfToken
+        projectId = curseforge_id
+        minecraftVersions.add(minecraft_version)
+        javaVersions.add(JavaVersion.VERSION_21)
+    }
+
+    curseforge("curseForgeFabric") {
+        from(createDist("fabric", "remapJar"))
+    }
+
+    curseforge("curseForgeNeoForge") {
+        from(createDist("neoforge", "jar"))
+    }
+
+    curseforge("curseForgeForge") {
+        from(createDist("forge", "jar"))
+    }
+
+    github {
+        file = project.provider { project(":neoforge").tasks.jar }.flatMap { it.archiveFile }
+        additionalFiles.from project.provider { project(":fabric").tasks.remapJar }.flatMap { it.archiveFile }
+        additionalFiles.from project.provider { project(":forge").tasks.jar }.flatMap { it.archiveFile }
+
+        repository = "Flanks255/simplylight"
+        accessToken = ghToken
+
+        commitish = providers.environmentVariable("GITHUB_SHA").orElse("dryRun")
+        tagName = providers.environmentVariable("GITHUB_REF_NAME").orElse("dryRun")
+    }
 }
