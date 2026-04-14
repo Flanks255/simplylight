@@ -38,6 +38,9 @@ publishMods {
         projectId = curseforge_id
         minecraftVersions.add(minecraft_version)
         javaVersions.add(JavaVersion.VERSION_21)
+        if (modLoader == "fabric") {
+            requires("fabric-api")
+        }
     }
 
     curseforge("curseForgeFabric") {
