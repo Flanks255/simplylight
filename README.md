@@ -31,6 +31,8 @@ Connected Textures Mod)
   Connected Textures Mod)
 - 16 Colors for all Lamp types.
 
+### Pull Requests
+- Please do not submit large AI generated pull requests, including version ports.
 
 ### Translations
 | Language  |  Status  |
